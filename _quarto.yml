@@ -31,5 +31,5 @@ format:
     bibliography: sources.bib
 
 execute:
-  freeze: true
+  freeze: auto
   cache: true

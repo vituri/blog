@@ -1,5 +1,5 @@
 ---
-title: "Fragments of perception"
+title: " "
 listing:
   contents: posts
   sort: "date desc"
@@ -11,5 +11,4 @@ page-layout: full
 title-block-banner: false
 ---
 
-
-aaaaaaaaaaaaa
+Trechos de literatura jogados conforme aparecem na minha memória.
