@@ -1,0 +1,47 @@
+# Sobre a era das máquinas artistas
+
+Ou: como Stanislaw Lem imaginou o chatGPT na década de 60.
+
+"Trurl, o famoso construtor, um dia resolveu criar uma máquina que escrevia poesia para provar a seu amigo Klapaucius quem era o melhor construtor do universo."
+
+![Trurl e Klapaucius fazendo pose.](trurl and klapaucius.jpg)
+
+
+Mais ou menos assim começa o conto "The eletronic Bard" the Stanislaw Lem, escrito na década de 60. Publicado no livro "Cyberiads", inaugurou um gênero literário bizarro que mistura ficção científica e contos de fada medievais com a ironia de Voltaire e a prosa macarrônica de Rabelais. O livro narra as aventuras de Trurl e Klapaucius, dois robôs inventores capazes de criar praticamente qualquer coisa (como a máquina que materializava tudo que começava com "n", ou uma miniatura de um reino que se revoltou contra o rei, ou o robô gigante que dizia que 2+2 é 7 e tentou matar Trurl, ou a máquina que imprimia todas as verdades do universo). Ambos tentam cumprir pedidos quase impossíveis de reis de toda a galáxia, e quase sempre acabam arrumando problema e tendo que fugir com o dinheiro dos outros.
+
+A história continua:
+
+"Trurl juntou 820 toneladas de livros sobre cibernética e 1200 toneladas de livros de poesia e se pôs a ler. Quando cansava de uma equação, lia um verso. Percebeu então que a parte mais difícil da máquina seria o programa em si, e não o hardware. O 'programa' na cabeça de um poeta era, afinal, escrito pela civilização do poeta; e esta, por sua vez, era fruto das civilizações anteriores. Trurl então percebeu que seria mais fácil criar um universo virtual (desde o big bang!) e deixar naturalmente o poeta surgir de uma versão cibernética da Terra."
+
+Aqui há um paralelo interessante com os large language models (LLM) atuais, como o ChatGPT e o Google Bard^[que não tem relação com o Eletronic Bard do Lem, e sim com Shakespeare]: em vez de ensinar gramática e rimas e poesia a um algoritmo (isto é: em vez de passar todas as instruções uma a uma, como se ensinaria um robô obediente), hoje monta-se uma [arquitetura de rede neural](https://en.wikipedia.org/wiki/Artificial_neural_network) capaz de aprender a interpretar textos, e então alimenta-se essa rede neural com bilhões de textos até ela aprender "sozinha" a falar uma linguagem e responder a humanos.
+
+No fim da década de 50 as redes neurais ficaram famosas por imitarem o cérebro humano, e criou-se muita expectativa sobre em breve terem robôs que pensavam como humanos e andariam por aí. Porém, a falta de poder computacional da época e alguns projetos fracassados levaram ao ["inverno da IA"](https://en.wikipedia.org/wiki/AI_winter) que durou várias décadas.
+
+
+A história segue:
+
+"Após os preparativos, a simulação começou. Trurl foi adicionando mais e mais processadores ao computador, e teve que reinciar a simulação duas vezes: uma porque um fusível queimado fez Abel matar Caim, e na outra porque algo errado aconteceu na árvore evolutiva e em vez de termos os grandes macacos (great apes) surgiram cortinas cinzas (gray drapes). Passou-se a Antiguidade, a Idade Média, as reformas, e as revoluções. Ao chegar no século 20, com as grandes guerras, Trurl teve que jogar água na máquina que não parava de esquentar e vibrar. Civilizações surgiram e se foram a cada 25 mil anos, e Trurl precisava adicionar mais e mais fitas para salvar todos os dados. Tudo isso para obter um poeta!"
+
+Após milhões de anos na simulação, Trurl escolheu o melhor poeta de todos. Ajustando o sensor de emotividade, adicionando um campo semântico e uma alavanca filosófica, tudo o que o poeta disse foi "Eu tinha um sapo". Trurl continuou mexendo na máquina, adicionando filtros de clichê, um alternador de rimas, retirando alguns circuitos lógicos e por fim colocando um narcistor egocentripetal até que ela finalmente produziu um poema razoável.
+
+Extasiado, Trurl chamou Klapaucius para ver sua criação. Klapaucius estava cético e a princípio achou que os poemas do bardo eletrônico já estavam escritos num banco de dados. Para testá-lo, pediu que ele fizesse 'um poema de amor, lírico, pastoral, expresso na linguagem da matemática pura; com bastante álgebra tensorial, um pouco de topologia e talvez cálculo avançado.' Trurl ficou indignado e com medo de que o bardo quebrasse, mas ele começou um enorme poema assim:
+
+> [...] In Riemann, Hilbert or in Banach space \
+Let superscripts and subscripts go their ways \
+Our asymptotes no longer out of phase, \
+We shall encounter, counting, face to face.
+
+> I'll grant thee random access to my heart, \
+Thou'lt tell me all the constants of thy love; \
+And so we two shall all love's lemmas prove, \
+And in our bound partition never part.
+
+> [...] I see the eigenvalue in thine eye, \
+I hear the tender tensor in thy sigh. \
+Bernoulli would have been content to die, \
+Had he but known such $a^2 cos(2 \phi)$!
+
+![O bardo eletrônico pensando numa rima das brabas.](the bard.jpg)
+
+Klapaucius inventou uma desculpa qualquer e foi embora, visivelmente abalado."
+

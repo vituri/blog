@@ -1,5 +1,5 @@
 ---
-title: "Some thoughts about Julia, R and dinosaurs"
+title: "Fragments of perception"
 listing:
   contents: posts
   sort: "date desc"
@@ -12,3 +12,4 @@ title-block-banner: false
 ---
 
 
+aaaaaaaaaaaaa

@@ -1,0 +1,70 @@
+---
+title: "A quick Julia vs. R comparison"
+author: "G. Vituri"
+date: "2023-10-02"
+categories: [r, julia]
+---
+
+In this post I will compare Julia and R while solving several problems, mostly involving arithmetic. I also calculate the speed each piece of code will take to execute.
+
+## Setup
+
+```{r}
+# r
+benchmark = function(...) {
+    bench::mark(...) |>
+    dplyr::select(`min`, `median`, `mem_alloc`, `n_gc`)
+}
+```
+
+```{julia}
+# julia
+println("abc")
+# using BenchmarkTools;
+```
+
+## Fibonacci
+
+Calculate the 1000th number of the Fibonacci sequence.
+
+```{r}
+# r
+
+f1 = function(n) {
+    fib = rep(1L, n)
+
+    for (i in 3:n) {
+        fib[i] = fib[i-1] + fib[i-2]
+    }
+
+    fib
+}
+
+f1(40)
+```
+
+```{r}
+benchmark(f1(40))
+```
+
+```{julia}
+# julia
+function f1(n::Integer)
+    fib = ones(BigInt, n)
+    for i ∈ 3:n
+        fib[i] = fib[i-1] + fib[i-2]
+    end
+
+    fib
+end;
+
+f1(250)[230:end]
+```
+
+```{julia}
+@benchmark f1(40)
+```
+
+## Problem 2
+
+etc.

@@ -6,10 +6,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Harlow Malloc">
-<meta name="dcterms.date" content="2023-06-30">
 
-<title>some thoughts - Post With Code</title>
+<title>vituri's blog – eletronic-bard</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -21,40 +19,6 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
-}
-/* CSS for syntax highlighting */
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -71,10 +35,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="dark">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -96,11 +60,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   }
 }</script>
 
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 <link rel="stylesheet" href="../../styles.css">
 </head>
 
-<body class="nav-fixed fullcontent">
+<body class="nav-sidebar floating nav-fixed">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -108,7 +74,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container">
     <a class="navbar-brand" href="../../index.html">
-    <span class="navbar-title">some thoughts</span>
+    <span class="navbar-title">vituri’s blog</span>
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
@@ -137,62 +103,101 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           </div> <!-- /navcollapse -->
       </div> <!-- /container-fluid -->
     </nav>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"></ol></nav>
+      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+      </a>
+      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
 </header>
 <!-- content -->
-<header id="title-block-header" class="quarto-title-block default page-columns page-full">
-  <div class="quarto-title-banner page-columns page-full">
-    <div class="quarto-title column-body">
-      <h1 class="title">Post With Code</h1>
-                                <div class="quarto-categories">
-                <div class="quarto-category">news</div>
-                <div class="quarto-category">code</div>
-                <div class="quarto-category">analysis</div>
-              </div>
-                  </div>
-  </div>
-    
-  
-  <div class="quarto-title-meta">
-
-      <div>
-      <div class="quarto-title-meta-heading">Author</div>
-      <div class="quarto-title-meta-contents">
-               <p>Harlow Malloc </p>
-            </div>
-    </div>
-      
-      <div>
-      <div class="quarto-title-meta-heading">Published</div>
-      <div class="quarto-title-meta-contents">
-        <p class="date">June 30, 2023</p>
-      </div>
-    </div>
-    
-      
-    </div>
-    
-  
-  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+</nav>
+<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
 <!-- margin-sidebar -->
-    
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#sobre-a-era-das-máquinas-artistas" id="toc-sobre-a-era-das-máquinas-artistas" class="nav-link active" data-scroll-target="#sobre-a-era-das-máquinas-artistas">Sobre a era das máquinas artistas</a></li>
+  </ul>
+</nav>
+    </div>
 <!-- main -->
 <main class="content quarto-banner-title-block" id="quarto-document-content">
 
 
 
-
-<p>This is a post with executable code.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span> <span class="sc">+</span> <span class="dv">1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 2</code></pre>
+<section id="sobre-a-era-das-máquinas-artistas" class="level1">
+<h1>Sobre a era das máquinas artistas</h1>
+<p>Ou: como Stanislaw Lem imaginou o chatGPT na década de 60.</p>
+<p>“Trurl, o famoso construtor, um dia resolveu criar uma máquina que escrevia poesia para provar a seu amigo Klapaucius quem era o melhor construtor do universo.”</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="trurl and klapaucius.jpg" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Trurl e Klapaucius fazendo pose.</figcaption>
+</figure>
 </div>
+<p>Mais ou menos assim começa o conto “The eletronic Bard” the Stanislaw Lem, escrito na década de 60. Publicado no livro “Cyberiads”, inaugurou um gênero literário bizarro que mistura ficção científica e contos de fada medievais com a ironia de Voltaire e a prosa macarrônica de Rabelais. O livro narra as aventuras de Trurl e Klapaucius, dois robôs inventores capazes de criar praticamente qualquer coisa (como a máquina que materializava tudo que começava com “n”, ou uma miniatura de um reino que se revoltou contra o rei, ou o robô gigante que dizia que 2+2 é 7 e tentou matar Trurl, ou a máquina que imprimia todas as verdades do universo). Ambos tentam cumprir pedidos quase impossíveis de reis de toda a galáxia, e quase sempre acabam arrumando problema e tendo que fugir com o dinheiro dos outros.</p>
+<p>A história continua:</p>
+<p>“Trurl juntou 820 toneladas de livros sobre cibernética e 1200 toneladas de livros de poesia e se pôs a ler. Quando cansava de uma equação, lia um verso. Percebeu então que a parte mais difícil da máquina seria o programa em si, e não o hardware. O ‘programa’ na cabeça de um poeta era, afinal, escrito pela civilização do poeta; e esta, por sua vez, era fruto das civilizações anteriores. Trurl então percebeu que seria mais fácil criar um universo virtual (desde o big bang!) e deixar naturalmente o poeta surgir de uma versão cibernética da Terra.”</p>
+<p>Aqui há um paralelo interessante com os large language models (LLM) atuais, como o ChatGPT e o Google Bard<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>: em vez de ensinar gramática e rimas e poesia a um algoritmo (isto é: em vez de passar todas as instruções uma a uma, como se ensinaria um robô obediente), hoje monta-se uma <a href="https://en.wikipedia.org/wiki/Artificial_neural_network">arquitetura de rede neural</a> capaz de aprender a interpretar textos, e então alimenta-se essa rede neural com bilhões de textos até ela aprender “sozinha” a falar uma linguagem e responder a humanos.</p>
+<p>No fim da década de 50 as redes neurais ficaram famosas por imitarem o cérebro humano, e criou-se muita expectativa sobre em breve terem robôs que pensavam como humanos e andariam por aí. Porém, a falta de poder computacional da época e alguns projetos fracassados levaram ao <a href="https://en.wikipedia.org/wiki/AI_winter">“inverno da IA”</a> que durou várias décadas.</p>
+<p>A história segue:</p>
+<p>“Após os preparativos, a simulação começou. Trurl foi adicionando mais e mais processadores ao computador, e teve que reinciar a simulação duas vezes: uma porque um fusível queimado fez Abel matar Caim, e na outra porque algo errado aconteceu na árvore evolutiva e em vez de termos os grandes macacos (great apes) surgiram cortinas cinzas (gray drapes). Passou-se a Antiguidade, a Idade Média, as reformas, e as revoluções. Ao chegar no século 20, com as grandes guerras, Trurl teve que jogar água na máquina que não parava de esquentar e vibrar. Civilizações surgiram e se foram a cada 25 mil anos, e Trurl precisava adicionar mais e mais fitas para salvar todos os dados. Tudo isso para obter um poeta!”</p>
+<p>Após milhões de anos na simulação, Trurl escolheu o melhor poeta de todos. Ajustando o sensor de emotividade, adicionando um campo semântico e uma alavanca filosófica, tudo o que o poeta disse foi “Eu tinha um sapo”. Trurl continuou mexendo na máquina, adicionando filtros de clichê, um alternador de rimas, retirando alguns circuitos lógicos e por fim colocando um narcistor egocentripetal até que ela finalmente produziu um poema razoável.</p>
+<p>Extasiado, Trurl chamou Klapaucius para ver sua criação. Klapaucius estava cético e a princípio achou que os poemas do bardo eletrônico já estavam escritos num banco de dados. Para testá-lo, pediu que ele fizesse ‘um poema de amor, lírico, pastoral, expresso na linguagem da matemática pura; com bastante álgebra tensorial, um pouco de topologia e talvez cálculo avançado.’ Trurl ficou indignado e com medo de que o bardo quebrasse, mas ele começou um enorme poema assim:</p>
+<blockquote class="blockquote">
+<p>[…] In Riemann, Hilbert or in Banach space<br>
+Let superscripts and subscripts go their ways<br>
+Our asymptotes no longer out of phase,<br>
+We shall encounter, counting, face to face.</p>
+</blockquote>
+<blockquote class="blockquote">
+<p>I’ll grant thee random access to my heart,<br>
+Thou’lt tell me all the constants of thy love;<br>
+And so we two shall all love’s lemmas prove,<br>
+And in our bound partition never part.</p>
+</blockquote>
+<blockquote class="blockquote">
+<p>[…] I see the eigenvalue in thine eye,<br>
+I hear the tender tensor in thy sigh.<br>
+Bernoulli would have been content to die,<br>
+Had he but known such <span class="math inline">\(a^2 cos(2 \phi)\)</span>!</p>
+</blockquote>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="the bard.jpg" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">O bardo eletrônico pensando numa rima das brabas.</figcaption>
+</figure>
 </div>
+<p>Klapaucius inventou uma desculpa qualquer e foi embora, visivelmente abalado.”</p>
 
 
+</section>
 
-</main> <!-- /main -->
+
+<div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
+
+<ol>
+<li id="fn1"><p>que não tem relação com o Eletronic Bard do Lem, e sim com Shakespeare<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
@@ -425,6 +430,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
   }
 });
+</script>
+<script src="https://giscus.app/client.js" data-repo="vituri/blog" data-repo-id="R_kgDOJ2KMjw" data-category="General" data-category-id="DIC_kwDOJ2KMj84CcbOJ" data-mapping="pathname" data-reactions-enabled="1" data-emit-metadata="0" data-input-position="top" data-theme="light" data-lang="en" crossorigin="anonymous" data-loading="lazy" async="">
 </script>
 </div> <!-- /content -->
 

@@ -4,6 +4,17 @@ project:
 
 website:
   title: "vituri's blog"
+
+  sidebar:
+    search: true
+
+  comments:
+    giscus:
+      repo: vituri/blog
+      reactions-enabled: true
+      loading: lazy
+      mapping: pathname
+
   navbar:
     right:
       - about.qmd
@@ -11,10 +22,14 @@ website:
         href: https://github.com/vituri
       - icon: twitter
         href: https://twitter.com/viturivitur
+
 format:
   html:
-    theme: darkly
+    theme: lux
     css: styles.css
+    toc: true
 
 
-
+execute:
+  freeze: true
+  cache: true
