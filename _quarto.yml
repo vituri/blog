@@ -28,7 +28,7 @@ format:
     theme: lux
     css: styles.css
     toc: true
-
+    bibliography: sources.bib
 
 execute:
   freeze: true
