@@ -7,8 +7,9 @@ listing:
   categories: true
   sort-ui: true
   filter-ui: true
+  feed: true
 page-layout: full
 title-block-banner: false
 ---
 
-Lugar para jogar alguns trechos de livros que se agarraram à memória.
+Lugar para jogar alguns trechos de livros que colaram no meu cérebro
