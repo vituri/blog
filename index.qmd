@@ -11,4 +11,4 @@ page-layout: full
 title-block-banner: false
 ---
 
-Lugar para jogar trechos de livros que se agarraram à memória.
+Lugar para jogar alguns trechos de livros que se agarraram à memória.

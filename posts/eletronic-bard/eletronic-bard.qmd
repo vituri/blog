@@ -1,6 +1,6 @@
-# Sobre a era das máquinas artistas
+# A era das máquinas artistas e o bardo eletrônico de Lem
 
-Ou: como Stanislaw Lem imaginou o chatGPT na década de 60.
+Ou: como Stanislaw Lem fantasiou uma versão exagerada do chatGPT na década de 60.
 
 "Trurl, o famoso construtor, um dia resolveu criar uma máquina que escrevia poesia para provar a seu amigo Klapaucius quem era o melhor construtor do universo."
 
@@ -61,4 +61,6 @@ Finalmente Trurl pôde voltar a aparecer em público.
 Algumas supernovas começaram a explodir de maneira estranha no horizonte, e havia rumores de que isso estava relacionado com poesia. De acordo com um relato, o rei que levou o bardo, movido por um estranho capricho, havia conectado o bardo a uma constelação de supergigantes, transformando cada linha de verso em uma estupenda proeminência solar: assim, o maior poeta do universo era capaz de transmitir suas criações termonucleares para todo o espaço. Mesmo que esse relato fosse verdadeiro, era distante demais para incomodar Trurl, que jurou nunca mais fazer um modelo cibernético da Musa."
 
 ![Estátua cabulosa do bardo no Copernicus Science Centre.](elektrybalt.jpg)
+
+O que acontecerá quando as máquinas quiserem continuar produzindo arte e ninguém mais for consumi-las? Será que elas aprenderão a apreciar a arte uma das outras como nós fazemos? As máquinas artistas de hoje estão quase a ponto de superar o brilhante bardo eletrônico do Lem, e é difícil imaginar o que virá depois...
 
