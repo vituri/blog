@@ -2,14 +2,18 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://vituri.github.io/blog/index.html</loc>
-    <lastmod>2024-01-16T14:13:06.562Z</lastmod>
+    <lastmod>2024-01-21T05:06:01.411Z</lastmod>
   </url>
   <url>
     <loc>https://vituri.github.io/blog/posts/eletronic-bard/eletronic-bard.html</loc>
-    <lastmod>2024-01-16T14:13:04.684Z</lastmod>
+    <lastmod>2024-01-21T05:05:58.747Z</lastmod>
+  </url>
+  <url>
+    <loc>https://vituri.github.io/blog/posts/tchekhov-solidao/tchekov-solidao.html</loc>
+    <lastmod>2024-01-21T05:05:55.914Z</lastmod>
   </url>
   <url>
     <loc>https://vituri.github.io/blog/about.html</loc>
-    <lastmod>2024-01-16T14:13:05.683Z</lastmod>
+    <lastmod>2024-01-21T05:06:00.183Z</lastmod>
   </url>
 </urlset>
