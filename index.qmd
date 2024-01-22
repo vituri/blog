@@ -12,4 +12,4 @@ page-layout: full
 title-block-banner: false
 ---
 
-Lugar para jogar alguns trechos de livros que colaram no meu cérebro
+Trechos de livros e pensamentos ao léu
