@@ -2,9 +2,9 @@
   {
     "listing": "/index.html",
     "items": [
+      "/posts/future-history/future-history.html",
       "/posts/tchekhov-solidao/tchekov-solidao.html",
-      "/posts/eletronic-bard/eletronic-bard.html",
-      "/posts/future-history/future-history.html"
+      "/posts/eletronic-bard/eletronic-bard.html"
     ]
   }
 ]

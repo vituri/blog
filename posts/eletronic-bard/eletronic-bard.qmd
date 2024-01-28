@@ -1,4 +1,7 @@
-# A era das máquinas artistas e o bardo eletrônico de Lem
+---
+title: A era das máquinas artistas e o bardo eletrônico de Lem
+date: 2024-01-16
+---
 
 Ou: como Stanislaw Lem fantasiou uma versão exagerada do chatGPT na década de 60.
 
