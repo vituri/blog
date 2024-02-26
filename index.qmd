@@ -12,4 +12,4 @@ page-layout: full
 title-block-banner: false
 ---
 
-Trechos de livros e pensamentos ao léu
+Trechos de livros e pensamentos baratos

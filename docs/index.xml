@@ -6,11 +6,51 @@
       version="2.0">
 <channel>
 <title>vituri&#39;s blog</title>
-<link>https://vituri.github.io/blog/index.html</link>
+<link>https://vituri.github.io/blog/</link>
 <atom:link href="https://vituri.github.io/blog/index.xml" rel="self" type="application/rss+xml"/>
 <description>Fragmentos literários</description>
-<generator>quarto-1.3.433</generator>
-<lastBuildDate>Sun, 28 Jan 2024 03:00:00 GMT</lastBuildDate>
+<generator>quarto-1.4.549</generator>
+<lastBuildDate>Mon, 26 Feb 2024 03:00:00 GMT</lastBuildDate>
+<item>
+  <title>Sobre a felicidade presente e a felicidade futura</title>
+  <link>https://vituri.github.io/blog/posts/felicidade-imaginada/felicidade-imaginada.html</link>
+  <description><![CDATA[ 
+
+
+
+
+
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://vituri.github.io/blog/posts/felicidade-imaginada/comic.png" class="img-fluid figure-img"></p>
+<figcaption>A felicidade presente é sempre real, enquanto que a felicidade futura é uma aposta arriscada que poucas vezes cumpre as expectativas. Imagem tirada do excelente <a href="https://www.extrafabulouscomics.com/_1233">Extra Fabulous Comics.</a></figcaption>
+</figure>
+</div>
+<p>“Cândido, ou O Otimismo”, é um dos livros mais famosos da literatura universal. Neste conto filosófico, Voltaire narra com sua ironia peculiar as aventuras do ingênuo Cândido, que nasceu num palácio e se apaixonou pela bela Cunegundes. Lá também vivia o sábio Pangloss, que afirmava “estar demonstrado” que esse é o melhor dos mundos possíveis (ridicularizando Leibniz, o mesmo Leibniz do cálculo diferencial). Quando descobrem o romance de Cândido e Cunegundes, este é expulso do palácio e passa passa por várias aventuras e desgraças tentando reencontrar sua amada: é recrutado por búlgaros, sobrevive ao terremoto de Lisboa de 1755, vê Pangloss ser enforcado pela inquisição, foge pra América onde sem querer enfia uma espada no irmão de Cunegundes, é roubado, levado como escravo, mas por fim consegue reencontrar sua amada e casa-se com ela em Constantinopla onde vivem na pobreza.</p>
+<p>A última cena desse conto poderia ser um “e viveram felizes para sempre”, mas não é. Nela vemos um Cândido abatido, como que “morto por dentro”; Pangloss (que ainda estava vivo e vivendo com eles!) lhe diz:</p>
+<blockquote class="blockquote">
+<p>— Todos os acontecimentos — dizia às vezes Pangloss a Cândido — estão devidamente encadeados no melhor dos mundos possíveis; pois, afinal, se não tivesses sido expulso de um lindo castelo, a pontapés no traseiro, por amor da senhorita Cunegundes, se a Inquisição não te houvesse apanhado, se não tivesses percorrido a América a pé, se não tivesses mergulhado a espada no barão, se não tivesses perdido todos os teus carneiros da boa terra do Eldorado, não estarias aqui agora comendo doce de cidra e pistache.</p>
+</blockquote>
+<p>Ao que Cândido lhe responde, finalizando a história:</p>
+<blockquote class="blockquote">
+<p>— Tudo isso está muito bem dito — respondeu Cândido, — mas devemos cultivar nosso jardim.</p>
+</blockquote>
+<p>Imagino o pobre Cândido trabalhando à exaustão em seu jardim como um meio de esquecer a vida e apenas sobreviver, após tantos anos imaginando o quanto seria feliz ao reencontrar sua amada, que já não estava bela como antes e nem era tão amável quanto ele imaginava. Em sua última frase, Cândido mostra que as “vãs filosofias” não lhe interessam, e que é preciso trabalhar para viver. Como o Sísifo de Camus, é preciso imaginar Cândido feliz enquanto carregava sua pedra, isto é, enquanto fazia de tudo para reencontrar Cunegundes. Mas depois do encontro, o que lhe restou? A felicidade imaginada lhe pregou uma peça; o pêndulo de Schopenhauer é implacável.</p>
+<!-- Clóvis de Barros contou várias vezes a sua "história da pamonha": um dia, com fome, passou na frente de um lugar que vendia pamonha, e com a fome que tinha aquela acabou tornando-se a pamonha mais deliciosa que comeu na vida. Ao comer a pamonha, porém, ele já não era o mesmo homem de antes: a pamonha o transformara. Por isso, ao pedir a segunda pamonha, seu prazer já não foi o mesmo. Na terceira, já começava a se arrepender, e ansiava por um "curalzinho". -->
+<p>Voltaire deixa Cândido sozinho em seu jardim, com o peso da própria existência pairando em sua mente, num “zoom out” cruel. Não sabemos seu fim, nem o que se passa em sua cabeça: o retrato do Otimismo que precisou confrontar a realidade de um mundo “feito para nos dar raiva”, como dizia o cínico Martinho.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://vituri.github.io/blog/posts/felicidade-imaginada/capa.jpg" class="img-fluid figure-img"></p>
+<figcaption>Capa cabulosa da editora 34.</figcaption>
+</figure>
+</div>
+
+
+
+ ]]></description>
+  <guid>https://vituri.github.io/blog/posts/felicidade-imaginada/felicidade-imaginada.html</guid>
+  <pubDate>Mon, 26 Feb 2024 03:00:00 GMT</pubDate>
+</item>
 <item>
   <title>“História do futuro” e os limites da imaginação</title>
   <link>https://vituri.github.io/blog/posts/future-history/future-history.html</link>
@@ -19,12 +59,13 @@
 
 
 
+
 <p>Se o melhor jeito de prever o futuro é inventá-lo, Olaf Stapledon foi um dos maiores inventores da literatura.</p>
 <p>Em 1930, Stapledon publicou “Last and First men”, um livro de “história do futuro” que conta a trajetória da humanidade desde a primeira guerra mundial até sua extinção em Netuno, 2 bilhões de anos no futuro, após uma supernova destruir o sistema Solar. Stapledon descreve em detalhes cada uma das 18 espécies pós-humanas: como elas mudaram de aparência física e perderam a inteligência; como, milhões de anos depois, redescobriram a ciência, modificaram a si mesmos com engenharia genética, chegando até a criar uma nova espécie artificial. Porém não é sobre esse livro que falarei hoje.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="https://vituri.github.io/blog/posts/future-history/last-and-first-men.jpg" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Ficção científica e suas capas cabulosas</figcaption>
+<p><img src="https://vituri.github.io/blog/posts/future-history/last-and-first-men.jpg" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
+<figcaption>Ficção científica e suas capas cabulosas</figcaption>
 </figure>
 </div>
 <p>Em 1937 Stapledon publica “Star maker”, cujo enredo muito mais ambiciosa faz “Last and first men” parecer um minúsculo continho: narrar a história inteira do Universo e dos seres vivos. O livro começa de maneira inusitada quando um homem casado vai dar um passeio à noite perto de sua casa pensando sobre o amor, o casamento, a união das almas, o sentido da vida, quando de repente vira um ser incorpóreo e começa a boiar no espaço, vendo a Terra se afastando rapidamente.</p>
@@ -37,8 +78,8 @@
 </blockquote>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="https://vituri.github.io/blog/posts/future-history/book cover.jpg" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">A bolota mágica</figcaption>
+<p><img src="https://vituri.github.io/blog/posts/future-history/book cover.jpg" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
+<figcaption>A bolota mágica</figcaption>
 </figure>
 </div>
 <p>Crendo-se um “enviado das estrelas” e sem chance de encontrar a Terra no meio de bilhões de estrelas, ele resolve investigar um a um dos planetas que encontra.</p>
@@ -53,7 +94,7 @@
 </blockquote>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="https://vituri.github.io/blog/posts/future-history/starmaker2.jpg" class="img-fluid figure-img"></p>
+<p><img src="https://vituri.github.io/blog/posts/future-history/starmaker2.jpg" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
 </figure>
 </div>
 <p>O livro acompanha o protagonista em sua jornada por fundir-se a mais inteligências, a ascenção e queda de espécies, a tentativa de Utopia galática, a descoberta de que até as nebulosas são seres “vivos”.</p>
@@ -86,6 +127,7 @@
   <title>Sobre Tchekhov e as pequenas tragédias despercebidas</title>
   <link>https://vituri.github.io/blog/posts/tchekhov-solidao/tchekov-solidao.html</link>
   <description><![CDATA[ 
+
 
 
 
@@ -129,12 +171,13 @@
 
 
 
+
 <p>Ou: como Stanislaw Lem fantasiou uma versão exagerada do chatGPT na década de 60.</p>
 <p>“Trurl, o famoso construtor, um dia resolveu criar uma máquina que escrevia poesia para provar a seu amigo Klapaucius quem era o melhor construtor do universo.”</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="https://vituri.github.io/blog/posts/eletronic-bard/trurl and klapaucius.jpg" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Trurl e Klapaucius fazendo pose.</figcaption>
+<figcaption>Trurl e Klapaucius fazendo pose.</figcaption>
 </figure>
 </div>
 <p>Mais ou menos assim começa o conto “The eletronic Bard” the Stanislaw Lem, escrito na década de 60. Publicado no livro “Cyberiads”, inaugurou um gênero literário bizarro que mistura ficção científica e contos de fada medievais com a ironia de Voltaire e a prosa macarrônica de Rabelais. O livro narra as aventuras de Trurl e Klapaucius, dois robôs inventores capazes de criar praticamente qualquer coisa (como a máquina que materializava tudo que começava com “n”, ou uma miniatura de um reino que se revoltou contra o rei, ou o robô gigante que dizia que 2+2 é 7 e tentou matar Trurl, ou a máquina que imprimia todas as verdades do universo). Ambos tentam cumprir pedidos quase impossíveis de reis de toda a galáxia em troca de ouro, e quase sempre acabam arrumando problema e tendo que fugir.</p>
@@ -167,7 +210,7 @@ Had he but known such <img src="https://latex.codecogs.com/png.latex?a%5E2%20cos
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="https://vituri.github.io/blog/posts/eletronic-bard/the bard.jpg" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">O bardo eletrônico pensando numa rima das brabas.</figcaption>
+<figcaption>O bardo eletrônico pensando numa rima das brabas.</figcaption>
 </figure>
 </div>
 <p>Klapaucius inventou uma desculpa qualquer e foi embora, visivelmente abalado.</p>
@@ -182,7 +225,7 @@ Had he but known such <img src="https://latex.codecogs.com/png.latex?a%5E2%20cos
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="https://vituri.github.io/blog/posts/eletronic-bard/elektrybalt.jpg" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Estátua cabulosa do bardo no Copernicus Science Centre.</figcaption>
+<figcaption>Estátua cabulosa do bardo no Copernicus Science Centre.</figcaption>
 </figure>
 </div>
 <p>O que acontecerá quando as máquinas quiserem continuar produzindo arte e ninguém mais for consumi-las? Será que elas aprenderão a apreciar a arte uma das outras como nós fazemos? As máquinas artistas de hoje estão quase a ponto de superar o brilhante bardo eletrônico do Lem, e é difícil imaginar o que virá depois…</p>
