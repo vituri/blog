@@ -34,6 +34,7 @@ format:
     css: styles.css
     toc: true
     bibliography: sources.bib
+  pdf: default
 
 execute:
   freeze: auto
