@@ -4,7 +4,7 @@
     "href": "index.html",
     "title": "Fragmentos literários",
     "section": "",
-    "text": "Trechos de livros e pensamentos ao léu\n\n\n\n\n\n\n   \n     \n     \n       Order By\n       Default\n         \n          Title\n        \n         \n          Date - Oldest\n        \n         \n          Date - Newest\n        \n         \n          Author\n        \n     \n  \n    \n      \n      \n    \n\n\n\n\n\n\n\n\n\n\nSobre a felicidade presente e a felicidade futura\n\n\n\n\n\n\n\n\n\n\n\nFeb 26, 2024\n\n\n\n\n\n\n\n\n\n\n\n\n“História do futuro” e os limites da imaginação\n\n\n\n\n\n\n\n\n\n\n\nJan 28, 2024\n\n\n\n\n\n\n\n\n\n\n\n\nSobre Tchekhov e as pequenas tragédias despercebidas\n\n\n\n\n\n\n\n\n\n\n\nJan 23, 2024\n\n\n\n\n\n\n\n\n\n\n\n\nA era das máquinas artistas e o bardo eletrônico de Lem\n\n\n\n\n\n\n\n\n\n\n\nJan 16, 2024\n\n\n\n\n\n\nNo matching items"
+    "text": "Trechos de livros e pensamentos baratos\n\n\n\n\n\n\n   \n     \n     \n       Order By\n       Default\n         \n          Title\n        \n         \n          Date - Oldest\n        \n         \n          Date - Newest\n        \n         \n          Author\n        \n     \n  \n    \n      \n      \n    \n\n\n\n\n\n\n\n\n\n\nSymbolic Regression in Julia\n\n\n\n\n\n\n\n\n\n\n\nMar 14, 2024\n\n\n\n\n\n\n\n\n\n\n\n\nSobre a felicidade presente e a felicidade futura\n\n\n\n\n\n\n\n\n\n\n\nFeb 26, 2024\n\n\n\n\n\n\n\n\n\n\n\n\n“História do futuro” e os limites da imaginação\n\n\n\n\n\n\n\n\n\n\n\nJan 28, 2024\n\n\n\n\n\n\n\n\n\n\n\n\nSobre Tchekhov e as pequenas tragédias despercebidas\n\n\n\n\n\n\n\n\n\n\n\nJan 23, 2024\n\n\n\n\n\n\n\n\n\n\n\n\nA era das máquinas artistas e o bardo eletrônico de Lem\n\n\n\n\n\n\n\n\n\n\n\nJan 16, 2024\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "posts/future-history/future-history.html",
@@ -47,5 +47,89 @@
     "title": "About",
     "section": "",
     "text": "Nothing to declare"
+  },
+  {
+    "objectID": "pdf_docs/symbolic regression/post.html#what-is-it",
+    "href": "pdf_docs/symbolic regression/post.html#what-is-it",
+    "title": "Symbolic Regression in Julia",
+    "section": "",
+    "text": "A linear regression finds the line that is “closest” to a dataset. In a similar maner, a symbolic regression is an algorithm that find a combination of symbols that minimizes the mean square error of a given dataset. These symbols are unary and binary operators like the + symbol or a function like \\(cos\\) and \\(1/x\\)."
+  },
+  {
+    "objectID": "pdf_docs/symbolic regression/post.html#examples",
+    "href": "pdf_docs/symbolic regression/post.html#examples",
+    "title": "Symbolic Regression in Julia",
+    "section": "Examples",
+    "text": "Examples\n\n\n\n\n\n  \n    \n  \n\n\n\n  \n    \n  \n\n\n\n  \n    \n  \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nb\nc"
+  },
+  {
+    "objectID": "pdf_docs/symbolic regression/post.html#remarks",
+    "href": "pdf_docs/symbolic regression/post.html#remarks",
+    "title": "Symbolic Regression in Julia",
+    "section": "Remarks",
+    "text": "Remarks"
+  },
+  {
+    "objectID": "pdf_docs/symbolic regression/post.html#example-1",
+    "href": "pdf_docs/symbolic regression/post.html#example-1",
+    "title": "Symbolic Regression in Julia",
+    "section": "Example 1",
+    "text": "Example 1\nLet’s try to approximate the function \\(f(x) = - x^2 + 1\\) using the symbols and \\(+, -, *\\) combined with the variable \\(x\\).\n\nusing SymbolicRegression, MLJ, SymbolicUtils\nusing Plots\n\nx = [-3:0.1:3;]\ny = @. - x^2 + 1;\n\nscatter(x, y)\n\n\n\n\n  \n    \n  \n\n\n\n  \n    \n  \n\n\n\n  \n    \n  \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nFirst we define a model\n\nmodel = SRRegressor(\n    binary_operators=[+, -, *],    \n    niterations=50\n);\n\nAnd then fit it to our dataset\n\nX = reshape(x, (length(x), 1))\n\nmach = machine(model, X, y)\nfit!(mach)\n\nWe can see a report about the results:\n\nr = report(mach);\n\nr\n\n(best_idx = 2,\n equations = DynamicExpressions.EquationModule.Node{Float64}[-2.099999999997616, (1.0 - (x₁ * x₁))],\n equation_strings = [\"-2.099999999997616\", \"(1.0 - (x₁ * x₁))\"],\n losses = [7.681799999999998, 0.0],\n complexities = [1, 5],\n scores = [36.04365338911715, 9.010913347279288],)\n\n\nThis report contains the losses\n\nr.losses\n\n2-element Vector{Float64}:\n 7.681799999999998\n 0.0\n\n\nthe equations\n\nr.equations\n\n2-element Vector{DynamicExpressions.EquationModule.Node{Float64}}:\n -2.099999999997616\n (1.0 - (x₁ * x₁))\n\n\nand the best one of the functions found (ie. the one with the least loss):\n\nnode_to_symbolic(r.equations[r.best_idx], model)\n\n1.0 - (x1 * x1)\n\n\nHere, we can read \\(x_1\\) as \\(x\\), because we only have one variable.\nNotice that this expression simplifies to our original \\(f\\)."
+  },
+  {
+    "objectID": "pdf_docs/symbolic regression/post.html",
+    "href": "pdf_docs/symbolic regression/post.html",
+    "title": "Symbolic Regression in Julia",
+    "section": "",
+    "text": "A linear regression finds the line that is “closest” to a dataset. In a similar maner, a symbolic regression is an algorithm that find a combination of symbols that minimizes the mean square error of a given dataset. These symbols are unary and binary operators like the + symbol or a function like \\(cos\\) and \\(1/x\\)."
+  },
+  {
+    "objectID": "pdf_docs/symbolic regression/post.html#example-2",
+    "href": "pdf_docs/symbolic regression/post.html#example-2",
+    "title": "Symbolic Regression in Julia",
+    "section": "Example 2",
+    "text": "Example 2\nNow let’s get a more interesting example. Take \\(f(x) = x^2 - cos(x)^2 - 2x\\):\n\ny = @. x^2 + 2cos(x)^2 \n\nscatter(x, y)\n\n\n\n\n  \n    \n  \n\n\n\n  \n    \n  \n\n\n\n  \n    \n  \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWe again create a model and fit it, but now we allow more operations: besides the earlier binary functions, we also have the unary cos function:\n\nmodel = SRRegressor(\n    binary_operators = [+, -, *],    \n    unary_operators = [cos],\n    niterations=50\n);\n\nmach = machine(model, X, y)\nfit!(mach)\n\nand see the best equation:\n\nr = report(mach)\nnode_to_symbolic(r.equations[r.best_idx], model)\n\n(((x1 * (x1 * 1.0)) + (cos(x1 + x1) + 1.6907874758301153)) + -1.0530981189123707) - -0.36231064308225547\n\n\nSo, we got\n\\[\nx * x + cos(x + x) + 1 = x^2 + cos(2x) + 1\n\\]\nSince \\(cos(2x) + 1 = 2cos^2(x)\\), we retrieve the original function."
+  },
+  {
+    "objectID": "pdf_docs/symbolic regression/post.html#example-3",
+    "href": "pdf_docs/symbolic regression/post.html#example-3",
+    "title": "Symbolic Regression in Julia",
+    "section": "Example 3",
+    "text": "Example 3\nEven after adding some noise to the original dataset, the symbolic regression still can find a very good approximation:\nTake \\(f(x) = 0.3 * x^3 - x^2 + 2cos(x) + \\epsilon(x)\\) where \\(\\epsilon(x)\\) is a random uniform error (varying in \\([0, 1]\\)) like this:\n\nx = [-5:0.1:5;]\nX = reshape(x, (length(x), 1))\nerrors = rand(length(x))\ny = @. 0.3*x^3 - x^2 + 2cos(x) + errors\n\nscatter(x, y)\n\n\n\n\n  \n    \n  \n\n\n\n  \n    \n  \n\n\n\n  \n    \n  \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nmodel = SRRegressor(\n    binary_operators = [+, -, *],    \n    unary_operators = [cos],\n    niterations=60\n);\n\nmach = machine(model, X, y)\nfit!(mach)\n\nand see the best equation:\n\nr = report(mach)\nnode_to_symbolic(r.equations[r.best_idx], model)\n\n(((((x1 + -3.3193248331583898) * x1) * 0.29952780043120636) * x1) + (cos(x1) * 1.8373574799964867)) + 0.49811385096465227\n\n\nWe can plot the prediction and the original dataset to compare them:\n\ny_pred = predict(mach, X)\n \nscatter(x, y);\nscatter!(x, y_pred, color = \"red\")\n\n\n\n\n  \n    \n  \n\n\n\n  \n    \n  \n\n\n\n  \n    \n  \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNot bad at all!\nYou can see more about this package in this link. If you have enough courage, read the original paper on arxiv!"
+  },
+  {
+    "objectID": "posts/symbolic regression/post.html",
+    "href": "posts/symbolic regression/post.html",
+    "title": "Symbolic Regression in Julia",
+    "section": "",
+    "text": "A linear regression finds the line that is “closest” to a dataset. In a similar maner, a symbolic regression is an algorithm that find a combination of symbols that minimizes the mean square error of a given dataset. These symbols are unary and binary operators like the + symbol or a function like \\(cos\\) and \\(1/x\\)."
+  },
+  {
+    "objectID": "posts/symbolic regression/post.html#what-is-it",
+    "href": "posts/symbolic regression/post.html#what-is-it",
+    "title": "Symbolic Regression in Julia",
+    "section": "What is it?",
+    "text": "What is it?\nA linear regression finds the line that is “closest” to a dataset. In a similar maner, a symbolic regression is an algorithm that find a combination of symbols that minimizes the mean square error of a given dataset. These symbols are unary and binary operators like the + symbol or a function like \\(cos\\) and \\(1/x\\)."
+  },
+  {
+    "objectID": "posts/symbolic regression/post.html#example-1",
+    "href": "posts/symbolic regression/post.html#example-1",
+    "title": "Symbolic Regression in Julia",
+    "section": "Example 1",
+    "text": "Example 1\nLet’s try to approximate the function \\(f(x) = - x^2 + 1\\) using the symbols and \\(+, -, *\\) combined with the variable \\(x\\).\n\nusing SymbolicRegression, MLJ, SymbolicUtils\nusing Plots\n\nx = [-3:0.1:3;]\ny = @. - x^2 + 1;\n\nscatter(x, y)\n\n\n\n\n  \n    \n  \n\n\n\n  \n    \n  \n\n\n\n  \n    \n  \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nFirst we define a model\n\nmodel = SRRegressor(\n    binary_operators=[+, -, *],    \n    niterations=50\n);\n\nAnd then fit it to our dataset\n\nX = reshape(x, (length(x), 1))\n\nmach = machine(model, X, y)\nfit!(mach)\n\nWe can see a report about the results:\n\nr = report(mach);\n\nr\n\n(best_idx = 2,\n equations = DynamicExpressions.EquationModule.Node{Float64}[-2.1000000000160663, (1.0 - (x₁ * x₁))],\n equation_strings = [\"-2.1000000000160663\", \"(1.0 - (x₁ * x₁))\"],\n losses = [7.681799999999998, 0.0],\n complexities = [1, 5],\n scores = [36.04365338911715, 9.010913347279288],)\n\n\nThis report contains the losses\n\nr.losses\n\n2-element Vector{Float64}:\n 7.681799999999998\n 0.0\n\n\nthe equations\n\nr.equations\n\n2-element Vector{DynamicExpressions.EquationModule.Node{Float64}}:\n -2.1000000000160663\n (1.0 - (x₁ * x₁))\n\n\nand the best one of the functions found (ie. the one with the least loss):\n\nnode_to_symbolic(r.equations[r.best_idx], model)\n\n1.0 - (x1 * x1)\n\n\nHere, we can read \\(x_1\\) as \\(x\\), because we only have one variable.\nNotice that this expression simplifies to our original \\(f\\)."
+  },
+  {
+    "objectID": "posts/symbolic regression/post.html#example-2",
+    "href": "posts/symbolic regression/post.html#example-2",
+    "title": "Symbolic Regression in Julia",
+    "section": "Example 2",
+    "text": "Example 2\nNow let’s get a more interesting example. Take \\(f(x) = x^2 - cos(x)^2 - 2x\\):\n\ny = @. x^2 + 2cos(x)^2 \n\nscatter(x, y)\n\n\n\n\n  \n    \n  \n\n\n\n  \n    \n  \n\n\n\n  \n    \n  \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWe again create a model and fit it, but now we allow more operations: besides the earlier binary functions, we also have the unary cos function:\n\nmodel = SRRegressor(\n    binary_operators = [+, -, *],    \n    unary_operators = [cos],\n    niterations=50\n);\n\nmach = machine(model, X, y)\nfit!(mach)\n\nand see the best equation:\n\nr = report(mach)\nnode_to_symbolic(r.equations[r.best_idx], model)\n\ncos(x1 + x1) + (cos(x1 - x1) + (x1 * x1))\n\n\nSo, we got\n\\[\nx * x + cos(x + x) + 1 = x^2 + cos(2x) + 1\n\\]\nSince \\(cos(2x) + 1 = 2cos^2(x)\\), we retrieve the original function."
+  },
+  {
+    "objectID": "posts/symbolic regression/post.html#example-3",
+    "href": "posts/symbolic regression/post.html#example-3",
+    "title": "Symbolic Regression in Julia",
+    "section": "Example 3",
+    "text": "Example 3\nEven after adding some noise to the original dataset, the symbolic regression still can find a very good approximation:\nTake \\(f(x) = 0.3 * x^3 - x^2 + 2cos(x) + \\epsilon(x)\\) where \\(\\epsilon(x)\\) is a random uniform error (varying in \\([0, 1]\\)) like this:\n\nx = [-5:0.1:5;]\nX = reshape(x, (length(x), 1))\nerrors = rand(length(x))\ny = @. 0.3*x^3 - x^2 + 2cos(x) + errors\n\nscatter(x, y)\n\n\n\n\n  \n    \n  \n\n\n\n  \n    \n  \n\n\n\n  \n    \n  \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nmodel = SRRegressor(\n    binary_operators = [+, -, *],    \n    unary_operators = [cos],\n    niterations=60\n);\n\nmach = machine(model, X, y)\nfit!(mach)\n\nand see the best equation:\n\nr = report(mach)\nnode_to_symbolic(r.equations[r.best_idx], model)\n\n(((x1 * (3.3255216468533675 - x1)) * (x1 * -0.30020630560881595)) + (cos(x1) * 1.9744557563006342)) - -0.4984467307767236\n\n\nWe can plot the prediction and the original dataset to compare them:\n\ny_pred = predict(mach, X)\n \nscatter(x, y);\nscatter!(x, y_pred, color = \"red\")\n\n\n\n\n  \n    \n  \n\n\n\n  \n    \n  \n\n\n\n  \n    \n  \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNot bad at all!\nYou can see more about this package in this link. If you have enough courage, read the original paper on arxiv!"
   }
 ]
