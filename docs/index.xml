@@ -28,7 +28,7 @@
 <section id="example-1" class="level2">
 <h2 class="anchored" data-anchor-id="example-1">Example 1</h2>
 <p>Let’s try to approximate the function <img src="https://latex.codecogs.com/png.latex?f(x)%20=%20-%20x%5E2%20+%201"> using the symbols and <img src="https://latex.codecogs.com/png.latex?+,%20-,%20*"> combined with the variable <img src="https://latex.codecogs.com/png.latex?x">.</p>
-<div id="dfdf758a" class="cell" data-execution_count="1">
+<div id="dfdf758a" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb1-1"><span class="im" style="color: #00769E;
 background-color: null;
 font-style: inherit;">using</span> <span class="bu" style="color: null;
@@ -190,7 +190,7 @@ font-style: inherit;">scatter</span>(x, y)</span></code></pre></div>
 </div>
 </div>
 <p>First we define a model</p>
-<div id="1c6160ae" class="cell" data-execution_count="2">
+<div id="1c6160ae" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb2-1">model <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> <span class="fu" style="color: #4758AB;
@@ -213,7 +213,7 @@ font-style: inherit;">50</span></span>
 <span id="cb2-4">);</span></code></pre></div>
 </div>
 <p>And then fit it to our dataset</p>
-<div id="4779c581" class="cell" data-execution_count="3">
+<div id="4779c581" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb3-1">X <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> <span class="fu" style="color: #4758AB;
@@ -234,7 +234,7 @@ background-color: null;
 font-style: inherit;">fit!</span>(mach)</span></code></pre></div>
 </div>
 <p>We can see a report about the results:</p>
-<div id="cc51057a" class="cell" data-execution_count="4">
+<div id="cc51057a" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb4-1">r <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> <span class="fu" style="color: #4758AB;
@@ -252,7 +252,7 @@ font-style: inherit;">report</span>(mach);</span>
 </div>
 </div>
 <p>This report contains the losses</p>
-<div id="9629add2" class="cell" data-execution_count="5">
+<div id="9629add2" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb6-1">r.losses</span></code></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="6">
 <pre><code>2-element Vector{Float64}:
@@ -261,7 +261,7 @@ font-style: inherit;">report</span>(mach);</span>
 </div>
 </div>
 <p>the equations</p>
-<div id="94161f28" class="cell" data-execution_count="6">
+<div id="94161f28" class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb8" style="background: #f1f3f5;"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb8-1">r.equations</span></code></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="7">
 <pre><code>2-element Vector{DynamicExpressions.EquationModule.Node{Float64}}:
@@ -270,7 +270,7 @@ font-style: inherit;">report</span>(mach);</span>
 </div>
 </div>
 <p>and the best one of the functions found (ie. the one with the least loss):</p>
-<div id="46f77a00" class="cell" data-execution_count="7">
+<div id="46f77a00" class="cell" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb10" style="background: #f1f3f5;"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb10-1"><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">node_to_symbolic</span>(r.equations[r.best_idx], model)</span></code></pre></div>
@@ -283,8 +283,8 @@ font-style: inherit;">node_to_symbolic</span>(r.equations[r.best_idx], model)</s
 </section>
 <section id="example-2" class="level2">
 <h2 class="anchored" data-anchor-id="example-2">Example 2</h2>
-<p>Now let’s get a more interesting example. Take <img src="https://latex.codecogs.com/png.latex?f(x)%20=%20x%5E2%20-%20cos(x)%5E2%20-%202x">:</p>
-<div id="85e2a942" class="cell" data-execution_count="8">
+<p>Now let’s get a more interesting example. Take <img src="https://latex.codecogs.com/png.latex?f(x)%20=%20x%5E2%20+%202cos(x)%5E2">:</p>
+<div id="85e2a942" class="cell" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb12" style="background: #f1f3f5;"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb12-1">y <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> @. x<span class="op" style="color: #5E5E5E;
@@ -420,7 +420,7 @@ font-style: inherit;">scatter</span>(x, y)</span></code></pre></div>
 </div>
 </div>
 <p>We again create a model and fit it, but now we allow more operations: besides the earlier binary functions, we also have the unary <code>cos</code> function:</p>
-<div id="d7befec1" class="cell" data-execution_count="9">
+<div id="d7befec1" class="cell" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb13" style="background: #f1f3f5;"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb13-1">model <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> <span class="fu" style="color: #4758AB;
@@ -455,7 +455,7 @@ background-color: null;
 font-style: inherit;">fit!</span>(mach)</span></code></pre></div>
 </div>
 <p>and see the best equation:</p>
-<div id="793548c4" class="cell" data-execution_count="10">
+<div id="793548c4" class="cell" data-execution_count="11">
 <div class="sourceCode cell-code" id="cb14" style="background: #f1f3f5;"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb14-1">r <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> <span class="fu" style="color: #4758AB;
@@ -469,14 +469,14 @@ font-style: inherit;">node_to_symbolic</span>(r.equations[r.best_idx], model)</s
 </div>
 </div>
 <p>So, we got</p>
-<p><img src="https://latex.codecogs.com/png.latex?%0Ax%20*%20x%20+%20cos(x%20+%20x)%20+%201%20=%20x%5E2%20+%20cos(2x)%20+%201%0A"></p>
-<p>Since <img src="https://latex.codecogs.com/png.latex?cos(2x)%20+%201%20=%202cos%5E2(x)">, we retrieve the original function.</p>
+<p><img src="https://latex.codecogs.com/png.latex?%0Acos(x%20-%20x)%20+%20x%20*%20x%20+%20cos(x%20+%20x)%20=%201%20+%20x%5E2%20+%20cos(2x)%0A"></p>
+<p>Since <img src="https://latex.codecogs.com/png.latex?1%20+%20cos(2x)%20=%202cos%5E2(x)">, we retrieve the original function.</p>
 </section>
 <section id="example-3" class="level2">
 <h2 class="anchored" data-anchor-id="example-3">Example 3</h2>
 <p>Even after adding some noise to the original dataset, the symbolic regression still can find a very good approximation:</p>
 <p>Take <img src="https://latex.codecogs.com/png.latex?f(x)%20=%200.3%20*%20x%5E3%20-%20x%5E2%20+%202cos(x)%20+%20%5Cepsilon(x)"> where <img src="https://latex.codecogs.com/png.latex?%5Cepsilon(x)"> is a random uniform error (varying in <img src="https://latex.codecogs.com/png.latex?%5B0,%201%5D">) like this:</p>
-<div id="5392ea92" class="cell" data-execution_count="11">
+<div id="5392ea92" class="cell" data-execution_count="12">
 <div class="sourceCode cell-code" id="cb16" style="background: #f1f3f5;"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb16-1">x <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> [<span class="op" style="color: #5E5E5E;
@@ -684,7 +684,7 @@ font-style: inherit;">scatter</span>(x, y)</span></code></pre></div>
 <path clip-path="url(#clip080)" d="M496.135 177.223 Q494.329 181.852 492.616 183.264 Q490.903 184.676 488.033 184.676 L484.63 184.676 L484.63 181.112 L487.13 181.112 Q488.889 181.112 489.862 180.278 Q490.834 179.445 492.014 176.343 L492.778 174.399 L482.292 148.889 L486.806 148.889 L494.908 169.167 L503.01 148.889 L507.524 148.889 L496.135 177.223 Z" fill="#000000" fill-rule="nonzero" fill-opacity="1"></path><path clip-path="url(#clip080)" d="M514.815 170.88 L522.454 170.88 L522.454 144.515 L514.144 146.181 L514.144 141.922 L522.408 140.255 L527.084 140.255 L527.084 170.88 L534.722 170.88 L534.722 174.815 L514.815 174.815 L514.815 170.88 Z" fill="#000000" fill-rule="nonzero" fill-opacity="1"></path></svg>
 </div>
 </div>
-<div id="e49518b0" class="cell" data-execution_count="12">
+<div id="e49518b0" class="cell" data-execution_count="13">
 <div class="sourceCode cell-code" id="cb17" style="background: #f1f3f5;"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb17-1">model <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> <span class="fu" style="color: #4758AB;
@@ -719,7 +719,7 @@ background-color: null;
 font-style: inherit;">fit!</span>(mach)</span></code></pre></div>
 </div>
 <p>and see the best equation:</p>
-<div id="c98e2608" class="cell" data-execution_count="13">
+<div id="c98e2608" class="cell" data-execution_count="14">
 <div class="sourceCode cell-code" id="cb18" style="background: #f1f3f5;"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb18-1">r <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> <span class="fu" style="color: #4758AB;
@@ -733,7 +733,7 @@ font-style: inherit;">node_to_symbolic</span>(r.equations[r.best_idx], model)</s
 </div>
 </div>
 <p>We can plot the prediction and the original dataset to compare them:</p>
-<div id="f2411544" class="cell" data-execution_count="14">
+<div id="f2411544" class="cell" data-execution_count="15">
 <div class="sourceCode cell-code" id="cb20" style="background: #f1f3f5;"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb20-1">y_pred <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> <span class="fu" style="color: #4758AB;
