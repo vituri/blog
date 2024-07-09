@@ -5,7 +5,7 @@ project:
 website:
   title: "vituri's blog"
   site-url: https://vituri.github.io/blog
-  description: "Fragmentos literários"
+  description: "vituri"
 
   sidebar:
     search: true
@@ -19,6 +19,9 @@ website:
 
   navbar:
     right:
+      - ds.qmd
+      - livros.qmd
+      - cv.qmd
       - about.qmd
       - icon: github
         href: https://github.com/vituri
@@ -39,3 +42,5 @@ format:
 execute:
   freeze: auto
   cache: true
+
+engine: julia
