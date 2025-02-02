@@ -9,7 +9,7 @@
 <link>https://vituri.github.io/blog/ds.html</link>
 <atom:link href="https://vituri.github.io/blog/ds.xml" rel="self" type="application/rss+xml"/>
 <description>vituri</description>
-<generator>quarto-1.6.1</generator>
+<generator>quarto-1.7.13</generator>
 <lastBuildDate>Thu, 14 Mar 2024 03:00:00 GMT</lastBuildDate>
 <item>
   <title>Symbolic Regression in Julia</title>
@@ -1031,6 +1031,920 @@ font-style: inherit;">"red"</span>)</span></code></pre></div>
  ]]></description>
   <guid>https://vituri.github.io/blog/posts-ds/symbolic regression/post.html</guid>
   <pubDate>Thu, 14 Mar 2024 03:00:00 GMT</pubDate>
+</item>
+<item>
+  <title>Julia for R users</title>
+  <link>https://vituri.github.io/blog/posts-ds/julia-for-r-users/julia-for-r-users.html</link>
+  <description><![CDATA[ 
+
+
+
+
+<blockquote class="blockquote">
+<p>I know a lot of R and can do my daily job with it. Why should I learn Julia?</p>
+</blockquote>
+<p>In my case, I was looking for some adventure. Haskell seemed too hard, Python too normal. So I went on a journey to learn Julia and was very happy with what I discovered.</p>
+<p>I love R, it is my breadwinner (and has been for the past 6 years), and I know some of its limitations. So below is a (biased) list of features that may interest you in trying Julia:</p>
+<section id="you-can-run-r-inside-of-julia" class="level2">
+<h2 class="anchored" data-anchor-id="you-can-run-r-inside-of-julia">You can run R inside of Julia</h2>
+<p>Not sure where to begin in Julia? Start with R!</p>
+<div id="7ff9c9bc" class="cell" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb1-1"><span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">using</span> <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">RCall;</span></span>
+<span id="cb1-2"></span>
+<span id="cb1-3">R<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"""</span></span>
+<span id="cb1-4"><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">median(1:5)</span></span>
+<span id="cb1-5"><span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"""</span></span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="2">
+<pre><code>RObject{IntSxp}
+[1] 3</code></pre>
+</div>
+</div>
+<p>You can even pass objects from Julia to R:</p>
+<div id="d214b331" class="cell" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb3-1">x <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> [<span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">:</span><span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">5</span>;]</span>
+<span id="cb3-2"></span>
+<span id="cb3-3"><span class="pp" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">@rput</span> x</span>
+<span id="cb3-4"></span>
+<span id="cb3-5">R<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"median(x)"</span></span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="3">
+<pre><code>RObject{IntSxp}
+[1] 3</code></pre>
+</div>
+</div>
+<p>This quarto notebook is actually run using RCall! See <a href="https://juliainterop.github.io/RCall.jl/stable/gettingstarted/">RCall docs</a> for more details.</p>
+<p>You can see some differences between R and Julia <a href="https://docs.julialang.org/en/v1/manual/noteworthy-differences/#Noteworthy-differences-from-R">here</a>.</p>
+</section>
+<section id="there-is-a-tidyverse-in-julia-and-it-is-awesome" class="level2">
+<h2 class="anchored" data-anchor-id="there-is-a-tidyverse-in-julia-and-it-is-awesome">There is a tidyverse in Julia and it is awesome</h2>
+<p><a href="https://tidierorg.github.io/Tidier.jl/dev/">Tidier.jl</a> is a data analysis package inspired by R’s tidyverse and crafted specifically for Julia. It is made with the macro magic described below. Behind the scenes, it is transformed in usual <code>Dataframes.jl</code> code.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://vituri.github.io/blog/posts-ds/julia-for-r-users/images/tidier.png" class="img-fluid figure-img"></p>
+<figcaption>Why not recreate an entire ecosystem using macros?</figcaption>
+</figure>
+</div>
+<p>Here’s an example from TidierData docs:</p>
+<div id="d3b8c57e" class="cell" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb5-1"><span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">using</span> <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">TidierData</span></span>
+<span id="cb5-2"><span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">using</span> <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">RDatasets</span></span>
+<span id="cb5-3"></span>
+<span id="cb5-4">movies <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">dataset</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"ggplot2"</span>, <span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"movies"</span>);</span>
+<span id="cb5-5"></span>
+<span id="cb5-6"><span class="pp" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">@chain</span> movies <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">begin</span></span>
+<span id="cb5-7">    <span class="pp" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">@mutate</span>(Budget <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> Budget <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">/</span> <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1_000_000</span>)</span>
+<span id="cb5-8">    <span class="pp" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">@filter</span>(Budget <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">&gt;=</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">mean</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">skipmissing</span>(Budget)))</span>
+<span id="cb5-9">    <span class="pp" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">@select</span>(Title, Budget)</span>
+<span id="cb5-10">    <span class="pp" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">@slice</span>(<span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">:</span><span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">5</span>)</span>
+<span id="cb5-11"><span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">end</span></span></code></pre></div>
+</div>
+<p>It looks like <code>dplyr</code> code with <code>@</code>s.</p>
+</section>
+<section id="fast-julia-code-is-written-in-julia-fast-r-code-is-not-written-in-r" class="level2">
+<h2 class="anchored" data-anchor-id="fast-julia-code-is-written-in-julia-fast-r-code-is-not-written-in-r">Fast Julia code is written in Julia; fast R code is not written in R</h2>
+<p>In R, whenever you need some <em>really</em> fast code (as fast as you would get in C), you have to use C or Fortran code. R is simply slow. If you need speed in R, you will have to find a package that already implements what you need or learn C/Fortran, use RCpp and pray.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://vituri.github.io/blog/posts-ds/julia-for-r-users/images/stringi-code.png" class="img-fluid figure-img"></p>
+<figcaption><code>stringi</code> package sourcecode.</figcaption>
+</figure>
+</div>
+<p>In Julia, you won’t need other language to get speed close to C. That’s way they say that Julia <a href="https://juliadatascience.io/julia_accomplish#sec:two_language">solves the two language problem</a>. Julia packages are almost always 100% Julia, which means that you can look to its sourcecode and learn a lot.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://vituri.github.io/blog/posts-ds/julia-for-r-users/images/flux.png" class="img-fluid figure-img"></p>
+<figcaption>Images that make you cry: the deep learning package <a href="https://github.com/FluxML/Flux.jl">Flux.jl</a>.</figcaption>
+</figure>
+</div>
+<p>This is specially interesting if you read Julia Base sourcecode! How does Julia define the maximum of a vector? Type</p>
+<div id="3225b38f" class="cell" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb6-1"><span class="pp" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">@edit</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">maximum</span>([<span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">:</span><span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">5</span>;])</span></code></pre></div>
+</div>
+<p>and you will see this:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://vituri.github.io/blog/posts-ds/julia-for-r-users/images/maximum-sourcecode.png" class="img-fluid figure-img"></p>
+<figcaption>The sourcecode of the function maximum applied to a vector.</figcaption>
+</figure>
+</div>
+<p>It takes some time to grasp the meaning, but in the end it says “apply a mapreduce into the vector, using the max function on each pair of numbers”. In R, the sourcecode is a sad <code>.Primitive("max")</code>.</p>
+</section>
+<section id="no-need-to-vectorize-code-loops-maps-and-broadcast-are-fast-enough" class="level2">
+<h2 class="anchored" data-anchor-id="no-need-to-vectorize-code-loops-maps-and-broadcast-are-fast-enough">No need to vectorize code; loops, maps and broadcast are fast enough</h2>
+<p>Tired of writing loops? Julia has a special notation <code>.</code> (yes, a dot) to apply <em>any</em> function to a vector/array/iterable-object; this is called <a href="https://docs.julialang.org/en/v1/manual/arrays/#Broadcasting"><em>broadcasting</em></a>. For example, you can apply the <code>power2</code> function in a vector as easy as</p>
+<div id="346e67e5" class="cell" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb7" style="background: #f1f3f5;"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb7-1"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#julia</span></span>
+<span id="cb7-2"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># define power2 for numbers</span></span>
+<span id="cb7-3"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">power2</span>(x) <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> x<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">^</span><span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">2</span>;</span>
+<span id="cb7-4"></span>
+<span id="cb7-5"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># apply in vectors</span></span>
+<span id="cb7-6"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">power2</span>.(<span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">:</span><span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">10</span>)</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="4">
+<pre><code>10-element Vector{Int64}:
+   1
+   4
+   9
+  16
+  25
+  36
+  49
+  64
+  81
+ 100</code></pre>
+</div>
+</div>
+<p>or in a matrix</p>
+<div id="c1a2c15a" class="cell" data-execution_count="7">
+<div class="sourceCode cell-code" id="cb9" style="background: #f1f3f5;"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb9-1"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#julia</span></span>
+<span id="cb9-2">X <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">reshape</span>([<span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">:</span><span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">16</span>;], (<span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">4</span>, <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">4</span>))</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="5">
+<pre><code>4×4 Matrix{Int64}:
+ 1  5   9  13
+ 2  6  10  14
+ 3  7  11  15
+ 4  8  12  16</code></pre>
+</div>
+</div>
+<div id="9e57f099" class="cell" data-execution_count="8">
+<div class="sourceCode cell-code" id="cb11" style="background: #f1f3f5;"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb11-1"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#julia</span></span>
+<span id="cb11-2"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">power2</span>.(X)</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="6">
+<pre><code>4×4 Matrix{Int64}:
+  1  25   81  169
+  4  36  100  196
+  9  49  121  225
+ 16  64  144  256</code></pre>
+</div>
+</div>
+<p>When using infix functions like <code>+</code> or <code>=</code>, you put the dot before the operator, as in</p>
+<div id="3295fb57" class="cell" data-execution_count="9">
+<div class="sourceCode cell-code" id="cb13" style="background: #f1f3f5;"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb13-1"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#julia</span></span>
+<span id="cb13-2">[<span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">:</span><span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">5</span>;] <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.+</span> <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">10</span></span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="7">
+<pre><code>5-element Vector{Int64}:
+ 11
+ 12
+ 13
+ 14
+ 15</code></pre>
+</div>
+</div>
+<p>In R, you always try to avoid loops because they are <em>slow</em>. Suppose you have a vector and want to sum 1 to every entry. As an experienced R programmer, you look for a vectorized approach:</p>
+<div class="sourceCode" id="cb15" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># R</span></span>
+<span id="cb15-2">f1_vec <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">=</span> <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">function</span>(x) {</span>
+<span id="cb15-3">    y <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">=</span> x <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span></span>
+<span id="cb15-4">}</span></code></pre></div>
+<p>instead of a loop</p>
+<div class="sourceCode" id="cb16" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># R</span></span>
+<span id="cb16-2">f1_loop <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">=</span> <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">function</span>(x) {</span>
+<span id="cb16-3">    y <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">=</span> x</span>
+<span id="cb16-4">    <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">for</span> (i <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">in</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">seq_along</span>(x)) y[i] <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">=</span> x[i] <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span></span>
+<span id="cb16-5">    y</span>
+<span id="cb16-6">}</span></code></pre></div>
+<p>or a even a <code>purrr::map</code> approach (if you are in a functional programming mood)</p>
+<div class="sourceCode" id="cb17" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#R</span></span>
+<span id="cb17-2">f1_map <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">=</span> <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">function</span>(x) {</span>
+<span id="cb17-3">    purrr<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">map_dbl</span>(x, \(xi) xi <span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>)</span>
+<span id="cb17-4">}</span></code></pre></div>
+<p>because the first options is faster. We can see the difference:</p>
+<div class="sourceCode" id="cb18" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># R</span></span>
+<span id="cb18-2">x <span class="ot" style="color: #003B4F;
+background-color: null;
+font-style: inherit;">=</span> <span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span><span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">:</span><span class="dv" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">100000</span></span>
+<span id="cb18-3"></span>
+<span id="cb18-4">bench<span class="sc" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">mark</span>(</span>
+<span id="cb18-5">    <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">f1_vec</span>(x)</span>
+<span id="cb18-6">    ,<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">f1_loop</span>(x)</span>
+<span id="cb18-7">    ,<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">f1_map</span>(x)</span>
+<span id="cb18-8">    ,<span class="at" style="color: #657422;
+background-color: null;
+font-style: inherit;">relative =</span> <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">TRUE</span></span>
+<span id="cb18-9">)</span></code></pre></div>
+<div id="cd725728" class="cell" data-execution_count="10">
+<div class="cell-output cell-output-display" data-execution_count="8">
+<pre><code>RObject{VecSxp}
+# A tibble: 3 × 13
+  expression   min median `itr/sec` mem_alloc `gc/sec` n_itr  n_gc total_time
+  &lt;bch:expr&gt; &lt;dbl&gt;  &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt; &lt;int&gt; &lt;dbl&gt;   &lt;bch:tm&gt;
+1 f1_vec(x)    1      1       121.       1        10.0   744    10      500ms
+2 f1_loop(x)  44.8   12.6      11.7      1.03      1      72     1      501ms
+3 f1_map(x)  582.   145.        1        1.00     30.8     7    35      568ms
+# ℹ 4 more variables: result &lt;list&gt;, memory &lt;list&gt;, time &lt;list&gt;, gc &lt;list&gt;</code></pre>
+</div>
+</div>
+<p>In my machine, the loop is ~40x slower and the map ~500x slower than the vectorized version.</p>
+<p>The problem is when the function you want to apply have no vectorized form.</p>
+<p>In Julia, the three approachs are similar:</p>
+<div id="83a3b205" class="cell" data-execution_count="11">
+<div class="sourceCode cell-code" id="cb20" style="background: #f1f3f5;"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb20-1"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#julia</span></span>
+<span id="cb20-2"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">f1_vec</span>(x) <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> x <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">.+</span> <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>;</span>
+<span id="cb20-3"></span>
+<span id="cb20-4"><span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">function</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">f1_loop</span>(x)</span>
+<span id="cb20-5">    y <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">similar</span>(x)</span>
+<span id="cb20-6">    <span class="pp" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">@inbounds</span> <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">for</span> i <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">∈</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">eachindex</span>(x) y[i] <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> x[i] <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span> <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">end</span></span>
+<span id="cb20-7">    y</span>
+<span id="cb20-8"><span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">end</span>;</span>
+<span id="cb20-9"></span>
+<span id="cb20-10"><span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">function</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">f1_map</span>(x)</span>
+<span id="cb20-11">    <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">map</span>(x) <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">do</span> xi</span>
+<span id="cb20-12">        xi <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span> </span>
+<span id="cb20-13">    <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">end</span></span>
+<span id="cb20-14"><span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">end</span>;</span></code></pre></div>
+</div>
+<div id="d2516cc8" class="cell" data-execution_count="12">
+<div class="sourceCode cell-code" id="cb21" style="background: #f1f3f5;"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb21-1"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#julia</span></span>
+<span id="cb21-2"><span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">using</span> <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">BenchmarkTools;</span></span>
+<span id="cb21-3">x <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> [<span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">:</span><span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">100000</span>;];</span>
+<span id="cb21-4"></span>
+<span id="cb21-5"><span class="pp" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">@benchmark</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">f1_vec</span>(<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span>x)</span></code></pre></div>
+</div>
+<div id="5c84f194" class="cell" data-execution_count="13">
+<div class="sourceCode cell-code" id="cb22" style="background: #f1f3f5;"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb22-1"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#julia</span></span>
+<span id="cb22-2"><span class="pp" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">@benchmark</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">f1_loop</span>(<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span>x)</span></code></pre></div>
+</div>
+<div id="f17b236e" class="cell" data-execution_count="14">
+<div class="sourceCode cell-code" id="cb23" style="background: #f1f3f5;"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb23-1"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">#julia</span></span>
+<span id="cb23-2"><span class="pp" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">@benchmark</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">f1_map</span>(<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">$</span>x)</span></code></pre></div>
+</div>
+<p>This means that in Julia it is usual to <em>define a function using a scalar type</em> (a Number like Float64/Int or a String) <em>and then use broadcast</em> to apply the function to vectors/matrices/etc. No need to create vectorized forms of functions anymore!</p>
+</section>
+<section id="the-compiler-is-your-friend" class="level2">
+<h2 class="anchored" data-anchor-id="the-compiler-is-your-friend">The compiler is your friend</h2>
+<p>Sometimes you write code that won’t make your parents proud. Suppose you create a function that sums all the numbers from 1 to <code>n</code>:</p>
+<div id="a0c55556" class="cell" data-execution_count="15">
+<div class="sourceCode cell-code" id="cb24" style="background: #f1f3f5;"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb24-1"><span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">function</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">f_sum</span>(n)</span>
+<span id="cb24-2">    s <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0</span></span>
+<span id="cb24-3">    <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">for</span> i <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">in</span> <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">:</span>n</span>
+<span id="cb24-4">        s <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+=</span> i</span>
+<span id="cb24-5">    <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">end</span></span>
+<span id="cb24-6"></span>
+<span id="cb24-7">    s</span>
+<span id="cb24-8"><span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">end</span>;</span></code></pre></div>
+</div>
+<p>In R, the language will obediently execute each iteration of the loop, as you demanded. You are the boss.</p>
+<p>But in Julia, we have this curious phenomena:</p>
+<div id="593e2a78" class="cell" data-execution_count="16">
+<div class="sourceCode cell-code" id="cb25" style="background: #f1f3f5;"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb25-1"><span class="pp" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">@time</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">f_sum</span>(<span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">100</span>)</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  0.000001 seconds</code></pre>
+</div>
+<div class="cell-output cell-output-display" data-execution_count="11">
+<pre><code>5050</code></pre>
+</div>
+</div>
+<div id="536879f5" class="cell" data-execution_count="17">
+<div class="sourceCode cell-code" id="cb28" style="background: #f1f3f5;"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb28-1"><span class="pp" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">@time</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">f_sum</span>(<span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">100_000</span>)</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  0.000001 seconds</code></pre>
+</div>
+<div class="cell-output cell-output-display" data-execution_count="12">
+<pre><code>5000050000</code></pre>
+</div>
+</div>
+<div id="0af3056c" class="cell" data-execution_count="18">
+<div class="sourceCode cell-code" id="cb31" style="background: #f1f3f5;"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb31-1"><span class="pp" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">@time</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">f_sum</span>(<span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">100_000_000</span>)</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  0.000001 seconds</code></pre>
+</div>
+<div class="cell-output cell-output-display" data-execution_count="13">
+<pre><code>5000000050000000</code></pre>
+</div>
+</div>
+<p>How is it possible that it took the same time for 100 iterations and 100 million? The magic is the compiler: it understood that what you are doing is the sum of the terms of an <a href="https://en.wikipedia.org/wiki/Arithmetic_progression">arithmetic progression</a>. The legend says that Gauss deduced the formula for its sum, and the compiler did the same for you. No need to be as smart as Gauss while using Julia!</p>
+<p>Julia is a <a href="https://docs.julialang.org/en/v1/devdocs/aot/">just-in-time (JIT) compiled language</a>, which means that each function is compiled when you first execute it. The “time to first compile” was a problem in the past, but from Julia 1.8 onwards it is not a big deal.</p>
+</section>
+<section id="multiple-dispatch-and-type-system" class="level2">
+<h2 class="anchored" data-anchor-id="multiple-dispatch-and-type-system">Multiple dispatch and type system</h2>
+<p>A type system is a way to organize data types within an hierarchy. Think of it as mathematical sets: you have the real numbers, and inside it are the rationals, the integers and so on. Each one of these types store data into memory in a different manner (integers can be stored more efficiently than arbitrary real numbers, for example). Julia has a really nice <a href="https://docs.julialang.org/en/v1/manual/types/">type system</a>. Let’s see some examples to better understand it.</p>
+<p>Consider the <code>print</code> function in R. It is a <em>generic</em> function, which means that its behaviour depends on the class/type of its first argument. This can be seen when we look to its misterious source code:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://vituri.github.io/blog/posts-ds/julia-for-r-users/images/print-code.png" class="img-fluid figure-img"></p>
+<figcaption>The <code>print</code> function sourcecode.</figcaption>
+</figure>
+</div>
+<p>which means that <code>print</code> will use several <code>methods</code> (implementations/pieces-of-code), one for each class/type. Actually, R just creates a different function for each class, with the pattern <code>{function}.{class}</code>:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="https://vituri.github.io/blog/posts-ds/julia-for-r-users/images/print-methods.png" class="img-fluid figure-img"></p>
+<figcaption>Each method/implementation of the generic function <code>print</code>.</figcaption>
+</figure>
+</div>
+<p>In Julia, <em>every function is generic</em>. This means that we can use the same function name and define different behaviours/implementations for each combination of classes/types of its arguments. We saw above the implementation of the <code>maximum</code> function in Julia for an arbitrary vector of numbers. But what if the vector is of a different kind, which is easier to determine the maximum?</p>
+<p>Take, for example, the object</p>
+<div id="0b2925b3" class="cell" data-execution_count="19">
+<div class="sourceCode cell-code" id="cb34" style="background: #f1f3f5;"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb34-1">x <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">:</span><span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">10</span></span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="14">
+<pre><code>1:10</code></pre>
+</div>
+</div>
+<p>It is <em>not</em> a vector (to create a usual vector from 1 to 10, you type <code>[1:10;]</code>). Actually, its type is</p>
+<div id="4ab8f3c8" class="cell" data-execution_count="20">
+<div class="sourceCode cell-code" id="cb36" style="background: #f1f3f5;"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb36-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">typeof</span>(x)</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="15">
+<pre><code>UnitRange{Int64}</code></pre>
+</div>
+</div>
+<p>and its type hierarchy is</p>
+<div id="e99d5c71" class="cell" data-execution_count="21">
+<div class="sourceCode cell-code" id="cb38" style="background: #f1f3f5;"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb38-1"><span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">Base</span>.<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">show_supertypes</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">typeof</span>(x))</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>UnitRange{Int64} &lt;: AbstractUnitRange{Int64} &lt;: OrdinalRange{Int64, Int64} &lt;: AbstractRange{Int64} &lt;: AbstractVector{Int64} &lt;: Any</code></pre>
+</div>
+</div>
+<p>So <code>x</code> is a much simpler object than a vector: it is an increasing sequence of integer numbers, each 1 unity bigger than the previous one. It makes sense then that the <code>maximum</code> function can be defined much more simpler for an object of type <code>UnitRange{Int64}</code>: the biggest element is always the last.</p>
+<p>If you look at the sourcecode</p>
+<div id="ab4c4ca5" class="cell" data-execution_count="22">
+<div class="sourceCode cell-code" id="cb40" style="background: #f1f3f5;"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb40-1"><span class="pp" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">@edit</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">maximum</span>(<span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">:</span><span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">10</span>)</span></code></pre></div>
+</div>
+<p>you will get</p>
+<div id="3fe4d13d" class="cell" data-execution_count="23">
+<div class="sourceCode cell-code" id="cb41" style="background: #f1f3f5;"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb41-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">maximum</span>(r<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">::</span><span class="dt" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">AbstractUnitRange</span>) <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">isempty</span>(r) ? <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">throw</span>(<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">ArgumentError</span>(<span class="st" style="color: #20794D;
+background-color: null;
+font-style: inherit;">"range must be non-empty"</span>)) <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">:</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">last</span>(r)</span></code></pre></div>
+</div>
+<p>which is exactly what we thought. The function <code>last</code> is defined for every element children of type <code>AbstractUnitRange</code>, and so <code>maximum</code> is well defined and performant.</p>
+<p>In summary: Julia has an arbitrary <code>maximum</code> function for arbitrary vectors, but has specialized methods for some other specific types. This is a common pattern in Julia, and much of its performance depends on this.</p>
+</section>
+<section id="macros-rewrite-code-without-typing" class="level2">
+<h2 class="anchored" data-anchor-id="macros-rewrite-code-without-typing">Macros rewrite code without typing</h2>
+<p><a href="https://docs.julialang.org/en/v1/manual/metaprogramming/">Macros</a> are one of the most powerful tools in Julia. They rewrite your code before executing it: it is a metaprogramming technique. When creating macros, you will have to understand how a bunch of characters are interpreted by the language and executed as code. This means that macros can rewrite pieces of code and add functionalities that are not possible simply with functions.</p>
+<p>We already used some macros on this notebook; they all start with the <code>@</code> symbol.</p>
+<p>How much time does it take to calculate the sin of a million numbers?</p>
+<div id="7e44425c" class="cell" data-execution_count="24">
+<div class="sourceCode cell-code" id="cb42" style="background: #f1f3f5;"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb42-1"><span class="pp" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">@time</span> <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">sin</span>.(<span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">:</span><span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1_000_000</span>);</span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  0.026550 seconds (2 allocations: 7.629 MiB)</code></pre>
+</div>
+</div>
+<p>Do you have a loop and want to see a progress bar? No need to change the code inside the loop:</p>
+<div id="0dd458de" class="cell" data-execution_count="25">
+<div class="sourceCode cell-code" id="cb44" style="background: #f1f3f5;"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb44-1"><span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">using</span> <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">ProgressMeter;</span></span>
+<span id="cb44-2"></span>
+<span id="cb44-3"><span class="pp" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">@showprogress</span> <span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">for</span> i <span class="kw" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">in</span> <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">:</span><span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">10</span></span>
+<span id="cb44-4">    <span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">sleep</span>(<span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">0.1</span>)</span>
+<span id="cb44-5"><span class="cf" style="color: #003B4F;
+background-color: null;
+font-weight: bold;
+font-style: inherit;">end</span></span></code></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Progress:  20%|████████▎                                |  ETA: 0:00:07Progress:  90%|████████████████████████████████████▉    |  ETA: 0:00:00Progress: 100%|█████████████████████████████████████████| Time: 0:00:03</code></pre>
+</div>
+</div>
+<p>As we’ve seen, even the tidyverse could be recreated in Julia using macros!</p>
+</section>
+<section id="multithreading-is-trivial" class="level2">
+<h2 class="anchored" data-anchor-id="multithreading-is-trivial">Multithreading is trivial</h2>
+</section>
+<section id="modules-and-packages-are-a-joy-to-use" class="level2">
+<h2 class="anchored" data-anchor-id="modules-and-packages-are-a-joy-to-use">Modules and packages are a joy to use</h2>
+<p>In R, you have 2 options to call a function from another package:</p>
+<ul>
+<li>use <code>library(PACKAGE)</code> and then import <em>every</em> function from PACKAGE to your namespace;</li>
+<li>use <code>PACKAGE::FUNCTION</code> every time you want to use a function.</li>
+</ul>
+<p>Packages like <a href="https://klmr.me/box/"><code>box</code></a> are a more “Pythonesque” approach to importing libraries.</p>
+<p>In Julia, you have all these for free:</p>
+<ul>
+<li>a</li>
+<li>b</li>
+<li>c</li>
+</ul>
+<p>There is also the possibility to create modules inside modules (which are like packages inside packages). For example, if you have a package to train machine learning models, you can have a module about Metrics, another one with Models and so on. Importing then can be done with</p>
+<div id="633dcbc7" class="cell" data-execution_count="26">
+<div class="sourceCode cell-code" id="cb46" style="background: #f1f3f5;"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb46-1"><span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">using</span> <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">MyPackage.Metrics</span></span>
+<span id="cb46-2"></span>
+<span id="cb46-3"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># or</span></span>
+<span id="cb46-4"><span class="im" style="color: #00769E;
+background-color: null;
+font-style: inherit;">import</span> <span class="bu" style="color: null;
+background-color: null;
+font-style: inherit;">MyPackage.Models</span> as MD</span>
+<span id="cb46-5"></span>
+<span id="cb46-6">MD.<span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">model1</span>(etc)</span></code></pre></div>
+</div>
+</section>
+<section id="math-symbols-for-the-math-enthusiasts" class="level2">
+<h2 class="anchored" data-anchor-id="math-symbols-for-the-math-enthusiasts">Math symbols for the math enthusiasts</h2>
+<p>Examples of correct Julia code:</p>
+<div id="af3c09f8" class="cell" data-execution_count="27">
+<div class="sourceCode cell-code" id="cb47" style="background: #f1f3f5;"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb47-1">[<span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span>, <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">2</span>] <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">∩</span> [<span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">2</span>, <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">3</span>]</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="19">
+<pre><code>1-element Vector{Int64}:
+ 2</code></pre>
+</div>
+</div>
+<div id="be103b85" class="cell" data-execution_count="28">
+<div class="sourceCode cell-code" id="cb49" style="background: #f1f3f5;"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb49-1"><span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">2</span> <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">∈</span> [<span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">2</span>, <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">3</span>]</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="20">
+<pre><code>true</code></pre>
+</div>
+</div>
+<div id="474c3dac" class="cell" data-execution_count="29">
+<div class="sourceCode cell-code" id="cb51" style="background: #f1f3f5;"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb51-1"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">f</span>(r) <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">=</span> <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">π</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">*</span>r<span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">^</span><span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">2</span></span>
+<span id="cb51-2"></span>
+<span id="cb51-3"><span class="fu" style="color: #4758AB;
+background-color: null;
+font-style: inherit;">f</span>(<span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">3</span>)</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="21">
+<pre><code>28.274333882308138</code></pre>
+</div>
+</div>
+<div id="f7d55181" class="cell" data-execution_count="30">
+<div class="sourceCode cell-code" id="cb53" style="background: #f1f3f5;"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb53-1"><span class="co" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;"># Euler's identity</span></span>
+<span id="cb53-2"><span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">ℯ</span><span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">^</span>(<span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">im</span> <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">*</span> <span class="cn" style="color: #8f5902;
+background-color: null;
+font-style: inherit;">π</span>) <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">+</span> <span class="fl" style="color: #AD0000;
+background-color: null;
+font-style: inherit;">1</span> <span class="op" style="color: #5E5E5E;
+background-color: null;
+font-style: inherit;">|&gt;</span> round</span></code></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="22">
+<pre><code>0.0 + 0.0im</code></pre>
+</div>
+</div>
+
+
+</section>
+
+ ]]></description>
+  <guid>https://vituri.github.io/blog/posts-ds/julia-for-r-users/julia-for-r-users.html</guid>
+  <pubDate>Sun, 02 Feb 2025 22:38:38 GMT</pubDate>
 </item>
 </channel>
 </rss>

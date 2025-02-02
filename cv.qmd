@@ -1,8 +1,9 @@
 ---
-title: "Curriculum Vitae"
+title: "About me"
 format:
   html:
     toc: true
+    toc-depth: 3
   pdf:
     author: Guilherme Vituri
     pdf-engine: weasyprint
@@ -11,7 +12,7 @@ format-links: [pdf]
 ---
 
 ::: {.contact-block}
-vituri.vituri@gmail.com / https://github.com/vituri
+vituri.vituri@gmail.com / [https://github.com/vituri](https://github.com/vituri)
 :::
 
 ## EDUCATION
@@ -32,7 +33,7 @@ vituri.vituri@gmail.com / https://github.com/vituri
 
 ### Head of Intelligence
 
-***Argus Solutions*** [Jan 2020 -- Present]{.cvdate}
+***Argus Solutions*** [Jan 2020 -- Jan 2025]{.cvdate}
 
 I founded the area of Data at Argus, and my role was crucial as the company went from a small-sized tech to a multinational. My team now has more than 12 people as diverse as developers, data scientists, engineers and mathematicians. I act as a manager, code reviewer, project manager, machine learning engineer, DevOps, R/Julia developer and database administrator. I can do a bit of everything.
 
@@ -98,9 +99,13 @@ Coding in Julia is a joy and make R/Python look like unpolished old languages us
 
 - I am writing a book called [Topological Data Analysis with Julia](https://vituri.github.io/TDA_with_julia/) while I implement several TDA algorithms in JuliaTDA.
 
-## PRESENTATIONS AND WORKSHOPS
+## Talks, workshops and papers
+
+- Paper: [Motivic clustering schemes for directed graphs](https://arxiv.org/abs/2001.00278) (2000, published in ArXiv, with Facundo Mémoli).
 
 -   Talk: [Topology meets the real world: how geometry can help us analyse finite metric spaces](https://vituri.github.io/talk_wata_2023/#/title-slide) (2023, at the [Workshop of Algebraic Topology and Applications](https://icmc.usp.br/eventos/6135-workshop-de-topologia-algebrica-e-aplicacoes)).
 
 -   Workshop: [Topological Data Analysis workshop](https://github.com/vituri/TDA_workshop_EBT2024) (2024, at the [XXIII Brazilian Topology Meeting](https://xxiiiebt.ime.ufba.br/)).
 
+-  Paper: [Remote sensing to quantify potential aquifer recharge as a complementary tool for groundwater monitoring
+](https://www.tandfonline.com/doi/abs/10.1080/02626667.2024.2412741) (2024, published in [Hydrological Sciences Journal](https://www.tandfonline.com/journals/thsj20)), co-author.

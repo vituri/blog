@@ -1,0 +1,423 @@
+# Julia for R users
+
+> I know a lot of R and can do my daily job with it. Why should I learn Julia?
+
+In my case, I was looking for some adventure. Haskell seemed too hard, Python too normal. So I went on a journey to learn Julia and was very happy with what I discovered.
+
+I love R, it is my breadwinner (and has been for the past 6 years), and I know some of its limitations. So below is a (biased) list of features that may interest you in trying Julia:
+
+## You can run R inside of Julia
+
+Not sure where to begin in Julia? Start with R!
+
+```{julia}
+using RCall;
+
+R"""
+median(1:5)
+"""
+```
+
+You can even pass objects from Julia to R:
+
+```{julia}
+x = [1:5;]
+
+@rput x
+
+R"median(x)"
+```
+
+
+This quarto notebook is actually run using RCall! See [RCall docs](https://juliainterop.github.io/RCall.jl/stable/gettingstarted/) for more details.
+
+You can see some differences between R and Julia [here](https://docs.julialang.org/en/v1/manual/noteworthy-differences/#Noteworthy-differences-from-R).
+
+## There is a tidyverse in Julia and it is awesome
+
+[Tidier.jl](https://tidierorg.github.io/Tidier.jl/dev/) is a data analysis package inspired by R's tidyverse and crafted specifically for Julia. It is made with the macro magic described below. Behind the scenes, it is transformed in usual `Dataframes.jl` code.
+
+![Why not recreate an entire ecosystem using macros?](images/tidier.png)
+
+Here's an example from TidierData docs:
+
+```{julia}
+#| eval: false
+using TidierData
+using RDatasets
+
+movies = dataset("ggplot2", "movies");
+
+@chain movies begin
+    @mutate(Budget = Budget / 1_000_000)
+    @filter(Budget >= mean(skipmissing(Budget)))
+    @select(Title, Budget)
+    @slice(1:5)
+end
+```
+
+It looks like `dplyr` code with `@`s.
+
+## Fast Julia code is written in Julia; fast R code is not written in R
+
+In R, whenever you need some *really* fast code (as fast as you would get in C), you have to use C or Fortran code. R is simply slow. If you need speed in R, you will have to find a package that already implements what you need or learn C/Fortran, use RCpp and pray.
+
+![`stringi` package sourcecode.](images/stringi-code.png)
+
+In Julia, you won't need other language to get speed close to C. That's way they say that Julia [solves the two language problem](https://juliadatascience.io/julia_accomplish#sec:two_language). Julia packages are almost always 100% Julia, which means that you can look to its sourcecode and learn a lot.
+
+![Images that make you cry: the deep learning package [Flux.jl](https://github.com/FluxML/Flux.jl).](images/flux.png)
+
+This is specially interesting if you read Julia Base sourcecode! How does Julia define the maximum of a vector? Type
+
+```{julia}
+#| eval: false
+
+@edit maximum([1:5;])
+```
+
+and you will see this:
+
+![The sourcecode of the function maximum applied to a vector.](images/maximum-sourcecode.png)
+
+It takes some time to grasp the meaning, but in the end it says "apply a mapreduce into the vector, using the max function on each pair of numbers". In R, the sourcecode is a sad `.Primitive("max")`.
+
+
+## No need to vectorize code; loops, maps and broadcast are fast enough
+
+Tired of writing loops? Julia has a special notation `.` (yes, a dot) to apply *any* function to a vector/array/iterable-object; this is called [*broadcasting*](https://docs.julialang.org/en/v1/manual/arrays/#Broadcasting). For example, you can apply the `power2` function in a vector as easy as
+
+```{julia}
+#julia
+# define power2 for numbers
+power2(x) = x^2;
+
+# apply in vectors
+power2.(1:10)
+```
+
+or in a matrix
+
+```{julia}
+#julia
+X = reshape([1:16;], (4, 4))
+```
+
+```{julia}
+#julia
+power2.(X)
+```
+
+When using infix functions like `+` or `=`, you put the dot before the operator, as in
+
+```{julia}
+#julia
+[1:5;] .+ 10
+```
+
+In R, you always try to avoid loops because they are *slow*. Suppose you have a vector and want to sum 1 to every entry. As an experienced R programmer, you look for a vectorized approach:
+
+```r
+# R
+f1_vec = function(x) {
+    y = x + 1
+}
+```
+
+instead of a loop
+
+```r
+# R
+f1_loop = function(x) {
+    y = x
+    for (i in seq_along(x)) y[i] = x[i] + 1
+    y
+}
+```
+
+or a even a `purrr::map` approach (if you are in a functional programming mood)
+
+```r
+#R
+f1_map = function(x) {
+    purrr::map_dbl(x, \(xi) xi + 1)
+}
+```
+
+because the first options is faster. We can see the difference:
+
+```r
+# R
+x = 1:100000
+
+bench::mark(
+    f1_vec(x)
+    ,f1_loop(x)
+    ,f1_map(x)
+    ,relative = TRUE
+)
+```
+
+```{julia}
+#| warning: false
+#| echo: false
+#R
+R"""
+f1_vec = function(x) {
+    y = x + 1
+}
+
+f1_loop = function(x) {
+    y = x
+    for (i in seq_along(x)) y[i] = x[i] + 1
+    y
+}
+
+f1_map = function(x) {
+    purrr::map_dbl(x, \(xi) xi + 1)
+}
+
+x = 1:100000
+
+bench::mark(
+    f1_vec(x)
+    ,f1_loop(x)
+    ,f1_map(x)
+    ,relative = TRUE
+)
+"""
+```
+
+In my machine, the loop is ~12x slower and the map ~145x slower than the vectorized version.
+
+The biggest problem for an R user is when the function you want to apply have no vectorized form. I usually have to make some kludges^[or [gambiarras](https://pt.wikipedia.org/wiki/Gambiarra), in Brasileirês] with dplyr verbs to do something that is much more logical when written with a loop/map.
+
+In Julia, the three approachs are similar:
+
+```{julia}
+#julia
+f1_vec(x) = x .+ 1;
+
+function f1_loop(x)
+    y = similar(x)
+    @inbounds for i ∈ eachindex(x) y[i] = x[i] + 1 end
+    y
+end;
+
+function f1_map(x)
+    map(x) do xi
+        xi + 1 
+    end
+end;
+```
+
+```{julia}
+#| eval: false
+#julia
+using BenchmarkTools;
+x = [1:100000;];
+
+@benchmark f1_vec($x)
+```
+
+```{julia}
+#| eval: false
+#julia
+@benchmark f1_loop($x)
+```
+
+```{julia}
+#| eval: false
+#julia
+@benchmark f1_map($x)
+```
+
+This means that in Julia it is usual to *define a function using a scalar type* (a Number like Float64/Int or a String) *and then use broadcast* to apply the function to vectors/matrices/etc. No need to create vectorized forms of functions anymore!
+
+## The compiler is your friend
+
+Sometimes you write code that won't make your parents proud. Suppose you create a function that sums all the numbers from 1 to a given `n`:
+
+```{julia}
+function f_sum(n)
+    s = 0
+    for i in 1:n
+        s += i
+    end
+
+    s
+end;
+```
+
+In R, the language will obediently execute each iteration of the loop, as you demanded, and it will take forever. You are the boss.
+
+But in Julia, we have this curious phenomena:
+
+```{julia}
+@time f_sum(100)
+```
+
+```{julia}
+@time f_sum(100_000)
+```
+
+```{julia}
+@time f_sum(100_000_000)
+```
+
+How is it possible that it took the same time to run 100 iterations and 100 million iterations? The magic is the compiler: it understood that what you are doing is the sum of the terms of an [arithmetic progression](https://en.wikipedia.org/wiki/Arithmetic_progression). The legend says that Gauss deduced the formula for its sum, and the compiler did the same for you. No need to be as smart as Gauss while using Julia.
+
+Julia is a [just-in-time (JIT) compiled language](https://docs.julialang.org/en/v1/devdocs/aot/), which means that each function is compiled when you first execute it. The "time to first compile" was a problem in the past, but from Julia 1.8 onwards it is not a big deal. The compiler is your friend, and almost always you can trust him.
+
+
+## Multiple dispatch and type system
+
+A type system is a way to organize data types within an hierarchy. Think of it as mathematical sets: you have the real numbers, and inside it are the rationals, the integers, the naturals, etc. Each one of these types store data into memory in a different manner (integers can be stored more efficiently than arbitrary real numbers, for example). Julia has a really nice [type system](https://docs.julialang.org/en/v1/manual/types/). Let's see some examples to better understand it.
+
+Consider the `print` function in R. It is a *generic* function, which means that its behaviour depends on the class/type of its first argument. This can be seen when we look to its misterious source code:
+
+![The `print` function sourcecode.](images/print-code.png)
+
+which means that `print` will use several `methods` (implementations/pieces-of-code), one for each class/type. Actually, R just creates a different function for each class, with the pattern `{function}.{class}`: 
+
+![Each method/implementation of the generic function `print`.](images/print-methods.png)
+
+In Julia, *every function is generic*. We can use the same function name and define different behaviours/implementations for each combination of classes/types of its arguments. We saw above the implementation of the `maximum` function in Julia for an arbitrary vector of numbers. But what if the vector is of a different kind, for which it is easier to determine its maximum?
+
+Take, for example, the object
+
+```{julia}
+x = 1:10
+```
+
+It is *not* a vector (to create a usual vector from 1 to 10, you type `[1:10;]`). Actually, its type is
+
+```{julia}
+typeof(x)
+```
+
+and its type hierarchy is
+
+```{julia}
+Base.show_supertypes(typeof(x))
+```
+
+So `x` is a much simpler object than a vector: it is an increasing sequence of integer numbers, each 1 unity bigger than the previous one. It makes sense then that the `maximum` function can be defined much more simpler for an object of type `UnitRange{Int64}`: the biggest element is always the last.
+
+If you look at the sourcecode
+
+```{julia}
+#| eval: false
+@edit maximum(1:10)
+```
+
+you will get
+
+```{julia}
+#| eval: false
+maximum(r::AbstractUnitRange) = isempty(r) ? throw(ArgumentError("range must be non-empty")) : last(r)
+```
+
+which is exactly what we thought: 
+
+> is the range non-empty? Then take de last element; otherwise, an error.
+
+The function `last` is defined for every children of type `AbstractUnitRange`, and so `maximum` is well defined.
+
+In summary: Julia has an arbitrary `maximum` function for arbitrary vectors, but has specialized methods for some other specific types. This is a common pattern in Julia, and much of its performance depends on this. 
+
+
+## Macros rewrite code without typing
+
+[Macros](https://docs.julialang.org/en/v1/manual/metaprogramming/) are one of the most powerful tools in Julia. They rewrite your code before executing it: it is a metaprogramming technique. When creating macros, you will have to understand how a bunch of characters are interpreted by the language and executed as code. This means that macros can rewrite pieces of code and add functionalities that are not possible simply with functions.
+
+We already used some macros on this notebook; they all start with the `@` symbol. 
+
+How much time does it take to calculate the sin of a million numbers?
+
+```{julia}
+@time sin.(1:1_000_000);
+```
+
+Do you have a loop and want to see a progress bar? No need to change the code inside the loop:
+
+```{julia}
+using ProgressMeter;
+
+@showprogress for i in 1:10
+    sleep(0.1)
+end
+```
+
+As we've seen, even the tidyverse could be recreated in Julia using macros!
+
+
+## Multithreading is trivial
+
+[Multithreading](https://docs.julialang.org/en/v1/manual/multi-threading/) is when your code uses more than one processor at the same time. Multithreading in R is a bit complicated and actually create copies of the R process that comunicates with the main process. There is a [`futureverse`](https://www.futureverse.org/packages-overview.html) to deal with that in R.
+
+In Julia, multithreading is as easy as appending a macro before a loop:
+
+```{julia}
+#| eval: false
+Threads.@threads for i = 1:10
+    a[i] = Threads.threadid()
+end
+```
+
+Want a multithread version of `map` and `reduce` and so on? Check [ThreadsX.jl](https://github.com/tkf/ThreadsX.jl). And that's it.
+
+## Modules and packages are a joy to use
+
+In R, you have 2 options to call a function from another package:
+
+- use `library(PACKAGE)` and then import *every* function from PACKAGE to your namespace;
+- use `PACKAGE::FUNCTION` every time you want to use a function.
+
+Packages like [`box`](https://klmr.me/box/) are a more "Pythonesque" approach to importing libraries.
+
+In Julia, you have all these for free:
+
+- a
+- b
+- c
+
+There is also the possibility to create modules inside modules (which are like packages inside packages). For example, if you have a package to train machine learning models, you can have a module about Metrics, another one with Models and so on. Importing then can be done with
+
+
+```{julia}
+#| eval: false
+
+using MyPackage.Metrics
+
+# or
+import MyPackage.Models as MD
+
+MD.model1(etc)
+```
+
+
+## Math symbols for the math enthusiasts
+
+Examples of correct Julia code:
+
+```{julia}
+[1, 2] ∩ [2, 3]
+```
+
+```{julia}
+2 ∈ [2, 3]
+```
+
+
+```{julia}
+f(r) = π*r^2
+
+f(3)
+```
+
+
+```{julia}
+# Euler's identity
+ℯ^(im * π) + 1 |> round
+```

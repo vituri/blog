@@ -22,7 +22,7 @@ website:
       - ds.qmd
       - livros.qmd
       - cv.qmd
-      - about.qmd
+      # - about.qmd
       - icon: github
         href: https://github.com/vituri
       # - icon: twitter
@@ -36,11 +36,14 @@ format:
     theme: lux
     css: styles.css
     toc: true
+    toc-depth: 3
+    toc-expand: true
     bibliography: sources.bib
+    highlight-style: github
   pdf: default
 
 execute:
   freeze: auto
   cache: true
 
-engine: julia
+engine: jupyter-1.10
