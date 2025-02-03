@@ -4,11 +4,13 @@
 
 In my case, I was looking for some adventure. Haskell seemed too hard, Python too normal. So I went on a journey to learn Julia and was very happy with what I discovered.
 
-I love R, it is my breadwinner (and has been for the past 6 years), and I know some of its limitations. So below is a (biased) list of features that may interest you in trying Julia:
+I love R, it is my breadwinner (and has been for the past 6 years), and because of that I know some of its limitations. So below is a (biased) list of features that may interest you in trying Julia:
 
 ## You can run R inside of Julia
 
 Not sure where to begin in Julia? Start with R!
+
+With `RCall` you can run R code inside Julia:
 
 ```{julia}
 using RCall;
@@ -18,7 +20,7 @@ median(1:5)
 """
 ```
 
-You can even pass objects from Julia to R:
+You can even pass objects from Julia to R and vice-versa:
 
 ```{julia}
 x = [1:5;]
@@ -29,7 +31,7 @@ R"median(x)"
 ```
 
 
-This quarto notebook is actually run using RCall! See [RCall docs](https://juliainterop.github.io/RCall.jl/stable/gettingstarted/) for more details.
+This R chunks in this Quarto notebook were made using RCall! See [RCall docs](https://juliainterop.github.io/RCall.jl/stable/gettingstarted/) for more details.
 
 You can see some differences between R and Julia [here](https://docs.julialang.org/en/v1/manual/noteworthy-differences/#Noteworthy-differences-from-R).
 
@@ -82,6 +84,12 @@ and you will see this:
 
 It takes some time to grasp the meaning, but in the end it says "apply a mapreduce into the vector, using the max function on each pair of numbers". In R, the sourcecode is a sad `.Primitive("max")`.
 
+In Julia, to obtain maximum performance, you need to follow just two principles, as quoted from the excellent [Modern Julia Workflows](https://modernjuliaworkflows.org/optimizing/):
+
+- Ensure that the compiler can infer the type of every variable.
+- Avoid unnecessary (heap) allocations.
+
+For me, it sounds easier than learn C++.
 
 ## No need to vectorize code; loops, maps and broadcast are fast enough
 
@@ -212,7 +220,7 @@ end;
 ```
 
 ```{julia}
-#| eval: false
+#| eval: true
 #julia
 using BenchmarkTools;
 x = [1:100000;];
@@ -221,13 +229,13 @@ x = [1:100000;];
 ```
 
 ```{julia}
-#| eval: false
+#| eval: true
 #julia
 @benchmark f1_loop($x)
 ```
 
 ```{julia}
-#| eval: false
+#| eval: true
 #julia
 @benchmark f1_map($x)
 ```
@@ -267,7 +275,7 @@ But in Julia, we have this curious phenomena:
 
 How is it possible that it took the same time to run 100 iterations and 100 million iterations? The magic is the compiler: it understood that what you are doing is the sum of the terms of an [arithmetic progression](https://en.wikipedia.org/wiki/Arithmetic_progression). The legend says that Gauss deduced the formula for its sum, and the compiler did the same for you. No need to be as smart as Gauss while using Julia.
 
-Julia is a [just-in-time (JIT) compiled language](https://docs.julialang.org/en/v1/devdocs/aot/), which means that each function is compiled when you first execute it. The "time to first compile" was a problem in the past, but from Julia 1.8 onwards it is not a big deal. The compiler is your friend, and almost always you can trust him.
+Julia is a [just-in-time (JIT) compiled language](https://docs.julialang.org/en/v1/#man-julia-compared-other-languages), which means that each function is compiled when you first execute it. The "time to first compile" was a problem in the past, but from Julia 1.8 onwards it is not a big deal. The compiler is your friend, and almost always you can trust him.
 
 
 ## Multiple dispatch and type system
@@ -354,7 +362,7 @@ As we've seen, even the tidyverse could be recreated in Julia using macros!
 
 ## Multithreading is trivial
 
-[Multithreading](https://docs.julialang.org/en/v1/manual/multi-threading/) is when your code uses more than one processor at the same time. Multithreading in R is a bit complicated and actually create copies of the R process that comunicates with the main process. There is a [`futureverse`](https://www.futureverse.org/packages-overview.html) to deal with that in R.
+[Multithreading](https://docs.julialang.org/en/v1/manual/multi-threading/) (or parallel computing) is when your code uses more than one processor at the same time. Multithreading in R is a bit complicated and actually create copies of the R process that comunicates with the main process. There is a [`futureverse`](https://www.futureverse.org/packages-overview.html) to deal with that in R, and plans like `callr` or `multisession` to define how these extra R sessions will be created and mantained.
 
 In Julia, multithreading is as easy as appending a macro before a loop:
 
@@ -365,37 +373,47 @@ Threads.@threads for i = 1:10
 end
 ```
 
-Want a multithread version of `map` and `reduce` and so on? Check [ThreadsX.jl](https://github.com/tkf/ThreadsX.jl). And that's it.
+If you want a multithread version of `map` and `reduce` and so on, check [ThreadsX.jl](https://github.com/tkf/ThreadsX.jl).
 
-## Modules and packages are a joy to use
+Multithread is recommended when you:
+- have some spare RAM;
+- have more than 1 processor;
+- want to apply some function on a list of things that take some time idling (for example, waiting for an API return something) or are not RAM-heavy (calculating small distance matrices).
+
+My tipical use case is when I have a large dataframe and want to apply a function to several parts of it, based on a grouping variable. I split the dataframe into a vector of dataframes (with `groupby` and `collect`) and then apply the function in parallel.
+
+Another use is the following: suppose you want to create an API to serve 5 simultaneous users requesting data all day. In R you will use [`plumber`](https://www.rplumber.io/) and make lots of `future_promise` calls. In Julia, just use [`Oxygen.jl`](https://oxygenframework.github.io/Oxygen.jl/stable/#Multithreading-and-Parallelism) without any need to change your code: the requests are made in parallel.
+
+## Packages are a joy to use
 
 In R, you have 2 options to call a function from another package:
 
-- use `library(PACKAGE)` and then import *every* function from PACKAGE to your namespace;
+- use `library(PACKAGE)`, which imports *every* function from PACKAGE to your namespace;
 - use `PACKAGE::FUNCTION` every time you want to use a function.
 
-Packages like [`box`](https://klmr.me/box/) are a more "Pythonesque" approach to importing libraries.
+Packages like [`box`](https://klmr.me/box/) are a more "Pythonesque" approach to importing libraries, and allow to import just some parts of a package.
 
-In Julia, you have all these for free:
+In Julia, a package is just a module, and you have:
 
-- a
-- b
-- c
+- `using PACKAGE` is analogous to R `library(PACKAGE)`;
+- `import PACKAGE` and then `PACKAGE.FUNCTION` in every call;
+- `using PACKAGE: FUNCTION1, FUNCTION2` will import only these 2 functions from PACKAGE.
 
-There is also the possibility to create modules inside modules (which are like packages inside packages). For example, if you have a package to train machine learning models, you can have a module about Metrics, another one with Models and so on. Importing then can be done with
+The best part, however, is the ability to create modules inside modules. For example, if you have a mega package to do all your data analysis in your work, you can have a module about Reports, another one with APIs and so on. Importing then can be done with
 
 
 ```{julia}
 #| eval: false
 
-using MyPackage.Metrics
+using MyPackage.Reports
 
 # or
-import MyPackage.Models as MD
+import MyPackage.APIs as API
 
-MD.model1(etc)
+MD.api1()
 ```
 
+This approach resembles a little the idea of namespaces in [shiny modules](https://mastering-shiny.org/scaling-modules.html), and using `box` is how the [`rhino`](https://appsilon.github.io/rhino/articles/explanation/box-modules.html) emulate the "module inside module" thing.
 
 ## Math symbols for the math enthusiasts
 
@@ -421,3 +439,13 @@ f(3)
 # Euler's identity
 ℯ^(im * π) + 1 |> round
 ```
+
+---
+
+If I convinced you or sparked just a little interest, you can start your own journey in Julialand with the suggested steps:
+
+1. [Modern Julia Workflows](https://modernjuliaworkflows.org): install Julia, setup your IDE and learn the basics of how to run code.
+2. [The julia docs] are excellent: need to understand more about [variables](https://docs.julialang.org/en/v1/manual/variables/)? What about the [scope of functions](https://docs.julialang.org/en/v1/manual/functions/)? [Types](https://docs.julialang.org/en/v1/manual/types/) is certainly worth a read!
+3. [Think Julia](https://benlauwens.github.io/ThinkJulia.jl/latest/book.html), by Be Lauwens and Allen Doeney: similar to Think Python, but better!
+4. Questions? Go to the [Julia Discourse](https://discourse.julialang.org/).
+5. For a list of really nice packages, see [this repo](https://gensjulia.pages.dev/data-science/#general-purpose).
