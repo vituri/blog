@@ -8,7 +8,7 @@ format:
     author: Guilherme Vituri
     pdf-engine: weasyprint
 css: cv.css
-format-links: [pdf]
+# format-links: [pdf]
 ---
 
 ::: {.contact-block}

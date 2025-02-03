@@ -21,7 +21,7 @@ website:
     right:
       - index.qmd
       # - livros.qmd
-      # - cv.qmd
+      - cv.qmd
       # - about.qmd
       - icon: github
         href: https://github.com/vituri
