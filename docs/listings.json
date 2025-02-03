@@ -1,22 +1,21 @@
 [
   {
     "listing": "/index.html",
-    "items": []
+    "items": [
+      "/posts/julia-for-r-users/julia-for-r-users.html",
+      "/posts/symbolic-regression/symbolic-regression.html",
+      "/posts/felicidade-imaginada/felicidade-imaginada.html",
+      "/posts/future-history/future-history.html",
+      "/posts/tchekhov-solidao/tchekov-solidao.html",
+      "/posts/eletronic-bard/eletronic-bard.html"
+    ]
   },
   {
     "listing": "/livros.html",
-    "items": [
-      "/posts-livros/felicidade-imaginada/felicidade-imaginada.html",
-      "/posts-livros/future-history/future-history.html",
-      "/posts-livros/tchekhov-solidao/tchekov-solidao.html",
-      "/posts-livros/eletronic-bard/eletronic-bard.html"
-    ]
+    "items": []
   },
   {
     "listing": "/ds.html",
-    "items": [
-      "/posts-ds/julia-for-r-users/julia-for-r-users.html",
-      "/posts-ds/symbolic regression/post.html"
-    ]
+    "items": []
   }
 ]

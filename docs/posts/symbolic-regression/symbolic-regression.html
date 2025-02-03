@@ -1,1108 +1,272 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<rss  xmlns:atom="http://www.w3.org/2005/Atom" 
-      xmlns:media="http://search.yahoo.com/mrss/" 
-      xmlns:content="http://purl.org/rss/1.0/modules/content/" 
-      xmlns:dc="http://purl.org/dc/elements/1.1/" 
-      version="2.0">
-<channel>
-<title>vituri&#39;s blog</title>
-<link>https://vituri.github.io/blog/</link>
-<atom:link href="https://vituri.github.io/blog/index.xml" rel="self" type="application/rss+xml"/>
-<description>vituri</description>
-<generator>quarto-1.7.13</generator>
-<lastBuildDate>Mon, 03 Feb 2025 03:00:00 GMT</lastBuildDate>
-<item>
-  <title></title>
-  <link>https://vituri.github.io/blog/posts/julia-for-r-users/julia-for-r-users.html</link>
-  <description><![CDATA[ 
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.7.13">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="dcterms.date" content="2024-03-14">
+
+<title>Symbolic Regression in Julia – vituri’s blog</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
 
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script><script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-8d568fb58c33a0b3232b1f9968c626e4.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-73743edb1384f91ce397fe6a16c98bc1.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
 
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
-<section id="julia-for-r-users" class="level1">
-<h1>Julia for R users</h1>
-<blockquote class="blockquote">
-<p>I know a lot of R and can do my daily job with it. Why should I learn Julia?</p>
-</blockquote>
-<p>In my case, I was looking for some adventure. Haskell seemed too hard, Python too normal. So I went on a journey to learn Julia and was very happy with what I discovered.</p>
-<p>I love R, it is my breadwinner (and has been for the past 6 years), and because of that I know some of its limitations. So below is a (biased) list of features that may interest you in trying Julia:</p>
-<section id="you-can-run-r-inside-of-julia" class="level2">
-<h2 class="anchored" data-anchor-id="you-can-run-r-inside-of-julia">You can run R inside of Julia</h2>
-<p>Not sure where to begin in Julia? Start with R!</p>
-<p>With <code>RCall</code> you can run R code inside Julia:</p>
-<div id="67ea5770" class="cell" data-execution_count="2">
-<div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb1-1"><span class="im" style="color: #00769E;
-background-color: null;
-font-style: inherit;">using</span> <span class="bu" style="color: null;
-background-color: null;
-font-style: inherit;">RCall;</span></span>
-<span id="cb1-2"></span>
-<span id="cb1-3">R<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"""</span></span>
-<span id="cb1-4"><span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">median(1:5)</span></span>
-<span id="cb1-5"><span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"""</span></span></code></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="2">
-<pre><code>RObject{IntSxp}
-[1] 3</code></pre>
-</div>
-</div>
-<p>You can even pass objects from Julia to R and vice-versa:</p>
-<div id="7fcba400" class="cell" data-execution_count="3">
-<div class="sourceCode cell-code" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb3-1">x <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> [<span class="fl" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">1</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">:</span><span class="fl" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">5</span>;]</span>
-<span id="cb3-2"></span>
-<span id="cb3-3"><span class="pp" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">@rput</span> x</span>
-<span id="cb3-4"></span>
-<span id="cb3-5">R<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"median(x)"</span></span></code></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="3">
-<pre><code>RObject{IntSxp}
-[1] 3</code></pre>
-</div>
-</div>
-<p>This R chunks in this Quarto notebook were made using RCall! See <a href="https://juliainterop.github.io/RCall.jl/stable/gettingstarted/">RCall docs</a> for more details.</p>
-<p>You can see some differences between R and Julia <a href="https://docs.julialang.org/en/v1/manual/noteworthy-differences/#Noteworthy-differences-from-R">here</a>.</p>
-</section>
-<section id="there-is-a-tidyverse-in-julia-and-it-is-awesome" class="level2">
-<h2 class="anchored" data-anchor-id="there-is-a-tidyverse-in-julia-and-it-is-awesome">There is a tidyverse in Julia and it is awesome</h2>
-<p><a href="https://tidierorg.github.io/Tidier.jl/dev/">Tidier.jl</a> is a data analysis package inspired by R’s tidyverse and crafted specifically for Julia. It is made with the macro magic described below. Behind the scenes, it is transformed in usual <code>Dataframes.jl</code> code.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="https://vituri.github.io/blog/posts/julia-for-r-users/images/tidier.png" class="img-fluid figure-img"></p>
-<figcaption>Why not recreate an entire ecosystem using macros?</figcaption>
-</figure>
-</div>
-<p>Here’s an example from TidierData docs:</p>
-<div id="cd8e860f" class="cell" data-execution_count="4">
-<div class="sourceCode cell-code" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb5-1"><span class="im" style="color: #00769E;
-background-color: null;
-font-style: inherit;">using</span> <span class="bu" style="color: null;
-background-color: null;
-font-style: inherit;">TidierData</span></span>
-<span id="cb5-2"><span class="im" style="color: #00769E;
-background-color: null;
-font-style: inherit;">using</span> <span class="bu" style="color: null;
-background-color: null;
-font-style: inherit;">RDatasets</span></span>
-<span id="cb5-3"></span>
-<span id="cb5-4">movies <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">dataset</span>(<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"ggplot2"</span>, <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"movies"</span>);</span>
-<span id="cb5-5"></span>
-<span id="cb5-6"><span class="pp" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">@chain</span> movies <span class="cf" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">begin</span></span>
-<span id="cb5-7">    <span class="pp" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">@mutate</span>(Budget <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> Budget <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">/</span> <span class="fl" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">1_000_000</span>)</span>
-<span id="cb5-8">    <span class="pp" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">@filter</span>(Budget <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">&gt;=</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">mean</span>(<span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">skipmissing</span>(Budget)))</span>
-<span id="cb5-9">    <span class="pp" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">@select</span>(Title, Budget)</span>
-<span id="cb5-10">    <span class="pp" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">@slice</span>(<span class="fl" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">1</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">:</span><span class="fl" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">5</span>)</span>
-<span id="cb5-11"><span class="cf" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">end</span></span></code></pre></div>
-</div>
-<p>It looks like <code>dplyr</code> code with <code>@</code>s.</p>
-</section>
-<section id="fast-julia-code-is-written-in-julia-fast-r-code-is-not-written-in-r" class="level2">
-<h2 class="anchored" data-anchor-id="fast-julia-code-is-written-in-julia-fast-r-code-is-not-written-in-r">Fast Julia code is written in Julia; fast R code is not written in R</h2>
-<p>In R, whenever you need some <em>really</em> fast code (as fast as you would get in C), you have to use C or Fortran code. R is simply slow. If you need speed in R, you will have to find a package that already implements what you need or learn C/Fortran, use RCpp and pray.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="https://vituri.github.io/blog/posts/julia-for-r-users/images/stringi-code.png" class="img-fluid figure-img"></p>
-<figcaption><code>stringi</code> package sourcecode.</figcaption>
-</figure>
-</div>
-<p>In Julia, you won’t need other language to get speed close to C. That’s way they say that Julia <a href="https://juliadatascience.io/julia_accomplish#sec:two_language">solves the two language problem</a>. Julia packages are almost always 100% Julia, which means that you can look to its sourcecode and learn a lot.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="https://vituri.github.io/blog/posts/julia-for-r-users/images/flux.png" class="img-fluid figure-img"></p>
-<figcaption>Images that make you cry: the deep learning package <a href="https://github.com/FluxML/Flux.jl">Flux.jl</a>.</figcaption>
-</figure>
-</div>
-<p>This is specially interesting if you read Julia Base sourcecode! How does Julia define the maximum of a vector? Type</p>
-<div id="815694e4" class="cell" data-execution_count="5">
-<div class="sourceCode cell-code" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb6-1"><span class="pp" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">@edit</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">maximum</span>([<span class="fl" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">1</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">:</span><span class="fl" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">5</span>;])</span></code></pre></div>
-</div>
-<p>and you will see this:</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="https://vituri.github.io/blog/posts/julia-for-r-users/images/maximum-sourcecode.png" class="img-fluid figure-img"></p>
-<figcaption>The sourcecode of the function maximum applied to a vector.</figcaption>
-</figure>
-</div>
-<p>It takes some time to grasp the meaning, but in the end it says “apply a mapreduce into the vector, using the max function on each pair of numbers”. In R, the sourcecode is a sad <code>.Primitive("max")</code>.</p>
-<p>In Julia, to obtain maximum performance, you need to follow just two principles, as quoted from the excellent <a href="https://modernjuliaworkflows.org/optimizing/">Modern Julia Workflows</a>:</p>
-<ul>
-<li>Ensure that the compiler can infer the type of every variable.</li>
-<li>Avoid unnecessary (heap) allocations.</li>
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../../styles.css">
+</head>
+
+<body class="nav-sidebar floating nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top quarto-banner">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">vituri’s blog</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html"> 
+<span class="menu-text">Blog</span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/vituri"> <i class="bi bi-github" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="../../index.xml"> <i class="bi bi-rss" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
 </ul>
-<p>For me, it sounds easier than learn C++.</p>
-</section>
-<section id="no-need-to-vectorize-code-loops-maps-and-broadcast-are-fast-enough" class="level2">
-<h2 class="anchored" data-anchor-id="no-need-to-vectorize-code-loops-maps-and-broadcast-are-fast-enough">No need to vectorize code; loops, maps and broadcast are fast enough</h2>
-<p>Tired of writing loops? Julia has a special notation <code>.</code> (yes, a dot) to apply <em>any</em> function to a vector/array/iterable-object; this is called <a href="https://docs.julialang.org/en/v1/manual/arrays/#Broadcasting"><em>broadcasting</em></a>. For example, you can apply the <code>power2</code> function in a vector as easy as</p>
-<div id="4fc47038" class="cell" data-execution_count="6">
-<div class="sourceCode cell-code" id="cb7" style="background: #f1f3f5;"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb7-1"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">#julia</span></span>
-<span id="cb7-2"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># define power2 for numbers</span></span>
-<span id="cb7-3"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">power2</span>(x) <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> x<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">^</span><span class="fl" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">2</span>;</span>
-<span id="cb7-4"></span>
-<span id="cb7-5"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># apply in vectors</span></span>
-<span id="cb7-6"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">power2</span>.(<span class="fl" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">1</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">:</span><span class="fl" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">10</span>)</span></code></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="4">
-<pre><code>10-element Vector{Int64}:
-   1
-   4
-   9
-  16
-  25
-  36
-  49
-  64
-  81
- 100</code></pre>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
 </div>
-</div>
-<p>or in a matrix</p>
-<div id="e3ed9555" class="cell" data-execution_count="7">
-<div class="sourceCode cell-code" id="cb9" style="background: #f1f3f5;"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb9-1"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">#julia</span></span>
-<span id="cb9-2">X <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">reshape</span>([<span class="fl" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">1</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">:</span><span class="fl" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">16</span>;], (<span class="fl" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">4</span>, <span class="fl" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">4</span>))</span></code></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="5">
-<pre><code>4×4 Matrix{Int64}:
- 1  5   9  13
- 2  6  10  14
- 3  7  11  15
- 4  8  12  16</code></pre>
-</div>
-</div>
-<div id="2574b59d" class="cell" data-execution_count="8">
-<div class="sourceCode cell-code" id="cb11" style="background: #f1f3f5;"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb11-1"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">#julia</span></span>
-<span id="cb11-2"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">power2</span>.(X)</span></code></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="6">
-<pre><code>4×4 Matrix{Int64}:
-  1  25   81  169
-  4  36  100  196
-  9  49  121  225
- 16  64  144  256</code></pre>
-</div>
-</div>
-<p>When using infix functions like <code>+</code> or <code>=</code>, you put the dot before the operator, as in</p>
-<div id="adbd83d0" class="cell" data-execution_count="9">
-<div class="sourceCode cell-code" id="cb13" style="background: #f1f3f5;"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb13-1"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">#julia</span></span>
-<span id="cb13-2">[<span class="fl" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">1</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">:</span><span class="fl" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">5</span>;] <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">.+</span> <span class="fl" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">10</span></span></code></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="7">
-<pre><code>5-element Vector{Int64}:
- 11
- 12
- 13
- 14
- 15</code></pre>
-</div>
-</div>
-<p>In R, you always try to avoid loops because they are <em>slow</em>. Suppose you have a vector and want to sum 1 to every entry. As an experienced R programmer, you look for a vectorized approach:</p>
-<div class="sourceCode" id="cb15" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># R</span></span>
-<span id="cb15-2">f1_vec <span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">=</span> <span class="cf" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">function</span>(x) {</span>
-<span id="cb15-3">    y <span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">=</span> x <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">+</span> <span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">1</span></span>
-<span id="cb15-4">}</span></code></pre></div>
-<p>instead of a loop</p>
-<div class="sourceCode" id="cb16" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># R</span></span>
-<span id="cb16-2">f1_loop <span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">=</span> <span class="cf" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">function</span>(x) {</span>
-<span id="cb16-3">    y <span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">=</span> x</span>
-<span id="cb16-4">    <span class="cf" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">for</span> (i <span class="cf" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">in</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">seq_along</span>(x)) y[i] <span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">=</span> x[i] <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">+</span> <span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">1</span></span>
-<span id="cb16-5">    y</span>
-<span id="cb16-6">}</span></code></pre></div>
-<p>or a even a <code>purrr::map</code> approach (if you are in a functional programming mood)</p>
-<div class="sourceCode" id="cb17" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">#R</span></span>
-<span id="cb17-2">f1_map <span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">=</span> <span class="cf" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">function</span>(x) {</span>
-<span id="cb17-3">    purrr<span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">map_dbl</span>(x, \(xi) xi <span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">+</span> <span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">1</span>)</span>
-<span id="cb17-4">}</span></code></pre></div>
-<p>because the first options is faster. We can see the difference:</p>
-<div class="sourceCode" id="cb18" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># R</span></span>
-<span id="cb18-2">x <span class="ot" style="color: #003B4F;
-background-color: null;
-font-style: inherit;">=</span> <span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">1</span><span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">:</span><span class="dv" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">100000</span></span>
-<span id="cb18-3"></span>
-<span id="cb18-4">bench<span class="sc" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">::</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">mark</span>(</span>
-<span id="cb18-5">    <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">f1_vec</span>(x)</span>
-<span id="cb18-6">    ,<span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">f1_loop</span>(x)</span>
-<span id="cb18-7">    ,<span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">f1_map</span>(x)</span>
-<span id="cb18-8">    ,<span class="at" style="color: #657422;
-background-color: null;
-font-style: inherit;">relative =</span> <span class="cn" style="color: #8f5902;
-background-color: null;
-font-style: inherit;">TRUE</span></span>
-<span id="cb18-9">)</span></code></pre></div>
-<div id="b952d99d" class="cell" data-execution_count="10">
-<div class="cell-output cell-output-display" data-execution_count="8">
-<pre><code>RObject{VecSxp}
-# A tibble: 3 × 13
-  expression   min median `itr/sec` mem_alloc `gc/sec` n_itr  n_gc total_time
-  &lt;bch:expr&gt; &lt;dbl&gt;  &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt; &lt;int&gt; &lt;dbl&gt;   &lt;bch:tm&gt;
-1 f1_vec(x)    1      1       122.       1        11.0   782    11      500ms
-2 f1_loop(x)  44.8   13.2      11.3      1.03      1      73     1      502ms
-3 f1_map(x)  532.   151.        1        1.00     32.2     7    35      545ms
-# ℹ 4 more variables: result &lt;list&gt;, memory &lt;list&gt;, time &lt;list&gt;, gc &lt;list&gt;</code></pre>
-</div>
-</div>
-<p>In my machine, the loop is ~12x slower and the map ~145x slower than the vectorized version.</p>
-<p>The biggest problem for an R user is when the function you want to apply have no vectorized form. I usually have to make some kludges<sup>1</sup> with dplyr verbs to do something that is much more logical when written with a loop/map.</p>
-<p>In Julia, the three approachs are similar:</p>
-<div id="7d2519da" class="cell" data-execution_count="11">
-<div class="sourceCode cell-code" id="cb20" style="background: #f1f3f5;"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb20-1"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">#julia</span></span>
-<span id="cb20-2"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">f1_vec</span>(x) <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> x <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">.+</span> <span class="fl" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">1</span>;</span>
-<span id="cb20-3"></span>
-<span id="cb20-4"><span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">function</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">f1_loop</span>(x)</span>
-<span id="cb20-5">    y <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">similar</span>(x)</span>
-<span id="cb20-6">    <span class="pp" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">@inbounds</span> <span class="cf" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">for</span> i <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">∈</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">eachindex</span>(x) y[i] <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> x[i] <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">+</span> <span class="fl" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">1</span> <span class="cf" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">end</span></span>
-<span id="cb20-7">    y</span>
-<span id="cb20-8"><span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">end</span>;</span>
-<span id="cb20-9"></span>
-<span id="cb20-10"><span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">function</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">f1_map</span>(x)</span>
-<span id="cb20-11">    <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">map</span>(x) <span class="cf" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">do</span> xi</span>
-<span id="cb20-12">        xi <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">+</span> <span class="fl" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">1</span> </span>
-<span id="cb20-13">    <span class="cf" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">end</span></span>
-<span id="cb20-14"><span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">end</span>;</span></code></pre></div>
-</div>
-<div id="8142f0ca" class="cell" data-execution_count="12">
-<div class="sourceCode cell-code" id="cb21" style="background: #f1f3f5;"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb21-1"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">#julia</span></span>
-<span id="cb21-2"><span class="im" style="color: #00769E;
-background-color: null;
-font-style: inherit;">using</span> <span class="bu" style="color: null;
-background-color: null;
-font-style: inherit;">BenchmarkTools;</span></span>
-<span id="cb21-3">x <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> [<span class="fl" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">1</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">:</span><span class="fl" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">100000</span>;];</span>
-<span id="cb21-4"></span>
-<span id="cb21-5"><span class="pp" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">@benchmark</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">f1_vec</span>(<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">$</span>x)</span></code></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="10">
-<div class="ansi-escaped-output">
-<pre>BenchmarkTools.Trial: 10000 samples with 1 evaluation per sample.
- Range <span class="ansi-bright-black-fg">(</span><span class="ansi-cyan-fg ansi-bold">min</span> … <span class="ansi-magenta-fg">max</span><span class="ansi-bright-black-fg">):  </span><span class="ansi-cyan-fg ansi-bold">57.539 μs</span> … <span class="ansi-magenta-fg"> 4.898 ms</span>  <span class="ansi-bright-black-fg">┊</span> GC <span class="ansi-bright-black-fg">(</span>min … max<span class="ansi-bright-black-fg">): </span>0.00% … 95.83%
- Time  <span class="ansi-bright-black-fg">(</span><span class="ansi-blue-fg ansi-bold">median</span><span class="ansi-bright-black-fg">):     </span><span class="ansi-blue-fg ansi-bold">75.239 μs              </span><span class="ansi-bright-black-fg">┊</span> GC <span class="ansi-bright-black-fg">(</span>median<span class="ansi-bright-black-fg">):    </span>0.00%
- Time  <span class="ansi-bright-black-fg">(</span><span class="ansi-green-fg ansi-bold">mean</span> ± <span class="ansi-green-fg">σ</span><span class="ansi-bright-black-fg">):   </span><span class="ansi-green-fg ansi-bold">91.510 μs</span> ± <span class="ansi-green-fg">81.896 μs</span>  <span class="ansi-bright-black-fg">┊</span> GC <span class="ansi-bright-black-fg">(</span>mean ± σ<span class="ansi-bright-black-fg">):  </span>6.14% ±  9.41%
-   ▅ █<span class="ansi-blue-fg"> </span>  <span class="ansi-green-fg"> </span>                                                     
-  ▅█▅█<span class="ansi-blue-fg">▇</span>▃▄<span class="ansi-green-fg">▃</span>▃▃▄▃▃▃▃▃▃▃▃▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▁▂▂▂▁▂▁▁▁▂▂▁▂▂▂▂▂▂▂▂▂▂ ▃
-  57.5 μs<span class="ansi-bright-black-fg">         Histogram: frequency by time</span>         337 μs <span class="ansi-bold">&lt;</span>
- Memory estimate<span class="ansi-bright-black-fg">: </span><span class="ansi-yellow-fg">781.30 KiB</span>, allocs estimate<span class="ansi-bright-black-fg">: </span><span class="ansi-yellow-fg">2</span>.</pre>
-</div>
-</div>
-</div>
-<div id="cf33d96e" class="cell" data-execution_count="13">
-<div class="sourceCode cell-code" id="cb22" style="background: #f1f3f5;"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb22-1"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">#julia</span></span>
-<span id="cb22-2"><span class="pp" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">@benchmark</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">f1_loop</span>(<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">$</span>x)</span></code></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="11">
-<div class="ansi-escaped-output">
-<pre>BenchmarkTools.Trial: 10000 samples with 1 evaluation per sample.
- Range <span class="ansi-bright-black-fg">(</span><span class="ansi-cyan-fg ansi-bold">min</span> … <span class="ansi-magenta-fg">max</span><span class="ansi-bright-black-fg">):  </span><span class="ansi-cyan-fg ansi-bold">55.913 μs</span> … <span class="ansi-magenta-fg">887.990 μs</span>  <span class="ansi-bright-black-fg">┊</span> GC <span class="ansi-bright-black-fg">(</span>min … max<span class="ansi-bright-black-fg">): </span>0.00% … 74.04%
- Time  <span class="ansi-bright-black-fg">(</span><span class="ansi-blue-fg ansi-bold">median</span><span class="ansi-bright-black-fg">):     </span><span class="ansi-blue-fg ansi-bold">75.755 μs               </span><span class="ansi-bright-black-fg">┊</span> GC <span class="ansi-bright-black-fg">(</span>median<span class="ansi-bright-black-fg">):    </span>0.00%
- Time  <span class="ansi-bright-black-fg">(</span><span class="ansi-green-fg ansi-bold">mean</span> ± <span class="ansi-green-fg">σ</span><span class="ansi-bright-black-fg">):   </span><span class="ansi-green-fg ansi-bold">94.744 μs</span> ± <span class="ansi-green-fg"> 57.302 μs</span>  <span class="ansi-bright-black-fg">┊</span> GC <span class="ansi-bright-black-fg">(</span>mean ± σ<span class="ansi-bright-black-fg">):  </span>5.42% ±  9.34%
-   █ █<span class="ansi-blue-fg"> </span>  <span class="ansi-green-fg"> </span>                                                      
-  ▃█▅█<span class="ansi-blue-fg">▅</span>▄▄<span class="ansi-green-fg">▃</span>▃▃▃▂▂▂▂▂▂▂▂▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁ ▂
-  55.9 μs<span class="ansi-bright-black-fg">         Histogram: frequency by time</span>          375 μs <span class="ansi-bold">&lt;</span>
- Memory estimate<span class="ansi-bright-black-fg">: </span><span class="ansi-yellow-fg">781.30 KiB</span>, allocs estimate<span class="ansi-bright-black-fg">: </span><span class="ansi-yellow-fg">2</span>.</pre>
-</div>
-</div>
-</div>
-<div id="e6633e5f" class="cell" data-execution_count="14">
-<div class="sourceCode cell-code" id="cb23" style="background: #f1f3f5;"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb23-1"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">#julia</span></span>
-<span id="cb23-2"><span class="pp" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">@benchmark</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">f1_map</span>(<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">$</span>x)</span></code></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="12">
-<div class="ansi-escaped-output">
-<pre>BenchmarkTools.Trial: 10000 samples with 1 evaluation per sample.
- Range <span class="ansi-bright-black-fg">(</span><span class="ansi-cyan-fg ansi-bold">min</span> … <span class="ansi-magenta-fg">max</span><span class="ansi-bright-black-fg">):  </span><span class="ansi-cyan-fg ansi-bold"> 58.217 μs</span> … <span class="ansi-magenta-fg">905.840 μs</span>  <span class="ansi-bright-black-fg">┊</span> GC <span class="ansi-bright-black-fg">(</span>min … max<span class="ansi-bright-black-fg">): </span>0.00% … 71.12%
- Time  <span class="ansi-bright-black-fg">(</span><span class="ansi-blue-fg ansi-bold">median</span><span class="ansi-bright-black-fg">):     </span><span class="ansi-blue-fg ansi-bold"> 80.790 μs               </span><span class="ansi-bright-black-fg">┊</span> GC <span class="ansi-bright-black-fg">(</span>median<span class="ansi-bright-black-fg">):    </span>0.00%
- Time  <span class="ansi-bright-black-fg">(</span><span class="ansi-green-fg ansi-bold">mean</span> ± <span class="ansi-green-fg">σ</span><span class="ansi-bright-black-fg">):   </span><span class="ansi-green-fg ansi-bold">102.636 μs</span> ± <span class="ansi-green-fg"> 58.756 μs</span>  <span class="ansi-bright-black-fg">┊</span> GC <span class="ansi-bright-black-fg">(</span>mean ± σ<span class="ansi-bright-black-fg">):  </span>5.13% ±  9.28%
-   ▂ █<span class="ansi-blue-fg"> </span>   <span class="ansi-green-fg"> </span>                                                      
-  ▆█▅█<span class="ansi-blue-fg">▇</span>▅▅▄<span class="ansi-green-fg">▄</span>▄▄▄▃▃▃▃▃▃▃▃▃▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▁▁▂▂▂▂▂▂▂▂▂▂▂▂▂▂ ▃
-  58.2 μs<span class="ansi-bright-black-fg">          Histogram: frequency by time</span>          386 μs <span class="ansi-bold">&lt;</span>
- Memory estimate<span class="ansi-bright-black-fg">: </span><span class="ansi-yellow-fg">781.30 KiB</span>, allocs estimate<span class="ansi-bright-black-fg">: </span><span class="ansi-yellow-fg">2</span>.</pre>
-</div>
-</div>
-</div>
-<p>This means that in Julia it is usual to <em>define a function using a scalar type</em> (a Number like Float64/Int or a String) <em>and then use broadcast</em> to apply the function to vectors/matrices/etc. No need to create vectorized forms of functions anymore!</p>
-</section>
-<section id="the-compiler-is-your-friend" class="level2">
-<h2 class="anchored" data-anchor-id="the-compiler-is-your-friend">The compiler is your friend</h2>
-<p>Sometimes you write code that won’t make your parents proud. Suppose you create a function that sums all the numbers from 1 to a given <code>n</code>:</p>
-<div id="3442d4e1" class="cell" data-execution_count="15">
-<div class="sourceCode cell-code" id="cb24" style="background: #f1f3f5;"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb24-1"><span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">function</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">f_sum</span>(n)</span>
-<span id="cb24-2">    s <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> <span class="fl" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">0</span></span>
-<span id="cb24-3">    <span class="cf" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">for</span> i <span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">in</span> <span class="fl" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">1</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">:</span>n</span>
-<span id="cb24-4">        s <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">+=</span> i</span>
-<span id="cb24-5">    <span class="cf" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">end</span></span>
-<span id="cb24-6"></span>
-<span id="cb24-7">    s</span>
-<span id="cb24-8"><span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">end</span>;</span></code></pre></div>
-</div>
-<p>In R, the language will obediently execute each iteration of the loop, as you demanded, and it will take forever. You are the boss.</p>
-<p>But in Julia, we have this curious phenomena:</p>
-<div id="70457541" class="cell" data-execution_count="16">
-<div class="sourceCode cell-code" id="cb25" style="background: #f1f3f5;"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb25-1"><span class="pp" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">@time</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">f_sum</span>(<span class="fl" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">100</span>)</span></code></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>  0.000002 seconds</code></pre>
-</div>
-<div class="cell-output cell-output-display" data-execution_count="14">
-<pre><code>5050</code></pre>
-</div>
-</div>
-<div id="5416ff7d" class="cell" data-execution_count="17">
-<div class="sourceCode cell-code" id="cb28" style="background: #f1f3f5;"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb28-1"><span class="pp" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">@time</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">f_sum</span>(<span class="fl" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">100_000</span>)</span></code></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>  0.000002 seconds</code></pre>
-</div>
-<div class="cell-output cell-output-display" data-execution_count="15">
-<pre><code>5000050000</code></pre>
-</div>
-</div>
-<div id="7340a20f" class="cell" data-execution_count="18">
-<div class="sourceCode cell-code" id="cb31" style="background: #f1f3f5;"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb31-1"><span class="pp" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">@time</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">f_sum</span>(<span class="fl" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">100_000_000</span>)</span></code></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>  0.000001 seconds</code></pre>
-</div>
-<div class="cell-output cell-output-display" data-execution_count="16">
-<pre><code>5000000050000000</code></pre>
-</div>
-</div>
-<p>How is it possible that it took the same time to run 100 iterations and 100 million iterations? The magic is the compiler: it understood that what you are doing is the sum of the terms of an <a href="https://en.wikipedia.org/wiki/Arithmetic_progression">arithmetic progression</a>. The legend says that Gauss deduced the formula for its sum, and the compiler did the same for you. No need to be as smart as Gauss while using Julia.</p>
-<p>Julia is a <a href="https://docs.julialang.org/en/v1/#man-julia-compared-other-languages">just-in-time (JIT) compiled language</a>, which means that each function is compiled when you first execute it. The “time to first compile” was a problem in the past, but from Julia 1.8 onwards it is not a big deal. The compiler is your friend, and almost always you can trust him.</p>
-</section>
-<section id="multiple-dispatch-and-type-system" class="level2">
-<h2 class="anchored" data-anchor-id="multiple-dispatch-and-type-system">Multiple dispatch and type system</h2>
-<p>A type system is a way to organize data types within an hierarchy. Think of it as mathematical sets: you have the real numbers, and inside it are the rationals, the integers, the naturals, etc. Each one of these types store data into memory in a different manner (integers can be stored more efficiently than arbitrary real numbers, for example). Julia has a really nice <a href="https://docs.julialang.org/en/v1/manual/types/">type system</a>. Let’s see some examples to better understand it.</p>
-<p>Consider the <code>print</code> function in R. It is a <em>generic</em> function, which means that its behaviour depends on the class/type of its first argument. This can be seen when we look to its misterious source code:</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="https://vituri.github.io/blog/posts/julia-for-r-users/images/print-code.png" class="img-fluid figure-img"></p>
-<figcaption>The <code>print</code> function sourcecode.</figcaption>
-</figure>
-</div>
-<p>which means that <code>print</code> will use several <code>methods</code> (implementations/pieces-of-code), one for each class/type. Actually, R just creates a different function for each class, with the pattern <code>{function}.{class}</code>:</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="https://vituri.github.io/blog/posts/julia-for-r-users/images/print-methods.png" class="img-fluid figure-img"></p>
-<figcaption>Each method/implementation of the generic function <code>print</code>.</figcaption>
-</figure>
-</div>
-<p>In Julia, <em>every function is generic</em>. We can use the same function name and define different behaviours/implementations for each combination of classes/types of its arguments. We saw above the implementation of the <code>maximum</code> function in Julia for an arbitrary vector of numbers. But what if the vector is of a different kind, for which it is easier to determine its maximum?</p>
-<p>Take, for example, the object</p>
-<div id="0b82abd7" class="cell" data-execution_count="19">
-<div class="sourceCode cell-code" id="cb34" style="background: #f1f3f5;"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb34-1">x <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> <span class="fl" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">1</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">:</span><span class="fl" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">10</span></span></code></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="17">
-<pre><code>1:10</code></pre>
-</div>
-</div>
-<p>It is <em>not</em> a vector (to create a usual vector from 1 to 10, you type <code>[1:10;]</code>). Actually, its type is</p>
-<div id="2d4024f6" class="cell" data-execution_count="20">
-<div class="sourceCode cell-code" id="cb36" style="background: #f1f3f5;"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb36-1"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">typeof</span>(x)</span></code></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="18">
-<pre><code>UnitRange{Int64}</code></pre>
-</div>
-</div>
-<p>and its type hierarchy is</p>
-<div id="9c1b24aa" class="cell" data-execution_count="21">
-<div class="sourceCode cell-code" id="cb38" style="background: #f1f3f5;"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb38-1"><span class="bu" style="color: null;
-background-color: null;
-font-style: inherit;">Base</span>.<span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">show_supertypes</span>(<span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">typeof</span>(x))</span></code></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>UnitRange{Int64} &lt;: AbstractUnitRange{Int64} &lt;: OrdinalRange{Int64, Int64} &lt;: AbstractRange{Int64} &lt;: AbstractVector{Int64} &lt;: Any</code></pre>
-</div>
-</div>
-<p>So <code>x</code> is a much simpler object than a vector: it is an increasing sequence of integer numbers, each 1 unity bigger than the previous one. It makes sense then that the <code>maximum</code> function can be defined much more simpler for an object of type <code>UnitRange{Int64}</code>: the biggest element is always the last.</p>
-<p>If you look at the sourcecode</p>
-<div id="58a09f33" class="cell" data-execution_count="22">
-<div class="sourceCode cell-code" id="cb40" style="background: #f1f3f5;"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb40-1"><span class="pp" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">@edit</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">maximum</span>(<span class="fl" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">1</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">:</span><span class="fl" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">10</span>)</span></code></pre></div>
-</div>
-<p>you will get</p>
-<div id="fd7bb752" class="cell" data-execution_count="23">
-<div class="sourceCode cell-code" id="cb41" style="background: #f1f3f5;"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb41-1"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">maximum</span>(r<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">::</span><span class="dt" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">AbstractUnitRange</span>) <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">isempty</span>(r) ? <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">throw</span>(<span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">ArgumentError</span>(<span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"range must be non-empty"</span>)) <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">:</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">last</span>(r)</span></code></pre></div>
-</div>
-<p>which is exactly what we thought:</p>
-<blockquote class="blockquote">
-<p>is the range non-empty? Then take de last element; otherwise, an error.</p>
-</blockquote>
-<p>The function <code>last</code> is defined for every children of type <code>AbstractUnitRange</code>, and so <code>maximum</code> is well defined.</p>
-<p>In summary: Julia has an arbitrary <code>maximum</code> function for arbitrary vectors, but has specialized methods for some other specific types. This is a common pattern in Julia, and much of its performance depends on this.</p>
-</section>
-<section id="macros-rewrite-code-without-typing" class="level2">
-<h2 class="anchored" data-anchor-id="macros-rewrite-code-without-typing">Macros rewrite code without typing</h2>
-<p><a href="https://docs.julialang.org/en/v1/manual/metaprogramming/">Macros</a> are one of the most powerful tools in Julia. They rewrite your code before executing it: it is a metaprogramming technique. When creating macros, you will have to understand how a bunch of characters are interpreted by the language and executed as code. This means that macros can rewrite pieces of code and add functionalities that are not possible simply with functions.</p>
-<p>We already used some macros on this notebook; they all start with the <code>@</code> symbol.</p>
-<p>How much time does it take to calculate the sin of a million numbers?</p>
-<div id="b7b359c8" class="cell" data-execution_count="24">
-<div class="sourceCode cell-code" id="cb42" style="background: #f1f3f5;"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb42-1"><span class="pp" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">@time</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">sin</span>.(<span class="fl" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">1</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">:</span><span class="fl" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">1_000_000</span>);</span></code></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>  0.030940 seconds (2 allocations: 7.629 MiB, 40.95% gc time)</code></pre>
-</div>
-</div>
-<p>Do you have a loop and want to see a progress bar? No need to change the code inside the loop:</p>
-<div id="870b826f" class="cell" data-execution_count="25">
-<div class="sourceCode cell-code" id="cb44" style="background: #f1f3f5;"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb44-1"><span class="im" style="color: #00769E;
-background-color: null;
-font-style: inherit;">using</span> <span class="bu" style="color: null;
-background-color: null;
-font-style: inherit;">ProgressMeter;</span></span>
-<span id="cb44-2"></span>
-<span id="cb44-3"><span class="pp" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">@showprogress</span> <span class="cf" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">for</span> i <span class="kw" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">in</span> <span class="fl" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">1</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">:</span><span class="fl" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">10</span></span>
-<span id="cb44-4">    <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">sleep</span>(<span class="fl" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">0.1</span>)</span>
-<span id="cb44-5"><span class="cf" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">end</span></span></code></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Progress:  20%|████████▎                                |  ETA: 0:00:08Progress: 100%|█████████████████████████████████████████| Time: 0:00:03</code></pre>
-</div>
-</div>
-<p>As we’ve seen, even the tidyverse could be recreated in Julia using macros!</p>
-</section>
-<section id="multithreading-is-trivial" class="level2">
-<h2 class="anchored" data-anchor-id="multithreading-is-trivial">Multithreading is trivial</h2>
-<p><a href="https://docs.julialang.org/en/v1/manual/multi-threading/">Multithreading</a> (or parallel computing) is when your code uses more than one processor at the same time. Multithreading in R is a bit complicated and actually create copies of the R process that comunicates with the main process. There is a <a href="https://www.futureverse.org/packages-overview.html"><code>futureverse</code></a> to deal with that in R, and plans like <code>callr</code> or <code>multisession</code> to define how these extra R sessions will be created and mantained.</p>
-<p>In Julia, multithreading is as easy as appending a macro before a loop:</p>
-<div id="b08ab87d" class="cell" data-execution_count="26">
-<div class="sourceCode cell-code" id="cb46" style="background: #f1f3f5;"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb46-1"><span class="bu" style="color: null;
-background-color: null;
-font-style: inherit;">Threads</span>.<span class="pp" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">@threads</span> <span class="cf" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">for</span> i <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> <span class="fl" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">1</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">:</span><span class="fl" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">10</span></span>
-<span id="cb46-2">    a[i] <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> <span class="bu" style="color: null;
-background-color: null;
-font-style: inherit;">Threads</span>.<span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">threadid</span>()</span>
-<span id="cb46-3"><span class="cf" style="color: #003B4F;
-background-color: null;
-font-weight: bold;
-font-style: inherit;">end</span></span></code></pre></div>
-</div>
-<p>If you want a multithread version of <code>map</code> and <code>reduce</code> and so on, check <a href="https://github.com/tkf/ThreadsX.jl">ThreadsX.jl</a>.</p>
-<p>Multithread is recommended when you: - have some spare RAM; - have more than 1 processor; - want to apply some function on a list of things that take some time idling (for example, waiting for an API return something) or are not RAM-heavy (calculating small distance matrices).</p>
-<p>My tipical use case is when I have a large dataframe and want to apply a function to several parts of it, based on a grouping variable. I split the dataframe into a vector of dataframes (with <code>groupby</code> and <code>collect</code>) and then apply the function in parallel.</p>
-<p>Another use is the following: suppose you want to create an API to serve 5 simultaneous users requesting data all day. In R you will use <a href="https://www.rplumber.io/"><code>plumber</code></a> and make lots of <code>future_promise</code> calls. In Julia, just use <a href="https://oxygenframework.github.io/Oxygen.jl/stable/#Multithreading-and-Parallelism"><code>Oxygen.jl</code></a> without any need to change your code: the requests are made in parallel.</p>
-</section>
-<section id="packages-are-a-joy-to-use" class="level2">
-<h2 class="anchored" data-anchor-id="packages-are-a-joy-to-use">Packages are a joy to use</h2>
-<p>In R, you have 2 options to call a function from another package:</p>
-<ul>
-<li>use <code>library(PACKAGE)</code>, which imports <em>every</em> function from PACKAGE to your namespace;</li>
-<li>use <code>PACKAGE::FUNCTION</code> every time you want to use a function.</li>
-</ul>
-<p>Packages like <a href="https://klmr.me/box/"><code>box</code></a> are a more “Pythonesque” approach to importing libraries, and allow to import just some parts of a package.</p>
-<p>In Julia, a package is just a module, and you have:</p>
-<ul>
-<li><code>using PACKAGE</code> is analogous to R <code>library(PACKAGE)</code>;</li>
-<li><code>import PACKAGE</code> and then <code>PACKAGE.FUNCTION</code> in every call;</li>
-<li><code>using PACKAGE: FUNCTION1, FUNCTION2</code> will import only these 2 functions from PACKAGE.</li>
-</ul>
-<p>The best part, however, is the ability to create modules inside modules. For example, if you have a mega package to do all your data analysis in your work, you can have a module about Reports, another one with APIs and so on. Importing then can be done with</p>
-<div id="2a4da6c2" class="cell" data-execution_count="27">
-<div class="sourceCode cell-code" id="cb47" style="background: #f1f3f5;"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb47-1"><span class="im" style="color: #00769E;
-background-color: null;
-font-style: inherit;">using</span> <span class="bu" style="color: null;
-background-color: null;
-font-style: inherit;">MyPackage.Reports</span></span>
-<span id="cb47-2"></span>
-<span id="cb47-3"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># or</span></span>
-<span id="cb47-4"><span class="im" style="color: #00769E;
-background-color: null;
-font-style: inherit;">import</span> <span class="bu" style="color: null;
-background-color: null;
-font-style: inherit;">MyPackage.APIs</span> as API</span>
-<span id="cb47-5"></span>
-<span id="cb47-6">MD.<span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">api1</span>()</span></code></pre></div>
-</div>
-<p>This approach resembles a little the idea of namespaces in <a href="https://mastering-shiny.org/scaling-modules.html">shiny modules</a>, and using <code>box</code> is how the <a href="https://appsilon.github.io/rhino/articles/explanation/box-modules.html"><code>rhino</code></a> emulate the “module inside module” thing.</p>
-</section>
-<section id="math-symbols-for-the-math-enthusiasts" class="level2">
-<h2 class="anchored" data-anchor-id="math-symbols-for-the-math-enthusiasts">Math symbols for the math enthusiasts</h2>
-<p>Examples of correct Julia code:</p>
-<div id="5c71436d" class="cell" data-execution_count="28">
-<div class="sourceCode cell-code" id="cb48" style="background: #f1f3f5;"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb48-1">[<span class="fl" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">1</span>, <span class="fl" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">2</span>] <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">∩</span> [<span class="fl" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">2</span>, <span class="fl" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">3</span>]</span></code></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="22">
-<pre><code>1-element Vector{Int64}:
- 2</code></pre>
-</div>
-</div>
-<div id="7947fc51" class="cell" data-execution_count="29">
-<div class="sourceCode cell-code" id="cb50" style="background: #f1f3f5;"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb50-1"><span class="fl" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">2</span> <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">∈</span> [<span class="fl" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">2</span>, <span class="fl" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">3</span>]</span></code></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="23">
-<pre><code>true</code></pre>
-</div>
-</div>
-<div id="7726fbb1" class="cell" data-execution_count="30">
-<div class="sourceCode cell-code" id="cb52" style="background: #f1f3f5;"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb52-1"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">f</span>(r) <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> <span class="cn" style="color: #8f5902;
-background-color: null;
-font-style: inherit;">π</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">*</span>r<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">^</span><span class="fl" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">2</span></span>
-<span id="cb52-2"></span>
-<span id="cb52-3"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">f</span>(<span class="fl" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">3</span>)</span></code></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="24">
-<pre><code>28.274333882308138</code></pre>
-</div>
-</div>
-<div id="d220a460" class="cell" data-execution_count="31">
-<div class="sourceCode cell-code" id="cb54" style="background: #f1f3f5;"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb54-1"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># Euler's identity</span></span>
-<span id="cb54-2"><span class="cn" style="color: #8f5902;
-background-color: null;
-font-style: inherit;">ℯ</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">^</span>(<span class="cn" style="color: #8f5902;
-background-color: null;
-font-style: inherit;">im</span> <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">*</span> <span class="cn" style="color: #8f5902;
-background-color: null;
-font-style: inherit;">π</span>) <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">+</span> <span class="fl" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">1</span> <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">|&gt;</span> round</span></code></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="25">
-<pre><code>0.0 + 0.0im</code></pre>
-</div>
-</div>
-<hr>
-<p>If I convinced you or sparked just a little interest, you can start your own journey in Julialand with the suggested steps:</p>
-<ol type="1">
-<li><a href="https://modernjuliaworkflows.org">Modern Julia Workflows</a>: install Julia, setup your IDE and learn the basics of how to run code.</li>
-<li><a href="https://docs.julialang.org/en/v1/manual/getting-started/">The Julia docs</a> are excellent: need to understand more about <a href="https://docs.julialang.org/en/v1/manual/variables/">variables</a>? What about the <a href="https://docs.julialang.org/en/v1/manual/functions/">scope of functions</a>? <a href="https://docs.julialang.org/en/v1/manual/types/">Types</a> is certainly worth a read!</li>
-<li><a href="https://benlauwens.github.io/ThinkJulia.jl/latest/book.html">Think Julia</a>, by Be Lauwens and Allen Doeney: similar to Think Python, but better!</li>
-<li>Questions? Go to the <a href="https://discourse.julialang.org/">Julia Discourse</a>.</li>
-<li>For a list of really nice packages, see <a href="https://gensjulia.pages.dev/data-science/#general-purpose">this repo</a>.</li>
-</ol>
-<p>Have a good trip!</p>
+      </div> <!-- /container-fluid -->
+    </nav>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Symbolic Regression in Julia</li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <h1 class="title">Symbolic Regression in Julia</h1>
+                                <div class="quarto-categories">
+                <div class="quarto-category">julia</div>
+                <div class="quarto-category">ML</div>
+              </div>
+                  </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta">
 
-
-</section>
-</section>
-
-
-<div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
-
-<ol>
-<li id="fn1"><p>or <a href="https://pt.wikipedia.org/wiki/Gambiarra">gambiarras</a>, in Brasileirês↩︎</p></li>
-</ol>
-</section></div> ]]></description>
-  <category>julia</category>
-  <category>r</category>
-  <guid>https://vituri.github.io/blog/posts/julia-for-r-users/julia-for-r-users.html</guid>
-  <pubDate>Mon, 03 Feb 2025 03:00:00 GMT</pubDate>
-</item>
-<item>
-  <title>Symbolic Regression in Julia</title>
-  <link>https://vituri.github.io/blog/posts/symbolic-regression/symbolic-regression.html</link>
-  <description><![CDATA[ 
+      
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">March 14, 2024</p>
+      </div>
+    </div>
+    
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active" data-toc-expanded="99">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#what-is-it" id="toc-what-is-it" class="nav-link active" data-scroll-target="#what-is-it">What is it?</a></li>
+  <li><a href="#example-1" id="toc-example-1" class="nav-link" data-scroll-target="#example-1">Example 1</a></li>
+  <li><a href="#example-2" id="toc-example-2" class="nav-link" data-scroll-target="#example-2">Example 2</a></li>
+  <li><a href="#example-3" id="toc-example-3" class="nav-link" data-scroll-target="#example-3">Example 3</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content quarto-banner-title-block" id="quarto-document-content">
 
 
 
 
 
-<p><img src="https://vituri.github.io/blog/posts/symbolic-regression/cover.png" class="img-fluid"></p>
+<p><img src="cover.png" class="img-fluid"></p>
 <section id="what-is-it" class="level2">
 <h2 class="anchored" data-anchor-id="what-is-it">What is it?</h2>
-<p>A linear regression finds the line that is “closest” to a dataset. In a similar maner, a symbolic regression is an algorithm that find a combination of symbols that minimizes the mean square error of a given dataset. These symbols are unary and binary operators like the + symbol or a function like <img src="https://latex.codecogs.com/png.latex?cos"> and <img src="https://latex.codecogs.com/png.latex?1/x">.</p>
+<p>A linear regression finds the line that is “closest” to a dataset. In a similar maner, a symbolic regression is an algorithm that find a combination of symbols that minimizes the mean square error of a given dataset. These symbols are unary and binary operators like the + symbol or a function like <span class="math inline">\(cos\)</span> and <span class="math inline">\(1/x\)</span>.</p>
 </section>
 <section id="example-1" class="level2">
 <h2 class="anchored" data-anchor-id="example-1">Example 1</h2>
-<p>Let’s try to approximate the function <img src="https://latex.codecogs.com/png.latex?f(x)%20=%20-%20x%5E2%20+%201"> using the symbols and <img src="https://latex.codecogs.com/png.latex?+,%20-,%20*"> combined with the variable <img src="https://latex.codecogs.com/png.latex?x">.</p>
+<p>Let’s try to approximate the function <span class="math inline">\(f(x) = - x^2 + 1\)</span> using the symbols and <span class="math inline">\(+, -, *\)</span> combined with the variable <span class="math inline">\(x\)</span>.</p>
 <div id="6e277d71" class="cell" data-execution_count="1">
-<div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb1-1"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># import Pkg; </span></span>
-<span id="cb1-2"><span class="co" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;"># Pkg.add(["SymbolicRegression", "MLJ", "SymbolicUtils", "Plots"])</span></span></code></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># import Pkg; </span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Pkg.add(["SymbolicRegression", "MLJ", "SymbolicUtils", "Plots"])</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div id="356bd3b5" class="cell" data-execution_count="2">
-<div class="sourceCode cell-code" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb2-1"><span class="im" style="color: #00769E;
-background-color: null;
-font-style: inherit;">using</span> <span class="bu" style="color: null;
-background-color: null;
-font-style: inherit;">SymbolicRegression</span>, <span class="bu" style="color: null;
-background-color: null;
-font-style: inherit;">MLJ</span>, <span class="bu" style="color: null;
-background-color: null;
-font-style: inherit;">SymbolicUtils</span></span>
-<span id="cb2-2"><span class="im" style="color: #00769E;
-background-color: null;
-font-style: inherit;">using</span> <span class="bu" style="color: null;
-background-color: null;
-font-style: inherit;">Plots</span></span>
-<span id="cb2-3"></span>
-<span id="cb2-4">x <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> [<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">-</span><span class="fl" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">3</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">:</span><span class="fl" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">0.1</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">:</span><span class="fl" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">3</span>;]</span>
-<span id="cb2-5">y <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> @. <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">-</span> x<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">^</span><span class="fl" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">2</span> <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">+</span> <span class="fl" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">1</span>;</span>
-<span id="cb2-6"></span>
-<span id="cb2-7"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">scatter</span>(x, y)</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">SymbolicRegression</span>, <span class="bu">MLJ</span>, <span class="bu">SymbolicUtils</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">Plots</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> [<span class="op">-</span><span class="fl">3</span><span class="op">:</span><span class="fl">0.1</span><span class="op">:</span><span class="fl">3</span>;]</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> @. <span class="op">-</span> x<span class="op">^</span><span class="fl">2</span> <span class="op">+</span> <span class="fl">1</span>;</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="fu">scatter</span>(x, y)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="3">
 <!--?xml version="1.0" encoding="utf-8"?-->
 <svg xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" width="672" height="480" viewbox="0 0 2688 1920">
@@ -1218,63 +382,25 @@ font-style: inherit;">scatter</span>(x, y)</span></code></pre></div>
 </div>
 <p>First we define a model</p>
 <div id="ba96a0f6" class="cell" data-execution_count="3">
-<div class="sourceCode cell-code" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb3-1">model <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">SRRegressor</span>(</span>
-<span id="cb3-2">    binary_operators<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span>[<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">+</span>, <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">-</span>, <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">*</span>],    </span>
-<span id="cb3-3">    niterations<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span><span class="fl" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">50</span>,</span>
-<span id="cb3-4">    seed <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> <span class="fl" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">1</span></span>
-<span id="cb3-5">);</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>model <span class="op">=</span> <span class="fu">SRRegressor</span>(</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    binary_operators<span class="op">=</span>[<span class="op">+</span>, <span class="op">-</span>, <span class="op">*</span>],    </span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    niterations<span class="op">=</span><span class="fl">50</span>,</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>    seed <span class="op">=</span> <span class="fl">1</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>);</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>(Note: the argument <code>seed = 1</code> is needed to ensure that the result is the same when this Quarto document compiles; you don’t need it.)</p>
 <p>And then fit it to our dataset</p>
 <div id="8d9bd9d4" class="cell" data-execution_count="4">
-<div class="sourceCode cell-code" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb4-1">X <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">reshape</span>(x, (<span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">length</span>(x), <span class="fl" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">1</span>))</span>
-<span id="cb4-2"></span>
-<span id="cb4-3">mach <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">machine</span>(model, X, y)</span>
-<span id="cb4-4"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">fit!</span>(mach)</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> <span class="fu">reshape</span>(x, (<span class="fu">length</span>(x), <span class="fl">1</span>))</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>mach <span class="op">=</span> <span class="fu">machine</span>(model, X, y)</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="fu">fit!</span>(mach)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>We can see a report about the results:</p>
 <div id="678fc538" class="cell" data-execution_count="5">
-<div class="sourceCode cell-code" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb5-1">r <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">report</span>(mach);</span>
-<span id="cb5-2"></span>
-<span id="cb5-3">r</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>r <span class="op">=</span> <span class="fu">report</span>(mach);</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>r</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="6">
 <pre><code>(best_idx = 2,
  equations = Expression{Float64, DynamicExpressions.NodeModule.Node{Float64}, @NamedTuple{operators::DynamicExpressions.OperatorEnumModule.OperatorEnum{Tuple{typeof(+), typeof(-), typeof(*)}, Tuple{}}, variable_names::Vector{String}}}[-2.100000021910389, 1.0 - (x1 * x1)],
@@ -1286,7 +412,7 @@ font-style: inherit;">report</span>(mach);</span>
 </div>
 <p>This report contains the losses</p>
 <div id="03cc3f13" class="cell" data-execution_count="6">
-<div class="sourceCode cell-code" id="cb7" style="background: #f1f3f5;"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb7-1">r.losses</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>r.losses</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="7">
 <pre><code>2-element Vector{Float64}:
  7.681799999999997
@@ -1295,7 +421,7 @@ font-style: inherit;">report</span>(mach);</span>
 </div>
 <p>the equations</p>
 <div id="70e9b318" class="cell" data-execution_count="7">
-<div class="sourceCode cell-code" id="cb9" style="background: #f1f3f5;"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb9-1">r.equations</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>r.equations</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="8">
 <pre><code>2-element Vector{Expression{Float64, DynamicExpressions.NodeModule.Node{Float64}, @NamedTuple{operators::DynamicExpressions.OperatorEnumModule.OperatorEnum{Tuple{typeof(+), typeof(-), typeof(*)}, Tuple{}}, variable_names::Vector{String}}}}:
  -2.100000021910389
@@ -1304,41 +430,21 @@ font-style: inherit;">report</span>(mach);</span>
 </div>
 <p>and the best one of the functions found (ie. the one with the least loss):</p>
 <div id="b2dc19d9" class="cell" data-execution_count="8">
-<div class="sourceCode cell-code" id="cb11" style="background: #f1f3f5;"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb11-1"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">node_to_symbolic</span>(r.equations[r.best_idx], model)</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">node_to_symbolic</span>(r.equations[r.best_idx], model)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="9">
 <pre><code>1.0 - (x1 * x1)</code></pre>
 </div>
 </div>
-<p>Here, we can read <img src="https://latex.codecogs.com/png.latex?x_1"> as <img src="https://latex.codecogs.com/png.latex?x">, because we only have one variable.</p>
-<p>Notice that this expression simplifies to our original <img src="https://latex.codecogs.com/png.latex?f">.</p>
+<p>Here, we can read <span class="math inline">\(x_1\)</span> as <span class="math inline">\(x\)</span>, because we only have one variable.</p>
+<p>Notice that this expression simplifies to our original <span class="math inline">\(f\)</span>.</p>
 </section>
 <section id="example-2" class="level2">
 <h2 class="anchored" data-anchor-id="example-2">Example 2</h2>
-<p>Now let’s get a more interesting example. Take <img src="https://latex.codecogs.com/png.latex?f(x)%20=%20x%5E2%20+%202cos(x)%5E2">:</p>
+<p>Now let’s get a more interesting example. Take <span class="math inline">\(f(x) = x^2 + 2cos(x)^2\)</span>:</p>
 <div id="ef0bc0d8" class="cell" data-execution_count="9">
-<div class="sourceCode cell-code" id="cb13" style="background: #f1f3f5;"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb13-1">y <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> @. x<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">^</span><span class="fl" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">2</span> <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">+</span> <span class="fl" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">2</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">cos</span>(x)<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">^</span><span class="fl" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">2</span> </span>
-<span id="cb13-2"></span>
-<span id="cb13-3"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">scatter</span>(x, y)</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> @. x<span class="op">^</span><span class="fl">2</span> <span class="op">+</span> <span class="fl">2</span><span class="fu">cos</span>(x)<span class="op">^</span><span class="fl">2</span> </span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="fu">scatter</span>(x, y)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="10">
 <!--?xml version="1.0" encoding="utf-8"?-->
 <svg xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" width="672" height="480" viewbox="0 0 2688 1920">
@@ -1454,127 +560,41 @@ font-style: inherit;">scatter</span>(x, y)</span></code></pre></div>
 </div>
 <p>We again create a model and fit it, but now we allow more operations: besides the earlier binary functions, we also have the unary <code>cos</code> function:</p>
 <div id="d25936fc" class="cell" data-execution_count="10">
-<div class="sourceCode cell-code" id="cb14" style="background: #f1f3f5;"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb14-1">model <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">SRRegressor</span>(</span>
-<span id="cb14-2">    binary_operators <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> [<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">+</span>, <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">-</span>, <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">*</span>],    </span>
-<span id="cb14-3">    unary_operators <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> [cos],</span>
-<span id="cb14-4">    niterations<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span><span class="fl" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">50</span>,</span>
-<span id="cb14-5">    seed <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> <span class="fl" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">1</span></span>
-<span id="cb14-6">);</span>
-<span id="cb14-7"></span>
-<span id="cb14-8">mach <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">machine</span>(model, X, y)</span>
-<span id="cb14-9"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">fit!</span>(mach)</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>model <span class="op">=</span> <span class="fu">SRRegressor</span>(</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>    binary_operators <span class="op">=</span> [<span class="op">+</span>, <span class="op">-</span>, <span class="op">*</span>],    </span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>    unary_operators <span class="op">=</span> [cos],</span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>    niterations<span class="op">=</span><span class="fl">50</span>,</span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>    seed <span class="op">=</span> <span class="fl">1</span></span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>);</span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>mach <span class="op">=</span> <span class="fu">machine</span>(model, X, y)</span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a><span class="fu">fit!</span>(mach)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>and see the best equation:</p>
 <div id="a019595d" class="cell" data-execution_count="11">
-<div class="sourceCode cell-code" id="cb15" style="background: #f1f3f5;"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb15-1">r <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">report</span>(mach)</span>
-<span id="cb15-2"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">node_to_symbolic</span>(r.equations[r.best_idx], model)</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>r <span class="op">=</span> <span class="fu">report</span>(mach)</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="fu">node_to_symbolic</span>(r.equations[r.best_idx], model)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="12">
 <pre><code>(x1 * x1) + ((cos(cos(x1 * (x1 * -1.6091339136968086))) * 2.8155375166732943e-16) + (cos(x1 + x1) - -0.9999999999999998))</code></pre>
 </div>
 </div>
 <p>So, we got</p>
-<p><img src="https://latex.codecogs.com/png.latex?%0Ax%20*%20x%20+%20cos(x%20+%20x)%20-%20(-1)%20=%20x%5E2%20+%20cos(2x)%20+%201%0A"></p>
-<p>Since <img src="https://latex.codecogs.com/png.latex?cos(2x)%20+%201%20=%202cos%5E2(x)">, we retrieve the original function.</p>
+<p><span class="math display">\[
+x * x + cos(x + x) - (-1) = x^2 + cos(2x) + 1
+\]</span></p>
+<p>Since <span class="math inline">\(cos(2x) + 1 = 2cos^2(x)\)</span>, we retrieve the original function.</p>
 </section>
 <section id="example-3" class="level2">
 <h2 class="anchored" data-anchor-id="example-3">Example 3</h2>
 <p>Even after adding some noise to the original dataset, the symbolic regression still can find a very good approximation:</p>
-<p>Take <img src="https://latex.codecogs.com/png.latex?f(x)%20=%200.3%20*%20x%5E3%20-%20x%5E2%20+%202cos(x)%20+%20%5Cepsilon(x)"> where <img src="https://latex.codecogs.com/png.latex?%5Cepsilon(x)"> is a random uniform error (varying in <img src="https://latex.codecogs.com/png.latex?%5B0,%201%5D">) like this:</p>
+<p>Take <span class="math inline">\(f(x) = 0.3 * x^3 - x^2 + 2cos(x) + \epsilon(x)\)</span> where <span class="math inline">\(\epsilon(x)\)</span> is a random uniform error (varying in <span class="math inline">\([0, 1]\)</span>) like this:</p>
 <div id="33846dbe" class="cell" data-execution_count="12">
-<div class="sourceCode cell-code" id="cb17" style="background: #f1f3f5;"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb17-1">x <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> [<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">-</span><span class="fl" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">5</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">:</span><span class="fl" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">0.1</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">:</span><span class="fl" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">5</span>;]</span>
-<span id="cb17-2">X <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">reshape</span>(x, (<span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">length</span>(x), <span class="fl" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">1</span>))</span>
-<span id="cb17-3">errors <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">rand</span>(<span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">length</span>(x))</span>
-<span id="cb17-4">y <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> @. <span class="fl" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">0.3</span><span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">*</span>x<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">^</span><span class="fl" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">3</span> <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">-</span> x<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">^</span><span class="fl" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">2</span> <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">+</span> <span class="fl" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">2</span><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">cos</span>(x) <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">+</span> errors</span>
-<span id="cb17-5"></span>
-<span id="cb17-6"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">scatter</span>(x, y)</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> [<span class="op">-</span><span class="fl">5</span><span class="op">:</span><span class="fl">0.1</span><span class="op">:</span><span class="fl">5</span>;]</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> <span class="fu">reshape</span>(x, (<span class="fu">length</span>(x), <span class="fl">1</span>))</span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>errors <span class="op">=</span> <span class="fu">rand</span>(<span class="fu">length</span>(x))</span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> @. <span class="fl">0.3</span><span class="op">*</span>x<span class="op">^</span><span class="fl">3</span> <span class="op">-</span> x<span class="op">^</span><span class="fl">2</span> <span class="op">+</span> <span class="fl">2</span><span class="fu">cos</span>(x) <span class="op">+</span> errors</span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a><span class="fu">scatter</span>(x, y)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="13">
 <!--?xml version="1.0" encoding="utf-8"?-->
 <svg xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" width="672" height="480" viewbox="0 0 2688 1920">
@@ -1723,76 +743,30 @@ font-style: inherit;">scatter</span>(x, y)</span></code></pre></div>
 </div>
 </div>
 <div id="aa7190d0" class="cell" data-execution_count="13">
-<div class="sourceCode cell-code" id="cb18" style="background: #f1f3f5;"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb18-1">model <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">SRRegressor</span>(</span>
-<span id="cb18-2">    binary_operators <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> [<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">+</span>, <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">-</span>, <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">*</span>],    </span>
-<span id="cb18-3">    unary_operators <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> [cos],</span>
-<span id="cb18-4">    niterations<span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span><span class="fl" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">60</span>,</span>
-<span id="cb18-5">    seed <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> <span class="fl" style="color: #AD0000;
-background-color: null;
-font-style: inherit;">1</span></span>
-<span id="cb18-6">);</span>
-<span id="cb18-7"></span>
-<span id="cb18-8">mach <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">machine</span>(model, X, y)</span>
-<span id="cb18-9"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">fit!</span>(mach)</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>model <span class="op">=</span> <span class="fu">SRRegressor</span>(</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>    binary_operators <span class="op">=</span> [<span class="op">+</span>, <span class="op">-</span>, <span class="op">*</span>],    </span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>    unary_operators <span class="op">=</span> [cos],</span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>    niterations<span class="op">=</span><span class="fl">60</span>,</span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>    seed <span class="op">=</span> <span class="fl">1</span></span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>);</span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a>mach <span class="op">=</span> <span class="fu">machine</span>(model, X, y)</span>
+<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a><span class="fu">fit!</span>(mach)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>and see the best equation:</p>
 <div id="bd0dc4b4" class="cell" data-execution_count="14">
-<div class="sourceCode cell-code" id="cb19" style="background: #f1f3f5;"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb19-1">r <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">report</span>(mach)</span>
-<span id="cb19-2"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">node_to_symbolic</span>(r.equations[r.best_idx], model)</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>r <span class="op">=</span> <span class="fu">report</span>(mach)</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="fu">node_to_symbolic</span>(r.equations[r.best_idx], model)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="15">
 <pre><code>(((-1.0010142242423987 - (x1 * -0.300544547485655)) * (x1 * x1)) + 0.4912169009541896) + (cos(x1) * 1.9796250803644289)</code></pre>
 </div>
 </div>
 <p>We can plot the prediction and the original dataset to compare them:</p>
 <div id="ca260698" class="cell" data-execution_count="15">
-<div class="sourceCode cell-code" id="cb21" style="background: #f1f3f5;"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb21-1">y_pred <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> <span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">predict</span>(mach, X)</span>
-<span id="cb21-2"> </span>
-<span id="cb21-3"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">scatter</span>(x, y);</span>
-<span id="cb21-4"><span class="fu" style="color: #4758AB;
-background-color: null;
-font-style: inherit;">scatter!</span>(x, y_pred, color <span class="op" style="color: #5E5E5E;
-background-color: null;
-font-style: inherit;">=</span> <span class="st" style="color: #20794D;
-background-color: null;
-font-style: inherit;">"red"</span>)</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>y_pred <span class="op">=</span> <span class="fu">predict</span>(mach, X)</span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a><span class="fu">scatter</span>(x, y);</span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a><span class="fu">scatter!</span>(x, y_pred, color <span class="op">=</span> <span class="st">"red"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="16">
 <!--?xml version="1.0" encoding="utf-8"?-->
 <svg xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" width="672" height="480" viewbox="0 0 2688 1920">
@@ -2048,252 +1022,476 @@ font-style: inherit;">"red"</span>)</span></code></pre></div>
 
 </section>
 
- ]]></description>
-  <category>julia</category>
-  <category>ML</category>
-  <guid>https://vituri.github.io/blog/posts/symbolic-regression/symbolic-regression.html</guid>
-  <pubDate>Thu, 14 Mar 2024 03:00:00 GMT</pubDate>
-</item>
-<item>
-  <title>Sobre a felicidade presente e a felicidade futura</title>
-  <link>https://vituri.github.io/blog/posts/felicidade-imaginada/felicidade-imaginada.html</link>
-  <description><![CDATA[ 
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp("https:\/\/vituri\.github\.io\/blog");
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<input type="hidden" id="giscus-base-theme" value="light">
+<input type="hidden" id="giscus-alt-theme" value="dark">
+<script>
+function loadGiscusWhenReady() {
+  // Function to get the theme based on body class
+  const getTheme = () => {
+    const baseTheme = document.getElementById('giscus-base-theme').value;
+    const altTheme = document.getElementById('giscus-alt-theme').value;
+    return document.body.classList.contains('quarto-dark') ? altTheme : baseTheme;
+  };
+  // Create the Giscus script and add it to the desired location
+  const loadGiscus = () => {
+    const script = document.createElement("script");
+    script.src = "https://giscus.app/client.js";
+    script.async = true;
+    script.dataset.repo = "vituri/blog";
+    script.dataset.repoId = "R_kgDOJ2KMjw";
+    script.dataset.category = "General";
+    script.dataset.categoryId = "DIC_kwDOJ2KMj84CcbOJ";
+    script.dataset.mapping = "pathname";
+    script.dataset.reactionsEnabled = "1";
+    script.dataset.emitMetadata = "0";
+    script.dataset.inputPosition = "top";
+    script.dataset.theme = getTheme();
+    script.dataset.lang = "en";
+    script.crossOrigin = "anonymous";
+    // Append the script to the desired div instead of at the end of the body
+    document.getElementById("quarto-content").appendChild(script);
+  };
+  // MutationObserver to detect when the 'quarto-light' or 'quarto-dark' class is added to the body
+  const observer = new MutationObserver((mutations) => {
+    for (const mutation of mutations) {
+      if (mutation.type === "attributes" && mutation.attributeName === "class") {
+        if (document.body.classList.contains('quarto-light') || document.body.classList.contains('quarto-dark')) {
+          loadGiscus();
+          observer.disconnect(); // Stop observing once Giscus is loaded
+          break;
+        }
+      }
+    }
+  });
+  // Start observing the body for class attribute changes
+  observer.observe(document.body, {
+    attributes: true,
+    attributeFilter: ["class"],
+  });
+}
+loadGiscusWhenReady();
+</script>
+</div> <!-- /content -->
 
 
 
 
-
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="https://vituri.github.io/blog/posts/felicidade-imaginada/comic.png" class="img-fluid figure-img"></p>
-<figcaption>A felicidade presente é sempre real, enquanto que a felicidade futura é uma aposta arriscada que poucas vezes cumpre as expectativas. Imagem tirada do excelente <a href="https://www.extrafabulouscomics.com/_1233">Extra Fabulous Comics.</a></figcaption>
-</figure>
-</div>
-<p>“Cândido, ou O Otimismo”, é um dos livros mais famosos da literatura universal. Neste conto filosófico, Voltaire narra com sua ironia peculiar as aventuras do ingênuo Cândido, que nasceu num palácio e se apaixonou pela bela Cunegundes. Lá também vivia o sábio Pangloss, que afirmava “estar demonstrado” que esse é o melhor dos mundos possíveis (ridicularizando Leibniz, o mesmo Leibniz do cálculo diferencial). Quando descobrem o romance de Cândido e Cunegundes, este é expulso do palácio e passa passa por várias aventuras e desgraças tentando reencontrar sua amada: é recrutado por búlgaros, sobrevive ao terremoto de Lisboa de 1755, vê Pangloss ser enforcado pela inquisição, foge pra América onde sem querer enfia uma espada no irmão de Cunegundes, é roubado, levado como escravo, mas por fim consegue reencontrar sua amada e casa-se com ela em Constantinopla onde vivem na pobreza.</p>
-<p>A última cena desse conto poderia ser um “e viveram felizes para sempre”, mas não é. Nela vemos um Cândido abatido, como que “morto por dentro”; Pangloss (que ainda estava vivo e vivendo com eles!) lhe diz:</p>
-<blockquote class="blockquote">
-<p>— Todos os acontecimentos — dizia às vezes Pangloss a Cândido — estão devidamente encadeados no melhor dos mundos possíveis; pois, afinal, se não tivesses sido expulso de um lindo castelo, a pontapés no traseiro, por amor da senhorita Cunegundes, se a Inquisição não te houvesse apanhado, se não tivesses percorrido a América a pé, se não tivesses mergulhado a espada no barão, se não tivesses perdido todos os teus carneiros da boa terra do Eldorado, não estarias aqui agora comendo doce de cidra e pistache.</p>
-</blockquote>
-<p>Ao que Cândido lhe responde, finalizando a história:</p>
-<blockquote class="blockquote">
-<p>— Tudo isso está muito bem dito — respondeu Cândido, — mas devemos cultivar nosso jardim.</p>
-</blockquote>
-<p>Imagino o pobre Cândido trabalhando à exaustão em seu jardim como um meio de esquecer a vida e apenas sobreviver, após tantos anos imaginando o quanto seria feliz ao reencontrar sua amada, que já não estava bela como antes e nem era tão amável quanto ele imaginava. Em sua última frase, Cândido mostra que as “vãs filosofias” não lhe interessam, e que é preciso trabalhar para viver. Como o Sísifo de Camus, é preciso imaginar Cândido feliz enquanto carregava sua pedra, isto é, enquanto fazia de tudo para reencontrar Cunegundes. Mas depois do encontro, o que lhe restou? A felicidade imaginada lhe pregou uma peça; o pêndulo de Schopenhauer é implacável.</p>
-<!-- Clóvis de Barros contou várias vezes a sua "história da pamonha": um dia, com fome, passou na frente de um lugar que vendia pamonha, e com a fome que tinha aquela acabou tornando-se a pamonha mais deliciosa que comeu na vida. Ao comer a pamonha, porém, ele já não era o mesmo homem de antes: a pamonha o transformara. Por isso, ao pedir a segunda pamonha, seu prazer já não foi o mesmo. Na terceira, já começava a se arrepender, e ansiava por um "curalzinho". -->
-<p>Voltaire deixa Cândido sozinho em seu jardim, com o peso da própria existência pairando em sua mente, num “zoom out” cruel. Não sabemos seu fim, nem o que se passa em sua cabeça: o retrato do Otimismo que precisou confrontar a realidade de um mundo “feito para nos dar raiva”, como dizia o cínico Martinho.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="https://vituri.github.io/blog/posts/felicidade-imaginada/capa.jpg" class="img-fluid figure-img"></p>
-<figcaption>Capa cabulosa da editora 34.</figcaption>
-</figure>
-</div>
-
-
-
- ]]></description>
-  <category>livros</category>
-  <category>vida</category>
-  <guid>https://vituri.github.io/blog/posts/felicidade-imaginada/felicidade-imaginada.html</guid>
-  <pubDate>Mon, 26 Feb 2024 03:00:00 GMT</pubDate>
-</item>
-<item>
-  <title>“História do futuro” e os limites da imaginação</title>
-  <link>https://vituri.github.io/blog/posts/future-history/future-history.html</link>
-  <description><![CDATA[ 
-
-
-
-
-
-<p>Se o melhor jeito de prever o futuro é inventá-lo, Olaf Stapledon foi um dos maiores inventores da literatura.</p>
-<p>Em 1930, Stapledon publicou “Last and First men”, um livro de “história do futuro” que conta a trajetória da humanidade desde a primeira guerra mundial até sua extinção em Netuno, 2 bilhões de anos no futuro, após uma supernova destruir o sistema Solar. Stapledon descreve em detalhes cada uma das 18 espécies pós-humanas: como elas mudaram de aparência física e perderam a inteligência; como, milhões de anos depois, redescobriram a ciência, modificaram a si mesmos com engenharia genética, chegando até a criar uma nova espécie artificial. Porém não é sobre esse livro que falarei hoje.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="https://vituri.github.io/blog/posts/future-history/last-and-first-men.jpg" class="img-fluid figure-img"></p>
-<figcaption>Ficção científica e suas capas cabulosas</figcaption>
-</figure>
-</div>
-<p>Em 1937 Stapledon publica “Star maker”, cujo enredo muito mais ambiciosa faz “Last and first men” parecer um minúsculo continho: narrar a história inteira do Universo e dos seres vivos. O livro começa de maneira inusitada quando um homem casado vai dar um passeio à noite perto de sua casa pensando sobre o amor, o casamento, a união das almas, o sentido da vida, quando de repente vira um ser incorpóreo e começa a boiar no espaço, vendo a Terra se afastando rapidamente.</p>
-<blockquote class="blockquote">
-<p>But now irrationally I was seized with a strange worship, not, surely of the star, that mere furnace which mere distance falsely sanctified, but of something other, which the dire contrast of the star and us signified to the heart. Yet what, what could thus be signified? Intellect, peering beyond the star, discovered no Star Maker, but only darkness; no Love, no Power even, but only Nothing. And yet the heart praised.</p>
-</blockquote>
-<p>Após um tempo indeterminado (dias? anos? milênios?) vivendo a sós com seus pensamentos, pensando que estava morto e preso numa espécie de limbo, o protagonista descobre como “voar” pelo espaço com a força do pensamento.</p>
-<blockquote class="blockquote">
-<p>The sun was now but one among the other bright stars. Nothing changed. Was I doomed to hang thus for ever out in space, a bodiless view-point? Had I died? Was this my punishment for a singularly ineffectual life? Was this the penalty of an inveterate will to remain detached from human affairs and passions and prejudices?</p>
-</blockquote>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="https://vituri.github.io/blog/posts/future-history/book cover.jpg" class="img-fluid figure-img"></p>
-<figcaption>A bolota mágica</figcaption>
-</figure>
-</div>
-<p>Crendo-se um “enviado das estrelas” e sem chance de encontrar a Terra no meio de bilhões de estrelas, ele resolve investigar um a um dos planetas que encontra.</p>
-<blockquote class="blockquote">
-<p>I now hurried from star to star, a lost dog looking for its master. I rushed hither and thither, intent on finding a sun with planets, and among those planets my home.</p>
-</blockquote>
-<p>Percebe então que as estrelas ficaram mais claras e brilhantes, e conclui que na verdade voltou alguns bilhões de anos no tempo. Após mais alguns milênios à deriva, descobre finalmente um planeta habitado por uma espécie inteligente.</p>
-<p>Stapledon descreve em detalhes como essa espécie se comunicava com cheiros, o sistema político, as guerras, as desigualdades sociais, etc. Por fim, o protagonista consegue conversar com um “filósofo” desse planeta, e ambos acabam se fundindo numa massa incorpórea e saem explorando o resto do Universo.</p>
-<p>O protagonista segue encontrando milhares de espécies: algumas se destruíram em guerras inúteis, outras se perderam por fenômenos naturais (supernovas, meteoros, fim da atmosfera). Suas formas são as mais variadas: simbioses entre pseudo-caranguejos e pseudo-golfinhos, “homens”-árvores, enxames de “abelhas” pensantes, hominídeos pequenos, caracois que nadavam por aí feito barcos, etc. Algumas conseguiram atingir um nível avançado através da inteligência e consciência coletiva feita por telepatia. Assim, os planetas se tornavam “um único ser consciente”, e essa consciência se espalhava para outros sistemas conforme a espécie avançava na exploração espacial.</p>
-<blockquote class="blockquote">
-<p>There was a moment, late in this early phase of our pilgrimage, when, thinking and feeling in unison, we said to one another, “If the Star Maker is Love, we know that this must be right. But if he is not, if he is some other, some inhuman spirit, this must be right. And if he is nothing, if the stars and all else are not his creatures but self-subsistent, and if the adored spirit is but an exquisite creature of our minds, then this must be right, this and no other possibility. For we cannot know whether the highest place for love is on the throne or on the cross. We cannot know what spirit rules, for on the throne sits darkness. We know, we have seen, that in the waste of stars love is indeed crucified; and rightly, for its own proving, and for the throne’s glory. Love and all that is humane we cherish in our hearts. Yet also we salute the throne and the darkness upon the throne. Whether it be Love or not Love, our hearts praise it, out-soaring reason.”</p>
-</blockquote>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="https://vituri.github.io/blog/posts/future-history/starmaker2.jpg" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
-</figure>
-</div>
-<p>O livro acompanha o protagonista em sua jornada por fundir-se a mais inteligências, a ascenção e queda de espécies, a tentativa de Utopia galática, a descoberta de que até as nebulosas são seres “vivos”.</p>
-<p>No clímax do livro, por uma fração minúscula de segundo, ele aparece: o criador de estrelas. O protagonista enxerga um clarão consumir o Universo inteiro, como se de repente todos os átomos do universo explodissem em luzes.</p>
-<blockquote class="blockquote">
-<p>It seemed to me that the Star, my Maker, must surely stoop to meet me and raise me and enfold me in his radiance. For it seemed to me that I, the spirit of so many worlds, the flower of so many ages, was the Church Cosmical, fit at last to be the bride of God. But instead I was blinded and seared and struck down by terrible light.</p>
-</blockquote>
-<blockquote class="blockquote">
-<p>I saw that the virtue of the creature was to love and to worship, but the virtue of the creator was to create, and to be the infinite, the unrealizable and incomprehensible goal of worshipping creatures.</p>
-</blockquote>
-<p>Ele enxerga como num filme rápido a morte térmica do Universo, quando o último ser vivo escondido no interior frio de um planeta se apaga pra sempre; enxerga o próprio fim de sua existência boiante num universo escuro, arrastado por um sono eterno.</p>
-<p>Ele enxerga também o Universo como se fosse visto de fora, do ponto de vista do criador, do Starmaker. Percebe que existem milhares de universos, e que eles são como brinquedos nas mãos de um ser infinitamente poderoso. O criador-de-estrelas cria universos para explorar seus próprios poderes: o primeiro universo só possuía uma dimensão, e seus seres eram como ondas sonoras; depois disso, existiu um universo bidimensional; depois, o nosso universo usual com tempo e espaço; depois, um universo com várias dimensões espaciais e 2 dimensões temporais; e assim o criador experimentava com a Matéria até obter um universo tão complexo e perfeito que o faria dar-se por satisfeito. O Criador era como uma criança que descobria a si mesma através de suas obras.</p>
-<blockquote class="blockquote">
-<p>Eternally, so my dream declared to me, the Star Maker is perfect and absolute; yet in the beginning of the time proper to his creative mode he was an infant deity, restless, eager, mighty, but without clear will. He was equipped with all creative power. He could make universes with all kinds of physical and mental attributes. He was limited only by logic. Thus he could ordain the most surprising natural laws, but he could not, for instance, make twice two equal five. In his early phase he was limited also by his immaturity. He was still in the trance of infancy. Though the unconscious source of his consciously exploring and creating mentality was none other than his own eternal essence, consciously he was at first but the vague blind hunger of creativity.</p>
-</blockquote>
-<p>Em alguns dos universos, o criador intervia dividindo-se em 2: um espírito de destruição e o outro de salvação. Em outros, ele alterava as leis da física quando lhe aprouvia. Na maioria dos universos, porém, ele apenas assistia impassível, além do bem e do mal.</p>
-<blockquote class="blockquote">
-<p>When he had given the last touches to all the cosmical ages from the supreme moment back to the initial explosion and on to the final death, the Star Maker contemplated his work. And he saw that it was good.</p>
-</blockquote>
-<p>Após ser inundado pelas sensações do último e perfeito universo feito pelo criador, o protagonista percebe que não consegue mais compreender as coisas; o entendimento lhe abandona, e depois de alguns instantes ele acorda na Terra, no morro onde havia ido passear.</p>
-<p>Sem entender porra nenhuma.</p>
-
-
-
- ]]></description>
-  <guid>https://vituri.github.io/blog/posts/future-history/future-history.html</guid>
-  <pubDate>Sun, 28 Jan 2024 03:00:00 GMT</pubDate>
-</item>
-<item>
-  <title>Sobre Tchekhov e as pequenas tragédias despercebidas</title>
-  <link>https://vituri.github.io/blog/posts/tchekhov-solidao/tchekov-solidao.html</link>
-  <description><![CDATA[ 
-
-
-
-
-
-<p>Muitos contos de Tchekhov, o mestre da prosa curta, são como fotografias da alma humana. Através de situações comuns, de personagens humanos (sem heróis nem vilões), podemos ver recortes de vidas e o mundo subjetivo de personagens os mais diversos. Em poucas páginas tem-se ali, cristalizada, uma sensação que dificilmente conseguiria ser descrita de outro modo. Costumo pensar neles como um catálogo (ou paleta-de-cores) das situações humanas.</p>
-<p><img src="https://vituri.github.io/blog/posts/tchekhov-solidao/angustia.jpg" class="img-fluid"></p>
-<p>Em “Angústia”, Tchekhov explora a solidão dos desprezados, a necessidade do Homem de ter uma palavra de compreensão, de poder contar uma tragédia pessoal e sentir um olhar de pena. Aos preguiçosos ou apressados, faço um resumo da história abaixo. Deixo entre aspas os trechos originais da tradução do Boris Schnaiderman.</p>
-<p>Iona, um cocheiro pobre cujo filho morrera recentemente, não tinha “a quem confiar sua tristeza”. Acompanhamos Iona e seu cavalinho numa noite escura, próximos a uma praça, esperando passageiros.</p>
-<p>Após muito tempo imóvel sob a neve, surge um militar solicitando uma viagem curta. Com o coração pesado, Iona tenta contar-lhe:</p>
-<p>“- Pois é, meu senhor, assim é… perdi um filho esta semana…”</p>
-<p>O passageiro não lhe dá atenção. Na rua as pessoas trombam na carruagem de Iona e o xingam; o militar pede para Iona ir mais rápido. Chegando ao destino, Iona fica novamente parado em sua boleia, esperando, vendo as horas passar sob a neve, imóvel…</p>
-<p>Por fim, um grupo de bêbados (dentre eles um corcunda) sai de um bar e solicita uma viagem a Iona, pagando um valor muito abaixo do esperado. Ele aceita, pois é melhor do que nada. Os bêbados se xingam, brigam, caçoam do chapeu do cocheiro, dão-lhe tapas para ir mais rápido. Iona, em dado momento, tenta lhes contar:</p>
-<p>“– Esta semana… assim, perdi meu filho!</p>
-<p>– Todos vamos morrer. – suspira o corcunda, enxugando os lábios, após um acesso de tosse. – Bem, bate nele, bate nele! Minha gente, decididamente, não posso continuar andando assim! Esta corrida não acaba mais?</p>
-<p>E Iona volta-se, para contar como lhe morreu o filho, mas, nesse momento, o corcunda solta um suspiro de alívio e declara que, graças a Deus, chegaram ao destino.</p>
-<p>Iona está novamente só e, de novo, o silêncio desce sobre ele… A angústia que amainara por algum tempo torna a aparecer, inflando-lhe o peito com redobrada força. Os olhos de Iona correm, inquietos e sofredores, pela multidão que se agita de ambos os lados da rua: não haverá, entre esses milhares de pessoas, uma ao menos que possa ouvi-lo? Mas a multidão corre, sem reparar nele, nem na sua angústia… Uma angústia imensa, que não conhece fronteiras. Dá a impressão de que, se o peito de Iona estourasse e dele fluísse para fora aquela angústia, daria para inundar o mundo e, no entanto, não se pode vê-la. Conseguiu caber numa casca tão insignificante, que não se pode percebê-la mesmo de dia, com muita luz…”</p>
-<p>Iona resolve ir para casa. Seu cavalinho trota ligeiro.</p>
-<p>Uma hora e meia depois, numa casa que dividia com outros cocheiros, Iona está sentado ao lado do fogão sujo. Há gente roncando por todos os lados; o ar é abafado, sufocante… Um cocheiro acorda para beber água, Iona tenta puxar conversa mas o homem logo volta a dormir.</p>
-<p>“É preciso contar como o filho adoeceu, como padeceu, o que disse antes de morrer e como morreu… É preciso descrever o enterro e a ida ao hospital, para buscar a roupa do defunto. Na aldeia, ficou a filha Aníssia… É preciso falar sobre ela também… De quantas coisas mais poderia falar agora? O ouvinte deve soltar exclamações, suspirar, lamentar… E é ainda melhor falar com mulheres. São umas bobas, mas desandam a chorar depois de duas palavras.”</p>
-<p>Iona vai ao encontro de seu cavalinho no estábulo, e “pensa sobre a aveia, o feno, o tempo… Estando sozinho, não pode pensar no filho… Pode-se falar sobre ele com alguém, mas pensar nele sozinho, desenhar mentalmente sua imagem, dá um medo insuportável…</p>
-<p>– Está mastigando? – pergunta Iona ao cavalo, vendo seus olhos brilhantes. – Ora, mastiga, mastiga… Se não ganhamos para a aveia, vamos comer feno… Sim… Já estou velho para trabalhar de cocheiro… O filho é que devia trabalhar, não eu… Era um cocheiro de verdade… Só faltou viver mais…</p>
-<p>Iona permanece algum tempo em silêncio e prossegue:</p>
-<p>– Assim é, irmão, minha egüinha… Não existe mais Kuzmá Iônitch… Foi-se para o outro mundo… Morreu assim, por nada… Agora, vamos dizer, você tem um potrinho, que é teu filho… E, de repente, vamos dizer, esse mesmo potrinho vai para o outro mundo… Dá pena, não é verdade?</p>
-<p>O cavalinho vai mastigando, escuta e sopra na mão de seu amo… Iona anima-se e conta-lhe tudo…”</p>
-<hr>
-<p>Tudo o que sabemos da história de Iona são fragmentos que ele tenta contar aos outros e alguns poucos pensamentos que ele tem.</p>
-<p>Tchekhov não nos narra a doença do filho de Iona, as angústias do pai, as idas ao hospital, a notícia da morte, o enterro, o luto… sabemos apenas que essas coisas aconteceram e que Iona queria contá-las a alguém, queria que alguém o ouvisse como a um irmão. Vemos Iona e seu cavalinho sob a neve, esperando passageiros; vemos Iona tentando esvaziar o coração e sendo desprezado, sentimos a indeferença dos outros ante morte de seu filho, e o vemos seguindo solitário até chegar em casa… por fim, o único que o ouviu foi seu cavalo.</p>
-<p>Iona até tenta fazer o cavalo entender melhor a situação (“Agora, vamos dizer, você tem um potrinho, que é teu filho… E, de repente, vamos dizer, esse mesmo potrinho vai para o outro mundo… Dá pena, não é verdade?”), e podemos imaginar a cena: um senhorzinho conversando com seu cavalo, no escuro, sob a neve, ao lado da casinha mal iluminada. Um homem sozinho no mundo, cujo único ouvinte sobre a tristeza que lhe devorava era o próprio instrumento de trabalho. O conto acaba ali: Iona em seu monólogo. Não sabemos o que acontece depois. Tchekhov larga a pena quando percebe que acabou seu retrato claro sobre a angústia humana, que passou despercebida por quem viu o cocheiro Iona naquela noite.</p>
-
-
-
- ]]></description>
-  <category>livros</category>
-  <category>vida</category>
-  <guid>https://vituri.github.io/blog/posts/tchekhov-solidao/tchekov-solidao.html</guid>
-  <pubDate>Tue, 23 Jan 2024 03:00:00 GMT</pubDate>
-</item>
-<item>
-  <title>A era das máquinas artistas e o bardo eletrônico de Lem</title>
-  <link>https://vituri.github.io/blog/posts/eletronic-bard/eletronic-bard.html</link>
-  <description><![CDATA[ 
-
-
-
-
-
-<p>Ou: como Stanislaw Lem fantasiou uma versão exagerada do chatGPT na década de 60.</p>
-<p>“Trurl, o famoso construtor, um dia resolveu criar uma máquina que escrevia poesia para provar a seu amigo Klapaucius quem era o melhor construtor do universo.”</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="https://vituri.github.io/blog/posts/eletronic-bard/trurl and klapaucius.jpg" class="img-fluid figure-img"></p>
-<figcaption>Trurl e Klapaucius fazendo pose.</figcaption>
-</figure>
-</div>
-<p>Mais ou menos assim começa o conto “The eletronic Bard” the Stanislaw Lem, escrito na década de 60. Publicado no livro “Cyberiads”, inaugurou um gênero literário bizarro que mistura ficção científica e contos de fada medievais com a ironia de Voltaire e a prosa macarrônica de Rabelais. O livro narra as aventuras de Trurl e Klapaucius, dois robôs inventores capazes de criar praticamente qualquer coisa (como a máquina que materializava tudo que começava com “n”, ou uma miniatura de um reino que se revoltou contra o rei, ou o robô gigante que dizia que 2+2 é 7 e tentou matar Trurl, ou a máquina que imprimia todas as verdades do universo). Ambos tentam cumprir pedidos quase impossíveis de reis de toda a galáxia em troca de ouro, e quase sempre acabam arrumando problema e tendo que fugir.</p>
-<p>Gosto tanto dessa história que vou recontar ela do meu jeito abaixo, entre aspas:</p>
-<p>“Trurl juntou 820 toneladas de livros sobre cibernética e 1200 toneladas de livros de poesia e se pôs a ler. Quando cansava de uma equação, lia um verso<sup>1</sup>. Percebeu então que a parte mais difícil da máquina seria o programa em si, e não o hardware. O ‘programa’ na cabeça de um poeta era, afinal, escrito pela civilização do poeta; e esta, por sua vez, era fruto das civilizações anteriores. Trurl então percebeu que seria mais fácil criar um universo virtual (desde o big bang!) e deixar naturalmente o poeta surgir de uma versão cibernética da Terra.”</p>
-<p>Aqui há um paralelo interessante com os large language models (LLM) atuais, como o ChatGPT e o Google Bard<sup>2</sup>: em vez de ensinar gramática e rimas e poesia a um algoritmo (isto é: em vez de passar todas as instruções uma a uma, como se ensinaria um robô obediente), hoje monta-se uma <a href="https://en.wikipedia.org/wiki/Artificial_neural_network">arquitetura de rede neural</a> capaz de aprender a interpretar textos, e então alimenta-se essa rede neural com bilhões de textos até ela aprender sozinha a falar uma linguagem e responder a humanos. Parecido com o modo como os bebês aprendem a falar!</p>
-<p>No fim da década de 50 as redes neurais ficaram famosas por prometerem imitar o aprendizado do cérebro humano. Criou-se muita expectativa sobre robôs que pensavam como humanos e andariam por aí resolvendo tarefas difíceis. Porém, a falta de poder computacional da época e alguns projetos fracassados levaram ao <a href="https://en.wikipedia.org/wiki/AI_winter">“inverno da IA”</a> que durou várias décadas. Por isso talvez para Lem parecia impossível um robô poeta, objeto de um conto rocambólico do Cyberiads.</p>
-<p>A história segue:</p>
-<p>“Após os preparativos, a simulação do universo começou. Trurl foi adicionando mais e mais processadores ao computador, e teve que reinciar a simulação duas vezes: uma porque um fusível queimado fez Abel matar Caim, e na outra porque algo errado aconteceu na árvore evolutiva e em vez de termos os grandes macacos (great apes) surgiram cortinas cinzas (gray drapes). Passou-se a Antiguidade, a Idade Média, as reformas, e as revoluções. Ao chegar no século 20, com as grandes guerras, Trurl teve que jogar água na máquina que não parava de esquentar e vibrar. Civilizações surgiram e se foram a cada 25 mil anos, e Trurl precisava adicionar mais e mais fitas para salvar todos os dados. Tudo isso para obter um poeta!</p>
-<p>Após milhões de anos na simulação, Trurl escolheu o melhor poeta de todos. Ajustando o sensor de emotividade, adicionando um campo semântico e uma alavanca filosófica, tudo o que o poeta disse foi “Eu tinha um sapo”. Trurl continuou mexendo na máquina, adicionando filtros de clichê, um alternador de rimas, retirando alguns circuitos lógicos e por fim colocando um narcistor egocentripetal<sup>3</sup> até que ela finalmente produziu um poema razoável.</p>
-<p>Extasiado, Trurl chamou Klapaucius para ver sua criação. Klapaucius estava cético e a princípio achou que os poemas do bardo eletrônico já estavam escritos num banco de dados, e que o bardo era apenas um recitador de coisas prontas. Para testá-lo, pediu que ele fizesse ‘um poema de amor, lírico, pastoral, expresso na linguagem da matemática pura; com bastante álgebra tensorial, um pouco de topologia e talvez cálculo avançado.’ Trurl ficou indignado e com medo de que o bardo quebrasse, mas ele começou um enorme poema assim<sup>4</sup>:</p>
-<blockquote class="blockquote">
-<p>[…] In Riemann, Hilbert or in Banach space<br>
-Let superscripts and subscripts go their ways<br>
-Our asymptotes no longer out of phase,<br>
-We shall encounter, counting, face to face.</p>
-</blockquote>
-<blockquote class="blockquote">
-<p>I’ll grant thee random access to my heart,<br>
-Thou’lt tell me all the constants of thy love;<br>
-And so we two shall all love’s lemmas prove,<br>
-And in our bound partition never part.</p>
-</blockquote>
-<blockquote class="blockquote">
-<p>[…] I see the eigenvalue in thine eye,<br>
-I hear the tender tensor in thy sigh.<br>
-Bernoulli would have been content to die,<br>
-Had he but known such <img src="https://latex.codecogs.com/png.latex?a%5E2%20cos(2%20%5Cphi)">!</p>
-</blockquote>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="https://vituri.github.io/blog/posts/eletronic-bard/the bard.jpg" class="img-fluid figure-img"></p>
-<figcaption>O bardo eletrônico pensando numa rima das brabas.</figcaption>
-</figure>
-</div>
-<p>Klapaucius inventou uma desculpa qualquer e foi embora, visivelmente abalado.</p>
-<p>Pouco tempo se passou até que notícias sobre o bardo chegassem nos poetas genuínos - isto é, ordinários. Ofendidos, resolveram ignorar a existência da máquina. Mas alguns curiosos foram visitar o bardo, que os recebeu educadamente com suas pilhas de poemas. Esses poetas eram vanguardistas, e o bardo escrevia apenas no estilo clássico. Os poetas caçoaram dele e foram embora. A máquina, porém, se auto-programava, e além disso tinha um aplificador-de-ambição com circuitos de busca-pela-glória. Rapidamente notou-se uma mudança: o bardo começou a fazer poemas tão intrincados e carregados de significados que se tornaram praticamente incompreensíveis.</p>
-<p>Os poetas continuavam indo até a casa de Trurl encontrar o bardo, mas mal começavam um poema e o bardo, imitando o estilo do poeta, lançava torrentes de rimas para humilhar o pobre visitante. Alguns poetas cometeram suicídio, outros organizaram protestos exigindo o desligamento da máquina, mas além deles ninguém parecia se importar: o bardo, escrevendo sob centenas de pseudônimos, tinha um poema para cada ocasião, do tamanho desejado, e de tal qualidade que qualquer revista seria comprada apenas pelos versos. Todos conheciam os poemas do bardo eletrônico de Trurl e suas rimas deliciosas; elas estavam em todos os jornais e revistas. Alguns até desmaiavam de prazer ao ler seus poemas.”</p>
-<p>Aqui outro paralelo curiosíssimo com a atualidade: artistas <a href="https://www.theguardian.com/artanddesign/2023/jan/23/its-the-opposite-of-art-why-illustrators-are-furious-about-ai">protestando contra a arte gerada por IAs</a>, enquanto empresas usam essas tecnologias para diminuir custos. Para um dono de empresa, é mais barato pagar o ChatGPT4 do que um redator, ou gerar imagens pelo Dall-E 3 do que pagar um ilustrador. Além dos próprios artistas, são poucos os que se incomodam a ponto de ir contra as máquinas artistas.</p>
-<p>“Trurl começou a ter problemas por causa de sua invenção. Os poetas clássicos não lhe incomodavam, pois eram quase todos velhos e inofensivos; se limitavam a jogar pedras na sua casa ou esfregar susbtâncias mal-cheirosas em suas paredes. Os mais novos, porém, já eram piores: um deles era tão bom com versos quanto na porrada e fez Trurl parar no hospital. Ainda internado, os protestos continuavam. Mais e mais poetas levavam maletas com rifles em vez de poemas para tentar destruir o bardo: vão, pois as balas ricocheteavam em seu enorme exterior metálico. Ao sair do hospital, Trurl decidiu então desligar o bardo para sempre para poder ter paz.</p>
-<p>Mas, ao aproximar-se mancando da máquina, ela percebeu a intenção de Trurl e recitou um pedido de misericórdia tão eloquente e apaixonado que o famoso construtor saiu dali em lágrimas. No mês seguinte, ao receber a conta de energia elétrica, Trurl quase caiu de sua cadeira. Durante a noite, desligou o bardo da tomada, desmontou-o, colocou-o em sua nave e levou-o até um asteroide, onde o montou junto de uma pilha de material radiativo para servir de energia.</p>
-<p>A história não acaba aí. O bardo, sem ter como publicar seus poemas, resolveu transmiti-los em todas as frequências de onda, fazendo com que os passageiros das naves que por ali passavam entrassem num estado de estupefação e sofressem ataques de êxtase. O Comando das Frotas Cósmicas enviou um time de técnicos para resolver o problema, mas o bardo improvisou diversas baladas que os fizeram chorar. Resolveram então enviar outro time de técnicos, dessa vez surdos, mas a máquina fez uso de pantomimas e também eles ficaram maravilhados. Após isso, começou-se a aventar a possibilidade de uma bomba atômica no asteroide, mas um rei de uma estrela vizinha apareceu e levou a máquina embora para seu reino.</p>
-<p>Finalmente Trurl pôde voltar a aparecer em público.</p>
-<p>Algumas supernovas começaram a explodir de maneira estranha no horizonte, e havia rumores de que isso estava relacionado com poesia. De acordo com um relato, o rei que levou o bardo, movido por um estranho capricho, havia conectado o bardo a uma constelação de supergigantes, transformando cada linha de verso em uma estupenda proeminência solar: assim, o maior poeta do universo era capaz de transmitir suas criações termonucleares para todo o espaço. Mesmo que esse relato fosse verdadeiro, era distante demais para incomodar Trurl, que jurou nunca mais fazer um modelo cibernético da Musa.”</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="https://vituri.github.io/blog/posts/eletronic-bard/elektrybalt.jpg" class="img-fluid figure-img"></p>
-<figcaption>Estátua cabulosa do bardo no Copernicus Science Centre.</figcaption>
-</figure>
-</div>
-<p>O que acontecerá quando as máquinas quiserem continuar produzindo arte e ninguém mais for consumi-las? Será que elas aprenderão a apreciar a arte uma das outras como nós fazemos? As máquinas artistas de hoje estão quase a ponto de superar o brilhante bardo eletrônico do Lem, e é difícil imaginar o que virá depois…</p>
-
-
-
-
-<div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
-
-<ol>
-<li id="fn1"><p>era assim que eu estudava Análise Funcional no doutorado↩︎</p></li>
-<li id="fn2"><p>que não tem relação com o Eletronic Bard do Lem, e sim com Shakespeare↩︎</p></li>
-<li id="fn3"><p>Lem é um mestre na arte de inventar nomes ridículos que parecem de verdade↩︎</p></li>
-<li id="fn4"><p>deixei o poema em inglês como na versão que li; o original é em polonês, e vou evitar aqui a lambança de traduzir uma tradução↩︎</p></li>
-</ol>
-</section></div> ]]></description>
-  <category>livros</category>
-  <category>sci-fi</category>
-  <category>technology</category>
-  <guid>https://vituri.github.io/blog/posts/eletronic-bard/eletronic-bard.html</guid>
-  <pubDate>Tue, 16 Jan 2024 03:00:00 GMT</pubDate>
-</item>
-</channel>
-</rss>
+</body></html>

@@ -19,14 +19,12 @@ website:
 
   navbar:
     right:
-      - ds.qmd
-      - livros.qmd
-      - cv.qmd
+      - index.qmd
+      # - livros.qmd
+      # - cv.qmd
       # - about.qmd
       - icon: github
         href: https://github.com/vituri
-      # - icon: twitter
-      #   href: https://twitter.com/viturivitur
       - icon: rss
         href: index.xml
 

@@ -1,6 +1,17 @@
 ---
-title: "Main"
+title: "Blog"
 # image: profile.jpg
+listing:
+  contents: posts
+  sort: "date desc"
+  type: default
+  categories: true
+  sort-ui: true
+  filter-ui: true
+  feed: true
+page-layout: full
+title-block-banner: false
+
 card-style: "summary"
 about:
   template: jolla

@@ -79,9 +79,9 @@ ul.task-list li input[type="checkbox"] {
     }
 
     const options = {
-      valueNames: ['listing-date','listing-title','listing-author','listing-image','listing-description','listing-categories',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
+      valueNames: ['listing-categories',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
       
-      searchColumns: ["listing-date","listing-title","listing-author","listing-image","listing-description","listing-categories"],
+      searchColumns: ["listing-categories"],
     };
 
     window['quarto-listings'] = window['quarto-listings'] || {};
@@ -205,7 +205,7 @@ window.Quarto = {
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         
-    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(2)</span></div></div></div>
+    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(0)</span></div></div><div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="ds.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></div>
 <!-- main -->
 <main class="content column-body" id="quarto-document-content">
 
@@ -235,72 +235,13 @@ window.Quarto = {
 
 <div class="quarto-listing quarto-listing-container-default" id="listing-listing">
 <div class="listing-actions-group">
-   <div class="input-group input-group-sm quarto-listing-sort">
-    <span class="input-group-text"><i class="bi bi-sort-down"></i></span>
-    <select id="listing-listing-sort" class="form-select" aria-label="Order By" onchange="window['quarto-listings']['listing-listing'].sort(this.options[this.selectedIndex].value, { order: this.options[this.selectedIndex].getAttribute('data-direction')})">
-      <option value="" disabled="" selected="" hidden="">Order By</option>
-      <option value="index" data-direction="asc">Default</option>
-      <option value="listing-title" data-direction="asc">
-        Title
-      </option>
-      <option value="listing-date-sort" data-direction="asc">
-        Date - Oldest
-      </option>
-      <option value="listing-date-sort" data-direction="desc">
-        Date - Newest
-      </option>
-      <option value="listing-author" data-direction="asc">
-        Author
-      </option>
-    </select>
-  </div>
     <div class="input-group input-group-sm quarto-listing-filter">
       <span class="input-group-text"><i class="bi bi-search"></i></span>
       <input type="text" class="search form-control" placeholder="Filter">
     </div>
 </div>
 <div class="list quarto-listing-default">
-<div class="quarto-post image-right" data-index="0" data-listing-file-modified-sort="1738563042639" data-listing-reading-time-sort="12" data-listing-word-count-sort="2215">
-<div class="thumbnail"><a href="./posts-ds/julia-for-r-users/julia-for-r-users.html" class="no-external">
 
-<p class="card-img-top"><img src="posts-ds/julia-for-r-users/images/tidier.png"  class="thumbnail-image card-img"/></p>
-
-</a></div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts-ds/julia-for-r-users/julia-for-r-users.html" class="no-external">Julia for R users</a>
-</h3>
-<div class="delink listing-description"><a href="./posts-ds/julia-for-r-users/julia-for-r-users.html" class="no-external">
-I know a lot of R and can do my daily job with it. Why should I learn Julia?
-</a></div>
-</div>
-<div class="metadata">
-<a href="./posts-ds/julia-for-r-users/julia-for-r-users.html" class="no-external">
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="1" data-listing-date-sort="1710385200000" data-listing-file-modified-sort="1738466373267" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="480">
-<div class="thumbnail"><a href="./posts-ds/symbolic regression/post.html" class="no-external">
-
-<p class="card-img-top"><img src="posts-ds/symbolic regression/cover.png"  class="thumbnail-image card-img"/></p>
-
-</a></div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts-ds/symbolic regression/post.html" class="no-external">Symbolic Regression in Julia</a>
-</h3>
-<div class="delink listing-description"><a href="./posts-ds/symbolic regression/post.html" class="no-external">
-A linear regression finds the line that is “closest” to a dataset. In a similar maner, a symbolic regression is an algorithm that find a combination of symbols that…<span class="math inline"></span><span class="math inline"></span>
-</a></div>
-</div>
-<div class="metadata">
-<a href="./posts-ds/symbolic regression/post.html" class="no-external">
-<div class="listing-date">
-Mar 14, 2024
-</div>
-</a>
-</div>
-</div>
 </div>
 <div class="listing-no-matching d-none">No matching items</div>
 </div></main> <!-- /main -->

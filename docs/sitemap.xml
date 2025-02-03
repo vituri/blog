@@ -2,23 +2,23 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://vituri.github.io/blog/index.html</loc>
-    <lastmod>2025-02-02T03:44:24.813Z</lastmod>
+    <lastmod>2025-02-03T16:14:39.072Z</lastmod>
   </url>
   <url>
     <loc>https://vituri.github.io/blog/posts/future-history/future-history.html</loc>
-    <lastmod>2024-01-29T04:18:17.950Z</lastmod>
+    <lastmod>2025-02-03T15:39:00.875Z</lastmod>
   </url>
   <url>
     <loc>https://vituri.github.io/blog/posts/felicidade-imaginada/felicidade-imaginada.html</loc>
-    <lastmod>2024-02-26T05:05:51.983Z</lastmod>
+    <lastmod>2025-02-03T15:56:56.207Z</lastmod>
   </url>
   <url>
     <loc>https://vituri.github.io/blog/posts/tchekhov-solidao/tchekov-solidao.html</loc>
-    <lastmod>2024-01-28T05:49:04.008Z</lastmod>
+    <lastmod>2025-02-03T15:57:46.741Z</lastmod>
   </url>
   <url>
     <loc>https://vituri.github.io/blog/posts/eletronic-bard/eletronic-bard.html</loc>
-    <lastmod>2024-01-28T05:49:37.289Z</lastmod>
+    <lastmod>2025-02-03T15:56:43.790Z</lastmod>
   </url>
   <url>
     <loc>https://vituri.github.io/blog/about.html</loc>
@@ -30,15 +30,15 @@
   </url>
   <url>
     <loc>https://vituri.github.io/blog/posts/symbolic regression/post.html</loc>
-    <lastmod>2024-03-14T14:56:08.661Z</lastmod>
+    <lastmod>2025-02-03T15:45:43.444Z</lastmod>
   </url>
   <url>
     <loc>https://vituri.github.io/blog/livros.html</loc>
-    <lastmod>2025-02-02T03:19:33.257Z</lastmod>
+    <lastmod>2025-02-03T15:39:00.852Z</lastmod>
   </url>
   <url>
     <loc>https://vituri.github.io/blog/ds.html</loc>
-    <lastmod>2025-02-02T03:19:33.257Z</lastmod>
+    <lastmod>2025-02-03T15:39:00.852Z</lastmod>
   </url>
   <url>
     <loc>https://vituri.github.io/blog/cv.html</loc>
@@ -71,5 +71,17 @@
   <url>
     <loc>https://vituri.github.io/blog/posts-ds/julia-for-r-users/julia-for-r-users.html</loc>
     <lastmod>2025-02-03T06:10:42.639Z</lastmod>
+  </url>
+  <url>
+    <loc>https://vituri.github.io/blog/posts/julia-for-r-users/julia-for-r-users.html</loc>
+    <lastmod>2025-02-03T16:14:26.323Z</lastmod>
+  </url>
+  <url>
+    <loc>https://vituri.github.io/blog/posts/symbolic regression/symbolic-regression.html</loc>
+    <lastmod>2025-02-03T16:03:03.781Z</lastmod>
+  </url>
+  <url>
+    <loc>https://vituri.github.io/blog/posts/symbolic-regression/symbolic-regression.html</loc>
+    <lastmod>2025-02-03T16:05:34.365Z</lastmod>
   </url>
 </urlset>
