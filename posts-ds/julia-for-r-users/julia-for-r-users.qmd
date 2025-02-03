@@ -445,7 +445,9 @@ f(3)
 If I convinced you or sparked just a little interest, you can start your own journey in Julialand with the suggested steps:
 
 1. [Modern Julia Workflows](https://modernjuliaworkflows.org): install Julia, setup your IDE and learn the basics of how to run code.
-2. [The julia docs] are excellent: need to understand more about [variables](https://docs.julialang.org/en/v1/manual/variables/)? What about the [scope of functions](https://docs.julialang.org/en/v1/manual/functions/)? [Types](https://docs.julialang.org/en/v1/manual/types/) is certainly worth a read!
+2. [The Julia docs](https://docs.julialang.org/en/v1/manual/getting-started/) are excellent: need to understand more about [variables](https://docs.julialang.org/en/v1/manual/variables/)? What about the [scope of functions](https://docs.julialang.org/en/v1/manual/functions/)? [Types](https://docs.julialang.org/en/v1/manual/types/) is certainly worth a read!
 3. [Think Julia](https://benlauwens.github.io/ThinkJulia.jl/latest/book.html), by Be Lauwens and Allen Doeney: similar to Think Python, but better!
 4. Questions? Go to the [Julia Discourse](https://discourse.julialang.org/).
 5. For a list of really nice packages, see [this repo](https://gensjulia.pages.dev/data-science/#general-purpose).
+
+Have a good trip!
