@@ -8,7 +8,7 @@
 
 <meta name="dcterms.date" content="2025-02-03">
 
-<title>julia-for-r-users – vituri's blog</title>
+<title>Julia for R users – vituri’s blog</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -153,7 +153,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Julia for R users</li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -166,7 +166,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
-      
+      <h1 class="title">Julia for R users</h1>
                                 <div class="quarto-categories">
                 <div class="quarto-category">julia</div>
                 <div class="quarto-category">r</div>
@@ -175,7 +175,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </div>
     
   
-  <div class="quarto-title-meta">
+  <div class="quarto-title-meta column-body">
 
       
       <div>
@@ -189,7 +189,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     </div>
     
   
-  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
 <!-- sidebar -->
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
         <div class="mt-2 flex-shrink-0 align-items-center">
@@ -205,9 +205,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#julia-for-r-users" id="toc-julia-for-r-users" class="nav-link active" data-scroll-target="#julia-for-r-users">Julia for R users</a>
-  <ul class="collapse">
-  <li><a href="#you-can-run-r-inside-of-julia" id="toc-you-can-run-r-inside-of-julia" class="nav-link" data-scroll-target="#you-can-run-r-inside-of-julia">You can run R inside of Julia</a></li>
+  <li><a href="#you-can-run-r-inside-of-julia" id="toc-you-can-run-r-inside-of-julia" class="nav-link active" data-scroll-target="#you-can-run-r-inside-of-julia">You can run R inside of Julia</a></li>
   <li><a href="#there-is-a-tidyverse-in-julia-and-it-is-awesome" id="toc-there-is-a-tidyverse-in-julia-and-it-is-awesome" class="nav-link" data-scroll-target="#there-is-a-tidyverse-in-julia-and-it-is-awesome">There is a tidyverse in Julia and it is awesome</a></li>
   <li><a href="#fast-julia-code-is-written-in-julia-fast-r-code-is-not-written-in-r" id="toc-fast-julia-code-is-written-in-julia-fast-r-code-is-not-written-in-r" class="nav-link" data-scroll-target="#fast-julia-code-is-written-in-julia-fast-r-code-is-not-written-in-r">Fast Julia code is written in Julia; fast R code is not written in R</a></li>
   <li><a href="#no-need-to-vectorize-code-loops-maps-and-broadcast-are-fast-enough" id="toc-no-need-to-vectorize-code-loops-maps-and-broadcast-are-fast-enough" class="nav-link" data-scroll-target="#no-need-to-vectorize-code-loops-maps-and-broadcast-are-fast-enough">No need to vectorize code; loops, maps and broadcast are fast enough</a></li>
@@ -217,19 +215,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#multithreading-is-trivial" id="toc-multithreading-is-trivial" class="nav-link" data-scroll-target="#multithreading-is-trivial">Multithreading is trivial</a></li>
   <li><a href="#packages-are-a-joy-to-use" id="toc-packages-are-a-joy-to-use" class="nav-link" data-scroll-target="#packages-are-a-joy-to-use">Packages are a joy to use</a></li>
   <li><a href="#math-symbols-for-the-math-enthusiasts" id="toc-math-symbols-for-the-math-enthusiasts" class="nav-link" data-scroll-target="#math-symbols-for-the-math-enthusiasts">Math symbols for the math enthusiasts</a></li>
-  </ul></li>
+  <li><a href="#summing-up-where-to-now" id="toc-summing-up-where-to-now" class="nav-link" data-scroll-target="#summing-up-where-to-now">Summing up: Where to now?</a></li>
   </ul>
 <div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="julia-for-r-users.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></nav>
     </div>
 <!-- main -->
-<main class="content quarto-banner-title-block" id="quarto-document-content">
+<main class="content quarto-banner-title-block column-body" id="quarto-document-content">
 
 
 
 
 
-<section id="julia-for-r-users" class="level1">
-<h1>Julia for R users</h1>
 <blockquote class="blockquote">
 <p>I know a lot of R and can do my daily job with it. Why should I learn Julia?</p>
 </blockquote>
@@ -691,6 +687,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <hr>
+</section>
+<section id="summing-up-where-to-now" class="level2">
+<h2 class="anchored" data-anchor-id="summing-up-where-to-now">Summing up: Where to now?</h2>
 <p>If I convinced you or sparked just a little interest, you can start your own journey in Julialand with the suggested steps:</p>
 <ol type="1">
 <li><a href="https://modernjuliaworkflows.org">Modern Julia Workflows</a>: install Julia, setup your IDE and learn the basics of how to run code.</li>
@@ -702,7 +701,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Have a good trip!</p>
 
 
-</section>
 </section>
 
 

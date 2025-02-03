@@ -12,7 +12,7 @@
 <generator>quarto-1.7.13</generator>
 <lastBuildDate>Mon, 03 Feb 2025 03:00:00 GMT</lastBuildDate>
 <item>
-  <title></title>
+  <title>Julia for R users</title>
   <link>https://vituri.github.io/blog/posts/julia-for-r-users/julia-for-r-users.html</link>
   <description><![CDATA[ 
 
@@ -20,8 +20,6 @@
 
 
 
-<section id="julia-for-r-users" class="level1">
-<h1>Julia for R users</h1>
 <blockquote class="blockquote">
 <p>I know a lot of R and can do my daily job with it. Why should I learn Julia?</p>
 </blockquote>
@@ -1004,6 +1002,9 @@ font-style: inherit;">|&gt;</span> round</span></code></pre></div>
 </div>
 </div>
 <hr>
+</section>
+<section id="summing-up-where-to-now" class="level2">
+<h2 class="anchored" data-anchor-id="summing-up-where-to-now">Summing up: Where to now?</h2>
 <p>If I convinced you or sparked just a little interest, you can start your own journey in Julialand with the suggested steps:</p>
 <ol type="1">
 <li><a href="https://modernjuliaworkflows.org">Modern Julia Workflows</a>: install Julia, setup your IDE and learn the basics of how to run code.</li>
@@ -1015,7 +1016,6 @@ font-style: inherit;">|&gt;</span> round</span></code></pre></div>
 <p>Have a good trip!</p>
 
 
-</section>
 </section>
 
 

@@ -9,16 +9,7 @@ listing:
   sort-ui: true
   filter-ui: true
   feed: true
-page-layout: full
-title-block-banner: false
-
-card-style: "summary"
-about:
-  template: jolla
-  links:
-    - icon: github
-      text: Github
-      href: https://github.com/vituri
+# title-block-banner: false
 ---
 
-Gathered thoughts.
+Random thoughts about Julia, R and books.

@@ -1,20 +1,11 @@
 ---
 jupyter: julia-1.10
+title: Julia for R users
 date: 2025-02-03
-format: 
-    pdf: default
-    html:
-        toc: true
-        toc-depth: 3
-        # toc-expand: true
-
 categories:
   - julia
   - r
 ---
-
-# Julia for R users
-
 > I know a lot of R and can do my daily job with it. Why should I learn Julia?
 
 In my case, I was looking for some adventure. Haskell seemed too hard, Python too normal. So I went on a journey to learn Julia and was very happy with what I discovered.
@@ -459,6 +450,8 @@ f(3)
 ```
 
 ---
+
+## Summing up: Where to now?
 
 If I convinced you or sparked just a little interest, you can start your own journey in Julialand with the suggested steps:
 

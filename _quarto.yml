@@ -19,7 +19,7 @@ website:
 
   navbar:
     right:
-      - index.qmd
+      # - index.qmd
       # - livros.qmd
       - cv.qmd
       # - about.qmd
@@ -38,6 +38,7 @@ format:
     toc-expand: true
     bibliography: sources.bib
     highlight-style: github
+    page-layout: full    
   pdf: default
 
 execute:
