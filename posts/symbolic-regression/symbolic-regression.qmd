@@ -1,5 +1,4 @@
 ---
-jupyter: julia-1.10
 title: "Symbolic Regression in Julia"
 date: 2024-03-14
 format: 

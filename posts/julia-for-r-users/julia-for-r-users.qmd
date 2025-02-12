@@ -1,5 +1,4 @@
 ---
-jupyter: julia-1.10
 title: Julia for R users
 date: 2025-02-03
 categories:

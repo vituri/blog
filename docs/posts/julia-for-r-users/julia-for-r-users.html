@@ -74,7 +74,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting-8d568fb58c33a0b3232b1f9968c626e4.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-73743edb1384f91ce397fe6a16c98bc1.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-57f7bf41508bcb61151f52b3826afd5c.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -124,10 +124,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
-  <li class="nav-item">
-    <a class="nav-link" href="../../index.html"> 
-<span class="menu-text">Blog</span></a>
-  </li>  
   <li class="nav-item">
     <a class="nav-link" href="../../cv.html"> 
 <span class="menu-text">About me</span></a>
@@ -235,7 +231,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 class="anchored" data-anchor-id="you-can-run-r-inside-of-julia">You can run R inside of Julia</h2>
 <p>Not sure where to begin in Julia? Start with R!</p>
 <p>With <code>RCall</code> you can run R code inside Julia:</p>
-<div id="67ea5770" class="cell" data-execution_count="2">
+<div id="8c54626a" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">RCall;</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>R<span class="st">"""</span></span>
@@ -247,7 +243,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>You can even pass objects from Julia to R and vice-versa:</p>
-<div id="7fcba400" class="cell" data-execution_count="3">
+<div id="2d5d5980" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> [<span class="fl">1</span><span class="op">:</span><span class="fl">5</span>;]</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="pp">@rput</span> x</span>
@@ -271,7 +267,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </figure>
 </div>
 <p>Here’s an example from TidierData docs:</p>
-<div id="cd8e860f" class="cell" data-execution_count="4">
+<div id="60dfe150" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">TidierData</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">RDatasets</span></span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -303,7 +299,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </figure>
 </div>
 <p>This is specially interesting if you read Julia Base sourcecode! How does Julia define the maximum of a vector? Type</p>
-<div id="815694e4" class="cell" data-execution_count="5">
+<div id="12b709e3" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="pp">@edit</span> <span class="fu">maximum</span>([<span class="fl">1</span><span class="op">:</span><span class="fl">5</span>;])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>and you will see this:</p>
@@ -324,7 +320,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="no-need-to-vectorize-code-loops-maps-and-broadcast-are-fast-enough" class="level2">
 <h2 class="anchored" data-anchor-id="no-need-to-vectorize-code-loops-maps-and-broadcast-are-fast-enough">No need to vectorize code; loops, maps and broadcast are fast enough</h2>
 <p>Tired of writing loops? Julia has a special notation <code>.</code> (yes, a dot) to apply <em>any</em> function to a vector/array/iterable-object; this is called <a href="https://docs.julialang.org/en/v1/manual/arrays/#Broadcasting"><em>broadcasting</em></a>. For example, you can apply the <code>power2</code> function in a vector as easy as</p>
-<div id="4fc47038" class="cell" data-execution_count="6">
+<div id="b289d6f3" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co">#julia</span></span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="co"># define power2 for numbers</span></span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="fu">power2</span>(x) <span class="op">=</span> x<span class="op">^</span><span class="fl">2</span>;</span>
@@ -346,7 +342,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>or in a matrix</p>
-<div id="e3ed9555" class="cell" data-execution_count="7">
+<div id="fd124f5b" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co">#julia</span></span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> <span class="fu">reshape</span>([<span class="fl">1</span><span class="op">:</span><span class="fl">16</span>;], (<span class="fl">4</span>, <span class="fl">4</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="5">
@@ -357,7 +353,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  4  8  12  16</code></pre>
 </div>
 </div>
-<div id="2574b59d" class="cell" data-execution_count="8">
+<div id="3fd63d33" class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co">#julia</span></span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">power2</span>.(X)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="6">
@@ -369,7 +365,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>When using infix functions like <code>+</code> or <code>=</code>, you put the dot before the operator, as in</p>
-<div id="adbd83d0" class="cell" data-execution_count="9">
+<div id="cc29fab9" class="cell" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co">#julia</span></span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>[<span class="fl">1</span><span class="op">:</span><span class="fl">5</span>;] <span class="op">.+</span> <span class="fl">10</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="7">
@@ -408,22 +404,22 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a>    ,<span class="fu">f1_map</span>(x)</span>
 <span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a>    ,<span class="at">relative =</span> <span class="cn">TRUE</span></span>
 <span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div id="b952d99d" class="cell" data-execution_count="10">
+<div id="79317bfa" class="cell" data-execution_count="9">
 <div class="cell-output cell-output-display" data-execution_count="8">
 <pre><code>RObject{VecSxp}
 # A tibble: 3 × 13
   expression   min median `itr/sec` mem_alloc `gc/sec` n_itr  n_gc total_time
   &lt;bch:expr&gt; &lt;dbl&gt;  &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt; &lt;int&gt; &lt;dbl&gt;   &lt;bch:tm&gt;
-1 f1_vec(x)    1      1       122.       1        11.0   782    11      500ms
-2 f1_loop(x)  44.8   13.2      11.3      1.03      1      73     1      502ms
-3 f1_map(x)  532.   151.        1        1.00     32.2     7    35      545ms
+1 f1_vec(x)    1      1       133.       1        7.51  2093    30      501ms
+2 f1_loop(x)  39.9   12.1      12.5      1.03     1      197     4      501ms
+3 f1_map(x)  515.   149.        1        1.32    19.0     16    77      508ms
 # ℹ 4 more variables: result &lt;list&gt;, memory &lt;list&gt;, time &lt;list&gt;, gc &lt;list&gt;</code></pre>
 </div>
 </div>
 <p>In my machine, the loop is ~12x slower and the map ~145x slower than the vectorized version.</p>
 <p>The biggest problem for an R user is when the function you want to apply have no vectorized form. I usually have to make some kludges<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> with dplyr verbs to do something that is much more logical when written with a loop/map.</p>
 <p>In Julia, the three approachs are similar:</p>
-<div id="7d2519da" class="cell" data-execution_count="11">
+<div id="dbbce269" class="cell" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co">#julia</span></span>
 <span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="fu">f1_vec</span>(x) <span class="op">=</span> x <span class="op">.+</span> <span class="fl">1</span>;</span>
 <span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -439,7 +435,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb20-13"><a href="#cb20-13" aria-hidden="true" tabindex="-1"></a>    <span class="cf">end</span></span>
 <span id="cb20-14"><a href="#cb20-14" aria-hidden="true" tabindex="-1"></a><span class="kw">end</span>;</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="8142f0ca" class="cell" data-execution_count="12">
+<div id="3f43a140" class="cell" data-execution_count="11">
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co">#julia</span></span>
 <span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">BenchmarkTools;</span></span>
 <span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> [<span class="fl">1</span><span class="op">:</span><span class="fl">100000</span>;];</span>
@@ -448,45 +444,45 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell-output cell-output-display" data-execution_count="10">
 <div class="ansi-escaped-output">
 <pre>BenchmarkTools.Trial: 10000 samples with 1 evaluation per sample.
- Range <span class="ansi-bright-black-fg">(</span><span class="ansi-cyan-fg ansi-bold">min</span> … <span class="ansi-magenta-fg">max</span><span class="ansi-bright-black-fg">):  </span><span class="ansi-cyan-fg ansi-bold">57.539 μs</span> … <span class="ansi-magenta-fg"> 4.898 ms</span>  <span class="ansi-bright-black-fg">┊</span> GC <span class="ansi-bright-black-fg">(</span>min … max<span class="ansi-bright-black-fg">): </span>0.00% … 95.83%
- Time  <span class="ansi-bright-black-fg">(</span><span class="ansi-blue-fg ansi-bold">median</span><span class="ansi-bright-black-fg">):     </span><span class="ansi-blue-fg ansi-bold">75.239 μs              </span><span class="ansi-bright-black-fg">┊</span> GC <span class="ansi-bright-black-fg">(</span>median<span class="ansi-bright-black-fg">):    </span>0.00%
- Time  <span class="ansi-bright-black-fg">(</span><span class="ansi-green-fg ansi-bold">mean</span> ± <span class="ansi-green-fg">σ</span><span class="ansi-bright-black-fg">):   </span><span class="ansi-green-fg ansi-bold">91.510 μs</span> ± <span class="ansi-green-fg">81.896 μs</span>  <span class="ansi-bright-black-fg">┊</span> GC <span class="ansi-bright-black-fg">(</span>mean ± σ<span class="ansi-bright-black-fg">):  </span>6.14% ±  9.41%
-   ▅ █<span class="ansi-blue-fg"> </span>  <span class="ansi-green-fg"> </span>                                                     
-  ▅█▅█<span class="ansi-blue-fg">▇</span>▃▄<span class="ansi-green-fg">▃</span>▃▃▄▃▃▃▃▃▃▃▃▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▁▂▂▂▁▂▁▁▁▂▂▁▂▂▂▂▂▂▂▂▂▂ ▃
-  57.5 μs<span class="ansi-bright-black-fg">         Histogram: frequency by time</span>         337 μs <span class="ansi-bold">&lt;</span>
- Memory estimate<span class="ansi-bright-black-fg">: </span><span class="ansi-yellow-fg">781.30 KiB</span>, allocs estimate<span class="ansi-bright-black-fg">: </span><span class="ansi-yellow-fg">2</span>.</pre>
+ Range <span class="ansi-bright-black-fg">(</span><span class="ansi-cyan-fg ansi-bold">min</span> … <span class="ansi-magenta-fg">max</span><span class="ansi-bright-black-fg">):  </span><span class="ansi-cyan-fg ansi-bold">17.893 μs</span> … <span class="ansi-magenta-fg"> 3.073 ms</span>  <span class="ansi-bright-black-fg">┊</span> GC <span class="ansi-bright-black-fg">(</span>min … max<span class="ansi-bright-black-fg">): </span> 0.00% … 94.26%
+ Time  <span class="ansi-bright-black-fg">(</span><span class="ansi-blue-fg ansi-bold">median</span><span class="ansi-bright-black-fg">):     </span><span class="ansi-blue-fg ansi-bold">24.091 μs              </span><span class="ansi-bright-black-fg">┊</span> GC <span class="ansi-bright-black-fg">(</span>median<span class="ansi-bright-black-fg">):    </span> 0.00%
+ Time  <span class="ansi-bright-black-fg">(</span><span class="ansi-green-fg ansi-bold">mean</span> ± <span class="ansi-green-fg">σ</span><span class="ansi-bright-black-fg">):   </span><span class="ansi-green-fg ansi-bold">42.679 μs</span> ± <span class="ansi-green-fg">79.312 μs</span>  <span class="ansi-bright-black-fg">┊</span> GC <span class="ansi-bright-black-fg">(</span>mean ± σ<span class="ansi-bright-black-fg">):  </span>23.12% ± 13.73%
+  █<span class="ansi-blue-fg">▆</span>▅<span class="ansi-green-fg">▅</span>▄▂             ▁▁                                       ▂
+  █<span class="ansi-blue-fg">█</span>█<span class="ansi-green-fg">█</span>███▅▁▁▃▁▃▁▃▄▃▅████▆▅▅▃▃▁▃▁▄▃▁▃▁▁▄▄▆▆▆▆▆▇▅▆▅▆▆▇▅▅▅▆▅▆▅▅▅ █
+  17.9 μs<span class="ansi-bright-black-fg">      </span><span class="ansi-bright-black-fg">Histogram: </span><span class="ansi-bright-black-fg ansi-bold">log(</span><span class="ansi-bright-black-fg">frequency</span><span class="ansi-bright-black-fg ansi-bold">)</span><span class="ansi-bright-black-fg"> by time</span>       437 μs <span class="ansi-bold">&lt;</span>
+ Memory estimate<span class="ansi-bright-black-fg">: </span><span class="ansi-yellow-fg">781.31 KiB</span>, allocs estimate<span class="ansi-bright-black-fg">: </span><span class="ansi-yellow-fg">3</span>.</pre>
 </div>
 </div>
 </div>
-<div id="cf33d96e" class="cell" data-execution_count="13">
+<div id="c1e71c64" class="cell" data-execution_count="12">
 <div class="sourceCode cell-code" id="cb22"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co">#julia</span></span>
 <span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="pp">@benchmark</span> <span class="fu">f1_loop</span>(<span class="op">$</span>x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="11">
 <div class="ansi-escaped-output">
 <pre>BenchmarkTools.Trial: 10000 samples with 1 evaluation per sample.
- Range <span class="ansi-bright-black-fg">(</span><span class="ansi-cyan-fg ansi-bold">min</span> … <span class="ansi-magenta-fg">max</span><span class="ansi-bright-black-fg">):  </span><span class="ansi-cyan-fg ansi-bold">55.913 μs</span> … <span class="ansi-magenta-fg">887.990 μs</span>  <span class="ansi-bright-black-fg">┊</span> GC <span class="ansi-bright-black-fg">(</span>min … max<span class="ansi-bright-black-fg">): </span>0.00% … 74.04%
- Time  <span class="ansi-bright-black-fg">(</span><span class="ansi-blue-fg ansi-bold">median</span><span class="ansi-bright-black-fg">):     </span><span class="ansi-blue-fg ansi-bold">75.755 μs               </span><span class="ansi-bright-black-fg">┊</span> GC <span class="ansi-bright-black-fg">(</span>median<span class="ansi-bright-black-fg">):    </span>0.00%
- Time  <span class="ansi-bright-black-fg">(</span><span class="ansi-green-fg ansi-bold">mean</span> ± <span class="ansi-green-fg">σ</span><span class="ansi-bright-black-fg">):   </span><span class="ansi-green-fg ansi-bold">94.744 μs</span> ± <span class="ansi-green-fg"> 57.302 μs</span>  <span class="ansi-bright-black-fg">┊</span> GC <span class="ansi-bright-black-fg">(</span>mean ± σ<span class="ansi-bright-black-fg">):  </span>5.42% ±  9.34%
-   █ █<span class="ansi-blue-fg"> </span>  <span class="ansi-green-fg"> </span>                                                      
-  ▃█▅█<span class="ansi-blue-fg">▅</span>▄▄<span class="ansi-green-fg">▃</span>▃▃▃▂▂▂▂▂▂▂▂▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁ ▂
-  55.9 μs<span class="ansi-bright-black-fg">         Histogram: frequency by time</span>          375 μs <span class="ansi-bold">&lt;</span>
- Memory estimate<span class="ansi-bright-black-fg">: </span><span class="ansi-yellow-fg">781.30 KiB</span>, allocs estimate<span class="ansi-bright-black-fg">: </span><span class="ansi-yellow-fg">2</span>.</pre>
+ Range <span class="ansi-bright-black-fg">(</span><span class="ansi-cyan-fg ansi-bold">min</span> … <span class="ansi-magenta-fg">max</span><span class="ansi-bright-black-fg">):  </span><span class="ansi-cyan-fg ansi-bold">17.914 μs</span> … <span class="ansi-magenta-fg"> 1.024 ms</span>  <span class="ansi-bright-black-fg">┊</span> GC <span class="ansi-bright-black-fg">(</span>min … max<span class="ansi-bright-black-fg">): </span> 0.00% … 93.75%
+ Time  <span class="ansi-bright-black-fg">(</span><span class="ansi-blue-fg ansi-bold">median</span><span class="ansi-bright-black-fg">):     </span><span class="ansi-blue-fg ansi-bold">26.014 μs              </span><span class="ansi-bright-black-fg">┊</span> GC <span class="ansi-bright-black-fg">(</span>median<span class="ansi-bright-black-fg">):    </span> 0.00%
+ Time  <span class="ansi-bright-black-fg">(</span><span class="ansi-green-fg ansi-bold">mean</span> ± <span class="ansi-green-fg">σ</span><span class="ansi-bright-black-fg">):   </span><span class="ansi-green-fg ansi-bold">44.696 μs</span> ± <span class="ansi-green-fg">70.742 μs</span>  <span class="ansi-bright-black-fg">┊</span> GC <span class="ansi-bright-black-fg">(</span>mean ± σ<span class="ansi-bright-black-fg">):  </span>21.01% ± 13.27%
+  █<span class="ansi-blue-fg">▆</span>▅▆<span class="ansi-green-fg">▅</span>▃▁          ▁▁                                         ▂
+  █<span class="ansi-blue-fg">█</span>██<span class="ansi-green-fg">█</span>██▆▁▃▁▁▁▁▃▄▇████▇▅▃▃▁▄▃▁▁▁▁▃▁▁▄▄▆▆▆▅▅▆▆▆▄▅▆▅▆▅▆▆▅▄▅▅▅▆ █
+  17.9 μs<span class="ansi-bright-black-fg">      </span><span class="ansi-bright-black-fg">Histogram: </span><span class="ansi-bright-black-fg ansi-bold">log(</span><span class="ansi-bright-black-fg">frequency</span><span class="ansi-bright-black-fg ansi-bold">)</span><span class="ansi-bright-black-fg"> by time</span>       467 μs <span class="ansi-bold">&lt;</span>
+ Memory estimate<span class="ansi-bright-black-fg">: </span><span class="ansi-yellow-fg">781.31 KiB</span>, allocs estimate<span class="ansi-bright-black-fg">: </span><span class="ansi-yellow-fg">3</span>.</pre>
 </div>
 </div>
 </div>
-<div id="e6633e5f" class="cell" data-execution_count="14">
+<div id="57ad8941" class="cell" data-execution_count="13">
 <div class="sourceCode cell-code" id="cb23"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co">#julia</span></span>
 <span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="pp">@benchmark</span> <span class="fu">f1_map</span>(<span class="op">$</span>x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="12">
 <div class="ansi-escaped-output">
 <pre>BenchmarkTools.Trial: 10000 samples with 1 evaluation per sample.
- Range <span class="ansi-bright-black-fg">(</span><span class="ansi-cyan-fg ansi-bold">min</span> … <span class="ansi-magenta-fg">max</span><span class="ansi-bright-black-fg">):  </span><span class="ansi-cyan-fg ansi-bold"> 58.217 μs</span> … <span class="ansi-magenta-fg">905.840 μs</span>  <span class="ansi-bright-black-fg">┊</span> GC <span class="ansi-bright-black-fg">(</span>min … max<span class="ansi-bright-black-fg">): </span>0.00% … 71.12%
- Time  <span class="ansi-bright-black-fg">(</span><span class="ansi-blue-fg ansi-bold">median</span><span class="ansi-bright-black-fg">):     </span><span class="ansi-blue-fg ansi-bold"> 80.790 μs               </span><span class="ansi-bright-black-fg">┊</span> GC <span class="ansi-bright-black-fg">(</span>median<span class="ansi-bright-black-fg">):    </span>0.00%
- Time  <span class="ansi-bright-black-fg">(</span><span class="ansi-green-fg ansi-bold">mean</span> ± <span class="ansi-green-fg">σ</span><span class="ansi-bright-black-fg">):   </span><span class="ansi-green-fg ansi-bold">102.636 μs</span> ± <span class="ansi-green-fg"> 58.756 μs</span>  <span class="ansi-bright-black-fg">┊</span> GC <span class="ansi-bright-black-fg">(</span>mean ± σ<span class="ansi-bright-black-fg">):  </span>5.13% ±  9.28%
-   ▂ █<span class="ansi-blue-fg"> </span>   <span class="ansi-green-fg"> </span>                                                      
-  ▆█▅█<span class="ansi-blue-fg">▇</span>▅▅▄<span class="ansi-green-fg">▄</span>▄▄▄▃▃▃▃▃▃▃▃▃▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▁▁▂▂▂▂▂▂▂▂▂▂▂▂▂▂ ▃
-  58.2 μs<span class="ansi-bright-black-fg">          Histogram: frequency by time</span>          386 μs <span class="ansi-bold">&lt;</span>
- Memory estimate<span class="ansi-bright-black-fg">: </span><span class="ansi-yellow-fg">781.30 KiB</span>, allocs estimate<span class="ansi-bright-black-fg">: </span><span class="ansi-yellow-fg">2</span>.</pre>
+ Range <span class="ansi-bright-black-fg">(</span><span class="ansi-cyan-fg ansi-bold">min</span> … <span class="ansi-magenta-fg">max</span><span class="ansi-bright-black-fg">):  </span><span class="ansi-cyan-fg ansi-bold">20.023 μs</span> … <span class="ansi-magenta-fg">954.774 μs</span>  <span class="ansi-bright-black-fg">┊</span> GC <span class="ansi-bright-black-fg">(</span>min … max<span class="ansi-bright-black-fg">): </span> 0.00% … 92.77%
+ Time  <span class="ansi-bright-black-fg">(</span><span class="ansi-blue-fg ansi-bold">median</span><span class="ansi-bright-black-fg">):     </span><span class="ansi-blue-fg ansi-bold">26.507 μs               </span><span class="ansi-bright-black-fg">┊</span> GC <span class="ansi-bright-black-fg">(</span>median<span class="ansi-bright-black-fg">):    </span> 0.00%
+ Time  <span class="ansi-bright-black-fg">(</span><span class="ansi-green-fg ansi-bold">mean</span> ± <span class="ansi-green-fg">σ</span><span class="ansi-bright-black-fg">):   </span><span class="ansi-green-fg ansi-bold">45.031 μs</span> ± <span class="ansi-green-fg"> 69.959 μs</span>  <span class="ansi-bright-black-fg">┊</span> GC <span class="ansi-bright-black-fg">(</span>mean ± σ<span class="ansi-bright-black-fg">):  </span>20.79% ± 13.52%
+  █<span class="ansi-blue-fg">▆</span>▅▅<span class="ansi-green-fg">▄</span>▂▁            ▁▁                                        ▂
+  █<span class="ansi-blue-fg">█</span>██<span class="ansi-green-fg">█</span>██▇▄▃▁▁▁▁▃▄▅▅▇████▇▆▅▄▁▄▁▁▁▁▃▄▃▃▄▅▆▆▅▆▆▆▆▆▅▆▆▅▆▅▄▆▅▅▅▅▆ █
+  20 μs<span class="ansi-bright-black-fg">         </span><span class="ansi-bright-black-fg">Histogram: </span><span class="ansi-bright-black-fg ansi-bold">log(</span><span class="ansi-bright-black-fg">frequency</span><span class="ansi-bright-black-fg ansi-bold">)</span><span class="ansi-bright-black-fg"> by time</span>       447 μs <span class="ansi-bold">&lt;</span>
+ Memory estimate<span class="ansi-bright-black-fg">: </span><span class="ansi-yellow-fg">781.31 KiB</span>, allocs estimate<span class="ansi-bright-black-fg">: </span><span class="ansi-yellow-fg">3</span>.</pre>
 </div>
 </div>
 </div>
@@ -495,7 +491,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="the-compiler-is-your-friend" class="level2">
 <h2 class="anchored" data-anchor-id="the-compiler-is-your-friend">The compiler is your friend</h2>
 <p>Sometimes you write code that won’t make your parents proud. Suppose you create a function that sums all the numbers from 1 to a given <code>n</code>:</p>
-<div id="3442d4e1" class="cell" data-execution_count="15">
+<div id="28b1a836" class="cell" data-execution_count="14">
 <div class="sourceCode cell-code" id="cb24"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">f_sum</span>(n)</span>
 <span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>    s <span class="op">=</span> <span class="fl">0</span></span>
 <span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="fl">1</span><span class="op">:</span>n</span>
@@ -507,28 +503,28 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <p>In R, the language will obediently execute each iteration of the loop, as you demanded, and it will take forever. You are the boss.</p>
 <p>But in Julia, we have this curious phenomena:</p>
-<div id="70457541" class="cell" data-execution_count="16">
+<div id="a501b209" class="cell" data-execution_count="15">
 <div class="sourceCode cell-code" id="cb25"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="pp">@time</span> <span class="fu">f_sum</span>(<span class="fl">100</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>  0.000002 seconds</code></pre>
+<pre><code>  0.000000 seconds</code></pre>
 </div>
 <div class="cell-output cell-output-display" data-execution_count="14">
 <pre><code>5050</code></pre>
 </div>
 </div>
-<div id="5416ff7d" class="cell" data-execution_count="17">
+<div id="4e315de9" class="cell" data-execution_count="16">
 <div class="sourceCode cell-code" id="cb28"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="pp">@time</span> <span class="fu">f_sum</span>(<span class="fl">100_000</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>  0.000002 seconds</code></pre>
+<pre><code>  0.000000 seconds</code></pre>
 </div>
 <div class="cell-output cell-output-display" data-execution_count="15">
 <pre><code>5000050000</code></pre>
 </div>
 </div>
-<div id="7340a20f" class="cell" data-execution_count="18">
+<div id="ca6d8e8b" class="cell" data-execution_count="17">
 <div class="sourceCode cell-code" id="cb31"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="pp">@time</span> <span class="fu">f_sum</span>(<span class="fl">100_000_000</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>  0.000001 seconds</code></pre>
+<pre><code>  0.000000 seconds</code></pre>
 </div>
 <div class="cell-output cell-output-display" data-execution_count="16">
 <pre><code>5000000050000000</code></pre>
@@ -556,21 +552,21 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <p>In Julia, <em>every function is generic</em>. We can use the same function name and define different behaviours/implementations for each combination of classes/types of its arguments. We saw above the implementation of the <code>maximum</code> function in Julia for an arbitrary vector of numbers. But what if the vector is of a different kind, for which it is easier to determine its maximum?</p>
 <p>Take, for example, the object</p>
-<div id="0b82abd7" class="cell" data-execution_count="19">
+<div id="876b8229" class="cell" data-execution_count="18">
 <div class="sourceCode cell-code" id="cb34"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">10</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="17">
 <pre><code>1:10</code></pre>
 </div>
 </div>
 <p>It is <em>not</em> a vector (to create a usual vector from 1 to 10, you type <code>[1:10;]</code>). Actually, its type is</p>
-<div id="2d4024f6" class="cell" data-execution_count="20">
+<div id="6f9d936e" class="cell" data-execution_count="19">
 <div class="sourceCode cell-code" id="cb36"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="fu">typeof</span>(x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="18">
 <pre><code>UnitRange{Int64}</code></pre>
 </div>
 </div>
 <p>and its type hierarchy is</p>
-<div id="9c1b24aa" class="cell" data-execution_count="21">
+<div id="48de2189" class="cell" data-execution_count="20">
 <div class="sourceCode cell-code" id="cb38"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="bu">Base</span>.<span class="fu">show_supertypes</span>(<span class="fu">typeof</span>(x))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>UnitRange{Int64} &lt;: AbstractUnitRange{Int64} &lt;: OrdinalRange{Int64, Int64} &lt;: AbstractRange{Int64} &lt;: AbstractVector{Int64} &lt;: Any</code></pre>
@@ -578,11 +574,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <p>So <code>x</code> is a much simpler object than a vector: it is an increasing sequence of integer numbers, each 1 unity bigger than the previous one. It makes sense then that the <code>maximum</code> function can be defined much more simpler for an object of type <code>UnitRange{Int64}</code>: the biggest element is always the last.</p>
 <p>If you look at the sourcecode</p>
-<div id="58a09f33" class="cell" data-execution_count="22">
+<div id="64747754" class="cell" data-execution_count="21">
 <div class="sourceCode cell-code" id="cb40"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="pp">@edit</span> <span class="fu">maximum</span>(<span class="fl">1</span><span class="op">:</span><span class="fl">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>you will get</p>
-<div id="fd7bb752" class="cell" data-execution_count="23">
+<div id="a6bf4cf4" class="cell" data-execution_count="22">
 <div class="sourceCode cell-code" id="cb41"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="fu">maximum</span>(r<span class="op">::</span><span class="dt">AbstractUnitRange</span>) <span class="op">=</span> <span class="fu">isempty</span>(r) ? <span class="fu">throw</span>(<span class="fu">ArgumentError</span>(<span class="st">"range must be non-empty"</span>)) <span class="op">:</span> <span class="fu">last</span>(r)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>which is exactly what we thought:</p>
@@ -597,21 +593,21 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p><a href="https://docs.julialang.org/en/v1/manual/metaprogramming/">Macros</a> are one of the most powerful tools in Julia. They rewrite your code before executing it: it is a metaprogramming technique. When creating macros, you will have to understand how a bunch of characters are interpreted by the language and executed as code. This means that macros can rewrite pieces of code and add functionalities that are not possible simply with functions.</p>
 <p>We already used some macros on this notebook; they all start with the <code>@</code> symbol.</p>
 <p>How much time does it take to calculate the sin of a million numbers?</p>
-<div id="b7b359c8" class="cell" data-execution_count="24">
+<div id="d5268b38" class="cell" data-execution_count="23">
 <div class="sourceCode cell-code" id="cb42"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="pp">@time</span> <span class="fu">sin</span>.(<span class="fl">1</span><span class="op">:</span><span class="fl">1_000_000</span>);</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>  0.030940 seconds (2 allocations: 7.629 MiB, 40.95% gc time)</code></pre>
+<pre><code>  0.012606 seconds (3 allocations: 7.629 MiB)</code></pre>
 </div>
 </div>
 <p>Do you have a loop and want to see a progress bar? No need to change the code inside the loop:</p>
-<div id="870b826f" class="cell" data-execution_count="25">
+<div id="4ab1439b" class="cell" data-execution_count="24">
 <div class="sourceCode cell-code" id="cb44"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">ProgressMeter;</span></span>
 <span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a><span class="pp">@showprogress</span> <span class="cf">for</span> i <span class="kw">in</span> <span class="fl">1</span><span class="op">:</span><span class="fl">10</span></span>
 <span id="cb44-4"><a href="#cb44-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">sleep</span>(<span class="fl">0.1</span>)</span>
 <span id="cb44-5"><a href="#cb44-5" aria-hidden="true" tabindex="-1"></a><span class="cf">end</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>Progress:  20%|████████▎                                |  ETA: 0:00:08Progress: 100%|█████████████████████████████████████████| Time: 0:00:03</code></pre>
+<pre><code>Progress:  20%|████████▎                                |  ETA: 0:00:05Progress:  60%|████████████████████████▋                |  ETA: 0:00:01Progress:  70%|████████████████████████████▊            |  ETA: 0:00:01Progress:  80%|████████████████████████████████▊        |  ETA: 0:00:01Progress:  90%|████████████████████████████████████▉    |  ETA: 0:00:00Progress: 100%|█████████████████████████████████████████| Time: 0:00:02</code></pre>
 </div>
 </div>
 <p>As we’ve seen, even the tidyverse could be recreated in Julia using macros!</p>
@@ -620,7 +616,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 class="anchored" data-anchor-id="multithreading-is-trivial">Multithreading is trivial</h2>
 <p><a href="https://docs.julialang.org/en/v1/manual/multi-threading/">Multithreading</a> (or parallel computing) is when your code uses more than one processor at the same time. Multithreading in R is a bit complicated and actually create copies of the R process that comunicates with the main process. There is a <a href="https://www.futureverse.org/packages-overview.html"><code>futureverse</code></a> to deal with that in R, and plans like <code>callr</code> or <code>multisession</code> to define how these extra R sessions will be created and mantained.</p>
 <p>In Julia, multithreading is as easy as appending a macro before a loop:</p>
-<div id="b08ab87d" class="cell" data-execution_count="26">
+<div id="eb028a9e" class="cell" data-execution_count="25">
 <div class="sourceCode cell-code" id="cb46"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="bu">Threads</span>.<span class="pp">@threads</span> <span class="cf">for</span> i <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">10</span></span>
 <span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a>    a[i] <span class="op">=</span> <span class="bu">Threads</span>.<span class="fu">threadid</span>()</span>
 <span id="cb46-3"><a href="#cb46-3" aria-hidden="true" tabindex="-1"></a><span class="cf">end</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -645,7 +641,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li><code>using PACKAGE: FUNCTION1, FUNCTION2</code> will import only these 2 functions from PACKAGE.</li>
 </ul>
 <p>The best part, however, is the ability to create modules inside modules. For example, if you have a mega package to do all your data analysis in your work, you can have a module about Reports, another one with APIs and so on. Importing then can be done with</p>
-<div id="2a4da6c2" class="cell" data-execution_count="27">
+<div id="dbb99dd3" class="cell" data-execution_count="26">
 <div class="sourceCode cell-code" id="cb47"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">MyPackage.Reports</span></span>
 <span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb47-3"><a href="#cb47-3" aria-hidden="true" tabindex="-1"></a><span class="co"># or</span></span>
@@ -658,20 +654,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="math-symbols-for-the-math-enthusiasts" class="level2">
 <h2 class="anchored" data-anchor-id="math-symbols-for-the-math-enthusiasts">Math symbols for the math enthusiasts</h2>
 <p>Examples of correct Julia code:</p>
-<div id="5c71436d" class="cell" data-execution_count="28">
+<div id="8d0ce54b" class="cell" data-execution_count="27">
 <div class="sourceCode cell-code" id="cb48"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a>[<span class="fl">1</span>, <span class="fl">2</span>] <span class="op">∩</span> [<span class="fl">2</span>, <span class="fl">3</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="22">
 <pre><code>1-element Vector{Int64}:
  2</code></pre>
 </div>
 </div>
-<div id="7947fc51" class="cell" data-execution_count="29">
+<div id="cec70f10" class="cell" data-execution_count="28">
 <div class="sourceCode cell-code" id="cb50"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="fl">2</span> <span class="op">∈</span> [<span class="fl">2</span>, <span class="fl">3</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="23">
 <pre><code>true</code></pre>
 </div>
 </div>
-<div id="7726fbb1" class="cell" data-execution_count="30">
+<div id="28002036" class="cell" data-execution_count="29">
 <div class="sourceCode cell-code" id="cb52"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="fu">f</span>(r) <span class="op">=</span> <span class="cn">π</span><span class="op">*</span>r<span class="op">^</span><span class="fl">2</span></span>
 <span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb52-3"><a href="#cb52-3" aria-hidden="true" tabindex="-1"></a><span class="fu">f</span>(<span class="fl">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -679,7 +675,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <pre><code>28.274333882308138</code></pre>
 </div>
 </div>
-<div id="d220a460" class="cell" data-execution_count="31">
+<div id="5d4bf7e0" class="cell" data-execution_count="30">
 <div class="sourceCode cell-code" id="cb54"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Euler's identity</span></span>
 <span id="cb54-2"><a href="#cb54-2" aria-hidden="true" tabindex="-1"></a><span class="cn">ℯ</span><span class="op">^</span>(<span class="cn">im</span> <span class="op">*</span> <span class="cn">π</span>) <span class="op">+</span> <span class="fl">1</span> <span class="op">|&gt;</span> round</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="25">

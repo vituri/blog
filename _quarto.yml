@@ -45,4 +45,4 @@ execute:
   freeze: auto
   cache: true
 
-engine: jupyter-1.10
+engine: jupyter-1.11

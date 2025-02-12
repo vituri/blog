@@ -31,6 +31,10 @@ vituri.vituri@gmail.com / [https://github.com/vituri](https://github.com/vituri)
 
 ## WORK EXPERIENCE
 
+### R/shiny developer
+
+***Appsilon*** [Feb 2025 -- today]{.cvdate}
+
 ### Head of Intelligence
 
 ***Argus Solutions*** [Jan 2020 -- Jan 2025]{.cvdate}
@@ -101,7 +105,7 @@ Coding in Julia is a joy and make R/Python look like unpolished old languages us
 
 ## Talks, workshops and papers
 
-- Paper: [Motivic clustering schemes for directed graphs](https://arxiv.org/abs/2001.00278) (2000, published in ArXiv, with Facundo Mémoli).
+- Paper: [Motivic clustering schemes for directed graphs](https://arxiv.org/abs/2001.00278) (2020, published in ArXiv, with Facundo Mémoli).
 
 -   Talk: [Topology meets the real world: how geometry can help us analyse finite metric spaces](https://vituri.github.io/talk_wata_2023/#/title-slide) (2023, at the [Workshop of Algebraic Topology and Applications](https://icmc.usp.br/eventos/6135-workshop-de-topologia-algebrica-e-aplicacoes)).
 
