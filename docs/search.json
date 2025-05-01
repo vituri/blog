@@ -157,22 +157,22 @@
     "objectID": "cv.html#education",
     "href": "cv.html#education",
     "title": "About me",
-    "section": "EDUCATION",
-    "text": "EDUCATION\nDoctor of Philosophy – Topological Data Analysis  Universidade Estadual Paulista (Unesp) / Ohio State University (OSU) 2016 — 2020\n\nI spent six months at the Ohio State University under Facundo Mémoli supervision.\nWe generalized the Vietoris-Rips and Cech constructions using “motifs”: families of graphs that can be attached to metric spaces (more generally, networks) and generate simplicial complexes. As a corollary, we obtain several clustering methods on graphs.\nThe resulting work is “Motivic constructions on graphs and networks with stability results” and can be found here.\n\nMaster Degree – Algebraic Topology  Universidade Estadual Paulista (Unesp) 2014 — 2015\n\nI studied a certain subgroup of the fundamental group, called “Gottlieb group”, and proved some results about its properties. The dissertation can be found here.\n\nBachelor in Mathematics  Universidade Estadual Paulista (Unesp) 2010 — 2013"
+    "section": "Education",
+    "text": "Education\nDoctor of Philosophy – Topological Data Analysis  Universidade Estadual Paulista (Unesp) / Ohio State University (OSU) 2016 — 2020\n\nI spent six months at the Ohio State University under Facundo Mémoli supervision.\nWe generalized the Vietoris-Rips and Cech constructions using “motifs”: families of graphs that can be attached to metric spaces (more generally, networks) and generate simplicial complexes. As a corollary, we obtain several clustering methods on graphs.\nThe resulting work is “Motivic constructions on graphs and networks with stability results” and can be found here.\n\nMaster Degree – Algebraic Topology  Universidade Estadual Paulista (Unesp) 2014 — 2015\n\nI studied a certain subgroup of the fundamental group, called “Gottlieb group”, and proved some results about its properties. The dissertation can be found here.\n\nBachelor in Mathematics  Universidade Estadual Paulista (Unesp) 2010 — 2013"
   },
   {
     "objectID": "cv.html#work-experience",
     "href": "cv.html#work-experience",
     "title": "About me",
-    "section": "WORK EXPERIENCE",
-    "text": "WORK EXPERIENCE\n\nR/shiny developer\nAppsilon Feb 2025 – today\n\n\nHead of Intelligence\nArgus Solutions Jan 2020 – Jan 2025\nI founded the area of Data at Argus, and my role was crucial as the company went from a small-sized tech to a multinational. My team now has more than 12 people as diverse as developers, data scientists, engineers and mathematicians. I act as a manager, code reviewer, project manager, machine learning engineer, DevOps, R/Julia developer and database administrator. I can do a bit of everything.\n\nWe went from hundreds of Excel files to a MariaDB database on AWS. I designed the database, its indexes and applied some normal forms.\nI wrote dozens of R/Julia scripts to read and write data from several sources and created a pipeline of information that ran smoothly\nI automated the generation and mailing of thousands of daily/weekly reports using RMarkdown and Sendgrid, which previously was done by 3 people.\nI created several analytics dashboards using the shiny framework, in place of a former Tableau dashboard. I also developed the main platform used by the team to analyze photos/videos.\nWe created a machine learning model that predicts if a driver is going to sleep in the next hour, using an ensemble of models with tidymodels.\nI created a webserver in Julia using Oxygen.jl to read data from several APIs and write they in our databases. A previous version of this code was written in R and each iteration took almost 4 minutes; it was reduced to 5 seconds in Julia using some paralellism magic.\nI participated in the creation of many computer vision algorithms to detect cellphones, drowsiness, potholes and gestures using keras and YOLO.\nI interviewed and hired people, managed the team and developed the abilities we needed to finish our projects."
+    "section": "Work experience",
+    "text": "Work experience\n\nR/Shiny developer\nAppsilon Feb 2025 – today\nI work as a L4 R/shiny engineer at Appsilon, a company that provides data science services to the biggest pharma companies in the world. I contributed to open source packages and other internal tasks.\n\n\nHead of Intelligence\nArgus Solutions Jan 2020 – Jan 2025\nI founded the area of Data at Argus, and my role was crucial as the company went from a small-sized tech to a multinational. My team now has more than 12 people as diverse as developers, data scientists, engineers and mathematicians. I act as a manager, code reviewer, project manager, machine learning engineer, DevOps, R/Julia developer and database administrator. I can do a bit of everything.\n\nWe went from hundreds of Excel files to a MariaDB database on AWS. I designed the database, its indexes and applied some normal forms.\nI wrote dozens of R/Julia scripts to read and write data from several sources and created a pipeline of information that ran smoothly\nI automated the generation and mailing of thousands of daily/weekly reports using RMarkdown and Sendgrid, which previously was done by 3 people.\nI created several analytics dashboards using the shiny framework, in place of a former Tableau dashboard. I also developed the main platform used by the team to analyze photos/videos.\nWe created a machine learning model that predicts if a driver is going to sleep in the next hour, using an ensemble of models with tidymodels.\nI created a webserver in Julia using Oxygen.jl to read data from several APIs and write they in our databases. A previous version of this code was written in R and each iteration took almost 4 minutes; it was reduced to 5 seconds in Julia using some paralellism magic.\nI participated in the creation of many computer vision algorithms to detect cellphones, drowsiness, potholes and gestures using keras and YOLO.\nI interviewed and hired people, managed the team and developed the abilities we needed to finish our projects."
   },
   {
     "objectID": "cv.html#tools-and-skills",
     "href": "cv.html#tools-and-skills",
     "title": "About me",
-    "section": "TOOLS AND SKILLS",
-    "text": "TOOLS AND SKILLS\n\nR\n\ntidyverse: I use several of these packages everyday; I am “fluent” in dplyr, purrr, tidyr, stringr, tibble and many others. I prefer to use echarts4r instead of ggplot2. With dbplyr, I can translate many complicated transformations to SQL in a painless way.\nshiny: I explored a lot of the shiny ecosystem since 2018: from shinydashboard to the new bslib, using shinyWidgets and toastui. I can create dashboards, CRUDS, user interfaces, display photos/videos and maps. Async and parallelism are a bit painful but can be done with future and promises.\nI am also very familiar with igraph to manipulate graphs, leaflet to plot maps, httr2 to make gets and posts, plumber to create APIs, reticulate to interface Python.\nI can create packages, documentation and tests. Unfortunately, my best packages are private but a public example can be found here.\n\n\n\nJulia\nCoding in Julia is a joy and make R/Python look like unpolished old languages used by barbarians.\n\nI started learning Julia to write some Topological Data Analysis algorithms and the result was impressive, even with my initial poor skills.\nI am the owner of the JuliaTDA organization which aims to bring the Topological Data Analysis ecosystem to Julia. I wrote the Mapper and Ball Mapper algorithms in Julia and the documentation in Quarto, and later also wrote the ToMATo algorithm.\nBuilding JuliaTDA, I was able to get familiar with parallelism, code piracy, structs, multiple dispatch, profiling (memory allocations and algorithm efficiency) and plotting tools like Plots and Makie.\nThe book “Hands-On Design Patterns and Best Practices with Julia” is my bible, and I am rewriting all my previous code using what I learned there.\nSince I like the tidyverse so much, I am now part of the TidierOrg: a 100% Julia organization inspired by R data tools. I am the main contributor to TidierIteration.jl, a Julia version of R’s purrr.\nSince I like Quarto so much, I created a package that helps writing Julia documentation with it: QuartoDocBuilder. Its own documentation is written in Quarto!\n\n\n\nAWS\n\nI can create and manage EC2 instances, use S3 to storage and query data, create databases in RDS and create dashboards with metrics.\nI created a facial recognition system of unlabeled drivers using S3 and Rekognition.\nRecently I moved several R/Julia/Python scripts from EC2 to ECS services, providing a reproducible and isolated environment for each code. While doing this, I learned how to create images with Docker, building them with EC2 Image Builder and storing it all in ECR.\n\n\n\nPython\n\nI can read code and port it to another language when necessary; I never had the need to write pure-Python code, but can learn it easily if needed. Using R’s reticulate and Julia’s PythonCall.jl, I was able to use many Python packages elsewhere.\n\n\n\nPublishing\n\nI used a lot of RMarkdown to generate a wide range of dashboards, reports and analysis. Now I prefer to use Quarto because of its many cool features (sites, blogs and dashboards) and easiness to use with Julia.\nI am writing a book called Topological Data Analysis with Julia while I implement several TDA algorithms in JuliaTDA."
+    "section": "Tools and skills",
+    "text": "Tools and skills\n\nR\n\ntidyverse: I use several of these packages everyday; I am “fluent” in dplyr, purrr, tidyr, stringr, tibble and many others. I prefer to use echarts4r instead of ggplot2. With dbplyr, I can translate many complicated transformations to SQL in a painless way.\nshiny: I explored a lot of the shiny ecosystem since 2018: from shinydashboard to the new bslib, using shinyWidgets and toastui. I can create dashboards, CRUDS, user interfaces, display photos/videos and maps. Async and parallelism are a bit painful but can be done with future and promises.\nI am also very familiar with igraph to manipulate graphs, leaflet to plot maps, httr2 to make API calls, plumber to create APIs, reticulate to interface Python.\nI can create packages, documentation and tests. Unfortunately, my best packages are private but a public example can be found here.\n\n\n\nJulia\nCoding in Julia is a joy and make R/Python look like unpolished old languages used by barbarians.\n\nI started learning Julia to write some Topological Data Analysis algorithms and the result was impressive, even with my initial poor skills.\nI am the owner of the JuliaTDA organization which aims to bring the Topological Data Analysis ecosystem to Julia. I wrote the Mapper and Ball Mapper algorithms in Julia and the documentation in Quarto, and later also wrote the ToMATo algorithm.\nBuilding JuliaTDA, I was able to get familiar with parallelism, code piracy, structs, multiple dispatch, profiling (memory allocations and algorithm efficiency) and plotting tools like Plots and Makie.\nThe book “Hands-On Design Patterns and Best Practices with Julia” is my bible, and I am rewriting all my previous code using what I learned there.\nSince I like the tidyverse so much, I am now part of the TidierOrg: a 100% Julia organization inspired by R data tools. I am the main contributor to TidierIteration.jl, a Julia version of R’s purrr.\nSince I like Quarto so much, I created a package that helps writing Julia documentation with it: QuartoDocBuilder. Its own documentation is written in Quarto!\n\n\n\nAWS\n\nI can create and manage EC2 instances, use S3 to storage and query data, create databases in RDS and create dashboards with metrics.\nI created a facial recognition system of unlabeled drivers using S3 and Rekognition.\nRecently I moved several R/Julia/Python scripts from EC2 to ECS services, providing a reproducible and isolated environment for each code. While doing this, I learned how to create images with Docker, building them with EC2 Image Builder and storing it all in ECR.\n\n\n\nPython\n\nI can read code and port it to another language when necessary; I never had the need to write pure-Python code, but can learn it easily if needed. Using R’s reticulate and Julia’s PythonCall.jl, I was able to use many Python packages elsewhere.\n\n\n\nPublishing\n\nI used a lot of RMarkdown to generate a wide range of dashboards, reports and analysis. Now I prefer to use Quarto because of its many cool features (sites, blogs and dashboards) and easiness to use with Julia.\nI am writing a book called Topological Data Analysis with Julia while I implement several TDA algorithms in JuliaTDA."
   },
   {
     "objectID": "cv.html#presentations-and-workshops",
@@ -256,7 +256,7 @@
     "href": "cv.html#talks-workshops-and-papers",
     "title": "About me",
     "section": "Talks, workshops and papers",
-    "text": "Talks, workshops and papers\n\nPaper: Motivic clustering schemes for directed graphs (2020, published in ArXiv, with Facundo Mémoli).\nTalk: Topology meets the real world: how geometry can help us analyse finite metric spaces (2023, at the Workshop of Algebraic Topology and Applications).\nWorkshop: Topological Data Analysis workshop (2024, at the XXIII Brazilian Topology Meeting).\nPaper: Remote sensing to quantify potential aquifer recharge as a complementary tool for groundwater monitoring (2024, published in Hydrological Sciences Journal), co-author."
+    "text": "Talks, workshops and papers\n\nPaper: Remote sensing to quantify potential aquifer recharge as a complementary tool for groundwater monitoring (2024, published in Hydrological Sciences Journal), co-author.\nWorkshop: Topological Data Analysis workshop (2024, at the XXIII Brazilian Topology Meeting).\nTalk: Topology meets the real world: how geometry can help us analyse finite metric spaces (2023, at the Workshop of Algebraic Topology and Applications).\nPaper: Motivic clustering schemes for directed graphs (2020, published in ArXiv, with Facundo Mémoli)."
   },
   {
     "objectID": "cv.html#footnotes",
@@ -551,5 +551,75 @@
     "title": "Julia for R users",
     "section": "Summing up: Where to now?",
     "text": "Summing up: Where to now?\nIf I convinced you or sparked just a little interest, you can start your own journey in Julialand with the suggested steps:\n\nModern Julia Workflows: install Julia, setup your IDE and learn the basics of how to run code.\nThe Julia docs are excellent: need to understand more about variables? What about the scope of functions? Types is certainly worth a read!\nThink Julia, by Be Lauwens and Allen Doeney: similar to Think Python, but better!\nQuestions? Go to the Julia Discourse.\nFor a list of really nice packages, see this repo.\n\nHave a good trip!"
+  },
+  {
+    "objectID": "consulting.html#a",
+    "href": "consulting.html#a",
+    "title": "Consultoria",
+    "section": "a",
+    "text": "a"
+  },
+  {
+    "objectID": "consulting.html#a-1",
+    "href": "consulting.html#a-1",
+    "title": "Consultoria",
+    "section": "a",
+    "text": "a\n\nab\nkasok\naoskok\nasdkoa"
+  },
+  {
+    "objectID": "consulting.html",
+    "href": "consulting.html",
+    "title": "Consultoria",
+    "section": "",
+    "text": "Criação de gráficos, limpeza de dados, análise de dados de geoprocessamento, séries temporais e etc usando R, Python e Julia.\n\n\n\nCriação e monitoramento de indicadores-chave para cada negócio. Ampla experiência no setor de monitoramento de frotas e segurança.\n\n\n\nDe protótipos a dashboards prontos em pouco tempo utilizando shiny no front-end e uma stack diversa no backend.\n\n\n\nCriação de rotinas que automatizam tarefas repetitivas: geração de reports, tratamento de dados, envio de emails.\n\nLearn more »\n\n\n\n\nCriação de bancos de dados estruturados na nuvem, consumo e envio de dados usando APIs bem documentadas.\n\n\n\nModelos preditivos ou descritivos, classificadores, análise de sobrevivência, visão computacional."
+  },
+  {
+    "objectID": "consulting.html#t2ooo",
+    "href": "consulting.html#t2ooo",
+    "title": "Consultoria",
+    "section": "t2ooo",
+    "text": "t2ooo"
+  },
+  {
+    "objectID": "consulting.html#protótipo-rápido",
+    "href": "consulting.html#protótipo-rápido",
+    "title": "Consultoria",
+    "section": "Protótipo rápido",
+    "text": "Protótipo rápido"
+  },
+  {
+    "objectID": "consulting.html#r-shiny-python-julia",
+    "href": "consulting.html#r-shiny-python-julia",
+    "title": "Consultoria",
+    "section": "R, shiny, Python, Julia?",
+    "text": "R, shiny, Python, Julia?"
+  },
+  {
+    "objectID": "consulting.html#soluções-em-ciência-de-dados",
+    "href": "consulting.html#soluções-em-ciência-de-dados",
+    "title": "Consultoria",
+    "section": "",
+    "text": "Criação de gráficos, limpeza de dados, análise de dados de geoprocessamento, séries temporais e etc usando R, Python e Julia.\n\n\n\nCriação e monitoramento de indicadores-chave para cada negócio. Ampla experiência no setor de monitoramento de frotas e segurança.\n\n\n\nDe protótipos a dashboards prontos em pouco tempo utilizando shiny no front-end e uma stack diversa no backend.\n\n\n\nCriação de rotinas que automatizam tarefas repetitivas: geração de reports, tratamento de dados, envio de emails.\n\nLearn more »\n\n\n\n\nCriação de bancos de dados estruturados na nuvem, consumo e envio de dados usando APIs bem documentadas.\n\n\n\nModelos preditivos ou descritivos, classificadores, análise de sobrevivência, visão computacional."
+  },
+  {
+    "objectID": "consulting.html#serviços",
+    "href": "consulting.html#serviços",
+    "title": "Consultoria",
+    "section": "Serviços",
+    "text": "Serviços\n\n\n\nCiência de dados\nCriação de gráficos, limpeza de dados, análise de dados de geoprocessamento, séries temporais e etc usando R, Python e Julia.\n\n\nCriação de KPIs\nCriação e monitoramento de indicadores-chave para cada negócio. Ampla experiência no setor de monitoramento de frotas e segurança.\n\n\nCriação de dashboards\nDe protótipos a dashboards prontos em pouco tempo utilizando shiny no front-end e uma stack diversa no backend.\n\nLearn more »\n\n\n\nAutomação\nCriação de rotinas que automatizam tarefas repetitivas: geração de reports, tratamento de dados, envio de emails.\n\nLearn more »\n\n\n\nBancos de dados e APIs\nCriação de bancos de dados estruturados na nuvem, consumo e envio de dados usando APIs bem documentadas.\n\n\nMachine learning\nModelos preditivos, análise de sobrevivência, visão computacional."
+  },
+  {
+    "objectID": "consulting.html#r-e-shiny",
+    "href": "consulting.html#r-e-shiny",
+    "title": "Consultoria",
+    "section": "R e shiny",
+    "text": "R e shiny\nApesar de ter usado Tableau por um bom tempo, para projetos de pequeno a médio porte darei preferência a utilizar shiny:\n\nDe protótipo a produção em tempo recorde\nR como base, mas outras linguagens podem ser usadas no backend\nVisual moderno e personalizável\n\nO dashboard abaixo foi feito em 2 dias, incluindo o tratamento de dados"
+  },
+  {
+    "objectID": "consulting.html#computação-científica-e-machine-learning",
+    "href": "consulting.html#computação-científica-e-machine-learning",
+    "title": "Consultoria",
+    "section": "Computação científica e machine learning",
+    "text": "Computação científica e machine learning\nO aprendizado de máquinas pode responder diversos tipos de questões:\n\nMeu motorista irá dormir na próxima hora enquanto dirige?\nMinha frota está utilizando mais combustível do que deveria? Quanto de gasto estou tendo a mais com isso?\nA rota que criei poderia ser melhor?\n\nCom a pergunta certa e dados de qualidade, é possível extrair insights novos que diminuem custos e aumentam a produtividade."
   }
 ]

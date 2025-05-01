@@ -1,0 +1,78 @@
+---
+title: "Consultoria"
+format:
+  html:
+    toc: false
+    comments: false
+    page-layout: full
+---
+
+
+::: {.content-block}
+::: {.features}
+
+
+::: {.feature}
+### Ciência de dados
+
+Criação de gráficos, limpeza de dados, análise de dados de geoprocessamento, séries temporais e etc usando [R](https://www-r--project-org.translate.goog/?_x_tr_sl=en&_x_tr_tl=pt&_x_tr_hl=pt&_x_tr_pto=tc), [Python](https://www.python.org/) e [Julia](https://julialang.org/).
+
+:::
+
+::: {.feature}
+### Criação de KPIs
+
+Criação e monitoramento de indicadores-chave para cada negócio. Ampla experiência no setor de monitoramento de frotas e segurança.
+
+:::
+
+::: {.feature}
+### Dashboards
+
+De protótipos a dashboards prontos em pouco tempo utilizando [shiny](https://shiny.posit.co/) no front-end e uma stack diversa no backend.
+
+:::
+
+::: {.feature}
+### Automação
+
+Criação de rotinas que automatizam tarefas repetitivas: geração de reports, tratamento de dados, envio de emails.
+
+::: {.learn-more}
+[Learn more »](https://quarto.org/docs/websites/)
+:::
+:::
+
+::: {.feature}
+### Bancos de dados e APIs
+
+Criação de bancos de dados estruturados na nuvem, consumo e envio de dados usando APIs bem documentadas.
+:::
+
+::: {.feature}
+### Machine learning
+
+Modelos preditivos ou descritivos, classificadores, análise de sobrevivência, visão computacional.
+
+:::
+
+:::
+:::
+
+## R e shiny
+
+Apesar de ter usado Tableau por um bom tempo, para projetos de pequeno a médio porte darei preferência a utilizar [shiny](https://shiny.posit.co/):
+
+- De protótipo a produção em tempo recorde
+- R como base, mas outras linguagens podem ser usadas no backend
+- Visual moderno e personalizável
+
+O dashboard abaixo foi feito em 2 dias, incluindo o tratamento de dados
+
+```{r}
+#| echo: false
+library(slickR)
+images = paste0("images/dash", 1:3, ".png")
+slickR(images, height = "450px")
+```
+

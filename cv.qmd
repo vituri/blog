@@ -4,6 +4,7 @@ format:
   html:
     toc: true
     toc-depth: 3
+    comments: false
   pdf:
     author: Guilherme Vituri
     pdf-engine: weasyprint
@@ -15,7 +16,7 @@ css: cv.css
 vituri.vituri@gmail.com / [https://github.com/vituri](https://github.com/vituri)
 :::
 
-## EDUCATION
+## Education
 
 **Doctor of Philosophy -- Topological Data Analysis** <br> *Universidade Estadual Paulista (Unesp) / Ohio State University (OSU)* [*2016 --- 2020*]{.cvdate}
 
@@ -29,11 +30,13 @@ vituri.vituri@gmail.com / [https://github.com/vituri](https://github.com/vituri)
 
 **Bachelor in Mathematics** <br> *Universidade Estadual Paulista (Unesp)* [*2010 --- 2013*]{.cvdate}
 
-## WORK EXPERIENCE
+## Work experience
 
-### R/shiny developer
+### R/Shiny developer
 
 ***Appsilon*** [Feb 2025 -- today]{.cvdate}
+
+I work as a L4 R/shiny engineer at [Appsilon](https://www.appsilon.com/), a company that provides data science services to the biggest pharma companies in the world. I contributed to [open source packages](https://github.com/Appsilon/ConnectUserMetrics) and other internal tasks.
 
 ### Head of Intelligence
 
@@ -57,7 +60,7 @@ I founded the area of Data at Argus, and my role was crucial as the company went
 
 - I interviewed and hired people, managed the team and developed the abilities we needed to finish our projects.
 
-## TOOLS AND SKILLS
+## Tools and skills
 
 ### R
 
@@ -65,7 +68,7 @@ I founded the area of Data at Argus, and my role was crucial as the company went
 
 - [`shiny`](https://shiny.posit.co/): I explored a lot of the `shiny` ecosystem since 2018: from `shinydashboard` to the new [`bslib`](https://rstudio.github.io/bslib/), using [`shinyWidgets`](https://shinyapps.dreamrs.fr/shinyWidgets/) and [`toastui`](https://dreamrs.github.io/toastui/). I can create dashboards, CRUDS, user interfaces, display photos/videos and maps. Async and parallelism are a bit painful but can be done with `future` and `promises`.
 
-- I am also very familiar with `igraph` to manipulate graphs, `leaflet` to plot maps, `httr2` to make gets and posts, `plumber` to create APIs, `reticulate` to interface Python.
+- I am also very familiar with `igraph` to manipulate graphs, `leaflet` to plot maps, `httr2` to make API calls, `plumber` to create APIs, `reticulate` to interface Python.
 
 - I can create packages, documentation and tests. Unfortunately, my best packages are private but a public example can be found [here](https://github.com/vituri/vituripackage).
 
@@ -105,11 +108,11 @@ Coding in Julia is a joy and make R/Python look like unpolished old languages us
 
 ## Talks, workshops and papers
 
-- Paper: [Motivic clustering schemes for directed graphs](https://arxiv.org/abs/2001.00278) (2020, published in ArXiv, with Facundo Mémoli).
-
--   Talk: [Topology meets the real world: how geometry can help us analyse finite metric spaces](https://vituri.github.io/talk_wata_2023/#/title-slide) (2023, at the [Workshop of Algebraic Topology and Applications](https://icmc.usp.br/eventos/6135-workshop-de-topologia-algebrica-e-aplicacoes)).
+-  Paper: [Remote sensing to quantify potential aquifer recharge as a complementary tool for groundwater monitoring
+](https://www.tandfonline.com/doi/abs/10.1080/02626667.2024.2412741) (2024, published in [Hydrological Sciences Journal](https://www.tandfonline.com/journals/thsj20)), co-author.
 
 -   Workshop: [Topological Data Analysis workshop](https://github.com/vituri/TDA_workshop_EBT2024) (2024, at the [XXIII Brazilian Topology Meeting](https://xxiiiebt.ime.ufba.br/)).
 
--  Paper: [Remote sensing to quantify potential aquifer recharge as a complementary tool for groundwater monitoring
-](https://www.tandfonline.com/doi/abs/10.1080/02626667.2024.2412741) (2024, published in [Hydrological Sciences Journal](https://www.tandfonline.com/journals/thsj20)), co-author.
+-   Talk: [Topology meets the real world: how geometry can help us analyse finite metric spaces](https://vituri.github.io/talk_wata_2023/#/title-slide) (2023, at the [Workshop of Algebraic Topology and Applications](https://icmc.usp.br/eventos/6135-workshop-de-topologia-algebrica-e-aplicacoes)).
+
+- Paper: [Motivic clustering schemes for directed graphs](https://arxiv.org/abs/2001.00278) (2020, published in ArXiv, with Facundo Mémoli).

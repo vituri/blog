@@ -21,6 +21,7 @@ website:
     right:
       # - index.qmd
       # - livros.qmd
+      - consulting.qmd
       - cv.qmd
       # - about.qmd
       - icon: github
@@ -38,7 +39,7 @@ format:
     toc-expand: true
     bibliography: sources.bib
     highlight-style: github
-    page-layout: full    
+    page-layout: full
   pdf: default
 
 execute:
