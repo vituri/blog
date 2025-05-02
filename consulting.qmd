@@ -11,10 +11,10 @@ css: cv.css
 ---
 
 ::: {.contact-block}
-> vituri.vituri@gmail.com / <https://github.com/vituri>
+> Contato: vituri.vituri@gmail.com / Github: [https://github.com/vituri](https://github.com/vituri){target="_blank"}
 :::
 
-Com mais de 7 anos de experiência em análise de dados, R/shiny e machine learning, atuei com mais foco nos ramos detecção de fadiga e controle de frotas, análise de dados geoespaciais e modelos preditivos. Mais detalhes de minha experiência profissional se encontram [no meu currículo](https://vituri.github.io/blog/cv.html/?target=_blank). Alguns de meus conhecimentos que podem ser úteis:
+Com mais de 7 anos de experiência em análise de dados, R/shiny e machine learning, atuei com mais foco nos ramos detecção de fadiga e controle de frotas, análise de dados geoespaciais e modelos preditivos. Mais detalhes de minha experiência profissional se encontram [no meu currículo](https://vituri.github.io/blog/cv.html){target="_blank"}. Alguns de meus conhecimentos que podem ser úteis:
 
 ::: {.content-block}
 ::: {.features}
@@ -22,7 +22,7 @@ Com mais de 7 anos de experiência em análise de dados, R/shiny e machine learn
 ::: {.feature}
 ### Ciência de dados
 
-Criação de gráficos, limpeza de dados, análise de dados de geoprocessamento, séries temporais e etc usando [R](https://www-r--project-org.translate.goog/?_x_tr_sl=en&_x_tr_tl=pt&_x_tr_hl=pt&_x_tr_pto=tc), [Python](https://www.python.org/) e [Julia](https://julialang.org/).
+Criação de gráficos, limpeza de dados, análise de dados de geoprocessamento, séries temporais e etc usando [R](https://www-r--project-org.translate.goog/?_x_tr_sl=en&_x_tr_tl=pt&_x_tr_hl=pt&_x_tr_pto=tc){target="_blank"}, [Python](https://www.python.org){target="_blank"} e [Julia](https://julialang.org){target="_blank"}.
 
 :::
 
@@ -36,7 +36,7 @@ Criação e monitoramento de indicadores-chave para cada negócio. Ampla experi�
 ::: {.feature}
 ### Dashboards
 
-De protótipos a dashboards prontos em pouco tempo utilizando [shiny](https://shiny.posit.co/) no front-end e uma stack diversa no backend.
+De protótipos a dashboards prontos em pouco tempo utilizando [shiny](https://shiny.posit.co){target="_blank"} no front-end e uma stack diversa no backend.
 
 :::
 
@@ -65,7 +65,7 @@ Modelos preditivos ou descritivos, classificadores, análise de sobrevivência, 
 
 ## R & shiny
 
-Apesar de ter usado Tableau por um bom tempo, para projetos de pequeno a médio porte darei preferência a utilizar [shiny](https://shiny.posit.co/):
+Apesar de ter usado Tableau por um bom tempo, para projetos de pequeno a médio porte darei preferência a utilizar [shiny](https://shiny.posit.co){target="_blank"}:
 
 - De protótipo a produção em tempo recorde
 - R como base, mas outras linguagens podem ser usadas no backend
@@ -83,7 +83,7 @@ slickR(images, height = "450px")
 ## Geoprocessamento
 
 Tenho experiência com processamento de dados geoespaciais usando os pacotes `terra` e `sf`, incluindo um artigo publicado: [Remote sensing to quantify potential aquifer recharge as a complementary tool for groundwater monitoring
-](https://www.tandfonline.com/doi/abs/10.1080/02626667.2024.2412741). Também utilizo o pacote `tmap` para gerar mapas como o [seguinte](https://r-tmap.github.io/tmap/articles/examples_choro_NLD)
+](https://www.tandfonline.com/doi/abs/10.1080/02626667.2024.2412741){target="_blank"}. Também utilizo o pacote `tmap` para gerar mapas como o [seguinte](https://r-tmap.github.io/tmap/articles/examples_choro_NLD){target="_blank"}
 
 ```{r}
 #| echo: false

@@ -5,6 +5,9 @@ format:
     toc: true
     toc-depth: 3
     comments: false
+    grid:
+      sidebar-width: 0px
+
   pdf:
     author: Guilherme Vituri
     pdf-engine: weasyprint
