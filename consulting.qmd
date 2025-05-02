@@ -5,12 +5,19 @@ format:
     toc: false
     comments: false
     page-layout: full
+    grid:
+      sidebar-width: 0px
+css: cv.css
 ---
 
+::: {.contact-block}
+> vituri.vituri@gmail.com / <https://github.com/vituri>
+:::
+
+Com mais de 7 anos de experiência em análise de dados, R/shiny e machine learning, atuei com mais foco nos ramos detecção de fadiga e controle de frotas, análise de dados geoespaciais e modelos preditivos. Mais detalhes de minha experiência profissional se encontram [no meu currículo](https://vituri.github.io/blog/cv.html/?target=_blank). Alguns de meus conhecimentos que podem ser úteis:
 
 ::: {.content-block}
 ::: {.features}
-
 
 ::: {.feature}
 ### Ciência de dados
@@ -38,9 +45,6 @@ De protótipos a dashboards prontos em pouco tempo utilizando [shiny](https://sh
 
 Criação de rotinas que automatizam tarefas repetitivas: geração de reports, tratamento de dados, envio de emails.
 
-::: {.learn-more}
-[Learn more »](https://quarto.org/docs/websites/)
-:::
 :::
 
 ::: {.feature}
@@ -59,7 +63,7 @@ Modelos preditivos ou descritivos, classificadores, análise de sobrevivência, 
 :::
 :::
 
-## R e shiny
+## R & shiny
 
 Apesar de ter usado Tableau por um bom tempo, para projetos de pequeno a médio porte darei preferência a utilizar [shiny](https://shiny.posit.co/):
 
@@ -67,7 +71,7 @@ Apesar de ter usado Tableau por um bom tempo, para projetos de pequeno a médio 
 - R como base, mas outras linguagens podem ser usadas no backend
 - Visual moderno e personalizável
 
-O dashboard abaixo foi feito em 2 dias, incluindo o tratamento de dados
+O dashboard abaixo foi feito em 2 dias, incluindo o tratamento de dados:
 
 ```{r}
 #| echo: false
@@ -76,3 +80,44 @@ images = paste0("images/dash", 1:3, ".png")
 slickR(images, height = "450px")
 ```
 
+## Geoprocessamento
+
+Tenho experiência com processamento de dados geoespaciais usando os pacotes `terra` e `sf`, incluindo um artigo publicado: [Remote sensing to quantify potential aquifer recharge as a complementary tool for groundwater monitoring
+](https://www.tandfonline.com/doi/abs/10.1080/02626667.2024.2412741). Também utilizo o pacote `tmap` para gerar mapas como o [seguinte](https://r-tmap.github.io/tmap/articles/examples_choro_NLD)
+
+```{r}
+#| echo: false
+#| warning: false
+# example from https://r-tmap.github.io/tmap/articles/examples_choro_NLD
+library(tmap)
+# tmap_mode(mode = "view")
+# tmap_options(scale = 0.75)
+
+tm_shape(NLD_dist) +
+    tm_polygons(
+        fill = "edu_appl_sci",
+        fill.scale = tm_scale_continuous(values = "-orange_blue_diverging"),
+        fill.legend = tm_legend("", position = tm_pos_in("left", "top")),
+        col = NULL
+    ) + 
+tm_shape(NLD_muni) +
+    tm_borders(lwd = 1) +
+tm_shape(NLD_prov) +
+    tm_borders(lwd = 3) + 
+tm_title("", 
+    width = 15, 
+    position = tm_pos_in("left", "top"), 
+    z = 0) +
+tm_compass(position = tm_pos_in("left", "bottom")) +
+tm_scalebar(position = tm_pos_in("left", "bottom"))
+```
+
+## Machine learning
+
+Fui responsável por implementar o modelo preditivo de fadiga na empresa Argus para responder a seguinte pergunta: "Qual a probabilidade de um dado motorista dormir enquanto dirige na próxima hora?"
+
+{{<video https://www.youtube.com/watch?v=2LoWyeiVur0>}}
+
+Também implementei o sistema de reconhecimento facial que permite identificar o histórico de cada motorista sem necessidade de crachás ou aplicativos de ponto
+
+{{<video https://www.youtube.com/watch?v=z3BVuftGhoU>}}

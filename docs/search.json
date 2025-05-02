@@ -571,7 +571,7 @@
     "href": "consulting.html",
     "title": "Consultoria",
     "section": "",
-    "text": "Criação de gráficos, limpeza de dados, análise de dados de geoprocessamento, séries temporais e etc usando R, Python e Julia.\n\n\n\nCriação e monitoramento de indicadores-chave para cada negócio. Ampla experiência no setor de monitoramento de frotas e segurança.\n\n\n\nDe protótipos a dashboards prontos em pouco tempo utilizando shiny no front-end e uma stack diversa no backend.\n\n\n\nCriação de rotinas que automatizam tarefas repetitivas: geração de reports, tratamento de dados, envio de emails.\n\nLearn more »\n\n\n\n\nCriação de bancos de dados estruturados na nuvem, consumo e envio de dados usando APIs bem documentadas.\n\n\n\nModelos preditivos ou descritivos, classificadores, análise de sobrevivência, visão computacional."
+    "text": "vituri.vituri@gmail.com / https://github.com/vituri\nCom mais de 7 anos de experiência em análise de dados, R/shiny e machine learning, atuei com mais foco nos ramos detecção de fadiga e controle de frotas, análise de dados geoespaciais e modelos preditivos. Mais detalhes de minha experiência profissional se encontram no meu currículo. Alguns de meus conhecimentos que podem ser úteis:"
   },
   {
     "objectID": "consulting.html#t2ooo",
@@ -621,5 +621,26 @@
     "title": "Consultoria",
     "section": "Computação científica e machine learning",
     "text": "Computação científica e machine learning\nO aprendizado de máquinas pode responder diversos tipos de questões:\n\nMeu motorista irá dormir na próxima hora enquanto dirige?\nMinha frota está utilizando mais combustível do que deveria? Quanto de gasto estou tendo a mais com isso?\nA rota que criei poderia ser melhor?\n\nCom a pergunta certa e dados de qualidade, é possível extrair insights novos que diminuem custos e aumentam a produtividade."
+  },
+  {
+    "objectID": "consulting.html#r-shiny",
+    "href": "consulting.html#r-shiny",
+    "title": "Consultoria",
+    "section": "R & shiny",
+    "text": "R & shiny\nApesar de ter usado Tableau por um bom tempo, para projetos de pequeno a médio porte darei preferência a utilizar shiny:\n\nDe protótipo a produção em tempo recorde\nR como base, mas outras linguagens podem ser usadas no backend\nVisual moderno e personalizável\n\nO dashboard abaixo foi feito em 2 dias, incluindo o tratamento de dados:"
+  },
+  {
+    "objectID": "consulting.html#geoprocessamento",
+    "href": "consulting.html#geoprocessamento",
+    "title": "Consultoria",
+    "section": "Geoprocessamento",
+    "text": "Geoprocessamento\nTenho experiência com processamento de dados geoespaciais usando os pacotes terra e sf, incluindo um artigo publicado: Remote sensing to quantify potential aquifer recharge as a complementary tool for groundwater monitoring. Também utilizo o pacote tmap para gerar mapas como o seguinte"
+  },
+  {
+    "objectID": "consulting.html#machine-learning-1",
+    "href": "consulting.html#machine-learning-1",
+    "title": "Consultoria",
+    "section": "Machine learning",
+    "text": "Machine learning\nFui responsável por implementar o modelo preditivo de fadiga na empresa Argus para responder a seguinte pergunta: “Qual a probabilidade de um dado motorista dormir enquanto dirige na próxima hora?”\n\nTambém implementei o sistema de reconhecimento facial que permite identificar o histórico de cada motorista sem necessidade de crachás ou aplicativos de ponto"
   }
 ]

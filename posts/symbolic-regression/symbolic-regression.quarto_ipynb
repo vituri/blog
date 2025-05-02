@@ -25,7 +25,7 @@
         "\n",
         "Let's try to approximate the function $f(x) = - x^2 + 1$ using the symbols and $+, -, *$ combined with the variable $x$. "
       ],
-      "id": "974ca850"
+      "id": "53484a77"
     },
     {
       "cell_type": "code",
@@ -34,7 +34,7 @@
         "# import Pkg; \n",
         "# Pkg.add([\"SymbolicRegression\", \"MLJ\", \"SymbolicUtils\", \"Plots\"])"
       ],
-      "id": "3bd9f932",
+      "id": "a7c8b361",
       "execution_count": null,
       "outputs": []
     },
@@ -50,7 +50,7 @@
         "\n",
         "scatter(x, y)"
       ],
-      "id": "f418c5ef",
+      "id": "4ddfd8bd",
       "execution_count": null,
       "outputs": []
     },
@@ -60,7 +60,7 @@
       "source": [
         "First we define a model"
       ],
-      "id": "b461ec77"
+      "id": "7eaa1c19"
     },
     {
       "cell_type": "code",
@@ -72,7 +72,7 @@
         "    seed = 1\n",
         ");"
       ],
-      "id": "ba76b96b",
+      "id": "062260fd",
       "execution_count": null,
       "outputs": []
     },
@@ -84,7 +84,7 @@
         "\n",
         "And then fit it to our dataset"
       ],
-      "id": "b710e976"
+      "id": "62743818"
     },
     {
       "cell_type": "code",
@@ -96,7 +96,7 @@
         "mach = machine(model, X, y)\n",
         "fit!(mach)"
       ],
-      "id": "95d746bc",
+      "id": "071bda1e",
       "execution_count": null,
       "outputs": []
     },
@@ -106,7 +106,7 @@
       "source": [
         "We can see a report about the results:"
       ],
-      "id": "deef3b14"
+      "id": "5a730f51"
     },
     {
       "cell_type": "code",
@@ -116,7 +116,7 @@
         "\n",
         "r"
       ],
-      "id": "bac1e068",
+      "id": "4064555e",
       "execution_count": null,
       "outputs": []
     },
@@ -126,7 +126,7 @@
       "source": [
         "This report contains the losses"
       ],
-      "id": "483d36e7"
+      "id": "6820443e"
     },
     {
       "cell_type": "code",
@@ -134,7 +134,7 @@
       "source": [
         "r.losses"
       ],
-      "id": "5273fcbc",
+      "id": "bfb65d37",
       "execution_count": null,
       "outputs": []
     },
@@ -144,7 +144,7 @@
       "source": [
         "the equations"
       ],
-      "id": "fa60c464"
+      "id": "12af9a22"
     },
     {
       "cell_type": "code",
@@ -152,7 +152,7 @@
       "source": [
         "r.equations"
       ],
-      "id": "a06e7ea7",
+      "id": "c43bce5b",
       "execution_count": null,
       "outputs": []
     },
@@ -162,7 +162,7 @@
       "source": [
         "and the best one of the functions found (ie. the one with the least loss):"
       ],
-      "id": "3c04ffdf"
+      "id": "e48cf7ed"
     },
     {
       "cell_type": "code",
@@ -170,7 +170,7 @@
       "source": [
         "node_to_symbolic(r.equations[r.best_idx], model)"
       ],
-      "id": "93a2435d",
+      "id": "66573d12",
       "execution_count": null,
       "outputs": []
     },
@@ -186,7 +186,7 @@
         "\n",
         "Now let's get a more interesting example. Take $f(x) = x^2 + 2cos(x)^2$:"
       ],
-      "id": "abfa416b"
+      "id": "d7913de5"
     },
     {
       "cell_type": "code",
@@ -196,7 +196,7 @@
         "\n",
         "scatter(x, y)"
       ],
-      "id": "30547c0e",
+      "id": "0b53c870",
       "execution_count": null,
       "outputs": []
     },
@@ -206,7 +206,7 @@
       "source": [
         "We again create a model and fit it, but now we allow more operations: besides the earlier binary functions, we also have the unary `cos` function:"
       ],
-      "id": "3028a019"
+      "id": "8d6495fd"
     },
     {
       "cell_type": "code",
@@ -224,7 +224,7 @@
         "mach = machine(model, X, y)\n",
         "fit!(mach)"
       ],
-      "id": "e86d4d9d",
+      "id": "f6a84112",
       "execution_count": null,
       "outputs": []
     },
@@ -234,7 +234,7 @@
       "source": [
         "and see the best equation:"
       ],
-      "id": "bb507211"
+      "id": "75095f8f"
     },
     {
       "cell_type": "code",
@@ -243,7 +243,7 @@
         "r = report(mach)\n",
         "node_to_symbolic(r.equations[r.best_idx], model)"
       ],
-      "id": "e3b3c9b8",
+      "id": "ce440df5",
       "execution_count": null,
       "outputs": []
     },
@@ -265,7 +265,7 @@
         "\n",
         "Take $f(x) = 0.3 * x^3 - x^2 + 2cos(x) + \\epsilon(x)$ where $\\epsilon(x)$ is a random uniform error (varying in $[0, 1]$) like this:"
       ],
-      "id": "0453254c"
+      "id": "01b74fb9"
     },
     {
       "cell_type": "code",
@@ -278,7 +278,7 @@
         "\n",
         "scatter(x, y)"
       ],
-      "id": "c748316e",
+      "id": "7205f22d",
       "execution_count": null,
       "outputs": []
     },
@@ -297,7 +297,7 @@
         "mach = machine(model, X, y)\n",
         "fit!(mach)"
       ],
-      "id": "76b83759",
+      "id": "95d456f5",
       "execution_count": null,
       "outputs": []
     },
@@ -307,7 +307,7 @@
       "source": [
         "and see the best equation:"
       ],
-      "id": "9f7f9924"
+      "id": "2e038170"
     },
     {
       "cell_type": "code",
@@ -316,7 +316,7 @@
         "r = report(mach)\n",
         "node_to_symbolic(r.equations[r.best_idx], model)"
       ],
-      "id": "5efad725",
+      "id": "68157fc3",
       "execution_count": null,
       "outputs": []
     },
@@ -326,7 +326,7 @@
       "source": [
         "We can plot the prediction and the original dataset to compare them:"
       ],
-      "id": "7e6327e1"
+      "id": "06104b67"
     },
     {
       "cell_type": "code",
@@ -337,7 +337,7 @@
         "scatter(x, y);\n",
         "scatter!(x, y_pred, color = \"red\")"
       ],
-      "id": "861527bd",
+      "id": "32cf8e8a",
       "execution_count": null,
       "outputs": []
     },
@@ -349,7 +349,7 @@
         "\n",
         "You can see more about this package in [this link](https://astroautomata.com/SymbolicRegression.jl/dev/examples/). If you have enough courage, read the [original paper](https://arxiv.org/abs/2305.01582) on arxiv!"
       ],
-      "id": "cdf4bcee"
+      "id": "c42f81e6"
     }
   ],
   "metadata": {
