@@ -571,7 +571,7 @@
     "href": "consulting.html",
     "title": "Consultoria",
     "section": "",
-    "text": "Contato: vituri.vituri@gmail.com / Github: https://github.com/vituri\nCom mais de 7 anos de experiência em análise de dados, R/shiny e machine learning, atuei com mais foco nos ramos detecção de fadiga e controle de frotas, análise de dados geoespaciais e modelos preditivos. Mais detalhes de minha experiência profissional se encontram no meu currículo. Alguns de meus conhecimentos que podem ser úteis:"
+    "text": "Contato: vituri.vituri@gmail.com / Github: https://github.com/vituri\nCom mais de 7 anos de experiência em análise de dados, R/shiny e machine learning, atuei com mais foco nos ramos detecção de fadiga e controle de frotas, análise de dados geoespaciais e modelos preditivos. Mais detalhes de minha experiência profissional se encontram no meu currículo."
   },
   {
     "objectID": "consulting.html#t2ooo",
@@ -642,5 +642,19 @@
     "title": "Consultoria",
     "section": "Machine learning",
     "text": "Machine learning\nFui responsável por implementar o modelo preditivo de fadiga na empresa Argus para responder a seguinte pergunta: “Qual a probabilidade de um dado motorista dormir enquanto dirige na próxima hora?”\n\nTambém implementei o sistema de reconhecimento facial que permite identificar o histórico de cada motorista sem necessidade de crachás ou aplicativos de ponto"
+  },
+  {
+    "objectID": "consulting.html#machine-learning",
+    "href": "consulting.html#machine-learning",
+    "title": "Consultoria",
+    "section": "Machine learning",
+    "text": "Machine learning\nFui responsável por implementar o modelo preditivo de fadiga na empresa Argus para responder a seguinte pergunta: “Qual a probabilidade de um dado motorista dormir enquanto dirige na próxima hora?”\n\nTambém implementei o sistema de reconhecimento facial que permite identificar o histórico de cada motorista sem necessidade de crachás ou aplicativos de ponto"
+  },
+  {
+    "objectID": "consulting.html#tipos-de-projetos",
+    "href": "consulting.html#tipos-de-projetos",
+    "title": "Consultoria",
+    "section": "Tipos de projetos",
+    "text": "Tipos de projetos\n\n\n\nCiência de dados\nCriação de gráficos, limpeza de dados, análise de dados de geoprocessamento, séries temporais e etc usando R, Python e Julia.\n\n\nCriação de KPIs\nCriação e monitoramento de indicadores-chave para cada negócio. Ampla experiência no setor de monitoramento de frotas e segurança.\n\n\nDashboards\nDe protótipos a dashboards prontos em pouco tempo utilizando shiny no front-end e uma stack diversa no backend.\n\n\nAutomação\nCriação de rotinas que automatizam tarefas repetitivas: geração de reports, tratamento de dados, envio de emails.\n\n\nBancos de dados e APIs\nCriação de bancos de dados estruturados na nuvem, consumo e envio de dados usando APIs bem documentadas.\n\n\nMachine learning\nModelos preditivos ou descritivos, classificadores, análise de sobrevivência, visão computacional."
   }
 ]

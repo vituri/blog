@@ -12,7 +12,7 @@
         "  - r\n",
         "---"
       ],
-      "id": "0743f4fb"
+      "id": "8e12f6ea"
     },
     {
       "cell_type": "markdown",
@@ -30,7 +30,7 @@
         "\n",
         "With `RCall` you can run R code inside Julia:"
       ],
-      "id": "b4811ef1"
+      "id": "864d93fa"
     },
     {
       "cell_type": "code",
@@ -42,7 +42,7 @@
         "median(1:5)\n",
         "\"\"\""
       ],
-      "id": "930f852b",
+      "id": "7a5f24a3",
       "execution_count": null,
       "outputs": []
     },
@@ -52,7 +52,7 @@
       "source": [
         "You can even pass objects from Julia to R and vice-versa:"
       ],
-      "id": "bcdb5829"
+      "id": "9de2691d"
     },
     {
       "cell_type": "code",
@@ -64,7 +64,7 @@
         "\n",
         "R\"median(x)\""
       ],
-      "id": "2fd98dac",
+      "id": "87903942",
       "execution_count": null,
       "outputs": []
     },
@@ -84,7 +84,7 @@
         "\n",
         "Here's an example from TidierData docs:"
       ],
-      "id": "a5cd5108"
+      "id": "16c0305a"
     },
     {
       "cell_type": "code",
@@ -103,7 +103,7 @@
         "    @slice(1:5)\n",
         "end"
       ],
-      "id": "e0ca9947",
+      "id": "db618500",
       "execution_count": null,
       "outputs": []
     },
@@ -126,7 +126,7 @@
         "\n",
         "This is specially interesting if you read Julia Base sourcecode! How does Julia define the maximum of a vector? Type"
       ],
-      "id": "2b17978a"
+      "id": "2d6dd3e8"
     },
     {
       "cell_type": "code",
@@ -136,7 +136,7 @@
         "\n",
         "@edit maximum([1:5;])"
       ],
-      "id": "b2f85e83",
+      "id": "1b63f984",
       "execution_count": null,
       "outputs": []
     },
@@ -162,7 +162,7 @@
         "\n",
         "Tired of writing loops? Julia has a special notation `.` (yes, a dot) to apply *any* function to a vector/array/iterable-object; this is called [*broadcasting*](https://docs.julialang.org/en/v1/manual/arrays/#Broadcasting). For example, you can apply the `power2` function in a vector as easy as"
       ],
-      "id": "86290fcc"
+      "id": "fa280484"
     },
     {
       "cell_type": "code",
@@ -175,7 +175,7 @@
         "# apply in vectors\n",
         "power2.(1:10)"
       ],
-      "id": "75108926",
+      "id": "2e53ec30",
       "execution_count": null,
       "outputs": []
     },
@@ -185,7 +185,7 @@
       "source": [
         "or in a matrix"
       ],
-      "id": "e077d476"
+      "id": "c9089c8d"
     },
     {
       "cell_type": "code",
@@ -194,7 +194,7 @@
         "#julia\n",
         "X = reshape([1:16;], (4, 4))"
       ],
-      "id": "3b0fcebe",
+      "id": "0dd05c3c",
       "execution_count": null,
       "outputs": []
     },
@@ -205,7 +205,7 @@
         "#julia\n",
         "power2.(X)"
       ],
-      "id": "f93fa822",
+      "id": "bc9dac2c",
       "execution_count": null,
       "outputs": []
     },
@@ -215,7 +215,7 @@
       "source": [
         "When using infix functions like `+` or `=`, you put the dot before the operator, as in"
       ],
-      "id": "c5e2b4da"
+      "id": "4ffb9d90"
     },
     {
       "cell_type": "code",
@@ -224,7 +224,7 @@
         "#julia\n",
         "[1:5;] .+ 10"
       ],
-      "id": "0a49ce1f",
+      "id": "5757ac40",
       "execution_count": null,
       "outputs": []
     },
@@ -275,7 +275,7 @@
         ")\n",
         "```"
       ],
-      "id": "c477df42"
+      "id": "abb1f0ff"
     },
     {
       "cell_type": "code",
@@ -309,7 +309,7 @@
         ")\n",
         "\"\"\""
       ],
-      "id": "5107d30a",
+      "id": "adbd3f97",
       "execution_count": null,
       "outputs": []
     },
@@ -323,7 +323,7 @@
         "\n",
         "In Julia, the three approachs are similar:"
       ],
-      "id": "a1010542"
+      "id": "1a0648e5"
     },
     {
       "cell_type": "code",
@@ -344,7 +344,7 @@
         "    end\n",
         "end;"
       ],
-      "id": "22ecc19b",
+      "id": "dfbe84e5",
       "execution_count": null,
       "outputs": []
     },
@@ -359,7 +359,7 @@
         "\n",
         "@benchmark f1_vec($x)"
       ],
-      "id": "485adac1",
+      "id": "d34413c8",
       "execution_count": null,
       "outputs": []
     },
@@ -371,7 +371,7 @@
         "#julia\n",
         "@benchmark f1_loop($x)"
       ],
-      "id": "1efd95ec",
+      "id": "80f252f3",
       "execution_count": null,
       "outputs": []
     },
@@ -383,7 +383,7 @@
         "#julia\n",
         "@benchmark f1_map($x)"
       ],
-      "id": "fbab892e",
+      "id": "d3655fa7",
       "execution_count": null,
       "outputs": []
     },
@@ -398,7 +398,7 @@
         "\n",
         "Sometimes you write code that won't make your parents proud. Suppose you create a function that sums all the numbers from 1 to a given `n`:"
       ],
-      "id": "56f76a55"
+      "id": "9a7f1510"
     },
     {
       "cell_type": "code",
@@ -413,7 +413,7 @@
         "    s\n",
         "end;"
       ],
-      "id": "9629d8d9",
+      "id": "ad1e8c85",
       "execution_count": null,
       "outputs": []
     },
@@ -425,7 +425,7 @@
         "\n",
         "But in Julia, we have this curious phenomena:"
       ],
-      "id": "a0d78b0a"
+      "id": "984a9e59"
     },
     {
       "cell_type": "code",
@@ -433,7 +433,7 @@
       "source": [
         "@time f_sum(100)"
       ],
-      "id": "2dfdb954",
+      "id": "7d095a19",
       "execution_count": null,
       "outputs": []
     },
@@ -443,7 +443,7 @@
       "source": [
         "@time f_sum(100_000)"
       ],
-      "id": "477e0c1f",
+      "id": "b936638b",
       "execution_count": null,
       "outputs": []
     },
@@ -453,7 +453,7 @@
       "source": [
         "@time f_sum(100_000_000)"
       ],
-      "id": "fb9361f1",
+      "id": "cfe06728",
       "execution_count": null,
       "outputs": []
     },
@@ -482,7 +482,7 @@
         "\n",
         "Take, for example, the object"
       ],
-      "id": "8a4bc3f4"
+      "id": "7b895a96"
     },
     {
       "cell_type": "code",
@@ -490,7 +490,7 @@
       "source": [
         "x = 1:10"
       ],
-      "id": "4472b065",
+      "id": "b9f40ccd",
       "execution_count": null,
       "outputs": []
     },
@@ -500,7 +500,7 @@
       "source": [
         "It is *not* a vector (to create a usual vector from 1 to 10, you type `[1:10;]`). Actually, its type is"
       ],
-      "id": "ddf7bbcc"
+      "id": "f0b061e9"
     },
     {
       "cell_type": "code",
@@ -508,7 +508,7 @@
       "source": [
         "typeof(x)"
       ],
-      "id": "4d0ab689",
+      "id": "ac60aba8",
       "execution_count": null,
       "outputs": []
     },
@@ -518,7 +518,7 @@
       "source": [
         "and its type hierarchy is"
       ],
-      "id": "bcbd671e"
+      "id": "b30b3053"
     },
     {
       "cell_type": "code",
@@ -526,7 +526,7 @@
       "source": [
         "Base.show_supertypes(typeof(x))"
       ],
-      "id": "e677f27f",
+      "id": "69f3056b",
       "execution_count": null,
       "outputs": []
     },
@@ -538,7 +538,7 @@
         "\n",
         "If you look at the sourcecode"
       ],
-      "id": "2c8be092"
+      "id": "1321a40d"
     },
     {
       "cell_type": "code",
@@ -547,7 +547,7 @@
         "#| eval: false\n",
         "@edit maximum(1:10)"
       ],
-      "id": "60fdf89c",
+      "id": "62e3014a",
       "execution_count": null,
       "outputs": []
     },
@@ -557,7 +557,7 @@
       "source": [
         "you will get"
       ],
-      "id": "ae928ecd"
+      "id": "5bbc3b82"
     },
     {
       "cell_type": "code",
@@ -566,7 +566,7 @@
         "#| eval: false\n",
         "maximum(r::AbstractUnitRange) = isempty(r) ? throw(ArgumentError(\"range must be non-empty\")) : last(r)"
       ],
-      "id": "f95e602e",
+      "id": "73fc4f74",
       "execution_count": null,
       "outputs": []
     },
@@ -591,7 +591,7 @@
         "\n",
         "How much time does it take to calculate the sin of a million numbers?"
       ],
-      "id": "0fac6165"
+      "id": "e55d7167"
     },
     {
       "cell_type": "code",
@@ -599,7 +599,7 @@
       "source": [
         "@time sin.(1:1_000_000);"
       ],
-      "id": "242ad1f3",
+      "id": "7094e0f4",
       "execution_count": null,
       "outputs": []
     },
@@ -609,7 +609,7 @@
       "source": [
         "Do you have a loop and want to see a progress bar? No need to change the code inside the loop:"
       ],
-      "id": "f8e0f787"
+      "id": "d7ca1de6"
     },
     {
       "cell_type": "code",
@@ -621,7 +621,7 @@
         "    sleep(0.1)\n",
         "end"
       ],
-      "id": "7b7770e3",
+      "id": "0abfa8e2",
       "execution_count": null,
       "outputs": []
     },
@@ -638,7 +638,7 @@
         "\n",
         "In Julia, multithreading is as easy as appending a macro before a loop:"
       ],
-      "id": "83f540fc"
+      "id": "7c3ed99f"
     },
     {
       "cell_type": "code",
@@ -649,7 +649,7 @@
         "    a[i] = Threads.threadid()\n",
         "end"
       ],
-      "id": "e61d6640",
+      "id": "97690a85",
       "execution_count": null,
       "outputs": []
     },
@@ -685,7 +685,7 @@
         "\n",
         "The best part, however, is the ability to create modules inside modules. For example, if you have a mega package to do all your data analysis in your work, you can have a module about Reports, another one with APIs and so on. Importing then can be done with\n"
       ],
-      "id": "aa98a669"
+      "id": "4700295c"
     },
     {
       "cell_type": "code",
@@ -700,7 +700,7 @@
         "\n",
         "MD.api1()"
       ],
-      "id": "e8f09605",
+      "id": "4c6d1305",
       "execution_count": null,
       "outputs": []
     },
@@ -714,7 +714,7 @@
         "\n",
         "Examples of correct Julia code:"
       ],
-      "id": "62fef19f"
+      "id": "40beeeea"
     },
     {
       "cell_type": "code",
@@ -722,7 +722,7 @@
       "source": [
         "[1, 2] ∩ [2, 3]"
       ],
-      "id": "89b32347",
+      "id": "92cd3f8a",
       "execution_count": null,
       "outputs": []
     },
@@ -732,7 +732,7 @@
       "source": [
         "2 ∈ [2, 3]"
       ],
-      "id": "b2d61f7c",
+      "id": "95295e9d",
       "execution_count": null,
       "outputs": []
     },
@@ -744,7 +744,7 @@
         "\n",
         "f(3)"
       ],
-      "id": "a3fa01f6",
+      "id": "515f2272",
       "execution_count": null,
       "outputs": []
     },
@@ -755,7 +755,7 @@
         "# Euler's identity\n",
         "ℯ^(im * π) + 1 |> round"
       ],
-      "id": "e6341b3a",
+      "id": "834ba7c4",
       "execution_count": null,
       "outputs": []
     },
@@ -777,7 +777,7 @@
         "\n",
         "Have a good trip!"
       ],
-      "id": "fd03af9d"
+      "id": "0ce06c5a"
     }
   ],
   "metadata": {
