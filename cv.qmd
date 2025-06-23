@@ -39,13 +39,19 @@ vituri.vituri@gmail.com / [https://github.com/vituri](https://github.com/vituri)
 
 ***Appsilon*** [Feb 2025 -- today]{.cvdate}
 
-I work as a L4 R/shiny engineer at [Appsilon](https://www.appsilon.com/), a company that provides data science services to the biggest pharma companies in the world. I contributed to [open source packages](https://github.com/Appsilon/ConnectUserMetrics) and other internal tasks.
+I work as a L4 R/shiny engineer at [Appsilon](https://www.appsilon.com/), a company that provides data science services to the biggest pharma companies in the world. 
+
+- I contributed to [open source packages](https://github.com/Appsilon/ConnectUserMetrics) and other internal tools.
+
+- I finished in 2 weeks a POC that used AI/LLMs and R/Shiny to extract data from clinical trial files and automate a pipeline, reducing the task time from weeks to hours.
+
+- I collaborated with Posit to include one of our shiny apps into Connect Gallery.
 
 ### Head of Intelligence
 
 ***Argus Solutions*** [Jan 2020 -- Jan 2025]{.cvdate}
 
-I founded the area of Data at Argus, and my role was crucial as the company went from a small-sized tech to a multinational. My team now has more than 12 people as diverse as developers, data scientists, engineers and mathematicians. I act as a manager, code reviewer, project manager, machine learning engineer, DevOps, R/Julia developer and database administrator. I can do a bit of everything.
+I founded the area of Data at Argus, and my role was crucial as the company went from a small-sized tech to a multinational. My team now has more than 12 people as diverse as developers, data scientists, engineers and mathematicians. I acted as a manager, code reviewer, project manager, machine learning engineer, DevOps, R/Julia developer and database administrator.
 
 - We went from hundreds of Excel files to a MariaDB database on AWS. I designed the database, its indexes and applied some normal forms.
 
@@ -69,23 +75,21 @@ I founded the area of Data at Argus, and my role was crucial as the company went
 
 - [`tidyverse`](https://www.tidyverse.org/): I use several of these packages everyday; I am "fluent" in `dplyr`, `purrr`, `tidyr`, `stringr`, `tibble` and many others. I prefer to use `echarts4r` instead of `ggplot2`. With [`dbplyr`](https://dbplyr.tidyverse.org/), I can translate many complicated transformations to SQL in a painless way.
 
-- [`shiny`](https://shiny.posit.co/): I explored a lot of the `shiny` ecosystem since 2018: from `shinydashboard` to the new [`bslib`](https://rstudio.github.io/bslib/), using [`shinyWidgets`](https://shinyapps.dreamrs.fr/shinyWidgets/) and [`toastui`](https://dreamrs.github.io/toastui/). I can create dashboards, CRUDS, user interfaces, display photos/videos and maps. Async and parallelism are a bit painful but can be done with `future` and `promises`.
+- [`shiny`](https://shiny.posit.co/): I explored a lot of the `shiny` ecosystem since 2018: from `shinydashboard` to the new [`bslib`](https://rstudio.github.io/bslib/), using [`shinyWidgets`](https://shinyapps.dreamrs.fr/shinyWidgets/) and [`toastui`](https://dreamrs.github.io/toastui/). I can create dashboards, CRUDS, user interfaces, display photos/videos and maps. Async and parallelism can be done easily nowadays with [`mirai`](https://mirai.r-lib.org/).
 
-- I am also very familiar with `igraph` to manipulate graphs, `leaflet` to plot maps, `httr2` to make API calls, `plumber` to create APIs, `reticulate` to interface Python.
+- I am also very familiar with `igraph` to manipulate graphs, `leaflet` to plot maps, `httr2` to make API calls, `plumber` to create APIs, `reticulate` to interface Python. I can create packages, documentation and tests. 
 
-- I can create packages, documentation and tests. Unfortunately, my best packages are private but a public example can be found [here](https://github.com/vituri/vituripackage).
+- I know how to manipulate geospatial data with [`terra`](https://rspatial.github.io/terra/reference/terra-package.html) and [`sf`](https://r-spatial.github.io/sf/), and use advanced maps like [`tmap`](https://r-tmap.github.io/tmap/).
 
 ### Julia
 
-Coding in Julia is a joy and make R/Python look like unpolished old languages used by barbarians.
+Coding in Julia is a joy! It is fast, functional and has multiple dispatch. Some things I did with it:
 
 - I started learning Julia to write some Topological Data Analysis algorithms and the result was impressive, even with my initial poor skills.
 
 - I am the owner of the [JuliaTDA organization](https://github.com/JuliaTDA) which aims to bring the Topological Data Analysis ecosystem to Julia. I wrote the [Mapper and Ball Mapper](https://juliatda.github.io/TDAmapper.jl/mapper.html) algorithms in Julia and the documentation in Quarto, and later also wrote the [ToMATo](https://juliatda.github.io/ToMATo.jl/) algorithm.
 
-- Building JuliaTDA, I was able to get familiar with parallelism, code piracy, structs, multiple dispatch, profiling (memory allocations and algorithm efficiency) and plotting tools like Plots and Makie.
-
-- The [book](https://www.amazon.com/Hands-Design-Patterns-Julia-comprehensive/dp/183864881X) "Hands-On Design Patterns and Best Practices with Julia" is my bible, and I am rewriting all my previous code using what I learned there.
+- Building JuliaTDA, I was able to get familiar with parallelism, code piracy, structs, multiple dispatch, profiling (memory allocations and algorithm efficiency) and plotting tools like Plots and Makie. The [book](https://www.amazon.com/Hands-Design-Patterns-Julia-comprehensive/dp/183864881X) "Hands-On Design Patterns and Best Practices with Julia" is my bible.
 
 - Since I like the tidyverse so much, I am now part of the [TidierOrg](https://github.com/TidierOrg): a 100% Julia organization inspired by R data tools. I am the main contributor to [TidierIteration.jl](https://github.com/TidierOrg/TidierIteration.jl), a Julia version of R's `purrr`.
 
@@ -95,26 +99,28 @@ Coding in Julia is a joy and make R/Python look like unpolished old languages us
 
 - I can create and manage EC2 instances, use S3 to storage and query data, create databases in RDS and create dashboards with metrics.
 
-- I created a facial recognition system of unlabeled drivers using S3 and Rekognition.
+- I created a facial recognition system of unlabeled drivers using S3 and [Rekognition](https://aws.amazon.com/rekognition).
 
-- Recently I moved several R/Julia/Python scripts from EC2 to ECS services, providing a reproducible and isolated environment for each code. While doing this, I learned how to create images with Docker, building them with EC2 Image Builder and storing it all in ECR.
+- I moved several R/Julia/Python scripts from EC2 to ECS services, providing a reproducible and isolated environment for each code. While doing this, I learned how to create images with Docker, building them with EC2 Image Builder and storing it all in ECR.
 
 ### Python
 
 - I can read code and port it to another language when necessary; I never had the need to write pure-Python code, but can learn it easily if needed. Using R's `reticulate` and Julia's `PythonCall.jl`, I was able to use many Python packages elsewhere.
 
-### Publishing
+### Writing
 
 - I used a lot of [`RMarkdown`](https://rmarkdown.rstudio.com/) to generate a wide range of dashboards, reports and analysis. Now I prefer to use [Quarto](https://quarto.org/) because of its many cool features (sites, blogs and dashboards) and easiness to use with Julia.
 
 - I am writing a book called [Topological Data Analysis with Julia](https://vituri.github.io/TDA_with_julia/) while I implement several TDA algorithms in JuliaTDA.
 
+- I have [a blog](https://vituri.github.io/blog/posts/julia-for-r-users/julia-for-r-users.html) where I write about R, Julia and data science.
+
 ## Talks, workshops and papers
 
 -  Paper: [Remote sensing to quantify potential aquifer recharge as a complementary tool for groundwater monitoring
-](https://www.tandfonline.com/doi/abs/10.1080/02626667.2024.2412741) (2024, published in [Hydrological Sciences Journal](https://www.tandfonline.com/journals/thsj20)), co-author.
+](https://www.tandfonline.com/doi/abs/10.1080/02626667.2024.2412741) (2024, published in [Hydrological Sciences Journal](https://www.tandfonline.com/journals/thsj20)), co-author. I made most of the analysis using R and `terra`.
 
--   Workshop: [Topological Data Analysis workshop](https://github.com/vituri/TDA_workshop_EBT2024) (2024, at the [XXIII Brazilian Topology Meeting](https://xxiiiebt.ime.ufba.br/)).
+-   Workshop: [Topological Data Analysis workshop](https://github.com/vituri/TDA_workshop_EBT2024) (2024, at the [XXIII Brazilian Topology Meeting](https://xxiiiebt.ime.ufba.br/)), using Julia.
 
 -   Talk: [Topology meets the real world: how geometry can help us analyse finite metric spaces](https://vituri.github.io/talk_wata_2023/#/title-slide) (2023, at the [Workshop of Algebraic Topology and Applications](https://icmc.usp.br/eventos/6135-workshop-de-topologia-algebrica-e-aplicacoes)).
 
