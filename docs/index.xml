@@ -9,7 +9,7 @@
 <link>https://vituri.github.io/blog/</link>
 <atom:link href="https://vituri.github.io/blog/index.xml" rel="self" type="application/rss+xml"/>
 <description>vituri</description>
-<generator>quarto-1.7.13</generator>
+<generator>quarto-1.7.31</generator>
 <lastBuildDate>Mon, 03 Feb 2025 03:00:00 GMT</lastBuildDate>
 <item>
   <title>Julia for R users</title>

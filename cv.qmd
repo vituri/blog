@@ -7,121 +7,90 @@ format:
     comments: false
     grid:
       sidebar-width: 0px
-
   pdf:
     author: Guilherme Vituri
     pdf-engine: weasyprint
 css: cv.css
-# format-links: [pdf]
 ---
 
 ::: {.contact-block}
-vituri.vituri@gmail.com / [https://github.com/vituri](https://github.com/vituri)
+**Email:** vituri.vituri@gmail.com  
+**GitHub:** [github.com/vituri](https://github.com/vituri)
 :::
+
+## Professional Summary
+
+Experienced data scientist and engineering leader with a strong background in **R, Julia, and mathematics**. Experienced in delivering quick, impactful data solutions and contributing to open-source and academic communities. Skilled with interactive dashboards in R/Shiny, data pipelines, machine learning models, and scientific research. Publishes on Topological Data Analysis (TDA) and geospatial analytics.
 
 ## Education
 
-**Doctor of Philosophy -- Topological Data Analysis** <br> *Universidade Estadual Paulista (Unesp) / Ohio State University (OSU)* [*2016 --- 2020*]{.cvdate}
+**PhD in Topological Data Analysis** <br> *Universidade Estadual Paulista (Unesp) / Ohio State University (OSU)* [*2016 -- 2020*]{.cvdate}
 
-- I spent six months at the Ohio State University under [Facundo Mémoli](https://scholar.google.com/citations?user=E3APGcgAAAAJ&hl=pt-BR&oi=sra) supervision.
-- We generalized the Vietoris-Rips and Cech constructions using "motifs": families of graphs that can be attached to metric spaces (more generally, networks) and generate simplicial complexes. As a corollary, we obtain several clustering methods on graphs.
-- The resulting work is "Motivic constructions on graphs and networks with stability results" and can be found [here](https://repositorio.unesp.br/items/1401ed18-c1b0-4ab3-903c-bc2ecac63ca7).
+- Research on generalizing Vietoris-Rips and Cech constructions using motifs, resulting in new clustering methods for graphs/networks.  
+- Six-month research stay at OSU under Prof. [Facundo Mémoli](https://scholar.google.com/citations?user=E3APGcgAAAAJ&hl=pt-BR&oi=sra).  
+- Dissertation: [Motivic constructions on graphs and networks with stability results](https://repositorio.unesp.br/items/1401ed18-c1b0-4ab3-903c-bc2ecac63ca7).
 
-**Master Degree -- Algebraic Topology** <br> *Universidade Estadual Paulista (Unesp)* [*2014 --- 2015*]{.cvdate}
+**Master’s Degree — Algebraic Topology** <br> *Universidade Estadual Paulista (Unesp)* [*2014 -- 2015*]{.cvdate}
 
-- I studied a certain subgroup of the fundamental group, called "Gottlieb group", and proved some results about its properties. The dissertation can be found [here](http://www1.rc.unesp.br/tmelo/diss-vituri.pdf).
+- Studied the Gottlieb group, a subgroup of the fundamental group.  
+- Dissertation: [Sobre os grupos de Gottlieb](https://repositorio.unesp.br/bitstreams/00138957-fdaa-4a0e-81ef-37e78bf6ae27/download) (in Portuguese).
 
-**Bachelor in Mathematics** <br> *Universidade Estadual Paulista (Unesp)* [*2010 --- 2013*]{.cvdate}
+**Bachelor’s in Mathematics** <br> *Universidade Estadual Paulista (Unesp)* [*2010 -- 2013*]{.cvdate}
 
-## Work experience
+## Work Experience
 
-### R/Shiny developer
+### R/Shiny Engineer  
 
-***Appsilon*** [Feb 2025 -- today]{.cvdate}
+***[Appsilon](https://www.appsilon.com/) (Remote)*** [Feb 2025 -- Present]{.cvdate}
 
-I work as a L4 R/shiny engineer at [Appsilon](https://www.appsilon.com/), a company that provides data science services to the biggest pharma companies in the world. 
+Appsilon provides data science services to the biggest pharma companies in the world, focusing on R/Shiny and quick development.
 
-- I contributed to [open source packages](https://github.com/Appsilon/ConnectUserMetrics) and other internal tools.
+- Contributed to [open source packages](https://github.com/Appsilon/ConnectUserMetrics) and collaborated with Posit to feature applications in the Connect Gallery.
+- Delivered a proof-of-concept using AI/LLMs and R/Shiny, automating clinical trial data extraction and reducing processing time from weeks to hours.  
+- Developed and maintained R/Shiny applications using Rhino; fixed issues and reviewed PRs for other open-source packages.
+- Contributed to internal knowledge bases and authored [blog posts](https://www.appsilon.com/post/shiny-app-performance-fix).
 
-- I finished in 2 weeks a POC that used AI/LLMs and R/Shiny to extract data from clinical trial files and automate a pipeline, reducing the task time from weeks to hours.
+### Head of Intelligence  
 
-- I collaborated with Posit to include one of our shiny apps into Connect Gallery.
+***[Argus Solutions](https://www.argusolutions.com.br/en-US)*** [Jan 2020 -- Jan 2025]{.cvdate}
 
-### Head of Intelligence
+Argus provides solutions for fatigue and distraction detection, control towers, and telemetry in transport operations.
 
-***Argus Solutions*** [Jan 2020 -- Jan 2025]{.cvdate}
+- Founded and led the Data team, growing it to over 12 members, including developers, data scientists, engineers, and mathematicians.
+- Designed and implemented a MariaDB database on AWS, migrating from hundreds of Excel files.  
+- Automated daily/weekly reporting with RMarkdown and Sendgrid, saving over 20 hours of manual work daily.
+- Built analytics dashboards and platforms for photo and video analysis using R/Shiny.
+- Developed a machine learning model to [predict driver drowsiness](https://www.linkedin.com/posts/luis-torin-00641245_tecnologia-inteligaeanciaartificial-logaedstica-activity-7012149778255900672-Daed), using ensemble methods with [`tidymodels`](https://www.tidymodels.org/).  
+- Created a high-performance Julia webserver using [Oxygen.jl](https://oxygenframework.github.io/Oxygen.jl/stable/), reducing data ingestion time from four minutes (with R) to five seconds (with Julia).
+- Led computer vision projects (cellphone detection, drowsiness, pothole, and gesture detection) using Keras and YOLO in Python.
+- Managed hiring, mentoring, and professional development for the team.
 
-I founded the area of Data at Argus, and my role was crucial as the company went from a small-sized tech to a multinational. My team now has more than 12 people as diverse as developers, data scientists, engineers and mathematicians. I acted as a manager, code reviewer, project manager, machine learning engineer, DevOps, R/Julia developer and database administrator.
+## Technical Skills
 
-- We went from hundreds of Excel files to a MariaDB database on AWS. I designed the database, its indexes and applied some normal forms.
+- **R:** Advanced — tidyverse, Shiny, geospatial, APIs, package development, optimization
+- **Julia:** Advanced — TDA, performance, APIs, parallelism, documentation
+- **SQL:** Advanced — MariaDB, database design, optimization, `dbplyr` in R
+- **AWS:** Intermediate — EC2, S3, RDS, ECS, Docker, Rekognition
+- **Python:** Intermediate — numpy, pandas, polars, scikit-learn
+- **Data Science:** Machine learning, computer vision, reporting, dashboards
+- **Technical Writing:** Workshops, blog posts, and academic papers
 
-- I wrote dozens of R/Julia scripts to read and write data from several sources and created a pipeline of information that ran smoothly
+## Selected Projects & Open Source
 
-- I automated the generation and mailing of thousands of daily/weekly reports using RMarkdown and Sendgrid, which previously was done by 3 people.
+- **JuliaTDA Organization:** Owner and main contributor. Developed the [Mapper and Ball Mapper](https://juliatda.github.io/TDAmapper.jl/mapper.html) and [ToMATo](https://juliatda.github.io/ToMATo.jl/) algorithms in Julia.  
+- **TidierOrg:** Contributor to [TidierIteration.jl](https://github.com/TidierOrg/TidierIteration.jl), a Julia version of R’s `purrr` package.  
+- **QuartoDocBuilder.jl:** Created a package to facilitate Julia documentation generation with Quarto ([docs](https://vituri.github.io/QuartoDocBuilder.jl/)).  
+- **Blog:** [julia-for-r-users](https://vituri.github.io/blog/posts/julia-for-r-users/julia-for-r-users.html) and other posts on R, Julia, and data science. The online version of this CV is [here](https://vituri.github.io/blog/cv.html).
 
-- I created several analytics dashboards using the `shiny` framework, in place of a former Tableau dashboard. I also developed the main platform used by the team to analyze photos/videos.
+## Publications, Talks & Workshops
 
-- We created a machine learning model that [predicts if a driver is going to sleep](https://www.linkedin.com/posts/luis-torin-00641245_tecnologia-inteligaeanciaartificial-logaedstica-activity-7012149778255900672-Daed) in the next hour, using an ensemble of models with `tidymodels`.
+- **Paper:** [Remote sensing to quantify potential aquifer recharge as a complementary tool for groundwater monitoring](https://www.tandfonline.com/doi/abs/10.1080/02626667.2024.2412741) (Hydrological Sciences Journal, 2024). Co-author; led the R/terra analysis and data pipeline.
+- **Workshop:** [Topological Data Analysis workshop](https://github.com/vituri/TDA_workshop_EBT2024) (at [XXIII Brazilian Topology Meeting](https://xxiiiebt.ime.ufba.br/), 2024), using Julia.
+- **Talk:** [Topology meets the real world: how geometry can help us analyze finite metric spaces](https://vituri.github.io/talk_wata_2023/#/title-slide) (at [Workshop of Algebraic Topology and Applications](https://www.dm.ufscar.br/eventos/wata/), 2023).
+- **Paper:** [Motivic clustering schemes for directed graphs](https://arxiv.org/abs/2001.00278) (with Facundo Mémoli, arXiv, 2020).
 
-- I created a webserver in Julia using [Oxygen.jl](https://oxygenframework.github.io/Oxygen.jl/stable/) to read data from several APIs and write they in our databases. A previous version of this code was written in R and each iteration took almost 4 minutes; it was reduced to 5 seconds in Julia using some paralellism magic.
+## Additional Information
 
-- I participated in the creation of many computer vision algorithms to detect cellphones, drowsiness, potholes and gestures using `keras` and YOLO.
-
-- I interviewed and hired people, managed the team and developed the abilities we needed to finish our projects.
-
-## Tools and skills
-
-### R
-
-- [`tidyverse`](https://www.tidyverse.org/): I use several of these packages everyday; I am "fluent" in `dplyr`, `purrr`, `tidyr`, `stringr`, `tibble` and many others. I prefer to use `echarts4r` instead of `ggplot2`. With [`dbplyr`](https://dbplyr.tidyverse.org/), I can translate many complicated transformations to SQL in a painless way.
-
-- [`shiny`](https://shiny.posit.co/): I explored a lot of the `shiny` ecosystem since 2018: from `shinydashboard` to the new [`bslib`](https://rstudio.github.io/bslib/), using [`shinyWidgets`](https://shinyapps.dreamrs.fr/shinyWidgets/) and [`toastui`](https://dreamrs.github.io/toastui/). I can create dashboards, CRUDS, user interfaces, display photos/videos and maps. Async and parallelism can be done easily nowadays with [`mirai`](https://mirai.r-lib.org/).
-
-- I am also very familiar with `igraph` to manipulate graphs, `leaflet` to plot maps, `httr2` to make API calls, `plumber` to create APIs, `reticulate` to interface Python. I can create packages, documentation and tests. 
-
-- I know how to manipulate geospatial data with [`terra`](https://rspatial.github.io/terra/reference/terra-package.html) and [`sf`](https://r-spatial.github.io/sf/), and use advanced maps like [`tmap`](https://r-tmap.github.io/tmap/).
-
-### Julia
-
-Coding in Julia is a joy! It is fast, functional and has multiple dispatch. Some things I did with it:
-
-- I started learning Julia to write some Topological Data Analysis algorithms and the result was impressive, even with my initial poor skills.
-
-- I am the owner of the [JuliaTDA organization](https://github.com/JuliaTDA) which aims to bring the Topological Data Analysis ecosystem to Julia. I wrote the [Mapper and Ball Mapper](https://juliatda.github.io/TDAmapper.jl/mapper.html) algorithms in Julia and the documentation in Quarto, and later also wrote the [ToMATo](https://juliatda.github.io/ToMATo.jl/) algorithm.
-
-- Building JuliaTDA, I was able to get familiar with parallelism, code piracy, structs, multiple dispatch, profiling (memory allocations and algorithm efficiency) and plotting tools like Plots and Makie. The [book](https://www.amazon.com/Hands-Design-Patterns-Julia-comprehensive/dp/183864881X) "Hands-On Design Patterns and Best Practices with Julia" is my bible.
-
-- Since I like the tidyverse so much, I am now part of the [TidierOrg](https://github.com/TidierOrg): a 100% Julia organization inspired by R data tools. I am the main contributor to [TidierIteration.jl](https://github.com/TidierOrg/TidierIteration.jl), a Julia version of R's `purrr`.
-
-- Since I like Quarto so much, I created a package that helps writing Julia documentation with it: [QuartoDocBuilder](https://github.com/vituri/QuartoDocBuilder.jl). Its [own documentation](https://vituri.github.io/QuartoDocBuilder.jl/) is written in Quarto!
-
-### AWS
-
-- I can create and manage EC2 instances, use S3 to storage and query data, create databases in RDS and create dashboards with metrics.
-
-- I created a facial recognition system of unlabeled drivers using S3 and [Rekognition](https://aws.amazon.com/rekognition).
-
-- I moved several R/Julia/Python scripts from EC2 to ECS services, providing a reproducible and isolated environment for each code. While doing this, I learned how to create images with Docker, building them with EC2 Image Builder and storing it all in ECR.
-
-### Python
-
-- I can read code and port it to another language when necessary; I never had the need to write pure-Python code, but can learn it easily if needed. Using R's `reticulate` and Julia's `PythonCall.jl`, I was able to use many Python packages elsewhere.
-
-### Writing
-
-- I used a lot of [`RMarkdown`](https://rmarkdown.rstudio.com/) to generate a wide range of dashboards, reports and analysis. Now I prefer to use [Quarto](https://quarto.org/) because of its many cool features (sites, blogs and dashboards) and easiness to use with Julia.
-
-- I am writing a book called [Topological Data Analysis with Julia](https://vituri.github.io/TDA_with_julia/) while I implement several TDA algorithms in JuliaTDA.
-
-- I have [a blog](https://vituri.github.io/blog/posts/julia-for-r-users/julia-for-r-users.html) where I write about R, Julia and data science.
-
-## Talks, workshops and papers
-
--  Paper: [Remote sensing to quantify potential aquifer recharge as a complementary tool for groundwater monitoring
-](https://www.tandfonline.com/doi/abs/10.1080/02626667.2024.2412741) (2024, published in [Hydrological Sciences Journal](https://www.tandfonline.com/journals/thsj20)), co-author. I made most of the analysis using R and `terra`.
-
--   Workshop: [Topological Data Analysis workshop](https://github.com/vituri/TDA_workshop_EBT2024) (2024, at the [XXIII Brazilian Topology Meeting](https://xxiiiebt.ime.ufba.br/)), using Julia.
-
--   Talk: [Topology meets the real world: how geometry can help us analyse finite metric spaces](https://vituri.github.io/talk_wata_2023/#/title-slide) (2023, at the [Workshop of Algebraic Topology and Applications](https://icmc.usp.br/eventos/6135-workshop-de-topologia-algebrica-e-aplicacoes)).
-
-- Paper: [Motivic clustering schemes for directed graphs](https://arxiv.org/abs/2001.00278) (2020, published in ArXiv, with Facundo Mémoli).
+- **Languages:** Portuguese (native), English (fluent), Basic Italian and Russian.
+- **Writing:** Author of the forthcoming book, [Topological Data Analysis with Julia](https://vituri.github.io/TDA_with_julia/).
+- **Interests:** Open source, R and Julia, topological data analysis, algorithms and performance, technical writing, scientific communication, and mentoring.

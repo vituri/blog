@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://vituri.github.io/blog/index.html</loc>
-    <lastmod>2025-02-12T12:37:00.624Z</lastmod>
+    <lastmod>2025-07-05T17:04:16.580Z</lastmod>
   </url>
   <url>
     <loc>https://vituri.github.io/blog/posts/future-history/future-history.html</loc>
@@ -42,7 +42,7 @@
   </url>
   <url>
     <loc>https://vituri.github.io/blog/cv.html</loc>
-    <lastmod>2025-06-23T22:11:58.491Z</lastmod>
+    <lastmod>2025-07-05T17:15:16.769Z</lastmod>
   </url>
   <url>
     <loc>https://vituri.github.io/blog/posts-livros/future-history/future-history.html</loc>
@@ -87,5 +87,13 @@
   <url>
     <loc>https://vituri.github.io/blog/consulting.html</loc>
     <lastmod>2025-05-02T17:29:13.747Z</lastmod>
+  </url>
+  <url>
+    <loc>https://vituri.github.io/blog/cv_hr_review.html</loc>
+    <lastmod>2025-07-05T17:00:51.006Z</lastmod>
+  </url>
+  <url>
+    <loc>https://vituri.github.io/blog/cv-old.html</loc>
+    <lastmod>2025-06-23T22:11:58.491Z</lastmod>
   </url>
 </urlset>

@@ -151,21 +151,21 @@
     "href": "cv.html",
     "title": "About me",
     "section": "",
-    "text": "vituri.vituri@gmail.com / https://github.com/vituri"
+    "text": "Email: vituri.vituri@gmail.com\nGitHub: github.com/vituri"
   },
   {
     "objectID": "cv.html#education",
     "href": "cv.html#education",
     "title": "About me",
     "section": "Education",
-    "text": "Education\nDoctor of Philosophy – Topological Data Analysis  Universidade Estadual Paulista (Unesp) / Ohio State University (OSU) 2016 — 2020\n\nI spent six months at the Ohio State University under Facundo Mémoli supervision.\nWe generalized the Vietoris-Rips and Cech constructions using “motifs”: families of graphs that can be attached to metric spaces (more generally, networks) and generate simplicial complexes. As a corollary, we obtain several clustering methods on graphs.\nThe resulting work is “Motivic constructions on graphs and networks with stability results” and can be found here.\n\nMaster Degree – Algebraic Topology  Universidade Estadual Paulista (Unesp) 2014 — 2015\n\nI studied a certain subgroup of the fundamental group, called “Gottlieb group”, and proved some results about its properties. The dissertation can be found here.\n\nBachelor in Mathematics  Universidade Estadual Paulista (Unesp) 2010 — 2013"
+    "text": "Education\nPhD in Topological Data Analysis  Universidade Estadual Paulista (Unesp) / Ohio State University (OSU) 2016 – 2020\n\nResearch on generalizing Vietoris-Rips and Cech constructions using motifs, resulting in new clustering methods for graphs/networks.\n\nSix-month research stay at OSU under Prof. Facundo Mémoli.\n\nDissertation: Motivic constructions on graphs and networks with stability results.\n\nMaster’s Degree — Algebraic Topology  Universidade Estadual Paulista (Unesp) 2014 – 2015\n\nStudied the Gottlieb group, a subgroup of the fundamental group.\n\nDissertation: Sobre os grupos de Gottlieb (in Portuguese).\n\nBachelor’s in Mathematics  Universidade Estadual Paulista (Unesp) 2010 – 2013"
   },
   {
     "objectID": "cv.html#work-experience",
     "href": "cv.html#work-experience",
     "title": "About me",
-    "section": "Work experience",
-    "text": "Work experience\n\nR/Shiny developer\nAppsilon Feb 2025 – today\nI work as a L4 R/shiny engineer at Appsilon, a company that provides data science services to the biggest pharma companies in the world.\n\nI contributed to open source packages and other internal tools.\nI finished in 2 weeks a POC that used AI/LLMs and R/Shiny to extract data from clinical trial files and automate a pipeline, reducing the task time from weeks to hours.\nI collaborated with Posit to include one of our shiny apps into Connect Gallery.\n\n\n\nHead of Intelligence\nArgus Solutions Jan 2020 – Jan 2025\nI founded the area of Data at Argus, and my role was crucial as the company went from a small-sized tech to a multinational. My team now has more than 12 people as diverse as developers, data scientists, engineers and mathematicians. I acted as a manager, code reviewer, project manager, machine learning engineer, DevOps, R/Julia developer and database administrator.\n\nWe went from hundreds of Excel files to a MariaDB database on AWS. I designed the database, its indexes and applied some normal forms.\nI wrote dozens of R/Julia scripts to read and write data from several sources and created a pipeline of information that ran smoothly\nI automated the generation and mailing of thousands of daily/weekly reports using RMarkdown and Sendgrid, which previously was done by 3 people.\nI created several analytics dashboards using the shiny framework, in place of a former Tableau dashboard. I also developed the main platform used by the team to analyze photos/videos.\nWe created a machine learning model that predicts if a driver is going to sleep in the next hour, using an ensemble of models with tidymodels.\nI created a webserver in Julia using Oxygen.jl to read data from several APIs and write they in our databases. A previous version of this code was written in R and each iteration took almost 4 minutes; it was reduced to 5 seconds in Julia using some paralellism magic.\nI participated in the creation of many computer vision algorithms to detect cellphones, drowsiness, potholes and gestures using keras and YOLO.\nI interviewed and hired people, managed the team and developed the abilities we needed to finish our projects."
+    "section": "Work Experience",
+    "text": "Work Experience\n\nR/Shiny Engineer\nAppsilon (Remote) Feb 2025 – Present\nAppsilon provides data science services to the biggest pharma companies in the world, focusing on R/Shiny and quick development.\n\nContributed to open source packages and collaborated with Posit to feature applications in the Connect Gallery.\nDelivered a proof-of-concept using AI/LLMs and R/Shiny, automating clinical trial data extraction and reducing processing time from weeks to hours.\n\nDeveloped and maintained R/Shiny applications using Rhino; fixed issues and reviewed PRs for other open-source packages.\nContributed to internal knowledge bases and authored blog posts.\n\n\n\nHead of Intelligence\nArgus Solutions Jan 2020 – Jan 2025\nArgus provides solutions for fatigue and distraction detection, control towers, and telemetry in transport operations.\n\nFounded and led the Data team, growing it to over 12 members, including developers, data scientists, engineers, and mathematicians.\nDesigned and implemented a MariaDB database on AWS, migrating from hundreds of Excel files.\n\nAutomated daily/weekly reporting with RMarkdown and Sendgrid, saving over 20 hours of manual work daily.\nBuilt analytics dashboards and platforms for photo and video analysis using R/Shiny.\nDeveloped a machine learning model to predict driver drowsiness, using ensemble methods with tidymodels.\n\nCreated a high-performance Julia webserver using Oxygen.jl, reducing data ingestion time from four minutes (with R) to five seconds (with Julia).\nLed computer vision projects (cellphone detection, drowsiness, pothole, and gesture detection) using Keras and YOLO in Python.\nManaged hiring, mentoring, and professional development for the team."
   },
   {
     "objectID": "cv.html#tools-and-skills",
@@ -656,5 +656,131 @@
     "title": "Consultoria",
     "section": "Tipos de projetos",
     "text": "Tipos de projetos\n\n\n\nCiência de dados\nCriação de gráficos, limpeza de dados, análise de dados de geoprocessamento, séries temporais e etc usando R, Python e Julia.\n\n\nCriação de KPIs\nCriação e monitoramento de indicadores-chave para cada negócio. Ampla experiência no setor de monitoramento de frotas e segurança.\n\n\nDashboards\nDe protótipos a dashboards prontos em pouco tempo utilizando shiny no front-end e uma stack diversa no backend.\n\n\nAutomação\nCriação de rotinas que automatizam tarefas repetitivas: geração de reports, tratamento de dados, envio de emails.\n\n\nBancos de dados e APIs\nCriação de bancos de dados estruturados na nuvem, consumo e envio de dados usando APIs bem documentadas.\n\n\nMachine learning\nModelos preditivos ou descritivos, classificadores, análise de sobrevivência, visão computacional."
+  },
+  {
+    "objectID": "cv_hr_review.html",
+    "href": "cv_hr_review.html",
+    "title": "Guilherme Vituri – CV",
+    "section": "",
+    "text": "Email: vituri.vituri@gmail.com\nGitHub: github.com/vituri"
+  },
+  {
+    "objectID": "cv_hr_review.html#professional-summary",
+    "href": "cv_hr_review.html#professional-summary",
+    "title": "Guilherme Vituri – CV",
+    "section": "Professional Summary",
+    "text": "Professional Summary\nExperienced data scientist and engineering leader with a strong background in R, Julia and mathematics. Experience in delivering quick impactful data solutions and contributing to open-source and academic communities. Skilled with interactive dashboards in R/Shiny, data pipelines, machine learning models and scientific research. Publishes about Topological Data Analysis (TDA) and geospatial analytics."
+  },
+  {
+    "objectID": "cv_hr_review.html#education",
+    "href": "cv_hr_review.html#education",
+    "title": "Guilherme Vituri – CV",
+    "section": "Education",
+    "text": "Education\nPhD in Topological Data Analysis  Universidade Estadual Paulista (Unesp) / Ohio State University (OSU) 2016 – 2020\n\nResearch on generalizing Vietoris-Rips and Cech constructions using motifs, resulting in new clustering methods for graphs/networks.\n\nSix-month research stay at OSU under Prof. Facundo Mémoli.\n\nDissertation: Motivic constructions on graphs and networks with stability results.\n\nMaster Degree – Algebraic Topology  Universidade Estadual Paulista (Unesp) 2014 – 2015\n\nStudied the Gottlieb group, a subgroup of the fundamental group.\n\nDissertation: Sobre os grupos de Gottlieb (in Portuguese).\n\nBachelor in Mathematics  Universidade Estadual Paulista (Unesp) 2010 – 2013"
+  },
+  {
+    "objectID": "cv_hr_review.html#work-experience",
+    "href": "cv_hr_review.html#work-experience",
+    "title": "Guilherme Vituri – CV",
+    "section": "Work Experience",
+    "text": "Work Experience\n\nR/Shiny Engineer\nAppsilon (Remote) Feb 2025 – Present\nAppsilon provides data science services to the biggest pharma companies in the world, focusing on R/Shiny and quick development.\n\nContributed to open source packages and collaborated with Posit to feature apps in Connect Gallery.\nDelivered a proof-of-concept using AI/LLMs and R/Shiny to automate clinical trial data extraction, reducing processing time from weeks to hours.\n\nDeveloped and maintained R/Shiny applications using Rhino; fixed issues and reviewed PRs for other open packages.\nContributed to internal knowledge bases and authored blog posts.\n\n\n\nHead of Intelligence\nArgus Solutions Jan 2020 – Jan 2025\nArgus provides solutions for fatigue and distraction detection, control towers, and telemetry in transport operations.\n\nFounded and led the Data team, growing it to 12+ members (developers, data scientists, engineers, mathematicians).\n\nDesigned and implemented a MariaDB database on AWS, migrating from hundreds of Excel files.\n\nAutomated daily/weekly reporting with RMarkdown and Sendgrid, saving more than 20 hours of human work daily.\nBuilt analytics dashboards and platforms for photo/video analysis using R Shiny.\n\nDeveloped a machine learning model to predict driver drowsiness, leveraging ensemble methods with tidymodels.\n\nCreated a high-performance Julia webserver using Oxygen.jl, reducing data ingestion time from 4 minutes (with R) to 5 seconds (with Julia).\nLed computer vision projects (cellphone, drowsiness, pothole, gesture detection) using Keras and YOLO in Python.\nManaged hiring, mentoring, and professional development for the team."
+  },
+  {
+    "objectID": "cv_hr_review.html#technical-skills",
+    "href": "cv_hr_review.html#technical-skills",
+    "title": "Guilherme Vituri – CV",
+    "section": "Technical Skills",
+    "text": "Technical Skills\n\nR: Advanced – tidyverse, Shiny, geospatial, APIs, package development, optimization\nJulia: Advanced – TDA, performance, APIs, parallelism, documentation\nSQL: Advanced – MariaDB, database design, optimization, dbplyr in R\nAWS: Intermediate – EC2, S3, RDS, ECS, Docker, Rekognition\nPython: Intermediate – numpy, pandas, polars, scikit\nData Science: Machine learning, computer vision, reporting, dashboards\nTechnical Writing: Workshops, blog posts, papers"
+  },
+  {
+    "objectID": "cv_hr_review.html#selected-projects-open-source",
+    "href": "cv_hr_review.html#selected-projects-open-source",
+    "title": "Guilherme Vituri – CV",
+    "section": "Selected Projects & Open Source",
+    "text": "Selected Projects & Open Source\n\nJuliaTDA Organization: Owner and main contributor. Developed Mapper and Ball Mapper and ToMATo algorithms in Julia.\n\nTidierOrg: Contributor to TidierIteration.jl, a Julia version of R’s purrr.\n\nQuartoDocBuilder.jl: Created a package to facilitate Julia documentation with Quarto (docs).\n\nBlog: julia-for-r-users and other posts on R, Julia, and data science. The online version of this CV is here."
+  },
+  {
+    "objectID": "cv_hr_review.html#publications-talks-workshops",
+    "href": "cv_hr_review.html#publications-talks-workshops",
+    "title": "Guilherme Vituri – CV",
+    "section": "Publications, Talks & Workshops",
+    "text": "Publications, Talks & Workshops\n\nPaper: Remote sensing to quantify potential aquifer recharge as a complementary tool for groundwater monitoring (Hydrological Sciences Journal, 2024). Co-author; led R/terra analysis and data pipeline.\nWorkshop: Topological Data Analysis workshop (at XXIII Brazilian Topology Meeting, 2024), using Julia.\nTalk: Topology meets the real world: how geometry can help us analyse finite metric spaces (at Workshop of Algebraic Topology and Applications, 2023).\nPaper: Motivic clustering schemes for directed graphs (arXiv, 2020, with Facundo Mémoli)."
+  },
+  {
+    "objectID": "cv_hr_review.html#additional-information",
+    "href": "cv_hr_review.html#additional-information",
+    "title": "Guilherme Vituri – CV",
+    "section": "Additional Information",
+    "text": "Additional Information\n\nLanguages: Portuguese (native), English (fluent), basic Italian and Russian.\nWriting: Author of a forthcoming book, Topological Data Analysis with Julia.\nInterests: Open source, R and Julia, Topological Data Analysis, algorithms and performance, technical writing, scientific communication, mentoring."
+  },
+  {
+    "objectID": "cv.html#professional-summary",
+    "href": "cv.html#professional-summary",
+    "title": "About me",
+    "section": "Professional Summary",
+    "text": "Professional Summary\nExperienced data scientist and engineering leader with a strong background in R, Julia, and mathematics. Experienced in delivering quick, impactful data solutions and contributing to open-source and academic communities. Skilled with interactive dashboards in R/Shiny, data pipelines, machine learning models, and scientific research. Publishes on Topological Data Analysis (TDA) and geospatial analytics."
+  },
+  {
+    "objectID": "cv.html#technical-skills",
+    "href": "cv.html#technical-skills",
+    "title": "About me",
+    "section": "Technical Skills",
+    "text": "Technical Skills\n\nR: Advanced — tidyverse, Shiny, geospatial, APIs, package development, optimization\nJulia: Advanced — TDA, performance, APIs, parallelism, documentation\nSQL: Advanced — MariaDB, database design, optimization, dbplyr in R\nAWS: Intermediate — EC2, S3, RDS, ECS, Docker, Rekognition\nPython: Intermediate — numpy, pandas, polars, scikit-learn\nData Science: Machine learning, computer vision, reporting, dashboards\nTechnical Writing: Workshops, blog posts, and academic papers"
+  },
+  {
+    "objectID": "cv.html#selected-projects-open-source",
+    "href": "cv.html#selected-projects-open-source",
+    "title": "About me",
+    "section": "Selected Projects & Open Source",
+    "text": "Selected Projects & Open Source\n\nJuliaTDA Organization: Owner and main contributor. Developed the Mapper and Ball Mapper and ToMATo algorithms in Julia.\n\nTidierOrg: Contributor to TidierIteration.jl, a Julia version of R’s purrr package.\n\nQuartoDocBuilder.jl: Created a package to facilitate Julia documentation generation with Quarto (docs).\n\nBlog: julia-for-r-users and other posts on R, Julia, and data science. The online version of this CV is here."
+  },
+  {
+    "objectID": "cv.html#publications-talks-workshops",
+    "href": "cv.html#publications-talks-workshops",
+    "title": "About me",
+    "section": "Publications, Talks & Workshops",
+    "text": "Publications, Talks & Workshops\n\nPaper: Remote sensing to quantify potential aquifer recharge as a complementary tool for groundwater monitoring (Hydrological Sciences Journal, 2024). Co-author; led the R/terra analysis and data pipeline.\nWorkshop: Topological Data Analysis workshop (at XXIII Brazilian Topology Meeting, 2024), using Julia.\nTalk: Topology meets the real world: how geometry can help us analyze finite metric spaces (at Workshop of Algebraic Topology and Applications, 2023).\nPaper: Motivic clustering schemes for directed graphs (with Facundo Mémoli, arXiv, 2020)."
+  },
+  {
+    "objectID": "cv.html#additional-information",
+    "href": "cv.html#additional-information",
+    "title": "About me",
+    "section": "Additional Information",
+    "text": "Additional Information\n\nLanguages: Portuguese (native), English (fluent), Basic Italian and Russian.\nWriting: Author of the forthcoming book, Topological Data Analysis with Julia.\nInterests: Open source, R and Julia, topological data analysis, algorithms and performance, technical writing, scientific communication, and mentoring."
+  },
+  {
+    "objectID": "cv-old.html",
+    "href": "cv-old.html",
+    "title": "About me",
+    "section": "",
+    "text": "vituri.vituri@gmail.com / https://github.com/vituri"
+  },
+  {
+    "objectID": "cv-old.html#education",
+    "href": "cv-old.html#education",
+    "title": "About me",
+    "section": "Education",
+    "text": "Education\nDoctor of Philosophy – Topological Data Analysis  Universidade Estadual Paulista (Unesp) / Ohio State University (OSU) 2016 — 2020\n\nI spent six months at the Ohio State University under Facundo Mémoli supervision.\nWe generalized the Vietoris-Rips and Cech constructions using “motifs”: families of graphs that can be attached to metric spaces (more generally, networks) and generate simplicial complexes. As a corollary, we obtain several clustering methods on graphs.\nThe resulting work is “Motivic constructions on graphs and networks with stability results” and can be found here.\n\nMaster Degree – Algebraic Topology  Universidade Estadual Paulista (Unesp) 2014 — 2015\n\nI studied a certain subgroup of the fundamental group, called “Gottlieb group”, and proved some results about its properties. The dissertation can be found here.\n\nBachelor in Mathematics  Universidade Estadual Paulista (Unesp) 2010 — 2013"
+  },
+  {
+    "objectID": "cv-old.html#work-experience",
+    "href": "cv-old.html#work-experience",
+    "title": "About me",
+    "section": "Work experience",
+    "text": "Work experience\n\nR/Shiny developer\nAppsilon Feb 2025 – today\nI work as a L4 R/shiny engineer at Appsilon, a company that provides data science services to the biggest pharma companies in the world.\n\nI contributed to open source packages and other internal tools.\nI finished in 2 weeks a POC that used AI/LLMs and R/Shiny to extract data from clinical trial files and automate a pipeline, reducing the task time from weeks to hours.\nI collaborated with Posit to include one of our shiny apps into Connect Gallery.\n\n\n\nHead of Intelligence\nArgus Solutions Jan 2020 – Jan 2025\nI founded the area of Data at Argus, and my role was crucial as the company went from a small-sized tech to a multinational. My team now has more than 12 people as diverse as developers, data scientists, engineers and mathematicians. I acted as a manager, code reviewer, project manager, machine learning engineer, DevOps, R/Julia developer and database administrator.\n\nWe went from hundreds of Excel files to a MariaDB database on AWS. I designed the database, its indexes and applied some normal forms.\nI wrote dozens of R/Julia scripts to read and write data from several sources and created a pipeline of information that ran smoothly\nI automated the generation and mailing of thousands of daily/weekly reports using RMarkdown and Sendgrid, which previously was done by 3 people.\nI created several analytics dashboards using the shiny framework, in place of a former Tableau dashboard. I also developed the main platform used by the team to analyze photos/videos.\nWe created a machine learning model that predicts if a driver is going to sleep in the next hour, using an ensemble of models with tidymodels.\nI created a webserver in Julia using Oxygen.jl to read data from several APIs and write they in our databases. A previous version of this code was written in R and each iteration took almost 4 minutes; it was reduced to 5 seconds in Julia using some paralellism magic.\nI participated in the creation of many computer vision algorithms to detect cellphones, drowsiness, potholes and gestures using keras and YOLO.\nI interviewed and hired people, managed the team and developed the abilities we needed to finish our projects."
+  },
+  {
+    "objectID": "cv-old.html#tools-and-skills",
+    "href": "cv-old.html#tools-and-skills",
+    "title": "About me",
+    "section": "Tools and skills",
+    "text": "Tools and skills\n\nR\n\ntidyverse: I use several of these packages everyday; I am “fluent” in dplyr, purrr, tidyr, stringr, tibble and many others. I prefer to use echarts4r instead of ggplot2. With dbplyr, I can translate many complicated transformations to SQL in a painless way.\nshiny: I explored a lot of the shiny ecosystem since 2018: from shinydashboard to the new bslib, using shinyWidgets and toastui. I can create dashboards, CRUDS, user interfaces, display photos/videos and maps. Async and parallelism can be done easily nowadays with mirai.\nI am also very familiar with igraph to manipulate graphs, leaflet to plot maps, httr2 to make API calls, plumber to create APIs, reticulate to interface Python. I can create packages, documentation and tests.\nI know how to manipulate geospatial data with terra and sf, and use advanced maps like tmap.\n\n\n\nJulia\nCoding in Julia is a joy! It is fast, functional and has multiple dispatch. Some things I did with it:\n\nI started learning Julia to write some Topological Data Analysis algorithms and the result was impressive, even with my initial poor skills.\nI am the owner of the JuliaTDA organization which aims to bring the Topological Data Analysis ecosystem to Julia. I wrote the Mapper and Ball Mapper algorithms in Julia and the documentation in Quarto, and later also wrote the ToMATo algorithm.\nBuilding JuliaTDA, I was able to get familiar with parallelism, code piracy, structs, multiple dispatch, profiling (memory allocations and algorithm efficiency) and plotting tools like Plots and Makie. The book “Hands-On Design Patterns and Best Practices with Julia” is my bible.\nSince I like the tidyverse so much, I am now part of the TidierOrg: a 100% Julia organization inspired by R data tools. I am the main contributor to TidierIteration.jl, a Julia version of R’s purrr.\nSince I like Quarto so much, I created a package that helps writing Julia documentation with it: QuartoDocBuilder. Its own documentation is written in Quarto!\n\n\n\nAWS\n\nI can create and manage EC2 instances, use S3 to storage and query data, create databases in RDS and create dashboards with metrics.\nI created a facial recognition system of unlabeled drivers using S3 and Rekognition.\nI moved several R/Julia/Python scripts from EC2 to ECS services, providing a reproducible and isolated environment for each code. While doing this, I learned how to create images with Docker, building them with EC2 Image Builder and storing it all in ECR.\n\n\n\nPython\n\nI can read code and port it to another language when necessary; I never had the need to write pure-Python code, but can learn it easily if needed. Using R’s reticulate and Julia’s PythonCall.jl, I was able to use many Python packages elsewhere.\n\n\n\nWriting\n\nI used a lot of RMarkdown to generate a wide range of dashboards, reports and analysis. Now I prefer to use Quarto because of its many cool features (sites, blogs and dashboards) and easiness to use with Julia.\nI am writing a book called Topological Data Analysis with Julia while I implement several TDA algorithms in JuliaTDA.\nI have a blog where I write about R, Julia and data science."
+  },
+  {
+    "objectID": "cv-old.html#talks-workshops-and-papers",
+    "href": "cv-old.html#talks-workshops-and-papers",
+    "title": "About me",
+    "section": "Talks, workshops and papers",
+    "text": "Talks, workshops and papers\n\nPaper: Remote sensing to quantify potential aquifer recharge as a complementary tool for groundwater monitoring (2024, published in Hydrological Sciences Journal), co-author. I made most of the analysis using R and terra.\nWorkshop: Topological Data Analysis workshop (2024, at the XXIII Brazilian Topology Meeting), using Julia.\nTalk: Topology meets the real world: how geometry can help us analyse finite metric spaces (2023, at the Workshop of Algebraic Topology and Applications).\nPaper: Motivic clustering schemes for directed graphs (2020, published in ArXiv, with Facundo Mémoli)."
   }
 ]
