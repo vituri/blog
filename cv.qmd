@@ -20,7 +20,7 @@ css: cv.css
 
 ## Professional Summary
 
-Experienced data scientist and engineering leader with a strong background in **R, Julia, and mathematics**. Experienced in delivering quick, impactful data solutions and contributing to open-source and academic communities. Skilled with interactive dashboards in R/Shiny, data pipelines, machine learning models, and scientific research. Publishes on Topological Data Analysis (TDA) and geospatial analytics.
+Data scientist with a strong background in **R, Julia, and mathematics**. Experienced in delivering quick data solutions and contributing to open-source and academic communities. Skilled with interactive dashboards in R/Shiny, data pipelines, machine learning models, and scientific research. Publishes on Topological Data Analysis (TDA) and geospatial analytics.
 
 ## Education
 
@@ -30,7 +30,7 @@ Experienced data scientist and engineering leader with a strong background in **
 - Six-month research stay at OSU under Prof. [Facundo Mémoli](https://scholar.google.com/citations?user=E3APGcgAAAAJ&hl=pt-BR&oi=sra).  
 - Dissertation: [Motivic constructions on graphs and networks with stability results](https://repositorio.unesp.br/items/1401ed18-c1b0-4ab3-903c-bc2ecac63ca7).
 
-**Master’s Degree — Algebraic Topology** <br> *Universidade Estadual Paulista (Unesp)* [*2014 -- 2015*]{.cvdate}
+**Master’s Degree -- Algebraic Topology** <br> *Universidade Estadual Paulista (Unesp)* [*2014 -- 2015*]{.cvdate}
 
 - Studied the Gottlieb group, a subgroup of the fundamental group.  
 - Dissertation: [Sobre os grupos de Gottlieb](https://repositorio.unesp.br/bitstreams/00138957-fdaa-4a0e-81ef-37e78bf6ae27/download) (in Portuguese).
@@ -54,30 +54,29 @@ Appsilon provides data science services to the biggest pharma companies in the w
 
 ***[Argus Solutions](https://www.argusolutions.com.br/en-US)*** [Jan 2020 -- Jan 2025]{.cvdate}
 
-Argus provides solutions for fatigue and distraction detection, control towers, and telemetry in transport operations.
+Argus provides solutions for fatigue and distraction detection, control towers, and telemetry in transport operations around the world.
 
-- Founded and led the Data team, growing it to over 12 members, including developers, data scientists, engineers, and mathematicians.
-- Designed and implemented a MariaDB database on AWS, migrating from hundreds of Excel files.  
-- Automated daily/weekly reporting with RMarkdown and Sendgrid, saving over 20 hours of manual work daily.
-- Built analytics dashboards and platforms for photo and video analysis using R/Shiny.
-- Developed a machine learning model to [predict driver drowsiness](https://www.linkedin.com/posts/luis-torin-00641245_tecnologia-inteligaeanciaartificial-logaedstica-activity-7012149778255900672-Daed), using ensemble methods with [`tidymodels`](https://www.tidymodels.org/).  
-- Created a high-performance Julia webserver using [Oxygen.jl](https://oxygenframework.github.io/Oxygen.jl/stable/), reducing data ingestion time from four minutes (with R) to five seconds (with Julia).
+- Founded and led the Data team, growing it to over 12 members, including developers, data scientists, engineers, and mathematicians. Managed hiring, mentoring, and professional development for the team.
+- Responsible for creating, testing and deploying 30+ R/Shiny applications for the entire company and clients, used by 300+ different users daily and 20+ users simultaneously. Some of these apps are used by the control tower 24/7 to analyze photos and videos.
+- Automated the pipeline of data from hundreds of Excel files to a MariaDB database on AWS RDS, which has 10+ million new entries daily.
+- Automated daily/weekly reporting with RMarkdown and Sendgrid, sending 10k+ emails monthly and saving over 20 hours of manual work daily.
+- Developed a machine learning model to [predict driver drowsiness](https://www.linkedin.com/posts/luis-torin-00641245_tecnologia-inteligaeanciaartificial-logaedstica-activity-7012149778255900672-Daed) with >80% accuracy on noisy data, using ensemble methods with [`tidymodels`](https://www.tidymodels.org/).  
+- Created a high-performance Julia webserver using [Oxygen.jl](https://oxygenframework.github.io/Oxygen.jl/stable/), reducing data ingestion time from four minutes (with R) to five seconds (with Julia) per iteration.
 - Led computer vision projects (cellphone detection, drowsiness, pothole, and gesture detection) using Keras and YOLO in Python.
-- Managed hiring, mentoring, and professional development for the team.
 
 ## Technical Skills
 
-- **R:** Advanced — tidyverse, Shiny, geospatial, APIs, package development, optimization
-- **Julia:** Advanced — TDA, performance, APIs, parallelism, documentation
-- **SQL:** Advanced — MariaDB, database design, optimization, `dbplyr` in R
-- **AWS:** Intermediate — EC2, S3, RDS, ECS, Docker, Rekognition
-- **Python:** Intermediate — numpy, pandas, polars, scikit-learn
+- **R:** Advanced -- tidyverse, Shiny, geospatial, APIs, package development, optimization
+- **Julia:** Advanced -- TDA, performance, APIs, parallelism, documentation
+- **SQL:** Advanced -- MariaDB, database design, optimization (indexation, normalization), `dbplyr` within R
+- **AWS:** Intermediate -- EC2, S3, RDS, ECS, Docker, Rekognition
+- **Python:** Intermediate -- numpy, pandas, polars, scikit-learn
 - **Data Science:** Machine learning, computer vision, reporting, dashboards
 - **Technical Writing:** Workshops, blog posts, and academic papers
 
 ## Selected Projects & Open Source
 
-- **JuliaTDA Organization:** Owner and main contributor. Developed the [Mapper and Ball Mapper](https://juliatda.github.io/TDAmapper.jl/mapper.html) and [ToMATo](https://juliatda.github.io/ToMATo.jl/) algorithms in Julia.  
+- **JuliaTDA Organization:** Owner and main contributor. Wrote the [Mapper and Ball Mapper](https://juliatda.github.io/TDAmapper.jl/) and [ToMATo](https://juliatda.github.io/ToMATo.jl/) implementations in Julia.  
 - **TidierOrg:** Contributor to [TidierIteration.jl](https://github.com/TidierOrg/TidierIteration.jl), a Julia version of R’s `purrr` package.  
 - **QuartoDocBuilder.jl:** Created a package to facilitate Julia documentation generation with Quarto ([docs](https://vituri.github.io/QuartoDocBuilder.jl/)).  
 - **Blog:** [julia-for-r-users](https://vituri.github.io/blog/posts/julia-for-r-users/julia-for-r-users.html) and other posts on R, Julia, and data science. The online version of this CV is [here](https://vituri.github.io/blog/cv.html).
