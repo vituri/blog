@@ -39,9 +39,27 @@ Data scientist with a strong background in **R, Julia, and mathematics**. Experi
 
 ## Work Experience
 
+### Consulting  
+
+I offer consulting on R/Shiny, data science, development and machine learning in general. Some projects I've worked:
+
+- Geospatial analysis: helping with code and technical writing of books and papers.
+- API creation with R and plumber, database modeling, authorization methods and LLMs.
+- Dashboard creation using R and Shiny for market research companies.
+
+
+### Senior Data Scientist  
+
+***[Cielo](https://www.cielo.com.br/) (Remote)*** [September 2025 -- Present]{.cvdate}
+
+Cielo is a major Brazilian financial technology company, specializing in electronic payment processing and providing a diverse range of e-commerce solutions.
+
+- Created and refined machine learning models with Python on big data to predict failures, using tree models and neural networks on noisy time series; presented results to stakeholders with pros-and-cons.
+- Automated reports on Databricks to alert clients about needed repairs on their terminals.
+
 ### R/Shiny Engineer  
 
-***[Appsilon](https://www.appsilon.com/) (Remote)*** [Feb 2025 -- Present]{.cvdate}
+***[Appsilon](https://www.appsilon.com/) (Remote)*** [Feb 2025 -- July 2025]{.cvdate}
 
 Appsilon provides data science services to the biggest pharma companies in the world, focusing on R/Shiny and quick development.
 
@@ -66,11 +84,12 @@ Argus provides solutions for fatigue and distraction detection, control towers, 
 
 ## Technical Skills
 
-- **R:** Advanced -- tidyverse, Shiny, geospatial, APIs, package development, optimization
+- **R:** Advanced -- `tidyverse`, `shiny`, geospatial, APIs, package development, optimization
 - **Julia:** Advanced -- TDA, performance, APIs, parallelism, documentation
-- **SQL:** Advanced -- MariaDB, database design, optimization (indexation, normalization), `dbplyr` within R
+- **SQL:** Advanced -- MariaDB/Postgres, database design, optimization (indexation, normalization), `dbplyr` within R
 - **AWS:** Intermediate -- EC2, S3, RDS, ECS, Docker, Rekognition
-- **Python:** Intermediate -- numpy, pandas, polars, scikit-learn
+- **Python:** Intermediate -- `numpy`, `pandas`, `polars`, `scikit-learn`
+- **Databricks:** Beginner -- delta lake, notebooks, `PySpark`
 - **Data Science:** Machine learning, computer vision, reporting, dashboards
 - **Technical Writing:** Workshops, blog posts, and academic papers
 
@@ -92,4 +111,4 @@ Argus provides solutions for fatigue and distraction detection, control towers, 
 
 - **Languages:** Portuguese (native), English (fluent), Basic Italian and Russian.
 - **Writing:** Author of the forthcoming book, [Topological Data Analysis with Julia](https://vituri.github.io/TDA_with_julia/).
-- **Interests:** Open source, R and Julia, topological data analysis, algorithms and performance, technical writing, scientific communication, and mentoring.
+- **Interests:** R and Julia, open source, topological data analysis, algorithms and performance, technical writing, scientific communication, and mentoring.
