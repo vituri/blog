@@ -1,0 +1,72 @@
+---
+title: "Portfolio"
+format:
+  html:
+    toc: true
+    toc-depth: 2
+    comments: false
+    page-layout: full
+    grid:
+      sidebar-width: 0px
+css: cv.css
+---
+
+## R, shiny and dataviz
+
+During my 5 years at [Argus](https://www.linkedin.com/company/argusolutions/) I created the majority of reports, dashboards and analysis using R, shiny and Rmarkdown/Quarto. Most of these are still on use today, such as:
+
+- daily reports (1200+ reports each day, sent via R) with embedded videos, reactable tables and download options
+
+- weekly reports made with flexdashboard and echarts4r
+
+- the main dashboard used by dozens of clients
+
+<center>
+<iframe src="https://www.linkedin.com/embed/feed/update/urn:li:ugcPost:7298690588927840256?compact=1" height="399" width="504" frameborder="0" allowfullscreen="" title="Publicação incorporada"></iframe>
+</center>
+
+- a telegram bot with real-time alerts + email
+
+<center>
+<iframe src="https://www.linkedin.com/embed/feed/update/urn:li:share:7254841148773453825?collapsed=1" height="669" width="504" frameborder="0" allowfullscreen="" title="Publicação incorporada"></iframe>
+</center>
+
+- smart reports with special analysis regarding telemetry and fuel usage
+
+<center>
+<iframe src="https://www.linkedin.com/embed/feed/update/urn:li:ugcPost:7282381262235877376?compact=1" height="399" width="504" frameborder="0" allowfullscreen="" title="Publicação incorporada"></iframe>
+</center>
+
+- platforms for the control tower team, running 24/7 and used by at least 10 people simultaneously
+
+<center>
+<iframe src="https://www.linkedin.com/embed/feed/update/urn:li:ugcPost:7392574356851412992?compact=1" height="399" width="504" frameborder="0" allowfullscreen="" title="Publicação incorporada"></iframe>
+</center>
+
+- the videowall with realtime insights about the operation
+
+<center>
+<iframe src="https://www.linkedin.com/embed/feed/update/urn:li:ugcPost:7252659357375496192?compact=1" height="399" width="504" frameborder="0" allowfullscreen="" title="Publicação incorporada"></iframe>
+</center>
+
+Regarding quick prototyping: I can create things like this in 2 or 3 days when inspired:
+
+```{r}
+#| echo: false
+library(slickR)
+images = paste0("images/dash", 1:3, ".png")
+slickR(images, height = "400px", width = "90%") + 
+  settings(dots = TRUE, autoplay = TRUE, autoplaySpeed = 1500)
+```
+
+## Data engineering and machine learning
+
+I was also responsible for the integration of several telemetry clients with our database, and the creation of APIs using plumber to allow clients to consume our data.
+
+I implemented a drowsiness detector to answer the question: "What is the probability that this driver will sleep driving in the next hour?"
+
+{{<video https://www.youtube.com/watch?v=2LoWyeiVur0>}}
+
+I also implemented a facial recognition system which allows to identify the history of each driver without the need of identifications
+
+{{<video https://www.youtube.com/watch?v=z3BVuftGhoU>}}

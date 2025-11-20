@@ -22,6 +22,7 @@ website:
       # - index.qmd
       # - livros.qmd
       - consulting.qmd
+      - portfolio.qmd
       - cv.qmd
       # - about.qmd
       - icon: github

@@ -782,5 +782,33 @@
     "title": "About me",
     "section": "Talks, workshops and papers",
     "text": "Talks, workshops and papers\n\nPaper: Remote sensing to quantify potential aquifer recharge as a complementary tool for groundwater monitoring (2024, published in Hydrological Sciences Journal), co-author. I made most of the analysis using R and terra.\nWorkshop: Topological Data Analysis workshop (2024, at the XXIII Brazilian Topology Meeting), using Julia.\nTalk: Topology meets the real world: how geometry can help us analyse finite metric spaces (2023, at the Workshop of Algebraic Topology and Applications).\nPaper: Motivic clustering schemes for directed graphs (2020, published in ArXiv, with Facundo Mémoli)."
+  },
+  {
+    "objectID": "portfolio.html",
+    "href": "portfolio.html",
+    "title": "Portfolio",
+    "section": "",
+    "text": "During my 5 years at Argus I created the majority of reports, dashboards and analysis using R, shiny and Rmarkdown/Quarto. Most of these are still on use today, such as:\n\ndaily reports (1200+ reports each day, sent via R) with embedded videos, reactable tables and download options\nweekly reports made with flexdashboard and echarts4r\nthe main dashboard used by dozens of clients\n\n\n\n\n\n\na telegram bot with real-time alerts + email\n\n\n\n\n\n\nsmart reports with special analysis regarding telemetry and fuel usage\n\n\n\n\n\n\nplatforms for the control tower team, running 24/7 and used by at least 10 people simultaneously\n\n\n\n\n\n\nthe videowall with realtime insights about the operation\n\n\n\n\n\nRegarding quick prototyping: I can create things like this in 2 or 3 days when inspired:"
+  },
+  {
+    "objectID": "portfolio.html#r-shiny-and-dataviz",
+    "href": "portfolio.html#r-shiny-and-dataviz",
+    "title": "Portfolio",
+    "section": "",
+    "text": "During my 5 years at Argus I created the majority of reports, dashboards and analysis using R, shiny and Rmarkdown/Quarto. Most of these are still on use today, such as:\n\ndaily reports (1200+ reports each day, sent via R) with embedded videos, reactable tables and download options\nweekly reports made with flexdashboard and echarts4r\nthe main dashboard used by dozens of clients\n\n\n\n\n\n\na telegram bot with real-time alerts + email\n\n\n\n\n\n\nsmart reports with special analysis regarding telemetry and fuel usage\n\n\n\n\n\n\nplatforms for the control tower team, running 24/7 and used by at least 10 people simultaneously\n\n\n\n\n\n\nthe videowall with realtime insights about the operation\n\n\n\n\n\nRegarding quick prototyping: I can create things like this in 2 or 3 days when inspired:"
+  },
+  {
+    "objectID": "portfolio.html#data-engineering-and-machine-learning",
+    "href": "portfolio.html#data-engineering-and-machine-learning",
+    "title": "Portfolio",
+    "section": "Data engineering and machine learning",
+    "text": "Data engineering and machine learning\nI was also responsible for the integration of several telemetry clients with our database, and the creation of APIs using plumber to allow clients to consume our data.\nI implemented a drowsiness detector to answer the question: “What is the probability that this driver will sleep driving in the next hour?”\n\nI also implemented a facial recognition system which allows to identify the history of each driver without the need of identifications"
+  },
+  {
+    "objectID": "portfolio.html#footnotes",
+    "href": "portfolio.html#footnotes",
+    "title": "Portfolio",
+    "section": "Footnotes",
+    "text": "Footnotes\n\n\nIf you see any publication featuring charts or platforms on their LinkedIn, there is a big chance that I created or inspired it somehow, like their newest platform↩︎"
   }
 ]
