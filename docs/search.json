@@ -788,14 +788,14 @@
     "href": "portfolio.html",
     "title": "Portfolio",
     "section": "",
-    "text": "During my 5 years at Argus I created the majority of reports, dashboards and analysis using R, shiny and Rmarkdown/Quarto. Most of these are still on use today, such as:\n\ndaily reports (1200+ reports each day, sent via R) with embedded videos, reactable tables and download options\nweekly reports made with flexdashboard and echarts4r\nthe main dashboard used by dozens of clients\n\n\n\n\n\n\na telegram bot with real-time alerts + email\n\n\n\n\n\n\nsmart reports with special analysis regarding telemetry and fuel usage\n\n\n\n\n\n\nplatforms for the control tower team, running 24/7 and used by at least 10 people simultaneously\n\n\n\n\n\n\nthe videowall with realtime insights about the operation\n\n\n\n\n\nRegarding quick prototyping: I can create things like this in 2 or 3 days when inspired:"
+    "text": "During my 5 years at Argus I created the majority of reports, dashboards and analysis using R, shiny and Rmarkdown/Quarto. Most of these are still on use today, such as:\n\ndaily reports (1200+ reports each day, sent via R) with embedded videos, reactable tables and download options\nweekly reports made with flexdashboard and echarts4r\nthe main dashboard used by dozens of clients\n\n\n\n\n\n\na telegram bot with real-time alerts + email\n\n\n\n\n\n\nsmart reports with special analysis regarding telemetry and fuel usage\n\n\n\n\n\n\nplatforms for the control tower team, running 24/7 and used by at least 10 people simultaneously\n\n\n\n\n\n\nthe videowall with realtime insights about the operation\n\n\n\n\n\nRegarding quick prototyping: I can create things like this in 2 or 3 days when inspired:\n\n\n\n\n\n\nOr re-make the UI of a given app to make it more interactive:"
   },
   {
     "objectID": "portfolio.html#r-shiny-and-dataviz",
     "href": "portfolio.html#r-shiny-and-dataviz",
     "title": "Portfolio",
     "section": "",
-    "text": "During my 5 years at Argus I created the majority of reports, dashboards and analysis using R, shiny and Rmarkdown/Quarto. Most of these are still on use today, such as:\n\ndaily reports (1200+ reports each day, sent via R) with embedded videos, reactable tables and download options\nweekly reports made with flexdashboard and echarts4r\nthe main dashboard used by dozens of clients\n\n\n\n\n\n\na telegram bot with real-time alerts + email\n\n\n\n\n\n\nsmart reports with special analysis regarding telemetry and fuel usage\n\n\n\n\n\n\nplatforms for the control tower team, running 24/7 and used by at least 10 people simultaneously\n\n\n\n\n\n\nthe videowall with realtime insights about the operation\n\n\n\n\n\nRegarding quick prototyping: I can create things like this in 2 or 3 days when inspired:"
+    "text": "During my 5 years at Argus I created the majority of reports, dashboards and analysis using R, shiny and Rmarkdown/Quarto. Most of these are still on use today, such as:\n\ndaily reports (1200+ reports each day, sent via R) with embedded videos, reactable tables and download options\nweekly reports made with flexdashboard and echarts4r\nthe main dashboard used by dozens of clients\n\n\n\n\n\n\na telegram bot with real-time alerts + email\n\n\n\n\n\n\nsmart reports with special analysis regarding telemetry and fuel usage\n\n\n\n\n\n\nplatforms for the control tower team, running 24/7 and used by at least 10 people simultaneously\n\n\n\n\n\n\nthe videowall with realtime insights about the operation\n\n\n\n\n\nRegarding quick prototyping: I can create things like this in 2 or 3 days when inspired:\n\n\n\n\n\n\nOr re-make the UI of a given app to make it more interactive:"
   },
   {
     "objectID": "portfolio.html#data-engineering-and-machine-learning",
@@ -810,5 +810,19 @@
     "title": "Portfolio",
     "section": "Footnotes",
     "text": "Footnotes\n\n\nIf you see any publication featuring charts or platforms on their LinkedIn, there is a big chance that I created or inspired it somehow, like their newest platform↩︎"
+  },
+  {
+    "objectID": "portfolio.html#stack",
+    "href": "portfolio.html#stack",
+    "title": "Portfolio",
+    "section": "Stack",
+    "text": "Stack\nI could summarise my stack as follows:"
+  },
+  {
+    "objectID": "portfolio.html#aaaaaaaaaaa",
+    "href": "portfolio.html#aaaaaaaaaaa",
+    "title": "Portfolio",
+    "section": "aaaaaaaaaaa",
+    "text": "aaaaaaaaaaa"
   }
 ]

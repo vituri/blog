@@ -59,6 +59,15 @@ slickR(images, height = "400px", width = "90%") +
   settings(dots = TRUE, autoplay = TRUE, autoplaySpeed = 1500)
 ```
 
+Or re-make the UI of a given app to make it more interactive:
+
+<center>
+{{< video images/app.mp4
+    title="Exploring user metrics"
+    width="600"
+>}}
+</center>
+
 ## Data engineering and machine learning
 
 I was also responsible for the integration of several telemetry clients with our database, and the creation of APIs using plumber to allow clients to consume our data.
@@ -70,3 +79,74 @@ I implemented a drowsiness detector to answer the question: "What is the probabi
 I also implemented a facial recognition system which allows to identify the history of each driver without the need of identifications
 
 {{<video https://www.youtube.com/watch?v=z3BVuftGhoU>}}
+
+<!-- ## Stack -->
+
+<!-- I could summarise my stack as follows: -->
+
+```{r, include=FALSE}
+#| echo: false
+
+library(reactablefmtr)
+library(htmltools)
+
+data <- tibble::tribble(
+  ~Language, ~Stack, ~Expertise, ~`Years using`,
+  # R
+  "R", "base", 4, 8,
+  "R", "tidyverse", 5, 7,
+  "R", "shiny", 5, 7,
+  "R", "bslib", 4, 2,
+  "R", "reactable", 4, 3,
+  "R", "echarts4r", 5, 5,
+  "R", "leaflet", 5, 4,
+  "R", "tidymodels", 4, 4,
+  "R", "ggplot2", 3, 4,
+
+  # Julia
+  "Julia", "base", 4, 3,
+  "Julia", "Dataframes.jl", 4, 2,
+  "Julia", "Tidier.jl", 4, 2,
+  "Julia", "Oxygen.jl", 4, 2,
+
+  # Python
+  "Python", "pandas", 4, 2,
+  "Python", "numpy", 3, 2,
+  "Python", "scikit", 3, 1
+) |> 
+  dplyr::arrange(dplyr::desc(Language), dplyr::desc(Expertise))
+
+r = data |>
+  reactable(
+    theme = fivethirtyeight(centered = TRUE),
+    compact = TRUE,
+    columns = list(
+      Language = colDef(
+        style = group_merge_sort("Language")
+      ),
+      Expertise = colDef(
+        minWidth = 80,
+        maxWidth = 120,
+        align = "center",
+        cell = icon_assign(
+          data,
+          icon = "star",
+          fill_color = "orange",
+          align_icons = "center"
+          # ,buckets = 5
+        )
+      ),
+      `Years using` = colDef(
+        cell = icon_assign(data, icon = "circle", )
+        # cell = data_bars(
+        #   data,
+        #   bar_height = 3,
+        #   text_position = "outside-end",
+        #   background = "transparent"
+        #   )
+      )
+    )
+  )
+
+r
+```
