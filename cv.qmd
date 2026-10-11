@@ -18,9 +18,13 @@ css: cv.css
 **GitHub:** [github.com/vituri](https://github.com/vituri)
 :::
 
+::: {.contact-block .no-print}
+[Download this CV as PDF](cv.pdf)
+:::
+
 ## Professional Summary
 
-Data scientist with a strong background in **R, Julia, and mathematics**. Experienced in delivering quick data solutions and contributing to open-source and academic communities. Skilled with interactive dashboards in R/Shiny, data pipelines, machine learning models, and scientific research. Publishes on Topological Data Analysis (TDA) and geospatial analytics.
+Data scientist with a strong background in **R, Julia, AI and mathematics**. Experienced in delivering quick data solutions and contributing to open-source and academic communities. Skilled with interactive dashboards in R/Shiny, data pipelines, machine learning models, and scientific research. Currently works on high-performance language modeling in Julia, optimizing training and inference hot paths for TB-scale corpora. Publishes on Topological Data Analysis (TDA) and geospatial analytics.
 
 ## Education
 
@@ -48,9 +52,19 @@ I offer consulting on R/Shiny, data science, development and machine learning in
 - Dashboard creation using R and Shiny for market research companies.
 
 
-### Senior Data Scientist  
+### Senior Data Scientist 
 
-***[Cielo](https://www.cielo.com.br/) (Remote)*** [September 2025 -- Present]{.cvdate}
+***[Symbolic Mind](https://symbolicmind.ai/) (Remote)*** [January 2026 -- Present]{.cvdate}
+
+Symbolic Mind builds CPU-native language models that use symbolic rather than matrix computation, aiming for drastically lower training and inference energy costs.
+
+- Performance engineering on the Julia training and inference hot paths: removed allocations, fixed type instabilities, and parallelized encoding, counting and sampling with [`OhMyThreads`](https://github.com/JuliaFolds2/OhMyThreads.jl), often keeping results bit-identical, targeting TB-scale corpora on multi-socket NUMA machines.
+- Implemented and tested statistical language modeling components: Kneser-Ney smoothing and backoff, context routing, mixture models, and quantization/projection methods over PPMI embeddings.
+- Sole developer of an internal tool that treats hyperparameter search as a branching tree, with a Julia backend and a React/Vite frontend, used by the team to run pipeline stages, branch alternative parameters, compare metrics and generate text interactively.
+- Ran controlled experiments to accept or discard modeling ideas, reporting negative results and matched-capacity controls as first-class outcomes.
+- Heavy usage of AI tools for development, research and workflow.
+
+***[Cielo](https://www.cielo.com.br/) (Remote)*** [September 2025 -- December 2025]{.cvdate}
 
 Cielo is a major Brazilian financial technology company, specializing in electronic payment processing and providing a diverse range of e-commerce solutions.
 
@@ -85,11 +99,12 @@ Argus provides solutions for fatigue and distraction detection, control towers, 
 ## Technical Skills
 
 - **R:** Advanced -- `tidyverse`, `shiny`, geospatial, APIs, package development, optimization
-- **Julia:** Advanced -- TDA, performance, APIs, parallelism, documentation
+- **Julia:** Advanced -- TDA, performance (allocation and type-stability profiling), APIs, parallelism and multithreading, documentation
 - **SQL:** Advanced -- MariaDB/Postgres, database design, optimization (indexation, normalization), `dbplyr` within R
 - **AWS:** Intermediate -- EC2, S3, RDS, ECS, Docker, Rekognition
 - **Python:** Intermediate -- `numpy`, `pandas`, `polars`, `scikit-learn`
 - **Databricks:** Beginner -- delta lake, notebooks, `PySpark`
+- **Language Modeling:** n-gram laws, Kneser-Ney smoothing and backoff, mixture models, quantization, PPMI embeddings, evaluation harnesses
 - **Data Science:** Machine learning, computer vision, reporting, dashboards
 - **Technical Writing:** Workshops, blog posts, and academic papers
 
@@ -103,12 +118,13 @@ Argus provides solutions for fatigue and distraction detection, control towers, 
 ## Publications, Talks & Workshops
 
 - **Paper:** [Remote sensing to quantify potential aquifer recharge as a complementary tool for groundwater monitoring](https://www.tandfonline.com/doi/abs/10.1080/02626667.2024.2412741) (Hydrological Sciences Journal, 2024). Co-author; led the R/terra analysis and data pipeline.
+- **Talk:** [The Mapper Algorithm: A discrete analogue of the Reeb graph](https://vituri.github.io/TDA_lecture_EBT2026/#/title-slide) (at [XXIV Brazilian Topology Meeting](https://xxivebt.wixsite.com/ebt2026).
 - **Workshop:** [Topological Data Analysis workshop](https://github.com/vituri/TDA_workshop_EBT2024) (at [XXIII Brazilian Topology Meeting](https://xxiiiebt.ime.ufba.br/), 2024), using Julia.
 - **Talk:** [Topology meets the real world: how geometry can help us analyze finite metric spaces](https://vituri.github.io/talk_wata_2023/#/title-slide) (at [Workshop of Algebraic Topology and Applications](https://www.dm.ufscar.br/eventos/wata/), 2023).
 - **Paper:** [Motivic clustering schemes for directed graphs](https://arxiv.org/abs/2001.00278) (with Facundo Mémoli, arXiv, 2020).
 
 ## Additional Information
 
-- **Languages:** Portuguese (native), English (fluent), Basic Italian and Russian.
+- **Languages:** Portuguese (native), English (fluent), Basic Spanish and Russian.
 - **Writing:** Author of the forthcoming book, [Topological Data Analysis with Julia](https://vituri.github.io/TDA_with_julia/).
 - **Interests:** R and Julia, open source, topological data analysis, algorithms and performance, technical writing, scientific communication, and mentoring.

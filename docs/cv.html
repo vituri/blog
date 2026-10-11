@@ -2,13 +2,16 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.7.31">
+<meta name="generator" content="quarto-1.9.35">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
 <title>About me – vituri’s blog</title>
 <style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
 div.columns{display: flex; gap: min(4vw, 1.5em);}
@@ -36,10 +39,10 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-4a990d8dcb58f517c7c86712b8f2ac7c.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-3f230b53dc93e4a04bf4a3505d77a42a.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-f17b707b6a7a81fd6ad95be38f342aff.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-51e21c3bfd8e4d55242a0f2a8ddba486.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -191,9 +194,12 @@ ul.task-list li input[type="checkbox"] {
 <p><strong>Email:</strong> vituri.vituri@gmail.com<br>
 <strong>GitHub:</strong> <a href="https://github.com/vituri">github.com/vituri</a></p>
 </div>
+<div class="contact-block no-print">
+<p><a href="cv.pdf">Download this CV as PDF</a></p>
+</div>
 <section id="professional-summary" class="level2">
 <h2 class="anchored" data-anchor-id="professional-summary">Professional Summary</h2>
-<p>Data scientist with a strong background in <strong>R, Julia, and mathematics</strong>. Experienced in delivering quick data solutions and contributing to open-source and academic communities. Skilled with interactive dashboards in R/Shiny, data pipelines, machine learning models, and scientific research. Publishes on Topological Data Analysis (TDA) and geospatial analytics.</p>
+<p>Data scientist with a strong background in <strong>R, Julia, AI and mathematics</strong>. Experienced in delivering quick data solutions and contributing to open-source and academic communities. Skilled with interactive dashboards in R/Shiny, data pipelines, machine learning models, and scientific research. Currently works on high-performance language modeling in Julia, optimizing training and inference hot paths for TB-scale corpora. Publishes on Topological Data Analysis (TDA) and geospatial analytics.</p>
 </section>
 <section id="education" class="level2">
 <h2 class="anchored" data-anchor-id="education">Education</h2>
@@ -226,7 +232,16 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="senior-data-scientist" class="level3">
 <h3 class="anchored" data-anchor-id="senior-data-scientist">Senior Data Scientist</h3>
-<p><strong><em><a href="https://www.cielo.com.br/">Cielo</a> (Remote)</em></strong> <span class="cvdate">September 2025 – Present</span></p>
+<p><strong><em><a href="https://symbolicmind.ai/">Symbolic Mind</a> (Remote)</em></strong> <span class="cvdate">January 2026 – Present</span></p>
+<p>Symbolic Mind builds CPU-native language models that use symbolic rather than matrix computation, aiming for drastically lower training and inference energy costs.</p>
+<ul>
+<li>Performance engineering on the Julia training and inference hot paths: removed allocations, fixed type instabilities, and parallelized encoding, counting and sampling with <a href="https://github.com/JuliaFolds2/OhMyThreads.jl"><code>OhMyThreads</code></a>, often keeping results bit-identical, targeting TB-scale corpora on multi-socket NUMA machines.</li>
+<li>Implemented and tested statistical language modeling components: Kneser-Ney smoothing and backoff, context routing, mixture models, and quantization/projection methods over PPMI embeddings.</li>
+<li>Sole developer of an internal tool that treats hyperparameter search as a branching tree, with a Julia backend and a React/Vite frontend, used by the team to run pipeline stages, branch alternative parameters, compare metrics and generate text interactively.</li>
+<li>Ran controlled experiments to accept or discard modeling ideas, reporting negative results and matched-capacity controls as first-class outcomes.</li>
+<li>Heavy usage of AI tools for development, research and workflow.</li>
+</ul>
+<p><strong><em><a href="https://www.cielo.com.br/">Cielo</a> (Remote)</em></strong> <span class="cvdate">September 2025 – December 2025</span></p>
 <p>Cielo is a major Brazilian financial technology company, specializing in electronic payment processing and providing a diverse range of e-commerce solutions.</p>
 <ul>
 <li>Created and refined machine learning models with Python on big data to predict failures, using tree models and neural networks on noisy time series; presented results to stakeholders with pros-and-cons.</li>
@@ -265,11 +280,12 @@ ul.task-list li input[type="checkbox"] {
 <h2 class="anchored" data-anchor-id="technical-skills">Technical Skills</h2>
 <ul>
 <li><strong>R:</strong> Advanced – <code>tidyverse</code>, <code>shiny</code>, geospatial, APIs, package development, optimization</li>
-<li><strong>Julia:</strong> Advanced – TDA, performance, APIs, parallelism, documentation</li>
+<li><strong>Julia:</strong> Advanced – TDA, performance (allocation and type-stability profiling), APIs, parallelism and multithreading, documentation</li>
 <li><strong>SQL:</strong> Advanced – MariaDB/Postgres, database design, optimization (indexation, normalization), <code>dbplyr</code> within R</li>
 <li><strong>AWS:</strong> Intermediate – EC2, S3, RDS, ECS, Docker, Rekognition</li>
 <li><strong>Python:</strong> Intermediate – <code>numpy</code>, <code>pandas</code>, <code>polars</code>, <code>scikit-learn</code></li>
 <li><strong>Databricks:</strong> Beginner – delta lake, notebooks, <code>PySpark</code></li>
+<li><strong>Language Modeling:</strong> n-gram laws, Kneser-Ney smoothing and backoff, mixture models, quantization, PPMI embeddings, evaluation harnesses</li>
 <li><strong>Data Science:</strong> Machine learning, computer vision, reporting, dashboards</li>
 <li><strong>Technical Writing:</strong> Workshops, blog posts, and academic papers</li>
 </ul>
@@ -290,6 +306,7 @@ ul.task-list li input[type="checkbox"] {
 <h2 class="anchored" data-anchor-id="publications-talks-workshops">Publications, Talks &amp; Workshops</h2>
 <ul>
 <li><strong>Paper:</strong> <a href="https://www.tandfonline.com/doi/abs/10.1080/02626667.2024.2412741">Remote sensing to quantify potential aquifer recharge as a complementary tool for groundwater monitoring</a> (Hydrological Sciences Journal, 2024). Co-author; led the R/terra analysis and data pipeline.</li>
+<li><strong>Talk:</strong> <a href="https://vituri.github.io/TDA_lecture_EBT2026/#/title-slide">The Mapper Algorithm: A discrete analogue of the Reeb graph</a> (at <a href="https://xxivebt.wixsite.com/ebt2026">XXIV Brazilian Topology Meeting</a>.</li>
 <li><strong>Workshop:</strong> <a href="https://github.com/vituri/TDA_workshop_EBT2024">Topological Data Analysis workshop</a> (at <a href="https://xxiiiebt.ime.ufba.br/">XXIII Brazilian Topology Meeting</a>, 2024), using Julia.</li>
 <li><strong>Talk:</strong> <a href="https://vituri.github.io/talk_wata_2023/#/title-slide">Topology meets the real world: how geometry can help us analyze finite metric spaces</a> (at <a href="https://www.dm.ufscar.br/eventos/wata/">Workshop of Algebraic Topology and Applications</a>, 2023).</li>
 <li><strong>Paper:</strong> <a href="https://arxiv.org/abs/2001.00278">Motivic clustering schemes for directed graphs</a> (with Facundo Mémoli, arXiv, 2020).</li>
@@ -298,7 +315,7 @@ ul.task-list li input[type="checkbox"] {
 <section id="additional-information" class="level2">
 <h2 class="anchored" data-anchor-id="additional-information">Additional Information</h2>
 <ul>
-<li><strong>Languages:</strong> Portuguese (native), English (fluent), Basic Italian and Russian.</li>
+<li><strong>Languages:</strong> Portuguese (native), English (fluent), Basic Spanish and Russian.</li>
 <li><strong>Writing:</strong> Author of the forthcoming book, <a href="https://vituri.github.io/TDA_with_julia/">Topological Data Analysis with Julia</a>.</li>
 <li><strong>Interests:</strong> R and Julia, open source, topological data analysis, algorithms and performance, technical writing, scientific communication, and mentoring.</li>
 </ul>
@@ -358,13 +375,14 @@ ul.task-list li input[type="checkbox"] {
       e.clearSelection();
     }
     const getTextToCopy = function(trigger) {
-        const codeEl = trigger.previousElementSibling.cloneNode(true);
-        for (const childEl of codeEl.children) {
-          if (isCodeAnnotation(childEl)) {
-            childEl.remove();
-          }
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
         }
-        return codeEl.innerText;
+      }
+      return codeEl.innerText;
     }
     const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
       text: getTextToCopy

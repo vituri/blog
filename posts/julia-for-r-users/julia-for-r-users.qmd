@@ -1,6 +1,8 @@
 ---
 title: Julia for R users
 date: 2025-02-03
+format:
+  html: default
 categories:
   - julia
   - r

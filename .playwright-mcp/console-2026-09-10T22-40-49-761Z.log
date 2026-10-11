@@ -1,0 +1,2 @@
+[    3648ms] [LOG] [JSBridge] Bridge detection timeout - falling back to web {timeout: 3000, elapsed: 3000, checkCount: 61} @ https://www.kimi.ai/activities/_next/static/chunks/68d75af7d877b955.js:0
+[    3648ms] [LOG] [JSBridge] Running in web browser - bridge not available {elapsed: 3001} @ https://www.kimi.ai/activities/_next/static/chunks/68d75af7d877b955.js:0

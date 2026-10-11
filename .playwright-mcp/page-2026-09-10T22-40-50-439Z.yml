@@ -1,0 +1,3 @@
+- generic [active] [ref=e1]:
+  - status "Loading survey…" [ref=e3]
+  - alert [ref=e5]

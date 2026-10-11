@@ -10,3 +10,4 @@
 **/.jupyter_cache/**
 
 _freeze/**
+**/*.quarto_ipynb

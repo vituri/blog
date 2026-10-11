@@ -9,7 +9,7 @@
 <link>https://vituri.github.io/blog/</link>
 <atom:link href="https://vituri.github.io/blog/index.xml" rel="self" type="application/rss+xml"/>
 <description>vituri</description>
-<generator>quarto-1.7.31</generator>
+<generator>quarto-1.9.35</generator>
 <lastBuildDate>Mon, 03 Feb 2025 03:00:00 GMT</lastBuildDate>
 <item>
   <title>Julia for R users</title>
@@ -30,7 +30,7 @@
 <p>Not sure where to begin in Julia? Start with R!</p>
 <p>With <code>RCall</code> you can run R code inside Julia:</p>
 <div id="8c54626a" class="cell" data-execution_count="1">
-<div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb1-1"><span class="im" style="color: #00769E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb1-1"><span class="im" style="color: #00769E;
 background-color: null;
 font-style: inherit;">using</span> <span class="bu" style="color: null;
 background-color: null;
@@ -44,7 +44,7 @@ background-color: null;
 font-style: inherit;">median(1:5)</span></span>
 <span id="cb1-5"><span class="st" style="color: #20794D;
 background-color: null;
-font-style: inherit;">"""</span></span></code></pre></div>
+font-style: inherit;">"""</span></span></code></pre></div></div>
 <div class="cell-output cell-output-display" data-execution_count="2">
 <pre><code>RObject{IntSxp}
 [1] 3</code></pre>
@@ -52,7 +52,7 @@ font-style: inherit;">"""</span></span></code></pre></div>
 </div>
 <p>You can even pass objects from Julia to R and vice-versa:</p>
 <div id="2d5d5980" class="cell" data-execution_count="2">
-<div class="sourceCode cell-code" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb3-1">x <span class="op" style="color: #5E5E5E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb3-1">x <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> [<span class="fl" style="color: #AD0000;
 background-color: null;
@@ -68,7 +68,7 @@ font-style: inherit;">@rput</span> x</span>
 <span id="cb3-4"></span>
 <span id="cb3-5">R<span class="st" style="color: #20794D;
 background-color: null;
-font-style: inherit;">"median(x)"</span></span></code></pre></div>
+font-style: inherit;">"median(x)"</span></span></code></pre></div></div>
 <div class="cell-output cell-output-display" data-execution_count="3">
 <pre><code>RObject{IntSxp}
 [1] 3</code></pre>
@@ -88,7 +88,7 @@ font-style: inherit;">"median(x)"</span></span></code></pre></div>
 </div>
 <p>Here’s an example from TidierData docs:</p>
 <div id="60dfe150" class="cell" data-execution_count="3">
-<div class="sourceCode cell-code" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb5-1"><span class="im" style="color: #00769E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb5-1"><span class="im" style="color: #00769E;
 background-color: null;
 font-style: inherit;">using</span> <span class="bu" style="color: null;
 background-color: null;
@@ -148,7 +148,7 @@ font-style: inherit;">5</span>)</span>
 <span id="cb5-11"><span class="cf" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
-font-style: inherit;">end</span></span></code></pre></div>
+font-style: inherit;">end</span></span></code></pre></div></div>
 </div>
 <p>It looks like <code>dplyr</code> code with <code>@</code>s.</p>
 </section>
@@ -170,7 +170,7 @@ font-style: inherit;">end</span></span></code></pre></div>
 </div>
 <p>This is specially interesting if you read Julia Base sourcecode! How does Julia define the maximum of a vector? Type</p>
 <div id="12b709e3" class="cell" data-execution_count="4">
-<div class="sourceCode cell-code" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb6-1"><span class="pp" style="color: #AD0000;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6" style="background: #f1f3f5;"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb6-1"><span class="pp" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">@edit</span> <span class="fu" style="color: #4758AB;
 background-color: null;
@@ -180,7 +180,7 @@ font-style: inherit;">1</span><span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">:</span><span class="fl" style="color: #AD0000;
 background-color: null;
-font-style: inherit;">5</span>;])</span></code></pre></div>
+font-style: inherit;">5</span>;])</span></code></pre></div></div>
 </div>
 <p>and you will see this:</p>
 <div class="quarto-figure quarto-figure-center">
@@ -201,7 +201,7 @@ font-style: inherit;">5</span>;])</span></code></pre></div>
 <h2 class="anchored" data-anchor-id="no-need-to-vectorize-code-loops-maps-and-broadcast-are-fast-enough">No need to vectorize code; loops, maps and broadcast are fast enough</h2>
 <p>Tired of writing loops? Julia has a special notation <code>.</code> (yes, a dot) to apply <em>any</em> function to a vector/array/iterable-object; this is called <a href="https://docs.julialang.org/en/v1/manual/arrays/#Broadcasting"><em>broadcasting</em></a>. For example, you can apply the <code>power2</code> function in a vector as easy as</p>
 <div id="b289d6f3" class="cell" data-execution_count="5">
-<div class="sourceCode cell-code" id="cb7" style="background: #f1f3f5;"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb7-1"><span class="co" style="color: #5E5E5E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7" style="background: #f1f3f5;"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb7-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">#julia</span></span>
 <span id="cb7-2"><span class="co" style="color: #5E5E5E;
@@ -228,7 +228,7 @@ font-style: inherit;">1</span><span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">:</span><span class="fl" style="color: #AD0000;
 background-color: null;
-font-style: inherit;">10</span>)</span></code></pre></div>
+font-style: inherit;">10</span>)</span></code></pre></div></div>
 <div class="cell-output cell-output-display" data-execution_count="4">
 <pre><code>10-element Vector{Int64}:
    1
@@ -245,7 +245,7 @@ font-style: inherit;">10</span>)</span></code></pre></div>
 </div>
 <p>or in a matrix</p>
 <div id="fd124f5b" class="cell" data-execution_count="6">
-<div class="sourceCode cell-code" id="cb9" style="background: #f1f3f5;"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb9-1"><span class="co" style="color: #5E5E5E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9" style="background: #f1f3f5;"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb9-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">#julia</span></span>
 <span id="cb9-2">X <span class="op" style="color: #5E5E5E;
@@ -262,7 +262,7 @@ font-style: inherit;">16</span>;], (<span class="fl" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">4</span>, <span class="fl" style="color: #AD0000;
 background-color: null;
-font-style: inherit;">4</span>))</span></code></pre></div>
+font-style: inherit;">4</span>))</span></code></pre></div></div>
 <div class="cell-output cell-output-display" data-execution_count="5">
 <pre><code>4×4 Matrix{Int64}:
  1  5   9  13
@@ -272,12 +272,12 @@ font-style: inherit;">4</span>))</span></code></pre></div>
 </div>
 </div>
 <div id="3fd63d33" class="cell" data-execution_count="7">
-<div class="sourceCode cell-code" id="cb11" style="background: #f1f3f5;"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb11-1"><span class="co" style="color: #5E5E5E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11" style="background: #f1f3f5;"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb11-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">#julia</span></span>
 <span id="cb11-2"><span class="fu" style="color: #4758AB;
 background-color: null;
-font-style: inherit;">power2</span>.(X)</span></code></pre></div>
+font-style: inherit;">power2</span>.(X)</span></code></pre></div></div>
 <div class="cell-output cell-output-display" data-execution_count="6">
 <pre><code>4×4 Matrix{Int64}:
   1  25   81  169
@@ -288,7 +288,7 @@ font-style: inherit;">power2</span>.(X)</span></code></pre></div>
 </div>
 <p>When using infix functions like <code>+</code> or <code>=</code>, you put the dot before the operator, as in</p>
 <div id="cc29fab9" class="cell" data-execution_count="8">
-<div class="sourceCode cell-code" id="cb13" style="background: #f1f3f5;"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb13-1"><span class="co" style="color: #5E5E5E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13" style="background: #f1f3f5;"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb13-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">#julia</span></span>
 <span id="cb13-2">[<span class="fl" style="color: #AD0000;
@@ -301,7 +301,7 @@ font-style: inherit;">5</span>;] <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">.+</span> <span class="fl" style="color: #AD0000;
 background-color: null;
-font-style: inherit;">10</span></span></code></pre></div>
+font-style: inherit;">10</span></span></code></pre></div></div>
 <div class="cell-output cell-output-display" data-execution_count="7">
 <pre><code>5-element Vector{Int64}:
  11
@@ -312,7 +312,7 @@ font-style: inherit;">10</span></span></code></pre></div>
 </div>
 </div>
 <p>In R, you always try to avoid loops because they are <em>slow</em>. Suppose you have a vector and want to sum 1 to every entry. As an experienced R programmer, you look for a vectorized approach:</p>
-<div class="sourceCode" id="cb15" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><span class="co" style="color: #5E5E5E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb15" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># R</span></span>
 <span id="cb15-2">f1_vec <span class="ot" style="color: #003B4F;
@@ -328,9 +328,9 @@ background-color: null;
 font-style: inherit;">+</span> <span class="dv" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">1</span></span>
-<span id="cb15-4">}</span></code></pre></div>
+<span id="cb15-4">}</span></code></pre></div></div>
 <p>instead of a loop</p>
-<div class="sourceCode" id="cb16" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><span class="co" style="color: #5E5E5E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb16" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># R</span></span>
 <span id="cb16-2">f1_loop <span class="ot" style="color: #003B4F;
@@ -358,9 +358,9 @@ font-style: inherit;">+</span> <span class="dv" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">1</span></span>
 <span id="cb16-5">    y</span>
-<span id="cb16-6">}</span></code></pre></div>
+<span id="cb16-6">}</span></code></pre></div></div>
 <p>or a even a <code>purrr::map</code> approach (if you are in a functional programming mood)</p>
-<div class="sourceCode" id="cb17" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><span class="co" style="color: #5E5E5E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb17" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">#R</span></span>
 <span id="cb17-2">f1_map <span class="ot" style="color: #003B4F;
@@ -378,9 +378,9 @@ background-color: null;
 font-style: inherit;">+</span> <span class="dv" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">1</span>)</span>
-<span id="cb17-4">}</span></code></pre></div>
+<span id="cb17-4">}</span></code></pre></div></div>
 <p>because the first options is faster. We can see the difference:</p>
-<div class="sourceCode" id="cb18" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><span class="co" style="color: #5E5E5E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb18" style="background: #f1f3f5;"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># R</span></span>
 <span id="cb18-2">x <span class="ot" style="color: #003B4F;
@@ -412,7 +412,7 @@ background-color: null;
 font-style: inherit;">relative =</span> <span class="cn" style="color: #8f5902;
 background-color: null;
 font-style: inherit;">TRUE</span></span>
-<span id="cb18-9">)</span></code></pre></div>
+<span id="cb18-9">)</span></code></pre></div></div>
 <div id="79317bfa" class="cell" data-execution_count="9">
 <div class="cell-output cell-output-display" data-execution_count="8">
 <pre><code>RObject{VecSxp}
@@ -429,7 +429,7 @@ font-style: inherit;">TRUE</span></span>
 <p>The biggest problem for an R user is when the function you want to apply have no vectorized form. I usually have to make some kludges<sup>1</sup> with dplyr verbs to do something that is much more logical when written with a loop/map.</p>
 <p>In Julia, the three approachs are similar:</p>
 <div id="dbbce269" class="cell" data-execution_count="10">
-<div class="sourceCode cell-code" id="cb20" style="background: #f1f3f5;"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb20-1"><span class="co" style="color: #5E5E5E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20" style="background: #f1f3f5;"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb20-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">#julia</span></span>
 <span id="cb20-2"><span class="fu" style="color: #4758AB;
@@ -502,10 +502,10 @@ font-style: inherit;">end</span></span>
 <span id="cb20-14"><span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
-font-style: inherit;">end</span>;</span></code></pre></div>
+font-style: inherit;">end</span>;</span></code></pre></div></div>
 </div>
 <div id="3f43a140" class="cell" data-execution_count="11">
-<div class="sourceCode cell-code" id="cb21" style="background: #f1f3f5;"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb21-1"><span class="co" style="color: #5E5E5E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21" style="background: #f1f3f5;"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb21-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">#julia</span></span>
 <span id="cb21-2"><span class="im" style="color: #00769E;
@@ -529,7 +529,7 @@ font-style: inherit;">@benchmark</span> <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">f1_vec</span>(<span class="op" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">$</span>x)</span></code></pre></div>
+font-style: inherit;">$</span>x)</span></code></pre></div></div>
 <div class="cell-output cell-output-display" data-execution_count="10">
 <div class="ansi-escaped-output">
 <pre>BenchmarkTools.Trial: 10000 samples with 1 evaluation per sample.
@@ -544,7 +544,7 @@ font-style: inherit;">$</span>x)</span></code></pre></div>
 </div>
 </div>
 <div id="c1e71c64" class="cell" data-execution_count="12">
-<div class="sourceCode cell-code" id="cb22" style="background: #f1f3f5;"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb22-1"><span class="co" style="color: #5E5E5E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22" style="background: #f1f3f5;"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb22-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">#julia</span></span>
 <span id="cb22-2"><span class="pp" style="color: #AD0000;
@@ -553,7 +553,7 @@ font-style: inherit;">@benchmark</span> <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">f1_loop</span>(<span class="op" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">$</span>x)</span></code></pre></div>
+font-style: inherit;">$</span>x)</span></code></pre></div></div>
 <div class="cell-output cell-output-display" data-execution_count="11">
 <div class="ansi-escaped-output">
 <pre>BenchmarkTools.Trial: 10000 samples with 1 evaluation per sample.
@@ -568,7 +568,7 @@ font-style: inherit;">$</span>x)</span></code></pre></div>
 </div>
 </div>
 <div id="57ad8941" class="cell" data-execution_count="13">
-<div class="sourceCode cell-code" id="cb23" style="background: #f1f3f5;"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb23-1"><span class="co" style="color: #5E5E5E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23" style="background: #f1f3f5;"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb23-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">#julia</span></span>
 <span id="cb23-2"><span class="pp" style="color: #AD0000;
@@ -577,7 +577,7 @@ font-style: inherit;">@benchmark</span> <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">f1_map</span>(<span class="op" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">$</span>x)</span></code></pre></div>
+font-style: inherit;">$</span>x)</span></code></pre></div></div>
 <div class="cell-output cell-output-display" data-execution_count="12">
 <div class="ansi-escaped-output">
 <pre>BenchmarkTools.Trial: 10000 samples with 1 evaluation per sample.
@@ -597,7 +597,7 @@ font-style: inherit;">$</span>x)</span></code></pre></div>
 <h2 class="anchored" data-anchor-id="the-compiler-is-your-friend">The compiler is your friend</h2>
 <p>Sometimes you write code that won’t make your parents proud. Suppose you create a function that sums all the numbers from 1 to a given <code>n</code>:</p>
 <div id="28b1a836" class="cell" data-execution_count="14">
-<div class="sourceCode cell-code" id="cb24" style="background: #f1f3f5;"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb24-1"><span class="kw" style="color: #003B4F;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24" style="background: #f1f3f5;"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb24-1"><span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
 font-style: inherit;">function</span> <span class="fu" style="color: #4758AB;
@@ -631,18 +631,18 @@ font-style: inherit;">end</span></span>
 <span id="cb24-8"><span class="kw" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
-font-style: inherit;">end</span>;</span></code></pre></div>
+font-style: inherit;">end</span>;</span></code></pre></div></div>
 </div>
 <p>In R, the language will obediently execute each iteration of the loop, as you demanded, and it will take forever. You are the boss.</p>
 <p>But in Julia, we have this curious phenomena:</p>
 <div id="a501b209" class="cell" data-execution_count="15">
-<div class="sourceCode cell-code" id="cb25" style="background: #f1f3f5;"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb25-1"><span class="pp" style="color: #AD0000;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25" style="background: #f1f3f5;"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb25-1"><span class="pp" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">@time</span> <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">f_sum</span>(<span class="fl" style="color: #AD0000;
 background-color: null;
-font-style: inherit;">100</span>)</span></code></pre></div>
+font-style: inherit;">100</span>)</span></code></pre></div></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  0.000000 seconds</code></pre>
 </div>
@@ -651,13 +651,13 @@ font-style: inherit;">100</span>)</span></code></pre></div>
 </div>
 </div>
 <div id="4e315de9" class="cell" data-execution_count="16">
-<div class="sourceCode cell-code" id="cb28" style="background: #f1f3f5;"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb28-1"><span class="pp" style="color: #AD0000;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28" style="background: #f1f3f5;"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb28-1"><span class="pp" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">@time</span> <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">f_sum</span>(<span class="fl" style="color: #AD0000;
 background-color: null;
-font-style: inherit;">100_000</span>)</span></code></pre></div>
+font-style: inherit;">100_000</span>)</span></code></pre></div></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  0.000000 seconds</code></pre>
 </div>
@@ -666,13 +666,13 @@ font-style: inherit;">100_000</span>)</span></code></pre></div>
 </div>
 </div>
 <div id="ca6d8e8b" class="cell" data-execution_count="17">
-<div class="sourceCode cell-code" id="cb31" style="background: #f1f3f5;"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb31-1"><span class="pp" style="color: #AD0000;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31" style="background: #f1f3f5;"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb31-1"><span class="pp" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">@time</span> <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">f_sum</span>(<span class="fl" style="color: #AD0000;
 background-color: null;
-font-style: inherit;">100_000_000</span>)</span></code></pre></div>
+font-style: inherit;">100_000_000</span>)</span></code></pre></div></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  0.000000 seconds</code></pre>
 </div>
@@ -703,7 +703,7 @@ font-style: inherit;">100_000_000</span>)</span></code></pre></div>
 <p>In Julia, <em>every function is generic</em>. We can use the same function name and define different behaviours/implementations for each combination of classes/types of its arguments. We saw above the implementation of the <code>maximum</code> function in Julia for an arbitrary vector of numbers. But what if the vector is of a different kind, for which it is easier to determine its maximum?</p>
 <p>Take, for example, the object</p>
 <div id="876b8229" class="cell" data-execution_count="18">
-<div class="sourceCode cell-code" id="cb34" style="background: #f1f3f5;"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb34-1">x <span class="op" style="color: #5E5E5E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb34" style="background: #f1f3f5;"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb34-1">x <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> <span class="fl" style="color: #AD0000;
 background-color: null;
@@ -711,29 +711,29 @@ font-style: inherit;">1</span><span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">:</span><span class="fl" style="color: #AD0000;
 background-color: null;
-font-style: inherit;">10</span></span></code></pre></div>
+font-style: inherit;">10</span></span></code></pre></div></div>
 <div class="cell-output cell-output-display" data-execution_count="17">
 <pre><code>1:10</code></pre>
 </div>
 </div>
 <p>It is <em>not</em> a vector (to create a usual vector from 1 to 10, you type <code>[1:10;]</code>). Actually, its type is</p>
 <div id="6f9d936e" class="cell" data-execution_count="19">
-<div class="sourceCode cell-code" id="cb36" style="background: #f1f3f5;"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb36-1"><span class="fu" style="color: #4758AB;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb36" style="background: #f1f3f5;"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb36-1"><span class="fu" style="color: #4758AB;
 background-color: null;
-font-style: inherit;">typeof</span>(x)</span></code></pre></div>
+font-style: inherit;">typeof</span>(x)</span></code></pre></div></div>
 <div class="cell-output cell-output-display" data-execution_count="18">
 <pre><code>UnitRange{Int64}</code></pre>
 </div>
 </div>
 <p>and its type hierarchy is</p>
 <div id="48de2189" class="cell" data-execution_count="20">
-<div class="sourceCode cell-code" id="cb38" style="background: #f1f3f5;"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb38-1"><span class="bu" style="color: null;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb38" style="background: #f1f3f5;"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb38-1"><span class="bu" style="color: null;
 background-color: null;
 font-style: inherit;">Base</span>.<span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">show_supertypes</span>(<span class="fu" style="color: #4758AB;
 background-color: null;
-font-style: inherit;">typeof</span>(x))</span></code></pre></div>
+font-style: inherit;">typeof</span>(x))</span></code></pre></div></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>UnitRange{Int64} &lt;: AbstractUnitRange{Int64} &lt;: OrdinalRange{Int64, Int64} &lt;: AbstractRange{Int64} &lt;: AbstractVector{Int64} &lt;: Any</code></pre>
 </div>
@@ -741,7 +741,7 @@ font-style: inherit;">typeof</span>(x))</span></code></pre></div>
 <p>So <code>x</code> is a much simpler object than a vector: it is an increasing sequence of integer numbers, each 1 unity bigger than the previous one. It makes sense then that the <code>maximum</code> function can be defined much more simpler for an object of type <code>UnitRange{Int64}</code>: the biggest element is always the last.</p>
 <p>If you look at the sourcecode</p>
 <div id="64747754" class="cell" data-execution_count="21">
-<div class="sourceCode cell-code" id="cb40" style="background: #f1f3f5;"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb40-1"><span class="pp" style="color: #AD0000;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb40" style="background: #f1f3f5;"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb40-1"><span class="pp" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">@edit</span> <span class="fu" style="color: #4758AB;
 background-color: null;
@@ -751,11 +751,11 @@ font-style: inherit;">1</span><span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">:</span><span class="fl" style="color: #AD0000;
 background-color: null;
-font-style: inherit;">10</span>)</span></code></pre></div>
+font-style: inherit;">10</span>)</span></code></pre></div></div>
 </div>
 <p>you will get</p>
 <div id="a6bf4cf4" class="cell" data-execution_count="22">
-<div class="sourceCode cell-code" id="cb41" style="background: #f1f3f5;"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb41-1"><span class="fu" style="color: #4758AB;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb41" style="background: #f1f3f5;"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb41-1"><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">maximum</span>(r<span class="op" style="color: #5E5E5E;
 background-color: null;
@@ -775,7 +775,7 @@ font-style: inherit;">"range must be non-empty"</span>)) <span class="op" style=
 background-color: null;
 font-style: inherit;">:</span> <span class="fu" style="color: #4758AB;
 background-color: null;
-font-style: inherit;">last</span>(r)</span></code></pre></div>
+font-style: inherit;">last</span>(r)</span></code></pre></div></div>
 </div>
 <p>which is exactly what we thought:</p>
 <blockquote class="blockquote">
@@ -790,7 +790,7 @@ font-style: inherit;">last</span>(r)</span></code></pre></div>
 <p>We already used some macros on this notebook; they all start with the <code>@</code> symbol.</p>
 <p>How much time does it take to calculate the sin of a million numbers?</p>
 <div id="d5268b38" class="cell" data-execution_count="23">
-<div class="sourceCode cell-code" id="cb42" style="background: #f1f3f5;"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb42-1"><span class="pp" style="color: #AD0000;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb42" style="background: #f1f3f5;"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb42-1"><span class="pp" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">@time</span> <span class="fu" style="color: #4758AB;
 background-color: null;
@@ -800,14 +800,14 @@ font-style: inherit;">1</span><span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">:</span><span class="fl" style="color: #AD0000;
 background-color: null;
-font-style: inherit;">1_000_000</span>);</span></code></pre></div>
+font-style: inherit;">1_000_000</span>);</span></code></pre></div></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  0.012606 seconds (3 allocations: 7.629 MiB)</code></pre>
 </div>
 </div>
 <p>Do you have a loop and want to see a progress bar? No need to change the code inside the loop:</p>
 <div id="4ab1439b" class="cell" data-execution_count="24">
-<div class="sourceCode cell-code" id="cb44" style="background: #f1f3f5;"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb44-1"><span class="im" style="color: #00769E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb44" style="background: #f1f3f5;"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb44-1"><span class="im" style="color: #00769E;
 background-color: null;
 font-style: inherit;">using</span> <span class="bu" style="color: null;
 background-color: null;
@@ -836,9 +836,15 @@ font-style: inherit;">0.1</span>)</span>
 <span id="cb44-5"><span class="cf" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
-font-style: inherit;">end</span></span></code></pre></div>
+font-style: inherit;">end</span></span></code></pre></div></div>
 <div class="cell-output cell-output-stderr">
-<pre><code>Progress:  20%|████████▎                                |  ETA: 0:00:05Progress:  60%|████████████████████████▋                |  ETA: 0:00:01Progress:  70%|████████████████████████████▊            |  ETA: 0:00:01Progress:  80%|████████████████████████████████▊        |  ETA: 0:00:01Progress:  90%|████████████████████████████████████▉    |  ETA: 0:00:00Progress: 100%|█████████████████████████████████████████| Time: 0:00:02</code></pre>
+<pre><code>
+Progress:  20%|████████▎                                |  ETA: 0:00:05
+Progress:  60%|████████████████████████▋                |  ETA: 0:00:01
+Progress:  70%|████████████████████████████▊            |  ETA: 0:00:01
+Progress:  80%|████████████████████████████████▊        |  ETA: 0:00:01
+Progress:  90%|████████████████████████████████████▉    |  ETA: 0:00:00
+Progress: 100%|█████████████████████████████████████████| Time: 0:00:02</code></pre>
 </div>
 </div>
 <p>As we’ve seen, even the tidyverse could be recreated in Julia using macros!</p>
@@ -848,7 +854,7 @@ font-style: inherit;">end</span></span></code></pre></div>
 <p><a href="https://docs.julialang.org/en/v1/manual/multi-threading/">Multithreading</a> (or parallel computing) is when your code uses more than one processor at the same time. Multithreading in R is a bit complicated and actually create copies of the R process that comunicates with the main process. There is a <a href="https://www.futureverse.org/packages-overview.html"><code>futureverse</code></a> to deal with that in R, and plans like <code>callr</code> or <code>multisession</code> to define how these extra R sessions will be created and mantained.</p>
 <p>In Julia, multithreading is as easy as appending a macro before a loop:</p>
 <div id="eb028a9e" class="cell" data-execution_count="25">
-<div class="sourceCode cell-code" id="cb46" style="background: #f1f3f5;"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb46-1"><span class="bu" style="color: null;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb46" style="background: #f1f3f5;"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb46-1"><span class="bu" style="color: null;
 background-color: null;
 font-style: inherit;">Threads</span>.<span class="pp" style="color: #AD0000;
 background-color: null;
@@ -874,7 +880,7 @@ font-style: inherit;">threadid</span>()</span>
 <span id="cb46-3"><span class="cf" style="color: #003B4F;
 background-color: null;
 font-weight: bold;
-font-style: inherit;">end</span></span></code></pre></div>
+font-style: inherit;">end</span></span></code></pre></div></div>
 </div>
 <p>If you want a multithread version of <code>map</code> and <code>reduce</code> and so on, check <a href="https://github.com/tkf/ThreadsX.jl">ThreadsX.jl</a>.</p>
 <p>Multithread is recommended when you: - have some spare RAM; - have more than 1 processor; - want to apply some function on a list of things that take some time idling (for example, waiting for an API return something) or are not RAM-heavy (calculating small distance matrices).</p>
@@ -897,7 +903,7 @@ font-style: inherit;">end</span></span></code></pre></div>
 </ul>
 <p>The best part, however, is the ability to create modules inside modules. For example, if you have a mega package to do all your data analysis in your work, you can have a module about Reports, another one with APIs and so on. Importing then can be done with</p>
 <div id="dbb99dd3" class="cell" data-execution_count="26">
-<div class="sourceCode cell-code" id="cb47" style="background: #f1f3f5;"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb47-1"><span class="im" style="color: #00769E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb47" style="background: #f1f3f5;"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb47-1"><span class="im" style="color: #00769E;
 background-color: null;
 font-style: inherit;">using</span> <span class="bu" style="color: null;
 background-color: null;
@@ -914,7 +920,7 @@ font-style: inherit;">MyPackage.APIs</span> as API</span>
 <span id="cb47-5"></span>
 <span id="cb47-6">MD.<span class="fu" style="color: #4758AB;
 background-color: null;
-font-style: inherit;">api1</span>()</span></code></pre></div>
+font-style: inherit;">api1</span>()</span></code></pre></div></div>
 </div>
 <p>This approach resembles a little the idea of namespaces in <a href="https://mastering-shiny.org/scaling-modules.html">shiny modules</a>, and using <code>box</code> is how the <a href="https://appsilon.github.io/rhino/articles/explanation/box-modules.html"><code>rhino</code></a> emulate the “module inside module” thing.</p>
 </section>
@@ -922,7 +928,7 @@ font-style: inherit;">api1</span>()</span></code></pre></div>
 <h2 class="anchored" data-anchor-id="math-symbols-for-the-math-enthusiasts">Math symbols for the math enthusiasts</h2>
 <p>Examples of correct Julia code:</p>
 <div id="8d0ce54b" class="cell" data-execution_count="27">
-<div class="sourceCode cell-code" id="cb48" style="background: #f1f3f5;"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb48-1">[<span class="fl" style="color: #AD0000;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb48" style="background: #f1f3f5;"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb48-1">[<span class="fl" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">1</span>, <span class="fl" style="color: #AD0000;
 background-color: null;
@@ -932,14 +938,14 @@ font-style: inherit;">∩</span> [<span class="fl" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">2</span>, <span class="fl" style="color: #AD0000;
 background-color: null;
-font-style: inherit;">3</span>]</span></code></pre></div>
+font-style: inherit;">3</span>]</span></code></pre></div></div>
 <div class="cell-output cell-output-display" data-execution_count="22">
 <pre><code>1-element Vector{Int64}:
  2</code></pre>
 </div>
 </div>
 <div id="cec70f10" class="cell" data-execution_count="28">
-<div class="sourceCode cell-code" id="cb50" style="background: #f1f3f5;"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb50-1"><span class="fl" style="color: #AD0000;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb50" style="background: #f1f3f5;"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb50-1"><span class="fl" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">2</span> <span class="op" style="color: #5E5E5E;
 background-color: null;
@@ -947,13 +953,13 @@ font-style: inherit;">∈</span> [<span class="fl" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">2</span>, <span class="fl" style="color: #AD0000;
 background-color: null;
-font-style: inherit;">3</span>]</span></code></pre></div>
+font-style: inherit;">3</span>]</span></code></pre></div></div>
 <div class="cell-output cell-output-display" data-execution_count="23">
 <pre><code>true</code></pre>
 </div>
 </div>
 <div id="28002036" class="cell" data-execution_count="29">
-<div class="sourceCode cell-code" id="cb52" style="background: #f1f3f5;"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb52-1"><span class="fu" style="color: #4758AB;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb52" style="background: #f1f3f5;"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb52-1"><span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">f</span>(r) <span class="op" style="color: #5E5E5E;
 background-color: null;
@@ -971,13 +977,13 @@ font-style: inherit;">2</span></span>
 background-color: null;
 font-style: inherit;">f</span>(<span class="fl" style="color: #AD0000;
 background-color: null;
-font-style: inherit;">3</span>)</span></code></pre></div>
+font-style: inherit;">3</span>)</span></code></pre></div></div>
 <div class="cell-output cell-output-display" data-execution_count="24">
 <pre><code>28.274333882308138</code></pre>
 </div>
 </div>
 <div id="5d4bf7e0" class="cell" data-execution_count="30">
-<div class="sourceCode cell-code" id="cb54" style="background: #f1f3f5;"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb54-1"><span class="co" style="color: #5E5E5E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb54" style="background: #f1f3f5;"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb54-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># Euler's identity</span></span>
 <span id="cb54-2"><span class="cn" style="color: #8f5902;
@@ -996,7 +1002,7 @@ font-style: inherit;">+</span> <span class="fl" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">1</span> <span class="op" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;">|&gt;</span> round</span></code></pre></div>
+font-style: inherit;">|&gt;</span> round</span></code></pre></div></div>
 <div class="cell-output cell-output-display" data-execution_count="25">
 <pre><code>0.0 + 0.0im</code></pre>
 </div>
@@ -1048,15 +1054,15 @@ font-style: inherit;">|&gt;</span> round</span></code></pre></div>
 <h2 class="anchored" data-anchor-id="example-1">Example 1</h2>
 <p>Let’s try to approximate the function <img src="https://latex.codecogs.com/png.latex?f(x)%20=%20-%20x%5E2%20+%201"> using the symbols and <img src="https://latex.codecogs.com/png.latex?+,%20-,%20*"> combined with the variable <img src="https://latex.codecogs.com/png.latex?x">.</p>
 <div id="416a13b3" class="cell" data-execution_count="1">
-<div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb1-1"><span class="co" style="color: #5E5E5E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1" style="background: #f1f3f5;"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb1-1"><span class="co" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;"># import Pkg; </span></span>
 <span id="cb1-2"><span class="co" style="color: #5E5E5E;
 background-color: null;
-font-style: inherit;"># Pkg.add(["SymbolicRegression", "MLJ", "SymbolicUtils", "Plots"])</span></span></code></pre></div>
+font-style: inherit;"># Pkg.add(["SymbolicRegression", "MLJ", "SymbolicUtils", "Plots"])</span></span></code></pre></div></div>
 </div>
 <div id="392eedfb" class="cell" data-execution_count="2">
-<div class="sourceCode cell-code" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb2-1"><span class="im" style="color: #00769E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2" style="background: #f1f3f5;"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb2-1"><span class="im" style="color: #00769E;
 background-color: null;
 font-style: inherit;">using</span> <span class="bu" style="color: null;
 background-color: null;
@@ -1102,7 +1108,7 @@ font-style: inherit;">1</span>;</span>
 <span id="cb2-6"></span>
 <span id="cb2-7"><span class="fu" style="color: #4758AB;
 background-color: null;
-font-style: inherit;">scatter</span>(x, y)</span></code></pre></div>
+font-style: inherit;">scatter</span>(x, y)</span></code></pre></div></div>
 <div class="cell-output cell-output-display" data-execution_count="3">
 <!--?xml version="1.0" encoding="utf-8"?-->
 <svg xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" width="672" height="480" viewbox="0 0 2688 1920">
@@ -1218,7 +1224,7 @@ font-style: inherit;">scatter</span>(x, y)</span></code></pre></div>
 </div>
 <p>First we define a model</p>
 <div id="310fd5df" class="cell" data-execution_count="3">
-<div class="sourceCode cell-code" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb3-1">model <span class="op" style="color: #5E5E5E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3" style="background: #f1f3f5;"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb3-1">model <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> <span class="fu" style="color: #4758AB;
 background-color: null;
@@ -1242,12 +1248,12 @@ background-color: null;
 font-style: inherit;">=</span> <span class="fl" style="color: #AD0000;
 background-color: null;
 font-style: inherit;">1</span></span>
-<span id="cb3-5">);</span></code></pre></div>
+<span id="cb3-5">);</span></code></pre></div></div>
 </div>
 <p>(Note: the argument <code>seed = 1</code> is needed to ensure that the result is the same when this Quarto document compiles; you don’t need it.)</p>
 <p>And then fit it to our dataset</p>
 <div id="da71d4e1" class="cell" data-execution_count="4">
-<div class="sourceCode cell-code" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb4-1">X <span class="op" style="color: #5E5E5E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4" style="background: #f1f3f5;"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb4-1">X <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> <span class="fu" style="color: #4758AB;
 background-color: null;
@@ -1264,17 +1270,17 @@ background-color: null;
 font-style: inherit;">machine</span>(model, X, y)</span>
 <span id="cb4-4"><span class="fu" style="color: #4758AB;
 background-color: null;
-font-style: inherit;">fit!</span>(mach)</span></code></pre></div>
+font-style: inherit;">fit!</span>(mach)</span></code></pre></div></div>
 </div>
 <p>We can see a report about the results:</p>
 <div id="b5feabd0" class="cell" data-execution_count="5">
-<div class="sourceCode cell-code" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb5-1">r <span class="op" style="color: #5E5E5E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5" style="background: #f1f3f5;"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb5-1">r <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">report</span>(mach);</span>
 <span id="cb5-2"></span>
-<span id="cb5-3">r</span></code></pre></div>
+<span id="cb5-3">r</span></code></pre></div></div>
 <div class="cell-output cell-output-display" data-execution_count="6">
 <pre><code>(best_idx = 2,
  equations = Expression{Float64, DynamicExpressions.NodeModule.Node{Float64}, @NamedTuple{operators::DynamicExpressions.OperatorEnumModule.OperatorEnum{Tuple{typeof(+), typeof(-), typeof(*)}, Tuple{}}, variable_names::Vector{String}}}[-2.0999999999981576, 1.0 - (x1 * x1)],
@@ -1286,7 +1292,7 @@ font-style: inherit;">report</span>(mach);</span>
 </div>
 <p>This report contains the losses</p>
 <div id="8c4ee642" class="cell" data-execution_count="6">
-<div class="sourceCode cell-code" id="cb7" style="background: #f1f3f5;"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb7-1">r.losses</span></code></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7" style="background: #f1f3f5;"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb7-1">r.losses</span></code></pre></div></div>
 <div class="cell-output cell-output-display" data-execution_count="7">
 <pre><code>2-element Vector{Float64}:
  7.681799999999997
@@ -1295,7 +1301,7 @@ font-style: inherit;">report</span>(mach);</span>
 </div>
 <p>the equations</p>
 <div id="c03ed218" class="cell" data-execution_count="7">
-<div class="sourceCode cell-code" id="cb9" style="background: #f1f3f5;"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb9-1">r.equations</span></code></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9" style="background: #f1f3f5;"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb9-1">r.equations</span></code></pre></div></div>
 <div class="cell-output cell-output-display" data-execution_count="8">
 <pre><code>2-element Vector{Expression{Float64, DynamicExpressions.NodeModule.Node{Float64}, @NamedTuple{operators::DynamicExpressions.OperatorEnumModule.OperatorEnum{Tuple{typeof(+), typeof(-), typeof(*)}, Tuple{}}, variable_names::Vector{String}}}}:
  -2.0999999999981576
@@ -1304,9 +1310,9 @@ font-style: inherit;">report</span>(mach);</span>
 </div>
 <p>and the best one of the functions found (ie. the one with the least loss):</p>
 <div id="bc770adc" class="cell" data-execution_count="8">
-<div class="sourceCode cell-code" id="cb11" style="background: #f1f3f5;"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb11-1"><span class="fu" style="color: #4758AB;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11" style="background: #f1f3f5;"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb11-1"><span class="fu" style="color: #4758AB;
 background-color: null;
-font-style: inherit;">node_to_symbolic</span>(r.equations[r.best_idx], model)</span></code></pre></div>
+font-style: inherit;">node_to_symbolic</span>(r.equations[r.best_idx], model)</span></code></pre></div></div>
 <div class="cell-output cell-output-display" data-execution_count="9">
 <pre><code>1.0 - (x1 * x1)</code></pre>
 </div>
@@ -1318,7 +1324,7 @@ font-style: inherit;">node_to_symbolic</span>(r.equations[r.best_idx], model)</s
 <h2 class="anchored" data-anchor-id="example-2">Example 2</h2>
 <p>Now let’s get a more interesting example. Take <img src="https://latex.codecogs.com/png.latex?f(x)%20=%20x%5E2%20+%202cos(x)%5E2">:</p>
 <div id="d2b37475" class="cell" data-execution_count="9">
-<div class="sourceCode cell-code" id="cb13" style="background: #f1f3f5;"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb13-1">y <span class="op" style="color: #5E5E5E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13" style="background: #f1f3f5;"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb13-1">y <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> @. x<span class="op" style="color: #5E5E5E;
 background-color: null;
@@ -1338,7 +1344,7 @@ font-style: inherit;">2</span> </span>
 <span id="cb13-2"></span>
 <span id="cb13-3"><span class="fu" style="color: #4758AB;
 background-color: null;
-font-style: inherit;">scatter</span>(x, y)</span></code></pre></div>
+font-style: inherit;">scatter</span>(x, y)</span></code></pre></div></div>
 <div class="cell-output cell-output-display" data-execution_count="10">
 <!--?xml version="1.0" encoding="utf-8"?-->
 <svg xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" width="672" height="480" viewbox="0 0 2688 1920">
@@ -1454,7 +1460,7 @@ font-style: inherit;">scatter</span>(x, y)</span></code></pre></div>
 </div>
 <p>We again create a model and fit it, but now we allow more operations: besides the earlier binary functions, we also have the unary <code>cos</code> function:</p>
 <div id="322a8080" class="cell" data-execution_count="10">
-<div class="sourceCode cell-code" id="cb14" style="background: #f1f3f5;"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb14-1">model <span class="op" style="color: #5E5E5E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14" style="background: #f1f3f5;"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb14-1">model <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> <span class="fu" style="color: #4758AB;
 background-color: null;
@@ -1490,18 +1496,18 @@ background-color: null;
 font-style: inherit;">machine</span>(model, X, y)</span>
 <span id="cb14-9"><span class="fu" style="color: #4758AB;
 background-color: null;
-font-style: inherit;">fit!</span>(mach)</span></code></pre></div>
+font-style: inherit;">fit!</span>(mach)</span></code></pre></div></div>
 </div>
 <p>and see the best equation:</p>
 <div id="e831bd67" class="cell" data-execution_count="11">
-<div class="sourceCode cell-code" id="cb15" style="background: #f1f3f5;"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb15-1">r <span class="op" style="color: #5E5E5E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15" style="background: #f1f3f5;"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb15-1">r <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">report</span>(mach)</span>
 <span id="cb15-2"><span class="fu" style="color: #4758AB;
 background-color: null;
-font-style: inherit;">node_to_symbolic</span>(r.equations[r.best_idx], model)</span></code></pre></div>
+font-style: inherit;">node_to_symbolic</span>(r.equations[r.best_idx], model)</span></code></pre></div></div>
 <div class="cell-output cell-output-display" data-execution_count="12">
 <pre><code>(cos(x1 + x1) + (x1 * x1)) + 1.0</code></pre>
 </div>
@@ -1515,7 +1521,7 @@ font-style: inherit;">node_to_symbolic</span>(r.equations[r.best_idx], model)</s
 <p>Even after adding some noise to the original dataset, the symbolic regression still can find a very good approximation:</p>
 <p>Take <img src="https://latex.codecogs.com/png.latex?f(x)%20=%200.3%20*%20x%5E3%20-%20x%5E2%20+%202cos(x)%20+%20%5Cepsilon(x)"> where <img src="https://latex.codecogs.com/png.latex?%5Cepsilon(x)"> is a random uniform error (varying in <img src="https://latex.codecogs.com/png.latex?%5B0,%201%5D">) like this:</p>
 <div id="23b3928b" class="cell" data-execution_count="12">
-<div class="sourceCode cell-code" id="cb17" style="background: #f1f3f5;"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb17-1">x <span class="op" style="color: #5E5E5E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17" style="background: #f1f3f5;"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb17-1">x <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> [<span class="op" style="color: #5E5E5E;
 background-color: null;
@@ -1574,7 +1580,7 @@ font-style: inherit;">+</span> errors</span>
 <span id="cb17-5"></span>
 <span id="cb17-6"><span class="fu" style="color: #4758AB;
 background-color: null;
-font-style: inherit;">scatter</span>(x, y)</span></code></pre></div>
+font-style: inherit;">scatter</span>(x, y)</span></code></pre></div></div>
 <div class="cell-output cell-output-display" data-execution_count="13">
 <!--?xml version="1.0" encoding="utf-8"?-->
 <svg xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" width="672" height="480" viewbox="0 0 2688 1920">
@@ -1723,7 +1729,7 @@ font-style: inherit;">scatter</span>(x, y)</span></code></pre></div>
 </div>
 </div>
 <div id="a88e0e70" class="cell" data-execution_count="13">
-<div class="sourceCode cell-code" id="cb18" style="background: #f1f3f5;"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb18-1">model <span class="op" style="color: #5E5E5E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18" style="background: #f1f3f5;"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb18-1">model <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> <span class="fu" style="color: #4758AB;
 background-color: null;
@@ -1759,25 +1765,25 @@ background-color: null;
 font-style: inherit;">machine</span>(model, X, y)</span>
 <span id="cb18-9"><span class="fu" style="color: #4758AB;
 background-color: null;
-font-style: inherit;">fit!</span>(mach)</span></code></pre></div>
+font-style: inherit;">fit!</span>(mach)</span></code></pre></div></div>
 </div>
 <p>and see the best equation:</p>
 <div id="3c531488" class="cell" data-execution_count="14">
-<div class="sourceCode cell-code" id="cb19" style="background: #f1f3f5;"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb19-1">r <span class="op" style="color: #5E5E5E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19" style="background: #f1f3f5;"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb19-1">r <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> <span class="fu" style="color: #4758AB;
 background-color: null;
 font-style: inherit;">report</span>(mach)</span>
 <span id="cb19-2"><span class="fu" style="color: #4758AB;
 background-color: null;
-font-style: inherit;">node_to_symbolic</span>(r.equations[r.best_idx], model)</span></code></pre></div>
+font-style: inherit;">node_to_symbolic</span>(r.equations[r.best_idx], model)</span></code></pre></div></div>
 <div class="cell-output cell-output-display" data-execution_count="15">
 <pre><code>((cos(x1) + 0.25165473630073826) * 2.0606237458400627) + ((((x1 * 0.29992726806072795) + -1.0024810337832324) * x1) * x1)</code></pre>
 </div>
 </div>
 <p>We can plot the prediction and the original dataset to compare them:</p>
 <div id="0898e37a" class="cell" data-execution_count="15">
-<div class="sourceCode cell-code" id="cb21" style="background: #f1f3f5;"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb21-1">y_pred <span class="op" style="color: #5E5E5E;
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21" style="background: #f1f3f5;"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb21-1">y_pred <span class="op" style="color: #5E5E5E;
 background-color: null;
 font-style: inherit;">=</span> <span class="fu" style="color: #4758AB;
 background-color: null;
@@ -1792,7 +1798,7 @@ font-style: inherit;">scatter!</span>(x, y_pred, color <span class="op" style="c
 background-color: null;
 font-style: inherit;">=</span> <span class="st" style="color: #20794D;
 background-color: null;
-font-style: inherit;">"red"</span>)</span></code></pre></div>
+font-style: inherit;">"red"</span>)</span></code></pre></div></div>
 <div class="cell-output cell-output-display" data-execution_count="16">
 <!--?xml version="1.0" encoding="utf-8"?-->
 <svg xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" width="672" height="480" viewbox="0 0 2688 1920">

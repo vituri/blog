@@ -1,103 +1,47 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://vituri.github.io/blog/index.html</loc>
-    <lastmod>2025-07-05T17:04:16.580Z</lastmod>
+    <loc>https://vituri.github.io/blog/posts/tchekhov-solidao/tchekov-solidao.html</loc>
+    <lastmod>2025-02-12T12:37:00.632Z</lastmod>
   </url>
   <url>
-    <loc>https://vituri.github.io/blog/posts/future-history/future-history.html</loc>
-    <lastmod>2025-02-03T15:39:00.875Z</lastmod>
+    <loc>https://vituri.github.io/blog/posts/julia-for-r-users/julia-for-r-users.html</loc>
+    <lastmod>2026-09-10T20:43:03.998Z</lastmod>
   </url>
   <url>
     <loc>https://vituri.github.io/blog/posts/felicidade-imaginada/felicidade-imaginada.html</loc>
     <lastmod>2025-02-12T12:37:00.627Z</lastmod>
   </url>
   <url>
-    <loc>https://vituri.github.io/blog/posts/tchekhov-solidao/tchekov-solidao.html</loc>
-    <lastmod>2025-02-12T12:37:00.632Z</lastmod>
-  </url>
-  <url>
-    <loc>https://vituri.github.io/blog/posts/eletronic-bard/eletronic-bard.html</loc>
-    <lastmod>2025-02-12T12:37:00.624Z</lastmod>
-  </url>
-  <url>
-    <loc>https://vituri.github.io/blog/about.html</loc>
-    <lastmod>2025-02-02T03:19:33.201Z</lastmod>
-  </url>
-  <url>
-    <loc>https://vituri.github.io/blog/pdf_docs/symbolic regression/post.html</loc>
-    <lastmod>2024-03-14T04:07:04.690Z</lastmod>
-  </url>
-  <url>
-    <loc>https://vituri.github.io/blog/posts/symbolic regression/post.html</loc>
-    <lastmod>2025-02-03T15:45:43.444Z</lastmod>
-  </url>
-  <url>
-    <loc>https://vituri.github.io/blog/livros.html</loc>
-    <lastmod>2025-02-03T15:39:00.852Z</lastmod>
-  </url>
-  <url>
-    <loc>https://vituri.github.io/blog/ds.html</loc>
-    <lastmod>2025-02-03T15:39:00.852Z</lastmod>
-  </url>
-  <url>
-    <loc>https://vituri.github.io/blog/cv.html</loc>
-    <lastmod>2025-11-02T19:47:27.688Z</lastmod>
-  </url>
-  <url>
-    <loc>https://vituri.github.io/blog/posts-livros/future-history/future-history.html</loc>
-    <lastmod>2025-02-02T03:19:33.277Z</lastmod>
-  </url>
-  <url>
-    <loc>https://vituri.github.io/blog/posts-livros/felicidade-imaginada/felicidade-imaginada.html</loc>
-    <lastmod>2025-02-02T03:19:33.273Z</lastmod>
-  </url>
-  <url>
-    <loc>https://vituri.github.io/blog/posts-ds/symbolic regression/post.html</loc>
-    <lastmod>2025-02-02T03:19:33.267Z</lastmod>
-  </url>
-  <url>
-    <loc>https://vituri.github.io/blog/posts-livros/tchekhov-solidao/tchekov-solidao.html</loc>
-    <lastmod>2025-02-02T03:19:33.277Z</lastmod>
-  </url>
-  <url>
-    <loc>https://vituri.github.io/blog/posts-livros/eletronic-bard/eletronic-bard.html</loc>
-    <lastmod>2025-02-02T03:19:33.269Z</lastmod>
-  </url>
-  <url>
-    <loc>https://vituri.github.io/blog/posts-ds/julia-for-r-users/post.html</loc>
-    <lastmod>2025-02-02T20:57:13.051Z</lastmod>
-  </url>
-  <url>
-    <loc>https://vituri.github.io/blog/posts-ds/julia-for-r-users/julia-for-r-users.html</loc>
-    <lastmod>2025-02-03T06:10:42.639Z</lastmod>
-  </url>
-  <url>
-    <loc>https://vituri.github.io/blog/posts/julia-for-r-users/julia-for-r-users.html</loc>
-    <lastmod>2025-02-12T12:40:47.245Z</lastmod>
-  </url>
-  <url>
-    <loc>https://vituri.github.io/blog/posts/symbolic regression/symbolic-regression.html</loc>
-    <lastmod>2025-02-03T16:03:03.781Z</lastmod>
-  </url>
-  <url>
-    <loc>https://vituri.github.io/blog/posts/symbolic-regression/symbolic-regression.html</loc>
-    <lastmod>2025-02-12T12:40:41.496Z</lastmod>
-  </url>
-  <url>
-    <loc>https://vituri.github.io/blog/consulting.html</loc>
-    <lastmod>2025-05-02T17:29:13.747Z</lastmod>
-  </url>
-  <url>
-    <loc>https://vituri.github.io/blog/cv_hr_review.html</loc>
-    <lastmod>2025-07-05T17:00:51.006Z</lastmod>
+    <loc>https://vituri.github.io/blog/portfolio.html</loc>
+    <lastmod>2025-12-02T03:22:13.973Z</lastmod>
   </url>
   <url>
     <loc>https://vituri.github.io/blog/cv-old.html</loc>
     <lastmod>2025-06-23T22:11:58.491Z</lastmod>
   </url>
   <url>
-    <loc>https://vituri.github.io/blog/portfolio.html</loc>
-    <lastmod>2025-12-02T03:22:13.973Z</lastmod>
+    <loc>https://vituri.github.io/blog/index.html</loc>
+    <lastmod>2025-07-05T17:04:16.580Z</lastmod>
+  </url>
+  <url>
+    <loc>https://vituri.github.io/blog/consulting.html</loc>
+    <lastmod>2025-05-02T17:29:13.747Z</lastmod>
+  </url>
+  <url>
+    <loc>https://vituri.github.io/blog/cv.html</loc>
+    <lastmod>2026-09-10T22:34:31.895Z</lastmod>
+  </url>
+  <url>
+    <loc>https://vituri.github.io/blog/posts/eletronic-bard/eletronic-bard.html</loc>
+    <lastmod>2025-02-12T12:37:00.624Z</lastmod>
+  </url>
+  <url>
+    <loc>https://vituri.github.io/blog/posts/future-history/future-history.html</loc>
+    <lastmod>2025-02-12T12:41:15.360Z</lastmod>
+  </url>
+  <url>
+    <loc>https://vituri.github.io/blog/posts/symbolic-regression/symbolic-regression.html</loc>
+    <lastmod>2025-02-12T12:40:41.496Z</lastmod>
   </url>
 </urlset>
